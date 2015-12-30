@@ -1,0 +1,95 @@
+.material-component
+  /*relative positioning for list items along with overflow hidden to contain the overflowing ripple*/
+  position: relative
+  overflow: hidden
+  display: inline-block
+  border-radius: 4px
+
+  .ripple
+    cursor: pointer /*since the links are dummy without href values*/
+    /*prevent text selection*/
+    user-select: none
+    /*static positioned elements appear behind absolutely positioned siblings(.ink in this case) hence we will make the links relatively positioned to bring them above .ink*/
+
+
+
+/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+.ink
+  display: block
+  position: absolute
+  background: hsl(180, 40%, 80%)
+  border-radius: 100%
+  transform: scale(0)
+
+/*animation effect*/
+.ink.animate
+  animation: ripple 0.65s linear
+@keyframes ripple
+  /*scale the element to 250% to safely cover the entire link and fade it out*/
+  100%
+    opacity: 0
+    transform: scale(2.5)
+
+
+ul.v-block-wrap
+  margin: 0 !important
+  padding-top: 10px
+  li
+    list-style: none
+    float: left
+    p
+      font:
+        size: rem-calc(12)
+        family: 'Fira Sans', sans-serif !important
+        style: normal !important
+        weight: 500
+      color: #AFBDC4 !important
+      white-space: nowrap
+      margin:
+        bottom: 0 !important
+        top: 0 !important
+      padding-top: 0px
+
+      a
+        color: inherit
+        text-decoration: none
+        font-family: inherit
+        padding: 0 4px
+      a:hover
+        color: #AFBDC4
+    svg
+      width: 48px
+      height: 100%
+      path
+        fill: rgba(175, 189, 196, 1)
+  li.vbw-image
+    width: 30px
+    a
+      display: block
+      svg
+        width: 100%
+        path
+          fill: #AFBDC4
+  li.vbw-image a:hover path
+    fill: #AFBDC4
+    -webkit-transition: all 1s
+    -moz-transition: all 1s
+    -o-transition: all 1s
+    transition: all 1s
+
+  li.vbw-text
+    width: 80%
+    padding: 3% 0 0 2%
+    p
+      letter-spacing: normal !important
+      font:
+        weight: 200
+        size: rem-calc(12)
+
+.no-pad-left
+  padding-left: 0
+
+.no-pad-right
+  padding-right: 0
+
+

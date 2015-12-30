@@ -1,0 +1,627 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.sass.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "mixins"
+
+
+span, a, p
+  font-family: 'Roboto', sans-serif
+
+body
+  background: #eceff1
+header
+  background: #1976d2
+  min-height: 282px
+  padding-bottom: 170px
+  margin-bottom: -170px
+  .header-menu
+    background: #1565c0
+    height: 25px
+    overflow: hidden
+    p
+      color: #eceff1
+      font:
+        weight: 300
+        size: rem-calc(12)
+      line-height: 25px
+      margin: 0
+    ul
+      margin: 0
+      list-style: none
+      background: #1565c0
+      position: absolute
+      top: 0
+      right: 0.9375rem
+      padding-left: 26px
+      li
+        float: left
+        a
+          color: #eceff1
+          font:
+            size: rem-calc(12)
+            weight: 400
+          padding-left: 6px
+          padding-right: 6px
+          line-height: 25px
+      &:before
+        content: '...'
+        position: absolute
+        left: 2px
+        bottom: 2px
+        color: #eceff1
+        font:
+          size: rem-calc(12)
+          weight: 300
+        opacity: .5
+    p, a
+      opacity: .5
+  .header-logo
+    padding-top: 6px
+  .header-main
+    padding-top: 25px
+    ul
+      list-style: none
+      margin: 0
+      li
+        width: 40px
+        float: left
+        a
+          display: block
+          padding: 10px
+    p
+      color: #fff
+      font:
+        weight: 400
+        size: rem-calc(12)
+      margin-bottom: 0
+      a
+        font:
+          size: rem-calc(18)
+          weight: 500
+        color: inherit
+    form
+      height: 30px
+      position: relative
+      .input
+        input
+          opacity: .4
+          padding-left: 35px
+          color: #eceff1
+          height: 30px
+          margin: 0
+      .submit
+        width: 30px
+        height: 30px
+        position: absolute
+        left: 3px
+        top: 3px
+        button
+          background: transparent
+          padding: 0
+          svg
+            width: 100%
+            padding: 7px
+            path
+              fill: #eceff1
+
+.cart-link
+  width: 75px
+  height: 75px
+  //background: #f50057
+  position: fixed
+  top: 240px
+  right: 50px
+  a
+    display: block
+    position: relative
+  .cart-link-background
+  svg
+    padding: 20px
+    width: 100%
+    +my_center_align()
+      position: absolute
+main
+  min-height: 450px
+  background: #fff
+  position: relative
+
+  -webkit-box-shadow: 1px 5px 3px 2px rgba(0,0,0,0.35)
+  -moz-box-shadow: 1px 5px 3px 2px rgba(0,0,0,0.35)
+  box-shadow: 1px 5px 3px 2px rgba(0,0,0,0.35)
+
+  +grid-row()
+
+  nav
+    height: 60px
+    background: #263238
+    ul
+      margin: 0
+      list-style: none
+      height: inherit
+      li
+        height: inherit
+        float: left
+        span
+          background: red
+        a
+          display: block
+          height: inherit
+          color: #eceff1
+          font:
+            size: rem-calc(20)
+            weight: 500
+          line-height: 60px
+          text-transform: uppercase
+          padding-left: 15px
+          padding-right: 20px
+          svg
+            height: 100%
+            width: auto
+            padding-top: 21px
+            padding-bottom: 21px
+            float: left
+            margin-right: 10px
+        &:hover
+          background: #1c282e
+          a
+            color: #1976d2
+          path
+            fill: #1976d2
+  .page-block
+    margin-bottom: 60px
+    .page-block-title
+      background: #eceff1
+      height: 40px
+      margin-bottom: 30px
+      span
+        color: #607d8b
+        display: inline-block
+        text-transform: uppercase
+        font:
+          weight: 400
+          size: rem-calc(24)
+        line-height: 40px
+    &.publications-block
+      .pb-sub-publications-block
+        &:first-of-type
+          @media #{$medium-up}
+            //+grid-column(6)
+            height: 265px
+            padding-right: 2px
+            margin-bottom: 4px
+        &:nth-of-type(2)
+          @media #{$medium-up}
+            //+grid-column(6)
+            height: 265px
+            padding-left: 2px
+            margin-bottom: 4px
+      .medium-11
+        .pb-sub-publications-block
+          &:first-of-type
+            @media #{$medium-up}
+              //+grid-column(4)
+              height: 120px
+              padding-right: 2px
+            @media #{$small-only}
+
+            a
+              background: #42a5f5
+              display: block
+              height: 100%
+              color: #1c282e
+              font:
+                size: rem-calc(24)
+                weight: 400
+              line-height: 28px
+              text-transform: uppercase
+          &:nth-of-type(2)
+            @media #{$medium-up}
+              //+grid-column(4)
+              height: 120px
+              padding-left: 2px
+              padding-right: 2px
+              a
+                background: #42a5f5
+                display: block
+                height: 100%
+                color: #1c282e
+                font:
+                  size: rem-calc(24)
+                  weight: 400
+                line-height: 28px
+                text-transform: uppercase
+          &:nth-of-type(3)
+            @media #{$medium-up}
+              //+grid-column(4)
+              height: 120px
+              padding-left: 2px
+              padding-right: 2px
+              margin-bottom: 4px
+              a
+                background: #42a5f5
+                display: block
+                height: 100%
+                color: #1c282e
+                font:
+                  size: rem-calc(24)
+                  weight: 400
+                line-height: 28px
+                text-transform: uppercase
+      .pb-publications-more
+        @media #{$medium-up}
+          height: 120px
+          padding-left: 2px
+          margin-bottom: 4px
+        a
+          background: #263238
+          display: block
+          height: 100%
+
+.publication-default
+  a
+    position: relative
+    display: block
+    height: inherit
+    .image
+      height: 0
+      padding-bottom: 54%
+    .pb-publication-body
+      background: #42a5f5
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      min-height: 112px
+
+      padding-left: 30px
+      padding-right: 18px
+      padding-top: 15px
+
+      .title
+        display: inline-block
+        color: #1c282e
+        font:
+          family: 'Roboto', sans-serif
+          size: rem-calc(24)
+          weight: 400
+        line-height: 28.8px
+        text-transform: uppercase
+      p
+        color: #fff
+        font:
+          size: rem-calc(12)
+          weight: 300
+      .valko-arrow
+        position: absolute
+        left: 0
+        top: 10px
+
+    &:hover
+      .title
+        color: #fff
+      .image
+        filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+        -webkit-filter: grayscale(0)
+        filter: grayscale(0)
+
+.publications-page
+  padding-bottom: 55px
+  .main_publication
+    height: 366px
+    position: relative
+    margin-bottom: 8px
+    .publication-body
+      background: #42a5f5
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      @media #{$medium-up}
+        +grid-column(4)
+    &:hover
+      .image
+        filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+        -webkit-filter: grayscale(0)
+        filter: grayscale(0)
+
+  .publication-documents
+    border: 1px solid #eceff1
+    margin-bottom: 10px
+    .medium-2
+      svg
+        height: 41px
+        margin-top: 10px
+        path
+          fill: #607d8b
+      p
+        color: #607d8b
+        font:
+          size: rem-calc(12)
+          weight: 400
+        line-height: 14px
+        width: 85%
+        margin: 0 auto
+    a
+      color: #1976d2
+      font:
+        size: rem-calc(14)
+        weight: 500
+      line-height: 14px
+      text-transform: uppercase
+      display: block
+      position: relative
+      padding-left: 33px
+      margin-top: 18px
+      padding-bottom: 10px
+      svg
+        width: 24px
+        position: absolute
+        left: 0
+        top: 0
+        path
+          fill: #1976d2
+      p
+        color: #93989c
+        font:
+          size: rem-calc(12)
+          weight: 400
+        line-height: 14px
+        margin-bottom: 0
+
+  .publication-default
+    margin-bottom: 4px
+    &:nth-of-type(2n+1)
+      @media #{$medium-up}
+        padding-right: 2px
+    &:nth-of-type(2n)
+      @media #{$medium-up}
+        padding-left: 2px
+
+.main-footer
+  p
+    margin-bottom: 0
+    color: #939598
+    font:
+      size: rem-calc(12)
+      weight: 400
+  .scroll-top-button
+    background: #607d8b
+    padding-bottom: 80%
+    height: 0
+    position: relative
+    div
+      width: 24px
+      height: 24px
+      +my_center_align()
+        position: absolute
+      &:before
+        display: block
+        content: ''
+        position: absolute
+        background: #eceff1
+        height: 3px
+        width: 15px
+        +rotate(-45deg)
+        top: 10px
+        left: 0
+      &:after
+        display: block
+        content: ''
+        position: absolute
+        background: #eceff1
+        height: 3px
+        width: 15px
+        +rotate(45deg)
+        top: 10px
+        right: 0
+
+footer
+  background: #1976d2
+  min-height: 193px
+  padding-top: 53px
+  margin-top: -53px
+  ul
+    margin: 0
+    list-style: none
+    li
+      float: left
+      a
+        color: #fff
+  p.copyright
+    color: #bad6f1
+    font:
+      size: rem-calc(16)
+      weight: 400
+    line-height: 24px
+    text-transform: uppercase
+
+ul.voronin-block-wrap
+  margin: 0 !important
+  padding-top: 10px
+  li
+    list-style: none
+    float: left
+    p
+      font:
+        size: rem-calc(14)
+        style: normal !important
+        weight: 300
+      color: #bad6f1
+      white-space: nowrap
+      margin:
+        bottom: 0 !important
+        top: 0 !important
+      padding-top: 0px
+
+      a
+        color: inherit
+        text-decoration: none
+        font-family: inherit
+
+      a:hover
+        color: #BD9459
+    svg
+      width: 48px
+      height: 100%
+      path
+        fill: rgba(167, 140, 48, 1)
+  li.vbw-image
+    width: 30px
+    a
+      display: block
+      svg
+        width: 100%
+        path
+          fill: #bad6f1
+  li.vbw-image a:hover path
+    fill: #BD9459
+    -webkit-transition: all 1s
+    -moz-transition: all 1s
+    -o-transition: all 1s
+    transition: all 1s
+
+  li.vbw-text
+    width: 80%
+    padding: 3% 0 0 2%
+    p
+      letter-spacing: normal !important
+      font:
+        weight: 300
+        size: rem-calc(14) !important
+
+
+
+.pb-sub-block
+  &.sub-catalog-one-item
+    height: 137px
+    margin-bottom: 5px
+    .sc-oi-avatar, .sc-oi-body
+      height: inherit
+      float: left
+    .sc-oi-avatar
+      width: 40%
+    .sc-oi-body
+      background: #42a5f5
+      width: 60%
+      .sc-oi-title
+        margin-top: 10px
+        color: #1c282e
+        font:
+          family: 'Roboto', sans-serif
+          size: rem-calc(24)
+          weight: 400
+        line-height: 25px
+        text-transform: uppercase
+        display: inline-block
+        .valko-arrow
+          margin-right: 8px
+
+      ul
+        margin: 0
+        list-style: none
+        li
+          float: left
+          padding-left: 4px
+          padding-right: 4px
+          border-right: 2px solid #fff
+          //height: 12px
+          a
+            color: #1c282e
+            font:
+              size: rem-calc(12)
+              weight: 400
+          &:first-of-type
+            padding-left: 0
+          &:last-of-type
+            border-right: none
+      p
+        color: #eceff1
+        font:
+          size: rem-calc(12)
+          weight: 400
+        line-height: 20px
+    &:hover
+      .image
+        filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+        -webkit-filter: grayscale(0)
+        filter: grayscale(0)
+
+.valko-arrow
+  width: 25px
+  height: 25px
+  background: #263238
+  float: left
+  .va-right
+
+.bx-wrapper
+  -moz-box-shadow: none
+  -webkit-box-shadow: none
+  box-shadow: none
+  border: none
+  background: transparent
+
+.promotion-banner-wrapper
+  position: relative
+  margin-top: 30px
+  .promotion-banner-pager
+    position: absolute
+    left: 0
+    top: 0
+    background: #eceff1
+    +grid-column(4)
+    padding: 0
+    a
+      display: block
+      height: 135px
+      border-bottom: 1px solid #fff
+      padding: 0 28px
+      .title
+        display: inline-block
+        color: #939598
+        font:
+          size: rem-calc(24)
+          family: 'Roboto', sans-serif
+          weight: 400
+        line-height: 28px
+      p
+        color: #939598
+        font:
+          size: rem-calc(13)
+          weight: 400
+        line-height: 18px
+      &:last-of-type
+        border-bottom: none
+      &.active
+        border-left: 6px solid #1976d2
+        .title
+          color: #1976d2
+        p
+          color: #607d8b
+
+
+ul#promotion-banner
+  height: 405px
+  margin: 0
+  list-style: none
+  li
+    height: inherit
+    position: relative
+    .image
+    .promo-banner-body
+      position: absolute
+      left: 0
+      top: 0
+
+
+.image
+  max-width: 100%
+  width: 100%
+  height: 100%
+  padding-bottom: 0
+  overflow: hidden
+  -webkit-background-size: cover !important
+  -moz-background-size: cover !important
+  -o-background-size: cover !important
+  background-size: cover !important
+  margin: 0 auto

@@ -1,0 +1,105 @@
+
+- if promotions.any?
+    .row
+      .columns
+        .promotion-banner-wrapper
+          ul#promotion-banner
+            - promotions.each do |promotion|
+              li
+                .image style="background: url('#{promotion.cover.url(:large)}')no-repeat center center;"
+                .promo-banner-body
+                  =promotion.title
+          .promotion-banner-pager
+            - promotions.each_with_index do |promo_pager, index|
+              a data-slide-index=index href=""
+                .title = promo_pager.title
+                p = truncate_html(promo_pager.short_description, length: 100, omission: '...')
+
+
+
+.page-block
+  .page-block-title
+    .row
+      .columns
+        span Ми пропонуємо:
+
+  .row
+    .medium-6.columns.pb-sub-block.sub-catalog-one-item
+      .sc-oi-avatar
+        .image.grayscale style="background: url('#{asset_path("Valko-catalog-pidvikonnya.jpg")}')no-repeat center center;"
+      .sc-oi-body
+        .sc-oi-title
+          .valko-arrow.va-right
+          |Підвіконня
+
+        .columns
+          ul
+            li
+              a Внутішні
+            li
+              a Зовнішні
+
+          .clearfix
+          p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+
+    .medium-6.columns.pb-sub-block.sub-catalog-one-item
+      .sc-oi-avatar
+        .image.grayscale style="background: url('#{asset_path("Valko-catalog-roletu.jpg")}')no-repeat center center;"
+      .sc-oi-body
+        .sc-oi-title
+          .valko-arrow.va-right
+          |Ролети
+
+    .medium-6.columns.pb-sub-block.sub-catalog-one-item
+      .sc-oi-avatar
+        .image.grayscale style="background: url('#{asset_path("Valko-catalog-moskitni-sitky.jpg")}')no-repeat center center;"
+      .sc-oi-body
+        .sc-oi-title
+          .valko-arrow.va-right
+          |Москітні сітки
+
+    .medium-6.columns.pb-sub-block.sub-catalog-one-item
+      .sc-oi-avatar
+        .image.grayscale style="background: url('#{asset_path("Valko-catalog-pokrivlya.jpg")}')no-repeat center center;"
+      .sc-oi-body
+        .sc-oi-title
+          .valko-arrow.va-right
+          |Покрівля
+
+    .medium-6.columns.pb-sub-block.sub-catalog-one-item
+      .sc-oi-avatar
+        .image.grayscale style="background: url('#{asset_path("Valko-catalog-ogorozhy.jpg")}')no-repeat center center;"
+      .sc-oi-body
+        .sc-oi-title
+          .valko-arrow.va-right
+          |Огорожі
+
+    .medium-6.columns
+
+
+- if @publications.any?
+  .page-block.publications-block
+    .page-block-title
+      .row
+        .columns
+          span Інформація:
+
+    .row
+      - @publications.each_with_index do |publication, index|
+        - if index <=1
+          .medium-6.columns.pb-sub-publications-block.publication-default
+            a href=one_publication_path(publication.slug)
+              .image.grayscale style="background: url('#{publication.cover.url(:large)}')no-repeat center center;"
+              .pb-publication-body
+                .title = publication.title
+                p = truncate_html(publication.short_description, length: 120, omission: '...')
+    .row
+      .medium-11.columns
+        .row
+          - @publications.each_with_index do |publication, index|
+            - if index >1
+              .medium-4.columns.pb-sub-publications-block.publication-default class=("end" if @publications.last == publication)
+                a href=one_publication_path(publication.slug)
+                  = publication.title
+      .medium-1.columns.pb-publications-more
+        = link_to information_path do

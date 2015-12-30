@@ -1,0 +1,31 @@
+nav
+  ul
+    li.material-component.ripple
+      -if !current_page?(root_url)
+        a href=root_path
+          = inline_svg "Valko-icon-home.svg"
+      - else
+        a
+          = inline_svg "Valko-icon-home.svg"
+    li
+      a
+        = inline_svg "Valko-icon-pidvikonnya.svg"
+        |Підвіконня
+    li
+      a
+        = inline_svg "Valko-icon-rolety.svg"
+        |Ролети
+    li
+      a
+        = inline_svg "Valko-icon-moskitny-sitku.svg"
+        |Москітні сітки
+    li
+      a
+        = inline_svg "Valko-icon-pokrivlya.svg"
+        |Покрівля
+    li
+      a
+        = inline_svg "Valko-icon-ogorozha.svg"
+        |Огорожі
+
+    .clearfix

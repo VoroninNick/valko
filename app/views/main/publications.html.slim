@@ -1,0 +1,45 @@
+ul.breadcrumbs
+  li
+    a href="#" Home
+  li
+    a href="#" Features
+  li.disabled Gene Splicing
+  li
+    span.show-for-sr Current:
+    |Cloning
+
+.publications-page
+  - if @main_publication
+    .row
+      .columns
+        .main_publication
+          .image.grayscale style="background: url('#{@main_publication.cover.url(:large)}')no-repeat center center;"
+          .publication-body
+  .row
+    .columns
+      .publication-documents
+        .row
+          .medium-2.columns.text-center
+            = inline_svg "ic_local_library_black_48px.svg"
+            p Завантажуйте нашу поліграфічну продукцію
+          .medium-10.columns
+            - if @documents.any?
+              .row
+                - @documents.each do |document|
+                  .small-6.medium-3.columns class=("end" if document == @documents.last)
+                    .print-version
+                      a href=document.document.url()
+                        = inline_svg "ic_file_download_black_48px.svg"
+                        = document.title
+                        p #{number_to_human_size(document.document_file_size)} #{File.extname(document.document_file_name)}
+
+  - if @publications.any?
+    .row
+      - @publications.each do |publication|
+        .medium-6.columns.publication-default class=("end" if @publications.last == publication)
+          a href=one_publication_path(publication.slug)
+            .image.grayscale style="background: url('#{publication.cover.url(:large)}')no-repeat center center;"
+            .pb-publication-body
+              .title = publication.title
+              p = truncate_html(publication.short_description, length: 120, omission: '...')
+              .valko-arrow

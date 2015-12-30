@@ -1,0 +1,47 @@
+header
+  .header-menu
+    .row
+      .columns
+        p Компанія «Валько»  — гуртовий та роздрібний продаж підвіконь, ролет, москітних сіток, покрівель та огорож
+        ul
+          li
+            a Про нас
+          li
+            a Акції
+          li
+            a Інформація
+          li
+            a Контакти
+          li
+            a Доставка та гарантія
+  .row
+    .large-3.columns.header-logo
+      -if !current_page?(root_url)
+        = link_to root_path do
+          =image_tag "valko-logo-v1.png"
+      -else
+        =image_tag "valko-logo-v1.png"
+
+    .large-4.columns.header-main
+      form
+        .input
+          input type="text" placeholder="Я шукаю..."
+        .submit
+          button
+            = inline_svg "Valko-icon-search.svg"
+
+    .large-2.columns.header-main
+      ul
+        li
+          a data-reveal-id="CallOrder"
+            = inline_svg "Valko-icon-phone.svg"
+        li
+          a data-reveal-id="ContactForm"
+            = inline_svg "Valko-icon-mail.svg"
+    .large-3.columns.header-main
+      p
+        |тел.:
+        a href="tel:+380322941012" +38 (032) 294 10 12
+      p
+        |моб.:
+        a href="tel:+380673107027" +38 (067) 310 70 27
