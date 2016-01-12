@@ -31,6 +31,19 @@ class Promotion < ActiveRecord::Base
     self.slug = to_slug
   end
   before_save :save_slug
+  def set_start_date
+    self.start_date ||= Date.today
+  end
+
+  def random_date_in_year(year)
+    return rand(Date.civil(year.min, 1, 1)..Date.civil(year.max, 12, 31)) if year.kind_of?(Range)
+    rand(Date.civil(year, 1, 1)..Date.civil(year, 12, 31))
+  end
+  def set_date_of
+    self.date_of ||= random_date = random_date_in_year(2016..2020)
+  end
+
+  before_save :set_start_date, :set_date_of
 
   rails_admin do
     # navigation_label 'Акційні прайси'
@@ -60,7 +73,7 @@ class Promotion < ActiveRecord::Base
       field :start_date do
         label 'Дата початку:'
       end
-      field :date_of do
+      field :date_of, :date do
         label 'Дата завершення:'
       end
       field :position do
