@@ -19,7 +19,8 @@ class MainController < ApplicationController
     @promotions = Promotion.all
   end
   def one_promotions
-
+    @one_promotion = Promotion.find_by_slug(params[:title])
+    @other_promotions = Promotion.where.not(id: @one_promotion)
   end
 
   def contacts

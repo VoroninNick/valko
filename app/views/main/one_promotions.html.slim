@@ -1,0 +1,43 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    a href=promotions_path Акції
+  /li.disabled Gene Splicing
+  li
+    span = @one_promotion.title
+
+
+.one-promotions-page
+  .row.one-promotions-page-head
+    .columns
+      .image style="background: url('#{@one_promotion.cover.url(:large)}')no-repeat center center;"
+      .one-promotions-head-countdown-wrap
+        - if @one_promotion.date_of.present?
+        .row
+          .medium-6.medium-centered.columns
+            .valko-countdown-promo data-year=@one_promotion.date_of.strftime("%Y") data-month=@one_promotion.date_of.strftime("%m") data-day=@one_promotion.date_of.strftime("%d")
+  .row.one-promotions-page-body
+    .medium-8.columns
+      .title = @one_promotion.title
+      = raw @one_promotion.description
+      .row
+        .columns
+          .material-component.ripple.link-to-catalog
+            a Каталог
+          .ltc-prompt Переглянути акційні позиціі в каталозі
+
+
+    .medium-4.columns
+      .other-promotions
+        .other-promotions-head
+          div Інші акції
+        .other-promotions-body
+          - if @other_promotions.any?
+            - @other_promotions.each do |item|
+              .columns.other-promotions-one
+                a href=one_promotions_path(item.slug)
+                  .title = item.title
+                  .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
+          .clearfix
+
