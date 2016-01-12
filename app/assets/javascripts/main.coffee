@@ -10,7 +10,16 @@
 #  height = height - footer.height()
 #  if height > 0
 #    footer.css 'margin-top': height + 'px'
-
+$ ->
+#===================================================================
+# countdown timer
+#===================================================================
+  countdown_timer = $('.valko-countdown-promo')
+  countdown_timer.each ->
+    ct_year = $(@).attr "data-year"
+    ct_month = $(@).attr "data-month"
+    ct_day = $(@).attr "data-day"
+    $(@).countdown until: new Date(ct_year, ct_month, ct_day)
 
 $(document).ready ->
 #===================================================================

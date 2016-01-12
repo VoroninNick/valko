@@ -2,6 +2,10 @@ class MainController < ApplicationController
   def index
     @publications = Information.with_main.limit(5)
   end
+
+  def about
+  end
+
   def publications
     @main_publication = Information.with_main.first
     @documents = InformationDocument.with_public
@@ -10,7 +14,23 @@ class MainController < ApplicationController
   def publication
     @publication = Information.find_by_slug(params[:title])
   end
+
   def promotions
+    @promotions = Promotion.all
+  end
+  def one_promotions
 
   end
+
+  def contacts
+  end
+
+  def warranty
+  end
+
+  def windowsill
+  end
+  def one_windowsill
+  end
+  
 end

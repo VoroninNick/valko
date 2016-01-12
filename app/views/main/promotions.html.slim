@@ -1,0 +1,39 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  /li
+    a href="#" Features
+  /li.disabled Gene Splicing
+  li
+    span Акції
+
+
+.promotions-page
+  .row
+    .columns
+      -if @promotions.any?
+        - @promotions.each do |item|
+          .one-promotions
+            a
+              .image.grayscale style="background: url('#{item.cover.url(:large)}')no-repeat center center;"
+              .one-promotions-countdown-wrap
+                .row
+                  .medium-10.medium-centered.columns
+                    .one-promotions-countdown-timer
+                      .valko-countdown-promo data-year=item.date_of.strftime("%Y") data-month=item.date_of.strftime("%m") data-day=item.date_of.strftime("%d")
+
+              .one-promotions-body
+                .valko-arrow
+                .row
+                  .columns
+                    /a href=one_promotions_path(item.slug)
+                    a href=one_promotions_path(item.slug)
+                      = item.title
+                    p
+                      = item.short_description
+                    .promotion-banner-dates #{item.start_date.strftime("%d.%m.%y")} &#8212; #{item.date_of.strftime("%d.%m.%y")}
+
+                .one-promotion-body-read-more
+                  .columns
+                    .material-component.ripple.right.read-more
+                      a Детальніше

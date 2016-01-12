@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.plugin.min.js
+//= require jquery.countdown.min.js
 //= require bxslider
 //= require gray/js/jquery.gray.min
 //= require_tree .

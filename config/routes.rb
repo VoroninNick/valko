@@ -8,8 +8,20 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
 
+  get 'about' => 'main#about'
+
   get 'information' => 'main#publications'
   get 'information/:title' => 'main#publication', as: :one_publication
+
+  get 'promotions' => 'main#promotions'
+  get 'promotions/:title' => 'main#one_promotions', as: :one_promotions
+
+  get 'contacts' => 'main#contacts'
+
+  get 'warranty' => 'main#warranty'
+
+  get 'windowsill' => 'main#windowsill'
+  get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

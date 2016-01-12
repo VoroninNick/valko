@@ -1,12 +1,11 @@
 ul.breadcrumbs
   li
-    a href="#" Home
-  li
+    = link_to 'Головна', root_path
+  /li
     a href="#" Features
-  li.disabled Gene Splicing
+  /li.disabled Gene Splicing
   li
-    span.show-for-sr Current:
-    |Cloning
+    span Інформація
 
 .publications-page
   - if @main_publication

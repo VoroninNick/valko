@@ -4,16 +4,21 @@ header
       .columns
         p Компанія «Валько»  — гуртовий та роздрібний продаж підвіконь, ролет, москітних сіток, покрівель та огорож
         ul
-          li
-            a Про нас
-          li
-            a Акції
-          li
-            a Інформація
-          li
-            a Контакти
-          li
-            a Доставка та гарантія
+          li class=cp(about_path)
+            = link_to 'Про нас', about_path
+
+          li class=cp(promotions_path)
+            = link_to 'Акції', promotions_path
+
+          li class=cp(information_path)
+            = link_to 'Інформація', information_path
+
+          li class=cp(contacts_path)
+            = link_to 'Контакти', contacts_path
+
+          li class=cp(warranty_path)
+            = link_to 'Доставка та гарантія', warranty_path
+
   .row
     .large-3.columns.header-logo
       -if !current_page?(root_url)

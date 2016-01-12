@@ -7,15 +7,24 @@
             - promotions.each do |promotion|
               li
                 .image style="background: url('#{promotion.cover.url(:large)}')no-repeat center center;"
+                - if promotion.date_of.present?
+                  .promotion-banner-countdown-wrap
+                    .row
+                      .medium-10.medium-centered.columns
+                        .promotion-banner-countdown-timer
+                          .valko-countdown-promo data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
+
                 .promo-banner-body
                   =promotion.title
+
           .promotion-banner-pager
             - promotions.each_with_index do |promo_pager, index|
               a data-slide-index=index href=""
+                .valko-arrow
                 .title = promo_pager.title
                 p = truncate_html(promo_pager.short_description, length: 100, omission: '...')
-
-
+                - if promo_pager.date_of.present?
+                  .promotion-banner-dates #{promo_pager.start_date.strftime("%d.%m.%y")} &#8212; #{promo_pager.date_of.strftime("%d.%m.%y")}
 
 .page-block
   .page-block-title
@@ -91,6 +100,7 @@
             a href=one_publication_path(publication.slug)
               .image.grayscale style="background: url('#{publication.cover.url(:large)}')no-repeat center center;"
               .pb-publication-body
+                .valko-arrow
                 .title = publication.title
                 p = truncate_html(publication.short_description, length: 120, omission: '...')
     .row
@@ -101,5 +111,6 @@
               .medium-4.columns.pb-sub-publications-block.publication-default class=("end" if @publications.last == publication)
                 a href=one_publication_path(publication.slug)
                   = publication.title
+
       .medium-1.columns.pb-publications-more
         = link_to information_path do
