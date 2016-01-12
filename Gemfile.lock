@@ -68,6 +68,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    disqus_rails (0.0.6)
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
@@ -238,6 +239,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.1.0)
   devise
+  disqus_rails
   foundation-rails
   inline_svg
   jbuilder (~> 2.0)

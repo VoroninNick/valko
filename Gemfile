@@ -64,4 +64,5 @@ gem 'protected_attributes'
 gem 'bxslider-rails'
 
 gem 'bower-rails'
+gem 'disqus_rails'
 

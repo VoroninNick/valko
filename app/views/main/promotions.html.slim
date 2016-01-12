@@ -27,13 +27,14 @@ ul.breadcrumbs
                 .valko-arrow
                 .row
                   .columns
-                    /a href=one_promotions_path(item.slug)
                     a href=one_promotions_path(item.slug)
                       = item.title
                     p
                       = item.short_description
                     - if item.date_of.present?
-                      .promotion-banner-dates #{item.start_date.strftime("%d.%m.%y")} &#8212; #{item.date_of.strftime("%d.%m.%y")}
+                      .promotion-banner-dates
+                        = inline_svg"ic_date_range_black_48px.svg"
+                        |#{item.start_date.strftime("%d.%m.%y")} &#8212; #{item.date_of.strftime("%d.%m.%y")}
 
                 .one-promotion-body-read-more
                   .columns

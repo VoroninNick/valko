@@ -1,0 +1,66 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    a href=windowsill_path Підвіконня
+  /li.disabled Gene Splicing
+  li
+    span Тестова одиниця
+
+- i = 1
+.one-windowsill-page
+  .row
+    .medium-4.columns
+    .medium-8.columns
+
+  .row
+    .columns
+      ul.tabs data-tab=""
+        - if i == 1
+          li.tab-title
+            a href="#custom_products" Нестандартні вироби
+        li.tab-title
+          a href="#specifications" Характеристики
+        li.tab-title
+          a href="#photo_and_video" Фото та відео
+        - if i != 1
+          li.tab-title
+            a href="#useful_publications" Корисні публікації
+        li.tab-title.active
+          a href="#reviews" Відгуки
+
+      .tabs-content
+        - if i == 1
+          #custom_products.content
+            p
+              |Нестандартні вироби
+        #specifications.content
+          p
+            |Характеристики
+        #photo_and_video.content
+          p
+            |Фото та відео
+        - if i != 1
+          #useful_publications.content
+            p
+              |Корисні публікації
+        #reviews.content.active
+          = disqus_init
+          - disqus_thread
+
+  /.row
+    .columns
+      ul.tabs data-tab=""
+        li.tab-title.active
+          a href="#test1" Test1
+        li.tab-title
+          a href="#test2" Test2
+        li.tab-title
+          a href="#test3" Test3
+        li.tab-title
+          a href="#test4" Test4
+      .tabs-content
+        #test1.content.active Test1
+        #test2.content Test2
+        #test3.content Test3
+        #test4.content Test4
