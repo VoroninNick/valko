@@ -32,6 +32,7 @@ class MainController < ApplicationController
   def windowsill
   end
   def one_windowsill
+    @windowsill = Windowsill.first
   end
   
 end
