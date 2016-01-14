@@ -30,6 +30,7 @@ class MainController < ApplicationController
   end
 
   def windowsill
+    @windowsill_list = Windowsill.all
   end
   def one_windowsill
     @windowsill = Windowsill.first

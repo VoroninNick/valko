@@ -4,6 +4,12 @@
 # t.boolean :status
 # t.belongs_to :brand
 # t.boolean :published
+
+# t.text :custom
+# t.boolean :with_flap
+# t.boolean :without_cap
+# t.boolean :on_the_edge
+# t.boolean :customised
 class Windowsill < ActiveRecord::Base
   attr_accessible *attribute_names
   belongs_to :brand
@@ -55,6 +61,22 @@ class Windowsill < ActiveRecord::Base
       end
       field :description, :ck_editor do
         label 'Опис:'
+      end
+
+      field :with_flap do
+        label 'З заглушкою:'
+      end
+      field :without_cap do
+        label 'Без заглушки:'
+      end
+      field :on_the_edge do
+        label 'З кромкою:'
+      end
+      field :customised do
+        label 'Нестандарт:'
+      end
+      field :custom, :ck_editor do
+        label 'Нестандартні вироби:'
       end
     end
   end

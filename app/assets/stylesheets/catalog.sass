@@ -144,3 +144,122 @@
     #windowsill-long
       float: right
       width: 64px
+
+  .attention-message
+    background: #42a5f5
+    padding: 10px
+    padding-bottom: 20px
+    .icon
+      width: 15%
+      float: left
+      svg
+        width: 50%
+        display: block
+        margin: 0 auto
+        path
+          fill: #fff
+    .description
+      float: left
+      width: 85%
+    .title, .body
+      color: #fff
+      font:
+        family: 'Roboto', sans-serif
+    .title
+      font:
+        size: rem-calc(14)
+        weight: 500
+      text-transform: uppercase
+    .body
+      font:
+        size: rem-calc(12)
+        weight: 300
+        style: italic
+      line-height: 18px
+
+.windowsill-catalog-list-page
+  .windowsill-catalog-list-header
+    margin-bottom: 27px
+    .image
+      height: 305px
+    .wcl-body
+      background: #eceff1
+      padding: 30px 0
+      .title
+        color: #263238
+        font:
+          size: rem-calc(24)
+          weight: 500
+        line-height: 30px
+        text-transform: uppercase
+        margin-bottom: 15px
+      p
+        color: #263238
+        font:
+          size: rem-calc(14)
+          weight: 400
+        line-height: 21px
+
+  .one-windowsill
+    margin-top: 26px
+    .ow-status
+      width: 69px
+      height: 60px
+      position: absolute
+      top: -12px
+      right: -2px
+      &:after
+        content: attr(data-status)
+        +my_center_align()
+          position: absolute
+        color: #eceff1
+        font:
+          size: rem-calc(16)
+          weight: 500
+          family: 'Roboto', sans-serif
+
+    .ow-image
+      border: 7px solid #eceff1
+    .image
+      height: 0
+      padding-bottom: 100%
+    .ow-body
+      background: #eceff1
+      padding-top: 8px
+      padding-bottom: 20px
+      min-height: 84px
+      .title
+        color: #1c282e
+        font:
+          size: rem-calc(16)
+          weight: 500
+        line-height: 19px
+        text-transform: uppercase
+
+      .brand-title
+        color: #939598
+        font:
+          size: rem-calc(12)
+          weight: 400
+
+
+  .windowsill-catalog-list-body
+    .wclb-header
+      height: 40px
+      background: #eceff1
+      .title
+        color: #1e88e5
+        font:
+          size: rem-calc(20)
+          weight: 500
+
+        text-transform: uppercase
+        line-height: 40px
+        svg
+          height: 100%
+          width: 18px
+          margin-right: 5px
+          position: relative
+          top: 2px
+          path
+            fill: #1e88e5

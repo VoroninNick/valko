@@ -48,6 +48,45 @@ ul.breadcrumbs
             = inline_svg "Valko-pidvikonnya-v1.svg"
           .medium-5.columns
             i * Не всім брендам доступні всі можливі ширини. Деталі уточнюйте у менеджера.
+        .row
+          .columns
+            - if @windowsill.with_flap.present?
+              label for="with_flap"
+                input#with_flap type="radio" value="pretty" name="windowsill_option"
+              label for="with_flap"
+                |З заглушкою
+
+            - if @windowsill.without_cap.present?
+              label for="without_cap"
+                input#without_cap type="radio" value="pretty" name="windowsill_option"
+              label for="without_cap"
+                |Без заглушки:
+
+            - if @windowsill.on_the_edge.present?
+              label for="on_the_edge"
+                input#on_the_edge type="radio" value="pretty" name="windowsill_option"
+              label for="on_the_edge"
+                |З кромкою:
+
+            - if @windowsill.customised.present?
+              label for="customised"
+                input#customised type="radio" value="pretty" name="windowsill_option"
+              label for="customised"
+                |Нестандарт:
+        .row
+          .columns
+            input type="radio" name="radiog_dark" id="radio6" class="css-checkbox"
+            label for="radio6" class="css-label radGroup2" Option 1
+        .row
+          .medium-7.columns
+            .attention-message
+              .icon
+                = inline_svg "ic_report_problem_black_24px.svg"
+              .description
+                .title УВАГА!
+                .body Ціна на нестандартні вироби обраховується менеджером після оформлення покупки
+              .clearfix
+
 
   .row
     .columns

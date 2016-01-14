@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   get 'warranty' => 'main#warranty'
 
   get 'windowsill' => 'main#windowsill'
-  # get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
-  get 'windowsill/item' => 'main#one_windowsill', as: :one_windowsill
+  get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
+  # get 'windowsill/item' => 'main#one_windowsill', as: :one_windowsill
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
