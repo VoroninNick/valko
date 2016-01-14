@@ -80,4 +80,7 @@ class Windowsill < ActiveRecord::Base
       end
     end
   end
+  # scope :with_public, -> { where(:is_public => true).order(date_published: :desc)}
+  scope :with_public, -> { where(:published => true)}
+  scope :new_items, -> { where(:status => true)}
 end

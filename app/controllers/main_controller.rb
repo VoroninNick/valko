@@ -1,6 +1,7 @@
 class MainController < ApplicationController
   def index
     @publications = Information.with_main.limit(5)
+    @windowsill_new = Windowsill.new_items.limit(12)
   end
 
   def about
@@ -30,7 +31,7 @@ class MainController < ApplicationController
   end
 
   def windowsill
-    @windowsill_list = Windowsill.all
+    @windowsill_list = Windowsill.with_public
   end
   def one_windowsill
     @windowsill = Windowsill.first

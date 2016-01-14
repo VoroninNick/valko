@@ -881,3 +881,94 @@ ul#promotion-banner
   -o-background-size: cover !important
   background-size: cover !important
   margin: 0 auto
+
+#map_canvas
+  height: 366px
+
+form
+  .input
+    label
+      color: #AFBDC4
+      font:
+        size: rem-calc(14)
+      line-height: rem-calc(30)
+    &:not(.animate-input)
+      label
+        opacity: .5
+    input, textarea
+      font:
+        size: rem-calc(16)
+        weight: 400
+      color: #4d4d4d
+      background: transparent !important
+    &.animate-input
+      position: relative
+      label
+        display: block
+        transform: translateY(25px)
+        transition: all 0.5s
+
+        color: #AFBDC4
+        font:
+          size: rem-calc(14)
+        line-height: rem-calc(20)
+        opacity: .5
+
+      input
+        height: 30px
+      input, textarea
+        position: relative
+        width: 100%
+        border: 0 solid #AFBDC4
+        border-width: 0 0 1px 0
+        box-shadow: none
+        outline: none
+        margin: 0
+
+
+      &.is-active
+        &::after
+          transform: scaleX(1)
+        label
+          opacity: 1
+          color: #607d8b
+          font:
+            size: rem-calc(12)
+        input, textarea
+          border-bottom: 2px solid #1e88e5
+
+      &.is-completed
+        label
+          font-size: rem-calc(12)
+          transform: translateY(0px)
+
+  .material-component
+    background: #f50057
+    button
+      background: transparent
+      margin: 0
+      color: #fff
+      font:
+        size: rem-calc(14)
+        weight: 500
+      text-transform: uppercase
+      padding: 11px 30px
+
+  &.default-form-with-icons
+    svg
+      path
+        fill: #607d8b
+    .animate-input
+      padding-left: 35px
+
+      .input-ico
+        width: 32px
+        height: 32px
+        position: absolute
+        bottom: -8px
+        left: 0
+      &.is-active
+        .input-ico
+          svg
+            path
+              fill: #1e88e5

@@ -200,49 +200,6 @@
           weight: 400
         line-height: 21px
 
-  .one-windowsill
-    margin-top: 26px
-    .ow-status
-      width: 69px
-      height: 60px
-      position: absolute
-      top: -12px
-      right: -2px
-      &:after
-        content: attr(data-status)
-        +my_center_align()
-          position: absolute
-        color: #eceff1
-        font:
-          size: rem-calc(16)
-          weight: 500
-          family: 'Roboto', sans-serif
-
-    .ow-image
-      border: 7px solid #eceff1
-    .image
-      height: 0
-      padding-bottom: 100%
-    .ow-body
-      background: #eceff1
-      padding-top: 8px
-      padding-bottom: 20px
-      min-height: 84px
-      .title
-        color: #1c282e
-        font:
-          size: rem-calc(16)
-          weight: 500
-        line-height: 19px
-        text-transform: uppercase
-
-      .brand-title
-        color: #939598
-        font:
-          size: rem-calc(12)
-          weight: 400
-
-
   .windowsill-catalog-list-body
     .wclb-header
       height: 40px
@@ -263,3 +220,45 @@
           top: 2px
           path
             fill: #1e88e5
+
+.one-windowsill
+  margin-top: 26px
+  .ow-status
+    width: 69px
+    height: 60px
+    position: absolute
+    top: -12px
+    right: -2px
+    &:after
+      content: attr(data-status)
+      +my_center_align()
+        position: absolute
+      color: #eceff1
+      font:
+        size: rem-calc(16)
+        weight: 500
+        family: 'Roboto', sans-serif
+
+  .ow-image
+    border: 7px solid #eceff1
+  .image
+    height: 0
+    padding-bottom: 100%
+  .ow-body
+    background: #eceff1
+    padding-top: 8px
+    padding-bottom: 20px
+    min-height: 84px
+    .title
+      color: #1c282e
+      font:
+        size: rem-calc(16)
+        weight: 500
+      line-height: 19px
+      text-transform: uppercase
+
+    .brand-title
+      color: #939598
+      font:
+        size: rem-calc(12)
+        weight: 400

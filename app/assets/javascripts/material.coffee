@@ -1,6 +1,8 @@
 
 $(document).ready ->
-
+#===================================================================
+#  material riple animate
+#===================================================================
   parent = undefined
   ink = undefined
   d = undefined
@@ -30,3 +32,16 @@ $(document).ready ->
     ink.css(
       top: y + 'px'
       left: x + 'px').addClass 'animate'
+
+
+#===================================================================
+#  form field animation effect
+#===================================================================
+  $('.animate-input input, .animate-input textarea').focus ->
+    $(this).parent().addClass 'is-active is-completed'
+
+  $('.animate-input input, .animate-input textarea').focusout ->
+    if $(this).val() == ''
+      $(this).parent().removeClass 'is-completed'
+    $(this).parent().removeClass 'is-active'
+
