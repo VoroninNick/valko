@@ -74,4 +74,4 @@ $(document).ready ->
 # reveal modal
 #============================================================
 
-  $('#offers-and-comments').foundation('reveal', 'open');
+#  $('#offers-and-comments').foundation('reveal', 'open');
