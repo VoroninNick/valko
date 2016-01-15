@@ -1,8 +1,28 @@
 #offers-and-comments.reveal-modal.small data-reveal=""
-  .modal-header
+  /.modal-header
     .row
       .columns
-
         a.close-reveal-modal aria-label="Close" &#215;
   .row
     .columns
+      strong Пропозиції та зауваження
+      p Шановні клієнти та партнери!
+      p
+        |Якщо під час співпраці з компанією «Валько» у Вас виникли зауваження до нашої роботи або пропозиції щодо поліпшення нашої взаємодії, висловіть їх, скориставшись формою нижче.
+
+      form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
+        .input.animate-input
+          .input-ico
+            =inline_svg "ic_person_48px.svg"
+          label Ваше ім’я
+          input name="name" type="text" required=""
+
+        .input.animate-input.animate-textarea
+          .input-ico
+            =inline_svg "ic_insert_comment_24px.svg"
+          label Текст повідомлення...
+          textarea name="message" rows="6"
+
+        .button-wrap.material-component.ripple.right
+          /.b-turn-off
+          button.right type="submit" Надіслати

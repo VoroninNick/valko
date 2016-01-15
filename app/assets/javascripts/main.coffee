@@ -69,3 +69,9 @@ $(document).ready ->
 
   $('input#windowsill-long').change ->
     windowsillCalculator.call(this)
+
+#============================================================
+# reveal modal
+#============================================================
+
+  $('#offers-and-comments').foundation('reveal', 'open');

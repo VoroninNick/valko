@@ -5,7 +5,7 @@
 @import "mixins"
 
 
-span, a, p, .title, .brand-title, i, b, button, label, input
+span, a, p, strong, .title, .brand-title, i, b, button, label, input
   font-family: 'Roboto', sans-serif
 
 body
@@ -1066,3 +1066,31 @@ form
 .medium-up-right
   @media #{$medium-up}
     float: right
+
+.reveal-modal
+  &#offers-and-comments
+    background: #eceff1
+    strong
+      color: #4d4d4d
+      font:
+        size: rem-calc(20)
+        weight: 500
+      line-height: 24px
+      margin-bottom: 11px
+      display: block
+    p
+      color: #666666
+      font:
+        size: rem-calc(16)
+        weight: 400
+      line-height: 24px
+    form
+      .input
+        margin-bottom: 40px
+      .material-component
+        background: transparent
+        button
+          color: #1e88e5
+
+.reveal-modal-bg
+  background: rgba(35, 31, 32, .8)
