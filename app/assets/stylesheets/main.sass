@@ -884,7 +884,18 @@ ul#promotion-banner
 
 #map_canvas
   height: 366px
-
+  margin-bottom: 30px
+.feedback-form
+  margin-top: 65px
+  margin-bottom: 75px
+  .title
+    color: #607d8b
+    font:
+      size: rem-calc(24)
+      weight: 400
+    line-height: 28.8px
+    text-transform: uppercase
+    margin-bottom: 20px
 form
   .input
     label
@@ -941,7 +952,13 @@ form
         label
           font-size: rem-calc(12)
           transform: translateY(0px)
+          color: #607d8b
+        svg
+          path
+            fill: #607d8b
 
+  .button-wrap
+    margin-top: 20px
   .material-component
     background: #f50057
     button
@@ -957,7 +974,8 @@ form
   &.default-form-with-icons
     svg
       path
-        fill: #607d8b
+        fill: #bcbec0
+        //fill: #607d8b
     .animate-input
       padding-left: 35px
 
@@ -972,3 +990,20 @@ form
           svg
             path
               fill: #1e88e5
+    .animate-textarea
+      .input-ico
+        top: 25px
+        bottom: inherit
+
+
+.contacts-page
+  .contacts-block
+    background: #42a5f5
+    .contacts-block-head
+      height: 70px
+      border-bottom: 1px solid rgba(0, 0, 0, .1)
+      .title
+        color: #1c282e
+        text-transform: uppercase
+
+    .contacts-block-body

@@ -5,65 +5,83 @@ ul.breadcrumbs
   li
     span Контакти
 
-.row
-  .columns
-    #map_canvas
+.contacts-page
+  .row
+    .columns
+      #map_canvas data-lat="49.866257" data-lng="24.064083"
+  .row
+    .medium-9.columns
+      .contacts-block
+        .contacts-block-head.text-center
+          .title Контакти
+        .contacts-block-body
+          .row
+            .columns.text-center
+              |м. Львів
+          .row
+            .medium-6.columns
+              |вул. Ковельська, 109 б
+            .medium-6.columns
+              |тел.:  (032) 294 10 12
 
-.row.text-center
-  .columns
-    .title Зворотній зв’язок
-.row
-  .columns
-    form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
-      .medium-6.columns
-        .row
-          .columns
-            .input.animate-input
-              .input-ico
-                =inline_svg "ic_person_48px.svg"
-              label Ваше ім’я
-              input name="name" type="text" required=""
-        .row
-          .columns
-            .input.animate-input
-              .input-ico
-                =inline_svg "ic_phone_24px.svg"
-              label Контактний телефон
-              input name="phone" type="tel"
-        .row
-          .columns
-            .input.animate-input
-              .input-ico
-                =inline_svg "ic_mail_24px.svg"
-              label Електронна скринька
-              input name="email" type="email"
+    .medium-3.columns
 
-        .row
-          .columns
-            .input.animate-input
-              .input-ico
-                =inline_svg "factory.svg"
-              label Підприємство
-              input name="factory" type="text"
-        .row
-          .columns
-            .input.animate-input
-              .input-ico
-                =inline_svg "ic_location_city_24px.svg"
-              label Місто
-              input name="city" type="text"
+  .feedback-form
+    .row.text-center
+      .columns
+        .title Зворотній зв’язок
+    .row
+      .columns
+        form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
+          .medium-6.columns
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =inline_svg "ic_person_48px.svg"
+                  label Ваше ім’я
+                  input name="name" type="text" required=""
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =inline_svg "ic_phone_24px.svg"
+                  label Контактний телефон
+                  input name="phone" type="tel"
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =inline_svg "ic_mail_24px.svg"
+                  label Електронна скринька
+                  input name="email" type="email"
 
-      .medium-6.columns
-        .row
-          .columns
-            .input.animate-input.animate-textarea
-              .input-ico
-                =inline_svg "ic_insert_comment_24px.svg"
-              label Текст повідомлення...
-              textarea name="message" rows="6"
-        .row
-          .columns
-            .button-wrap.material-component.ripple.right.button-box-shadow
-              /.b-turn-off
-              button.right type="submit" Надіслати
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =inline_svg "factory.svg"
+                  label Підприємство
+                  input name="factory" type="text"
+            .row
+              .columns
+                .input.animate-input
+                  .input-ico
+                    =inline_svg "ic_location_city_24px.svg"
+                  label Місто
+                  input name="city" type="text"
+
+          .medium-6.columns
+            .row
+              .columns
+                .input.animate-input.animate-textarea
+                  .input-ico
+                    =inline_svg "ic_insert_comment_24px.svg"
+                  label Текст повідомлення...
+                  textarea name="message" rows="6"
+            .row
+              .columns
+                .button-wrap.material-component.ripple.right.button-box-shadow
+                  /.b-turn-off
+                  button.right type="submit" Надіслати
 
