@@ -995,7 +995,6 @@ form
         top: 25px
         bottom: inherit
 
-
 .contacts-page
   .contacts-block
     background: #42a5f5
@@ -1004,6 +1003,66 @@ form
       border-bottom: 1px solid rgba(0, 0, 0, .1)
       .title
         color: #1c282e
+        line-height: 70px
+        font:
+          size: 24px
+          weight: 400
         text-transform: uppercase
 
     .contacts-block-body
+      padding-top: 45px
+      padding-bottom: 45px
+      b
+        color: #fff
+        font:
+          size: rem-calc(24)
+          weight: 400
+        line-height: 28.8px
+        margin-bottom: 10px
+        display: block
+      p
+        color: #1c282e
+        padding-left: 40px 
+        position: relative
+        margin-bottom: 0
+        font:
+          size: rem-calc(16)
+          weight: 400
+        line-height: 24px
+        svg
+          width: 20px
+          position: absolute
+          left: 0
+          top: 1px
+          path
+            fill: #eceff1
+  .offers-and-comments
+    border: 1px solid #eceff1
+    padding: 35px 0
+    svg
+      height: 36px
+      width: 100%
+      margin-bottom: 5px
+      path
+        fill: #607d8b
+    p
+      color: #607d8b
+      margin-bottom: 31px
+    .material-component
+      background: #607d8b
+      +my_horizontal_align()
+
+
+.material-component
+  a
+    display: block
+    color: #fff
+    font:
+      size: rem-calc(14)
+      weight: 500
+    text-transform: uppercase
+    padding: 12px 33px
+    line-height: 16px
+.medium-up-right
+  @media #{$medium-up}
+    float: right

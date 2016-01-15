@@ -17,14 +17,28 @@ ul.breadcrumbs
         .contacts-block-body
           .row
             .columns.text-center
-              |м. Львів
-          .row
-            .medium-6.columns
+              b
+                |м. Львів
+          .medium-6.columns
+            p.medium-up-right
+              = inline_svg "Valko-icon-house.svg"
               |вул. Ковельська, 109 б
-            .medium-6.columns
+          .medium-6.columns
+            p
+              = inline_svg "ic_phone_24px.svg"
               |тел.:  (032) 294 10 12
-
+            p моб.: (067) 310 70 27
+          .clearfix
     .medium-3.columns
+      .offers-and-comments
+        = inline_svg"Valko-icon-pen.svg"
+        p.text-center
+          |Пропозиції
+          br
+          |та зауваження
+
+        .material-component.ripple.button-box-shadow
+          a data-reveal-id="offers-and-comments" Написати
 
   .feedback-form
     .row.text-center
@@ -84,4 +98,6 @@ ul.breadcrumbs
                 .button-wrap.material-component.ripple.right.button-box-shadow
                   /.b-turn-off
                   button.right type="submit" Надіслати
+
+= render "partials/modals/offers_and_comments"
 
