@@ -14,6 +14,20 @@ ul.breadcrumbs
         .main_publication
           .image.grayscale style="background: url('#{@main_publication.cover.url(:large)}')no-repeat center center;"
           .publication-body
+            .valko-arrow
+            = link_to @main_publication.title, one_publication_path(@main_publication.slug)
+            p = truncate(@main_publication.short_description, length: 320, omission: '...' )
+
+            .default-field-date
+              = inline_svg "ic_date_range_black_48px.svg"
+              |#{@main_publication.created_at.strftime("%d %B, %Y")}
+
+            .publication-body-read-more
+              .columns
+                .material-component.ripple.right.read-more.button-box-shadow
+                  = link_to 'Читати', one_publication_path(@main_publication.slug)
+                .clearfix
+
   .row
     .columns
       .publication-documents
