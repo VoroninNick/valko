@@ -1,17 +1,38 @@
 footer
   .row
     .medium-7.columns.right
-      ul
-        li class=cp(windowsill_path)
-          = link_to 'Підвіконня', windowsill_path
-        li
-          a Ролети
-        li
-          a Москітні сітки
-        li
-          a Покрівля
-        li
-          a Огорожі
+      .row
+        .columns
+          nav
+            li class=cp(windowsill_path)
+              = link_to 'Підвіконня', windowsill_path
+            li
+              a Ролети
+            li
+              a Москітні сітки
+            li
+              a Покрівля
+            li
+              a Огорожі
+      .row
+        .columns
+          ul.socials.right
+            li
+              a
+                = inline_svg"Valko-icon-social-google+.svg"
+            li
+              a
+                = inline_svg"Valko-icon-social-youtube.svg"
+            li
+              a
+                = inline_svg"Valko-icon-social-facebook.svg"
+
+          ul.site-map-nav.right
+            li
+              a Карта сайту
+            li
+              a Правила користування
+
     .medium-5.columns
       p.copyright © 2009-2015 ТзОВ «ВАЛЬКО»
       ul.voronin-block-wrap
@@ -28,4 +49,5 @@ footer
             |Розроблено&nbsp;
             a href="http://voroninstudio.eu/" rel="nofollow"
               |в студії  М. Вороніна
+            br
             |&nbsp;в 2015 році.

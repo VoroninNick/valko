@@ -80,6 +80,7 @@ header
           size: rem-calc(18)
           weight: 500
         color: inherit
+        margin-left: 10px
     form
       height: 30px
       position: relative
@@ -87,9 +88,11 @@ header
         input
           opacity: .4
           padding-left: 35px
-          color: #eceff1
           height: 30px
           margin: 0
+          background: rgba(255, 255, 255, .4) !important
+          border: none
+          +placeholder(#eceff1, 14px, none)
       .submit
         width: 30px
         height: 30px
@@ -622,35 +625,86 @@ main
 footer
   background: #1976d2
   min-height: 193px
-  padding-top: 53px
+  padding-top: 71px
   margin-top: -53px
-  ul
+  p
+    color: #bad6f1
+  a
+    color: #bad6f1
+    +transition_all(.3s)
+    svg
+      path
+        fill: #bad6f1
+        +transition_all(.3s)
+    &:hover
+      color: #fff !important
+      svg
+        path
+          fill: #fff !important
+
+  ul, nav
     margin: 0
     list-style: none
     li
       float: left
+  nav
+    float: right
+    margin-bottom: 20px
+    li
+      border-right: 2px solid #263238
       a
-        color: #fff
+        text-transform: uppercase
+        font:
+          size: rem-calc(16)
+          weight: 500
+        line-height: 16px
+        padding-left: 5px
+        padding-right: 5px
+      &:last-of-type
+        border: none
+
+  ul.site-map-nav
+    li
+      a
+        font:
+          size: rem-calc(12)
+          weight: 400
+        padding-left: 10px
+        padding-right: 10px
+
   p.copyright
-    color: #bad6f1
     font:
       size: rem-calc(16)
       weight: 400
     line-height: 24px
     text-transform: uppercase
+    margin-bottom: 10px
+
+ul.socials
+  height: 24px
+  li
+    height: inherit
+    margin-left: 8px
+    margin-right: 8px
+    a
+      height: inherit
+      display: block
+      svg
+        height: 100%
+        path
+          fill: #bad6f1
 
 ul.voronin-block-wrap
   margin: 0 !important
-  padding-top: 10px
+  //padding-top: 10px
   li
     list-style: none
     float: left
     p
       font:
-        size: rem-calc(14)
+        size: rem-calc(12)
         style: normal !important
-        weight: 300
-      color: #bad6f1
+        weight: 400
       white-space: nowrap
       margin:
         bottom: 0 !important
@@ -661,28 +715,15 @@ ul.voronin-block-wrap
         color: inherit
         text-decoration: none
         font-family: inherit
-
-      a:hover
-        color: #BD9459
     svg
       width: 48px
       height: 100%
-      path
-        fill: rgba(167, 140, 48, 1)
   li.vbw-image
-    width: 30px
+    width: 48px
     a
       display: block
       svg
         width: 100%
-        path
-          fill: #bad6f1
-  li.vbw-image a:hover path
-    fill: #BD9459
-    -webkit-transition: all 1s
-    -moz-transition: all 1s
-    -o-transition: all 1s
-    transition: all 1s
 
   li.vbw-text
     width: 80%
@@ -690,8 +731,8 @@ ul.voronin-block-wrap
     p
       letter-spacing: normal !important
       font:
-        weight: 300
-        size: rem-calc(14) !important
+        weight: 400
+        size: rem-calc(12) !important
 
 
 
