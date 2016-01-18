@@ -75,3 +75,17 @@ $(document).ready ->
 #============================================================
 
 #  $('#offers-and-comments').foundation('reveal', 'open');
+
+#============================================================
+# reveal modal
+#============================================================
+  $('#news-windowsill').owlCarousel
+    loop: true
+    margin: 30
+#    nav: true
+  #  navContainer: '#customNav'
+    dotsContainer: '#news-windowsill-dots'
+    responsive:
+      0: items: 2
+      600: items: 3
+      1000: items: 4

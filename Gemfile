@@ -66,3 +66,5 @@ gem 'bxslider-rails'
 gem 'bower-rails'
 gem 'disqus_rails'
 
+# gem 'owlcarousel-rails'
+

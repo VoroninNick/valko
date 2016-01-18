@@ -221,6 +221,13 @@ main
       background: #eceff1
       height: 40px
       margin-bottom: 30px
+      a
+        color: #607d8b
+        font:
+          size: rem-calc(12)
+          weight: 400
+        line-height: 40px
+        float: right
       span
         color: #607d8b
         display: inline-block
@@ -229,6 +236,26 @@ main
           weight: 400
           size: rem-calc(24)
         line-height: 40px
+      .owl-dots
+        display: inline-block
+        float: right
+        height: 40px
+        .owl-dot
+          width: 40px
+          height: 40px
+          display: inline-block
+          margin: 0 5px
+          cursor: pointer
+          padding: 14px
+          span
+            display: block
+            background: #93989c
+            width: 100%
+            height: 100%
+          &.active
+            span
+              background: #42a5f5
+
     &.publications-block
       .pb-sub-publications-block
         &:first-of-type
@@ -305,6 +332,19 @@ main
           display: block
           height: 100%
 
+    &.new-windowsill-block
+      .page-block-title
+        span
+          float: right
+        a
+          float: left
+      ul
+        margin: 0
+        list-style: none
+        &.owl-carousel
+          .owl-stage-outer
+            //overflow-y: visible
+            //overflow-x: hidden
 
 .promotions-page
   .one-promotions
@@ -533,6 +573,8 @@ main
         filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
         -webkit-filter: grayscale(0)
         filter: grayscale(0)
+
+
 
 .publications-page
   padding-bottom: 55px

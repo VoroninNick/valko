@@ -93,25 +93,25 @@
         .columns
           = link_to ">> Переглянути всі", windowsill_path
           span Новинки:
-    .row
-      ul
-        - @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
-          li
-            - windowsill_sublist.each do |windowsill|
-              .medium-3.columns.one-windowsill class=("end" if windowsill == windowsill_sublist.last)
-                - if windowsill.status.present?
-                  .ow-status data-status="Нове!"
-                    = image_tag "Valko-basket-button-passive-horisontal.png"
-                .ow-image
-                  a href=one_windowsill_path(windowsill.slug)
-                    .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-                .ow-body
-                  .columns
-                    a href=one_windowsill_path(windowsill.slug)
-                      .title = windowsill.title
-                    .brand-title = windowsill.brand.title
-                  .clearfix
+          #news-windowsill-dots.owl-dots
 
+    .row
+      .columns
+        ul#news-windowsill
+          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+          - @windowsill_new.each do |windowsill|
+            li.one-windowsill
+              .ow-status data-status="Нове!"
+                = image_tag "Valko-basket-button-passive-horisontal.png"
+              .ow-image
+                a href=one_windowsill_path(windowsill.slug)
+                  .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+              .ow-body
+                .columns
+                  a href=one_windowsill_path(windowsill.slug)
+                    .title = windowsill.title
+                  .brand-title = windowsill.brand.title
+                .clearfix
 
 - if @publications.any?
   .page-block.publications-block
@@ -119,6 +119,7 @@
       .row
         .columns
           span Інформація:
+          =link_to '>> Переглянути всі', information_path
 
     .row
       - @publications.each_with_index do |publication, index|
