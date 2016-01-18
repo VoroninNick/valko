@@ -141,10 +141,16 @@ ul.breadcrumbs
     a
       padding-left: 6px
       color: #1e88e5
+      font:
+        size: rem-calc(12)
+        weight: 400
       &:hover
         text-decoration: none
     span
       color: #607d8b
+      font:
+        size: rem-calc(12)
+        weight: 400
       padding-left: 6px
     &:before
       color: #607d8b
@@ -432,50 +438,54 @@ main
       line-height: 40px
       float: left
       margin-left: 16px
-    .other-promotions
-      background: #ebeef0
-      .other-promotions-head
-        height: 70px
-        border-bottom: 1px solid rgba(35, 31, 32, .1)
-        div
-          display: block
-          color: #607d8a
-          font:
-            size: rem-calc(24)
-            family: 'Roboto', sans-serif
-            weight: 400
-          line-height: 70px
-          text-transform: uppercase
-          text-align: center
 
-      .other-promotions-body
-        margin-bottom: 77px
-        .other-promotions-one
-          a
-            display: block
-            padding-top: 20px
-            padding-bottom: 20px
-            border-bottom: 1px solid rgba(35, 31, 32, .1)
-            .title
-              color: #1c282e
-              font:
-                size: rem-calc(14)
-                weight: 400
-              line-height: 16px
-              text-transform: uppercase
-              margin-bottom: 5px
-            .image
-              height: 0
-              padding-bottom: 45%
-            &:last-of-type
-              border-bottom: none
-            &:hover
-              .title
-                color: #1e87e4
-              .image
-                filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
-                -webkit-filter: grayscale(0)
-                filter: grayscale(0)
+.other-items
+  background: #ebeef0
+  margin-top: 35px
+  .other-items-head
+    height: 70px
+    border-bottom: 1px solid rgba(35, 31, 32, .1)
+    div
+      display: block
+      color: #607d8a
+      font:
+        size: rem-calc(24)
+        family: 'Roboto', sans-serif
+        weight: 400
+      line-height: 70px
+      text-transform: uppercase
+      text-align: center
+
+  .other-items-body
+    margin-bottom: 77px
+    .other-item
+      a
+        display: block
+        padding-top: 20px
+        padding-bottom: 20px
+        border-bottom: 1px solid rgba(35, 31, 32, .1)
+        .title
+          color: #1c282e
+          font:
+            size: rem-calc(14)
+            weight: 400
+          line-height: 16px
+          text-transform: uppercase
+          margin-bottom: 5px
+        .image
+          height: 0
+          padding-bottom: 45%
+        &:hover
+          .title
+            color: #1e87e4
+          .image
+            filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
+            -webkit-filter: grayscale(0)
+            filter: grayscale(0)
+
+      &.end
+        a
+          border-bottom: none
 
 .publication-default
   a
@@ -1193,3 +1203,52 @@ form
     margin-top: 45px
     .input
       margin-bottom: 10px
+
+.one-publication-page
+  .one-publication-page-head
+    margin-bottom: 40px
+    .image
+      height: 366px
+  .one-publication-page-body
+    margin-bottom: 80px
+    .one-publication-page-body-inner
+      border-bottom: 4px solid #eceff1
+    .title
+      color: #1c282e
+      font:
+        size: rem-calc(24)
+        weight: 400
+      line-height: 28.8px
+      text-transform: uppercase
+    p
+      color: #263238
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: 26px
+
+    .default-field-date
+      color: #939598
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: 20px
+      svg
+        path
+          fill: #939598
+
+a.share-button
+  color: #607d8b
+  font:
+    size: rem-calc(16)
+    weight: 500
+  line-height: 26px
+  svg
+    width: 18px
+    position: relative
+    top: 3px
+    margin-right: 10px
+    path
+      fill: #607d8b
+
+

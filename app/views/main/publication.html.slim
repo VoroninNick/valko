@@ -1,1 +1,43 @@
-= @publication.title
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    a href=information_path Інформація
+  li
+    span = @publication.title
+
+.one-publication-page
+  .row.one-publication-page-head
+    .columns
+      .image style="background: url('#{@publication.cover.url(:large)}')no-repeat center center;"
+
+  .row.one-publication-page-body
+    .medium-8.columns
+      .one-publication-page-body-inner
+        .title = @publication.title
+        = raw @publication.description
+    .medium-4.columns
+      .row
+        .small-6.columns.no-pad-right
+          .default-field-date
+            = inline_svg "ic_date_range_black_48px.svg"
+            = @publication.created_at.strftime("%d %B, %Y")
+
+        .small-6.columns
+          a.share-button data-reveal-id="share-modal"
+            = inline_svg"Valko-icon-share.svg"
+            |Поділитися
+
+      .other-items
+        .other-items-head
+          div Інші акції
+        .other-items-body
+          - if @other_publications.any?
+            - @other_publications.each do |item|
+              .columns.other-item class=("end" if item == @other_publications.last)
+                a href=one_publication_path(item.slug)
+                  .title = item.title
+                  .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
+          .clearfix
+
+= render "partials/modals/share"

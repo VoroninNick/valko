@@ -14,6 +14,7 @@ class MainController < ApplicationController
   end
   def publication
     @publication = Information.find_by_slug(params[:title])
+    @other_publications = Information.with_public.where.not(id: @publication)
   end
 
   def promotions

@@ -29,13 +29,13 @@ ul.breadcrumbs
 
 
     .medium-4.columns
-      .other-promotions
-        .other-promotions-head
+      .other-items
+        .other-items-head
           div Інші акції
-        .other-promotions-body
+        .other-items-body
           - if @other_promotions.any?
             - @other_promotions.each do |item|
-              .columns.other-promotions-one
+              .columns.other-item
                 a href=one_promotions_path(item.slug)
                   .title = item.title
                   .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
