@@ -89,3 +89,17 @@ $(document).ready ->
       0: items: 2
       600: items: 3
       1000: items: 4
+
+#============================================================
+# reveal modal
+#============================================================
+  $('input:radio[name="windowsill_option"]').change ->
+    $this = $(@)
+    $wrap = $this.closest('.windowsill-calculator-wrap')
+    $mb = $wrap.find('.attention-message')
+    $mb.hide()
+
+    if $this.attr("id") == "customised" && $this.is(':checked')
+      $mb.show()
+
+

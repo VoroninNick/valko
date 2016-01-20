@@ -1,3 +1,5 @@
+@import "mixins"
+
 .material-component
   /*relative positioning for list items along with overflow hidden to contain the overflowing ripple*/
   position: relative
@@ -92,7 +94,7 @@ ul.v-block-wrap
 .no-pad-right
   padding-right: 0
 
-input[type=radio].css-checkbox
+input[type=radio].custom-radiobutton
   position: absolute
   z-index: -1000
   left: -1000px
@@ -104,22 +106,47 @@ input[type=radio].css-checkbox
   padding: 0
   border: 0
 
-
-  & + label.css-label
-    padding-left: 21px
-    height: 16px
-    display: inline-block
-    line-height: 16px
-    background-repeat: no-repeat
-    background-position: 0 0
-    font-size: 16px
-    vertical-align: middle
+  & + label
     cursor: pointer
+    float: left
+    &.custom-radiobutton-icon
+      display: block
+      width: 20px
+      height: 20px
+      border-radius: 50%
+      border: 2px solid #939598
+      position: relative
 
-  &:checked + label.css-label
-    background-position: 0 -16px
+    &.custom-radiobutton-label
+      padding-left: 18px
+      display: inline-block
+      background-repeat: no-repeat
+      background-position: 0 0
+      vertical-align: middle
 
-  label.css-label
+      color: #263238
+      font:
+        size: rem-calc(14)
+        weight: 400
+      line-height: 21px
+
+  &:checked
+    & + label.custom-radiobutton-icon
+      border-color: #1e88e5
+      &:before
+        content: ''
+        display: block
+        width: 10px
+        height: 10px
+        background: #1e88e5
+        border-radius: 50%
+        +my_center_align()
+          position: absolute
+
+    & + label.custom-radiobutton-label
+      color: red
+
+  //label.css-label
     background-image: url(http://csscheckbox.com/checkboxes/u/csscheckbox_cce337a3f8bb55521f55ec55906db31e.png)
     -webkit-touch-callout: none
     -webkit-user-select: none

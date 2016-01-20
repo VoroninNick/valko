@@ -38,5 +38,8 @@ class MainController < ApplicationController
   def one_windowsill
     @windowsill = Windowsill.find_by_slug(params[:title])
   end
+  def dev
+    
+  end
   
 end

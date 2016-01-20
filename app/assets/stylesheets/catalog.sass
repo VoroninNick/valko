@@ -62,7 +62,11 @@
       line-height: 18px
       margin-top: 60px
       display: block
-
+    svg
+      display: block
+      margin-bottom: 25px
+    .cr-wrap
+      margin-bottom: 20px
     .windowsill-price-wrap
       width: 74px
       height: 64px
@@ -111,6 +115,16 @@
 
         padding: 13px 27px 13px 50px
         margin: 0
+
+    #windowsill-long, #windowsill-prices-option
+      color: #607d8b
+      border: none
+      font:
+        size: rem-calc(16)
+        weight: 500
+      line-height: 21px
+      box-shadow: none
+      border-bottom: 1px solid #d9d9d9
     form
       margin-bottom: 50px
       .input
@@ -146,9 +160,11 @@
       width: 64px
 
   .attention-message
+    margin-top: 10px
     background: #42a5f5
     padding: 10px
     padding-bottom: 20px
+    display: none
     .icon
       width: 15%
       float: left
@@ -176,6 +192,30 @@
         weight: 300
         style: italic
       line-height: 18px
+  ul.tabs
+    border-bottom: 1px solid rgba(0, 0, 0, .3)
+    li.tab-title
+      position: relative
+      a
+        background: none
+        color: rgba(0, 0, 0, .4)
+        font:
+          size: rem-calc(14)
+          weight: 500
+        text-transform: uppercase
+
+      &.active
+        a
+          color: #1e88e5
+        &:before
+          display: block
+          content: ''
+          height: 4px
+          position: absolute
+          left: 0
+          right: 0
+          bottom: -1px
+          background:  #1e88e5
 
 .windowsill-catalog-list-page
   .windowsill-catalog-list-header
