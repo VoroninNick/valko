@@ -43,17 +43,19 @@ ul.breadcrumbs
         - if @windowsill_list.any?
           .row
             - @windowsill_list.each_with_index do |windowsill, i|
-              .medium-4.columns.one-windowsill class=("end" if windowsill == @windowsill_list.last)
-                - if windowsill.status.present?
-                  .ow-status data-status="Нове!"
-                    = image_tag "Valko-basket-button-passive-horisontal.png"
+              .medium-4.columns class=("end" if windowsill == @windowsill_list.last)
+                = render "partials/windowsill", windowsill: windowsill
+                /.one-windowsill
+                  - if windowsill.status.present?
+                    .ow-status data-status="Нове!"
+                      = image_tag "Valko-basket-button-passive-horisontal.png"
 
-                .ow-image
-                  a href=one_windowsill_path(windowsill.slug)
-                    .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-                .ow-body
-                  .columns
+                  .ow-image
                     a href=one_windowsill_path(windowsill.slug)
-                      .title = windowsill.title
-                    .brand-title = windowsill.brand.title
-                  .clearfix
+                      .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+                  .ow-body
+                    .columns
+                      a href=one_windowsill_path(windowsill.slug)
+                        .title = windowsill.title
+                      .brand-title = windowsill.brand.title
+                    .clearfix

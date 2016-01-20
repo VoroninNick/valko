@@ -1,0 +1,23 @@
+.one-windowsill
+  .ow-status data-status="Нове!"
+    = image_tag "Valko-basket-button-passive-horisontal.png"
+  .ow-image
+    a href=one_windowsill_path(windowsill.slug)
+      .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+    a.show-large-image
+      = inline_svg"Valko-icon-search.svg"
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = truncate(windowsill.title, length: 21, omission: '')
+      .small-6.columns
+        .price
+          = windowsill.prices.first.try(:value)
+          sup &nbsp;грн.
+      .columns
+        .brand-title = windowsill.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      form
+        button Придбати

@@ -36,7 +36,7 @@ class MainController < ApplicationController
     @windowsill_list = Windowsill.with_public
   end
   def one_windowsill
-    @windowsill = Windowsill.first
+    @windowsill = Windowsill.find_by_slug(params[:title])
   end
   
 end

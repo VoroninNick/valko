@@ -100,18 +100,8 @@
         ul#news-windowsill
           /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
           - @windowsill_new.each do |windowsill|
-            li.one-windowsill
-              .ow-status data-status="Нове!"
-                = image_tag "Valko-basket-button-passive-horisontal.png"
-              .ow-image
-                a href=one_windowsill_path(windowsill.slug)
-                  .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-              .ow-body
-                .columns
-                  a href=one_windowsill_path(windowsill.slug)
-                    .title = windowsill.title
-                  .brand-title = windowsill.brand.title
-                .clearfix
+            /li
+            = render "partials/windowsill", windowsill: windowsill
 
 - if @publications.any?
   .page-block.publications-block

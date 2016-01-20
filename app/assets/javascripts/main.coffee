@@ -80,7 +80,7 @@ $(document).ready ->
 # reveal modal
 #============================================================
   $('#news-windowsill').owlCarousel
-    loop: true
+#    loop: true
     margin: 30
 #    nav: true
   #  navContainer: '#customNav'
