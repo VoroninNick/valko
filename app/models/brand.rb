@@ -45,4 +45,12 @@ class Brand < ActiveRecord::Base
       end
     end
   end
+
+
+  # def self.options_for_select
+  #   order('LOWER(title)').map { |e| [e.title, e.id] }
+  # end
+  def self.brands_list
+    order('LOWER(title)').pluck_to_hash(:title, :id, :slug).uniq
+  end
 end

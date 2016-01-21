@@ -67,4 +67,4 @@ gem 'bower-rails'
 gem 'disqus_rails'
 
 # gem 'owlcarousel-rails'
-
+gem 'pluck_to_hash'

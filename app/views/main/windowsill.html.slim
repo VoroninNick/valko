@@ -37,6 +37,11 @@ ul.breadcrumbs
             = inline_svg "Valko-icon-pidvikonnya.svg"
             |Підвіконня
 
+          span
+            |Сортувати по:
+            = inline_svg"Valko-icon-sort-alphabet.svg"
+            = inline_svg"Valko-icon-sort-time.svg"
+
     .row
       .medium-3.columns
         .catalog-filters-wrap
@@ -66,6 +71,12 @@ ul.breadcrumbs
                 .filter-head
                   .title Торгові марки
                 .filter-body
+                  - if Brand.brands_list.any?
+                    -  Brand.brands_list.each do |item|
+                      .custom-checkbox
+                        input id=item[:slug] type="checkbox" name="brand" value=item[:id]
+                        label.cch-icon for=item[:slug]
+                        label.cch-text for=item[:slug] = item[:title]
 
               .control-filter.expanded
                 .filter-head

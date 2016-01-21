@@ -122,6 +122,9 @@ GEM
       os (~> 0.9.6)
       paperclip (>= 4.2.2)
       ruby-imagespec (~> 0.3.1)
+    pluck_to_hash (0.1.3)
+      activerecord (>= 4.0.2)
+      activesupport (>= 4.0.2)
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
     rack (1.6.4)
@@ -246,6 +249,7 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 4.2)
   paperclip-compression
+  pluck_to_hash
   protected_attributes
   rails (= 4.2.4)
   rails-i18n
