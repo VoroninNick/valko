@@ -17,6 +17,7 @@ class BrandIcon < ActiveRecord::Base
   # do_not_validate_attachment_file_type :icon
 
   rails_admin do
+    visible false
     field :icon, :paperclip do
       label 'Аватарка:'
     end
