@@ -102,4 +102,10 @@ $(document).ready ->
     if $this.attr("id") == "customised" && $this.is(':checked')
       $mb.show()
 
+#============================================================
+# catalog windowsill
+#============================================================
+  $('.control-filter').click ->
+    $(@).toggleClass('expanded')
+
 
