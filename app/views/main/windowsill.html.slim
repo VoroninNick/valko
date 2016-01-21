@@ -66,11 +66,24 @@ ul.breadcrumbs
                 .filter-head
                   .title Торгові марки
                 .filter-body
+
               .control-filter.expanded
                 .filter-head
                   .title Матеріал
                 .filter-body
 
+              .control-filter.expanded
+                .filter-head
+                  .title Вид поверхні
+                .filter-body
+                  .custom-checkbox
+                    input#test-checkbox type="checkbox"
+                    label.cch-icon for="test-checkbox"
+                    label.cch-text for="test-checkbox" Матовий
+                  .custom-checkbox
+                    input#test-checkbox2 type="checkbox"
+                    label.cch-icon for="test-checkbox2"
+                    label.cch-text for="test-checkbox2" Глянець
 
       .medium-9.columns
         - if @windowsill_list.any?

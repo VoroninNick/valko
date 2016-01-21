@@ -385,11 +385,23 @@
               +my_vertical_align()
                 position: absolute
         .filter-body
+          padding-left: 10px
+          padding-right: 10px
+          .custom-checkbox
+            padding-top: 11px
+            padding-bottom: 11px
+            &:last-child
+              padding-bottom: 31px
         &.expanded
           .filter-head
             .title
               &:after
                 +css-triangle(5px, #d1d3d4, bottom)
+        &:hover
+          background: #eceff1
+          .title
+            color: #f50057
+
 .one-windowsill
   margin-top: 26px
   border: 7px solid #eceff1
