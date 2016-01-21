@@ -39,23 +39,42 @@ ul.breadcrumbs
 
     .row
       .medium-3.columns
+        .catalog-filters-wrap
+          .selected-filters
+            .sf-head
+              .title Вибрані фільтри
+            .sf-body
+
+            .sf-footer
+              a
+                = inline_svg"Valko-icon-sort-renew.svg"
+                |Скинути всі фільтри
+
+          .control-filters
+            .cf-head
+              ul
+                li
+                  input#wbf-internal type="radio" value="internal" name="windowsill-base-filter" checked="checked"
+                  label for="wbf-internal" Внутрішні
+                li
+                  input#wbf-outdoor type="radio" value="outdoor" name="windowsill-base-filter"
+                  label for="wbf-outdoor" Зовнішні
+                .clearfix
+
+            .cf-body
+              .control-filter
+                .filter-head
+                  .title Торгові марки
+                .filter-body
+              .control-filter.expanded
+                .filter-head
+                  .title Матеріал
+                .filter-body
+
+
       .medium-9.columns
         - if @windowsill_list.any?
           .row
             - @windowsill_list.each_with_index do |windowsill, i|
               .medium-4.columns class=("end" if windowsill == @windowsill_list.last)
                 = render "partials/windowsill", windowsill: windowsill
-                /.one-windowsill
-                  - if windowsill.status.present?
-                    .ow-status data-status="Нове!"
-                      = image_tag "Valko-basket-button-passive-horisontal.png"
-
-                  .ow-image
-                    a href=one_windowsill_path(windowsill.slug)
-                      .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-                  .ow-body
-                    .columns
-                      a href=one_windowsill_path(windowsill.slug)
-                        .title = windowsill.title
-                      .brand-title = windowsill.brand.title
-                    .clearfix

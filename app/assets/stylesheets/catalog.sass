@@ -273,6 +273,123 @@
           path
             fill: #1e88e5
 
+.catalog-filters-wrap
+  margin-top: 28px
+  .selected-filters
+    margin-bottom: 20px
+    background: #263238
+    .sf-head, .sf-body, .sf-footer
+      padding-left: 0.9375rem
+      padding-right: 0.9375rem
+
+    .sf-head
+      background: #1c282e
+
+      .title
+        color: #eceff1
+        font:
+          size: rem-calc(14)
+          weight: 400
+        line-height: 40px
+        text:
+          transform: uppercase
+          align: center
+
+    .sf-body
+
+    .sf-footer
+      a
+        color: #1e88e5
+        font:
+          size: rem-calc(14)
+          weight: 500
+        line-height: 22px
+        text-transform: uppercase
+        padding: 22px 0
+        display: block
+        svg
+          width: 22px
+          height: 22px
+          margin-right: 10px
+          position: relative
+          top: 4px
+
+  .control-filters
+    .cf-head
+      background: #e6e7e8
+      ul
+        margin: 0
+        list-style: none
+        li
+          width: 50%
+          float: left
+          &:first-child
+            border-right: 1px solid rgba(35, 31, 32, .05)
+          input[type=radio]
+            position: absolute
+            z-index: -1000
+            left: -1000px
+            overflow: hidden
+            clip: rect(0 0 0 0)
+            height: 1px
+            width: 1px
+            margin: -1px
+            padding: 0
+            border: 0
+
+            & + label
+              cursor: pointer
+              display: block
+              vertical-align: middle
+
+              color: #939598
+              font:
+                size: rem-calc(12)
+                weight: 500
+              line-height: 48px
+              text-transform: uppercase
+              position: relative
+              margin: 0
+              text-align: center
+            &:checked
+              & + label
+                color: #1e88e5
+                &:before
+                  content: ''
+                  height: 3px
+                  background: #1e88e5
+                  position: absolute
+                  left: 0
+                  right: 0
+                  bottom: 0
+
+    .cf-body
+      .control-filter
+        border: 1px solid #eceff1
+        border-top: none
+        .filter-head
+          height: 43px
+          position: relative
+          cursor: pointer
+          .title
+            color: #263238
+            font:
+              size: rem-calc(14)
+              weight: 400
+            line-height: 43px
+            padding-left: 10px
+            &:after
+              content: ''
+              +css-triangle(5px, #d1d3d4, top)
+              right: 10px
+              +my_vertical_align()
+                position: absolute
+        .filter-body
+        &.expanded
+          .filter-head
+            .title
+              &:after
+                +css-triangle(5px, #d1d3d4, bottom)
 .one-windowsill
   margin-top: 26px
   border: 7px solid #eceff1

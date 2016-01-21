@@ -592,6 +592,8 @@ main
         top: 10px
 
     &:hover
+      .valko-arrow
+        background: #f50057
       .title
         color: #fff
       .image
@@ -923,7 +925,26 @@ ul.voronin-block-wrap
   height: 25px
   background: #263238
   float: left
-  .va-right
+  div
+    width: 7px
+    height: 12px
+    +my_center_align()
+    &:before, &:after
+      content: ''
+      display: block
+      height: 2px
+      width: 9px
+      background: #fff
+      position: absolute
+      left: -1px
+  &.va-right
+    div
+      &:before
+        +rotate(45deg)
+        top: 2px
+      &:after
+        +rotate(-45deg)
+        bottom: 2px
 
 .bx-wrapper
   -moz-box-shadow: none
