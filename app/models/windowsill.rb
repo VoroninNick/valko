@@ -26,6 +26,11 @@ class Windowsill < ActiveRecord::Base
 
   before_save { save_slug(title, slug) }
 
+
+  extend Enumerize
+  attr_accessor :decor
+  enumerize :decor, in: [:'wooden', :'stone']
+
   rails_admin do
     navigation_label 'Підвіконня'
 
@@ -53,6 +58,10 @@ class Windowsill < ActiveRecord::Base
       end
       field :description, :ck_editor do
         label 'Опис:'
+      end
+
+      field :decor, :enum do
+        label 'Декор:'
       end
 
       field :with_flap do

@@ -7,31 +7,7 @@ uk:
       last: ">>"
 
   enumerize:
-    floor_option:
-      icon:
-        kabinet: Кабінет
-        harderob: Гардероб
-        yidalnya: Їдальня
-        zhytlova_plosсha: Житлова площа
-        komora: Комора
-        korydor: Коридор
-        kotelnya: Котельня
-        peredpokij: Передпокій
-        terasa: Тераса
-        vbyralnya: Вбиральня
-        kitchen: Кухня
-        living_room: Вітальня
-        bedroom: Спальня
-        children: Дитяча
-        washroom: Санвузол
-        balcony: Балкон
-        garage: Гараж
-        total_square: Загальна площа
+    decor:
+      wooden: "Дерев'яний"
+      stone: "Кам’яні"
 
-    section:
-      status:
-        free: Вільна ділянка
-        based: Будується
-        built: Побудовано
-        sold: Продана
-        reserved: Зарезервовано
