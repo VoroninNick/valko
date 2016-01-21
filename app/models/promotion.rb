@@ -24,13 +24,9 @@ class Promotion < ActiveRecord::Base
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-  def to_slug
-    title.parameterize
-  end
-  def save_slug
-    self.slug = to_slug
-  end
-  before_save :save_slug
+  before_save { save_slug(title, slug) }
+
+
   def set_start_date
     self.start_date ||= Date.today
   end

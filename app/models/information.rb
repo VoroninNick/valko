@@ -9,6 +9,9 @@
 # t.boolean :main
 
 class Information < ActiveRecord::Base
+
+  before_save { save_slug(title, slug) }
+
   attr_accessible *attribute_names
   attr_accessible :cover
 
@@ -20,14 +23,6 @@ class Information < ActiveRecord::Base
                     default_url: "/images/:style/missing.png"
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
-
-  def to_slug
-    title.parameterize
-  end
-  def save_slug
-    self.slug = to_slug
-  end
-  before_save :save_slug
 
   rails_admin do
     navigation_label 'Інформація'
@@ -58,9 +53,9 @@ class Information < ActiveRecord::Base
       field :position do
         label 'Позиція:'
       end
-      field :slug do
-        label 'Транслітерація:'
-      end
+      # field :slug do
+      #   label 'Транслітерація:'
+      # end
     end
   end
   scope :with_public, -> { where(:published => true).order('position asc')}

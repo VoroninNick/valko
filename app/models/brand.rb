@@ -4,25 +4,25 @@
 # t.text :short_description
 # t.text :description
 class Brand < ActiveRecord::Base
+  # include MixinMethods  - unless ny nodule included to ActiveRecord from module file
+
+  before_save { save_slug(title, slug) }
+
   attr_accessible *attribute_names
   attr_accessible :avatar
   has_attached_file :avatar,
-                    styles: { large: "1449x549>",
-                              medium: "720x400>" },
-                    convert_options: { large: "-quality 94 -interlace Plane",
-                                       medium: "-quality 94 -interlace Plane"},
+                    styles: { large: "350x350>" },
+                    convert_options: { large: "-quality 94 -interlace Plane"},
                     default_url: "/images/:style/missing.png"
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :windowsills
-  def to_slug
-    title.parameterize
-  end
-  def save_slug
-    self.slug = to_slug
-  end
-  before_save :save_slug
+
+  has_many :brand_icons
+  attr_accessible :brand_icons
+  accepts_nested_attributes_for :brand_icons, allow_destroy: true
+  attr_accessible :brand_icons_attributes
 
   rails_admin do
     navigation_label 'Підвіконня'
@@ -39,6 +39,9 @@ class Brand < ActiveRecord::Base
       end
       field :description, :ck_editor do
         label 'Опис:'
+      end
+      field :brand_icons do
+        label 'Характеристики:'
       end
     end
   end

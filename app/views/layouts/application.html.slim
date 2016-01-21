@@ -17,14 +17,18 @@ html lang="en"
     .page-container
     = render "layouts/header"
 
+    .cart-link
+      a
+        = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+        = inline_svg "Valko-icon-korzuna.svg"
+
     main
       = render "layouts/main_menu"
       = yield
-      .cart-link
+      .cart-link.cart-link-m
         a
           = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
           = inline_svg "Valko-icon-korzuna.svg"
-
       .main-footer
         .row
           .medium-11.columns

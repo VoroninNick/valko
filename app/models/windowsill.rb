@@ -24,15 +24,7 @@ class Windowsill < ActiveRecord::Base
   accepts_nested_attributes_for :prices, allow_destroy: true
   attr_accessible :prices_attributes
 
-  def to_slug
-    title.parameterize
-  end
-  def save_slug
-    self.slug = to_slug
-  end
-  before_save :save_slug
-
-
+  before_save { save_slug(title, slug) }
 
   rails_admin do
     navigation_label 'Підвіконня'

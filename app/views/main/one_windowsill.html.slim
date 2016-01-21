@@ -96,24 +96,41 @@ ul.breadcrumbs
         - if @windowsill.custom.present?
           li.tab-title
             a href="#custom_products" Нестандартні вироби
-        li.tab-title
+        li.tab-title.active
           a href="#specifications" Характеристики
         li.tab-title
           a href="#photo_and_video" Фото та відео
         - if !@windowsill.custom.present?
           li.tab-title
             a href="#useful_publications" Корисні публікації
-        li.tab-title.active
+        li.tab-title
           a href="#reviews" Відгуки
 
       .tabs-content
         - if @windowsill.custom.present?
           #custom_products.content
-            p
-              |Нестандартні вироби
-        #specifications.content
-          p
-            |Характеристики
+            = raw @windowsill.custom
+
+        #specifications.content.active
+          .row.text-center
+            - if @windowsill.brand && @windowsill.brand.brand_icons.any?
+              - @windowsill.brand.brand_icons.each do |bi|
+                .small-6.medium-3.columns class=("end" if @windowsill.brand.brand_icons.last == bi )
+                  .one-brand-characteristic
+                    = inline_svg bi.icon.path
+                    .title = bi.title
+          .hr
+          .windowsill-characteristic-body
+            .row
+              .medium-8.columns
+                - if @windowsill.brand.avatar.exists?
+                  .wbd-avatar
+                    = image_tag @windowsill.brand.avatar.url(:large)
+                = raw @windowsill.brand.description
+
+              .medium-4.columns
+
+
         #photo_and_video.content
           p
             |Фото та відео
@@ -121,23 +138,25 @@ ul.breadcrumbs
           #useful_publications.content
             p
               |Корисні публікації
-        #reviews.content.active
+        #reviews.content
           = disqus_init
           - disqus_thread
 
-  /.row
-    .columns
-      ul.tabs data-tab=""
-        li.tab-title.active
-          a href="#test1" Test1
-        li.tab-title
-          a href="#test2" Test2
-        li.tab-title
-          a href="#test3" Test3
-        li.tab-title
-          a href="#test4" Test4
-      .tabs-content
-        #test1.content.active Test1
-        #test2.content Test2
-        #test3.content Test3
-        #test4.content Test4
+  - if @similar.any?
+    .page-block
+      .page-block-title
+        .row
+          .columns
+            span Схожі товари::
+            #similar-windowsill-dots.owl-dots
+
+    .row
+      .columns
+        ul#news-windowsill
+          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+          - @similar.each do |windowsill|
+            = render "partials/windowsill", windowsill: windowsill
+
+  coffee:
+    recentlyViewed = localStorage.getItem('recently_viewed')
+    localStorage.setItem '#{@windowsill.id}', recentlyViewed

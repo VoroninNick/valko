@@ -37,9 +37,10 @@ class MainController < ApplicationController
   end
   def one_windowsill
     @windowsill = Windowsill.find_by_slug(params[:title])
+    @similar = Windowsill.where(brand_id: @windowsill.brand_id).where.not(id: @windowsill)
   end
   def dev
-    
+
   end
   
 end
