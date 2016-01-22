@@ -20,6 +20,7 @@ class MainController < ApplicationController
   end
 
   def about
+    @brands = AboutBrand.order(created_at: :asc)
   end
 
   def publications

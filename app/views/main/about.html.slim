@@ -112,7 +112,8 @@ ul.breadcrumbs
         .columns
           span Бренди:
 
-  .row.collapse
-    .medium-4.columns test
-    .medium-4.columns test
-    .medium-4.columns test
+  - if @brands.any?
+    .row.collapse
+      - @brands.each do |brand|
+        .medium-4.columns class=("end" if @brands.last == brand)
+          = inline_svg brand.avatar.path
