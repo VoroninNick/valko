@@ -1,0 +1,6 @@
+/= windowsill_list.inspect
+- if windowsill_list.any?
+  .row
+    - windowsill_list.each_with_index do |windowsill, i|
+      .medium-4.columns class=("end" if windowsill == windowsill_list.last)
+        = render "partials/windowsill", windowsill: windowsill

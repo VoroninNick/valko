@@ -30,75 +30,82 @@ ul.breadcrumbs
           .clearfix
 
   .windowsill-catalog-list-body
-    .wclb-header
+    = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
+      .wclb-header
+        .row
+          .columns
+            .title
+              = inline_svg "Valko-icon-pidvikonnya.svg"
+              |Підвіконня
+
+            span
+              |Сортувати по:
+              = inline_svg"Valko-icon-sort-alphabet.svg"
+              = inline_svg"Valko-icon-sort-time.svg"
+
       .row
-        .columns
-          .title
-            = inline_svg "Valko-icon-pidvikonnya.svg"
-            |Підвіконня
+        .medium-3.columns
+          .catalog-filters-wrap
+            .selected-filters
+              .sf-head
+                .title Вибрані фільтри
+              .sf-body
 
-          span
-            |Сортувати по:
-            = inline_svg"Valko-icon-sort-alphabet.svg"
-            = inline_svg"Valko-icon-sort-time.svg"
+              .sf-footer
+                a
+                  = inline_svg"Valko-icon-sort-renew.svg"
+                  |Скинути всі фільтри
 
-    .row
-      .medium-3.columns
-        .catalog-filters-wrap
-          .selected-filters
-            .sf-head
-              .title Вибрані фільтри
-            .sf-body
+            .control-filters
+              .cf-head
+                ul
+                  li
+                    input#wbf-internal type="radio" value="internal" name="windowsill-base-filter" checked="checked"
+                    label for="wbf-internal" Внутрішні
+                  li
+                    input#wbf-outdoor type="radio" value="outdoor" name="windowsill-base-filter"
+                    label for="wbf-outdoor" Зовнішні
+                  .clearfix
 
-            .sf-footer
-              a
-                = inline_svg"Valko-icon-sort-renew.svg"
-                |Скинути всі фільтри
+              .cf-body
+                .control-filter
+                  .filter-head
+                    .title Торгові марки
+                  .filter-body
+                    - if Brand.brands_list.any?
+                      -  Brand.brands_list.each do |item|
+                        .custom-checkbox
+                          = f.check_box(:with_brand, {multiple: true}, item[:id], nil)
+                          /input id=item[:slug] type="checkbox" name="brand" value=item[:id]
+                          label.cch-icon for="filterrific_with_brand_#{item[:id]}"
+                          label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
-          .control-filters
-            .cf-head
-              ul
-                li
-                  input#wbf-internal type="radio" value="internal" name="windowsill-base-filter" checked="checked"
-                  label for="wbf-internal" Внутрішні
-                li
-                  input#wbf-outdoor type="radio" value="outdoor" name="windowsill-base-filter"
-                  label for="wbf-outdoor" Зовнішні
-                .clearfix
+                .control-filter.expanded
+                  .filter-head
+                    .title Матеріал
+                  .filter-body
 
-            .cf-body
-              .control-filter
-                .filter-head
-                  .title Торгові марки
-                .filter-body
-                  - if Brand.brands_list.any?
-                    -  Brand.brands_list.each do |item|
-                      .custom-checkbox
-                        input id=item[:slug] type="checkbox" name="brand" value=item[:id]
-                        label.cch-icon for=item[:slug]
-                        label.cch-text for=item[:slug] = item[:title]
+                .control-filter.expanded
+                  .filter-head
+                    .title Вид поверхні
+                  .filter-body
+                    .custom-checkbox
+                      input#test-checkbox type="checkbox"
+                      label.cch-icon for="test-checkbox"
+                      label.cch-text for="test-checkbox" Матовий
+                    .custom-checkbox
+                      input#test-checkbox2 type="checkbox"
+                      label.cch-icon for="test-checkbox2"
+                      label.cch-text for="test-checkbox2" Глянець
 
-              .control-filter.expanded
-                .filter-head
-                  .title Матеріал
-                .filter-body
-
-              .control-filter.expanded
-                .filter-head
-                  .title Вид поверхні
-                .filter-body
-                  .custom-checkbox
-                    input#test-checkbox type="checkbox"
-                    label.cch-icon for="test-checkbox"
-                    label.cch-text for="test-checkbox" Матовий
-                  .custom-checkbox
-                    input#test-checkbox2 type="checkbox"
-                    label.cch-icon for="test-checkbox2"
-                    label.cch-text for="test-checkbox2" Глянець
-
-      .medium-9.columns
-        - if @windowsill_list.any?
+        .medium-9.columns
           .row
-            - @windowsill_list.each_with_index do |windowsill, i|
-              .medium-4.columns class=("end" if windowsill == @windowsill_list.last)
-                = render "partials/windowsill", windowsill: windowsill
+            .columns
+              = page_entries_info @windowsill_list
+          .row
+            .columns
+
+              = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
+          #windowsill-list
+            = render partial: "main/windowsill_list",
+                     locals: { windowsill_list: @windowsill_list }

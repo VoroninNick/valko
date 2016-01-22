@@ -19,6 +19,9 @@
 //= require bxslider
 //= require gray/js/jquery.gray.min
 //= require disqus_rails
+
+//= require filterrific/filterrific-jquery
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

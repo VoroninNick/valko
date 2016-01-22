@@ -33,7 +33,22 @@ class MainController < ApplicationController
   end
 
   def windowsill
-    @windowsill_list = Windowsill.with_public
+    # @windowsill_list = Windowsill.with_public
+
+    @filterrific = initialize_filterrific(
+        Windowsill,
+        params[:filterrific],
+        select_options: {
+            sorted_by: Windowsill.options_for_sorted_by
+        }
+    ) or return
+
+    @windowsill_list = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   def one_windowsill
     @windowsill = Windowsill.find_by_slug(params[:title])

@@ -113,4 +113,45 @@ class Windowsill < ActiveRecord::Base
   # scope :with_public, -> { where(:is_public => true).order(date_published: :desc)}
   scope :with_public, -> { where(:published => true)}
   scope :new_items, -> { where(:status => true)}
+
+
+
+  filterrific(
+      default_filter_params: { sorted_by: 'created_at_desc' },
+      available_filters: [
+          :sorted_by,
+          :with_brand
+      ]
+  )
+
+  # sorted_by
+  scope :sorted_by, lambda { |sort_key|
+                    direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
+                    case sort_key.to_s
+                      when /^created_at_/
+                        order("windowsills.created_at #{ direction }")
+                      # when /^street_/
+                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.street) #{ direction }")
+                      # when /^name_/
+                      #   # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
+                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
+                      else
+                        raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
+                    end
+
+                  }
+  def self.options_for_sorted_by
+    [
+        ['Дата створення (старіші перші)', 'created_at_asc'],
+        ['Дата створення (новіші перші)', 'created_at_desc']
+    # ['Назва комплексу (a-я)', 'building_complex_name_asc'],
+    # ['Назва комплексу (я-а)', 'building_complex_name_desc'],
+    # ['Назва вулиці (а-я)', 'building_complex_street_asc'],
+    # ['Назва вулиці (я-а)', 'building_complex_street_desc']
+    ]
+  end
+  # with brand
+  scope :with_brand, lambda { |brand_id|
+                                     joins(:brand).where(brands: { id: brand_id })
+                                   }
 end

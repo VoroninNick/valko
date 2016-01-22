@@ -70,3 +70,5 @@ gem 'disqus_rails'
 gem 'pluck_to_hash'
 
 gem "enumerize"
+
+gem 'filterrific'
