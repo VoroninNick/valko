@@ -108,4 +108,13 @@ $(document).ready ->
   $('.control-filter').click ->
     $(@).toggleClass('expanded')
 
+#===================================================================
+#  about us banner
+#===================================================================
+  $("ul#about-us-banner").bxSlider
+    auto: false,
+    pause: 5000,
+    controls: false
+
+
 

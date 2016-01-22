@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   post 'recently_viewed' => 'main#recently_viewed'
 
-  # get 'dev' => 'main#dev'
+  get 'dev' => 'main#dev'
   # get 'windowsill/item' => 'main#one_windowsill', as: :one_windowsill
 
   # Example of regular route:
