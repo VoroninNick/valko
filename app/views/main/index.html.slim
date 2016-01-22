@@ -90,6 +90,11 @@
           |Огорожі
 
     .medium-6.columns
+.row
+  .columns
+    /= form_for_filterrific(@filterrific, url: windowsill_path, html: { id: :manual_filterrific_form }) do |f|
+      /[form inputs go here ...]
+      = f.submit "Show students"
 
 - if @windowsill_new.any?
   .page-block.new-windowsill-block

@@ -7,7 +7,7 @@ uk:
       last: ">>"
 
   enumerize:
-    type:
+    wind_type:
       internal: Внутрішній
       external: Зовнішній
     decor:

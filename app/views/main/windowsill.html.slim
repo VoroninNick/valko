@@ -42,7 +42,9 @@ ul.breadcrumbs
               |Сортувати по:
               = inline_svg"Valko-icon-sort-alphabet.svg"
               = inline_svg"Valko-icon-sort-time.svg"
-
+      /.row
+        = filterrific_sorting_link(@filterrific, :title)
+        = filterrific_sorting_link(@filterrific, :created_at)
       .row
         .medium-3.columns
           .catalog-filters-wrap
@@ -52,7 +54,7 @@ ul.breadcrumbs
               .sf-body
 
               .sf-footer
-                a
+                = link_to reset_filterrific_url do
                   = inline_svg"Valko-icon-sort-renew.svg"
                   |Скинути всі фільтри
 
@@ -60,10 +62,10 @@ ul.breadcrumbs
               .cf-head
                 ul
                   li
-                    input#wbf-internal type="radio" value="internal" name="windowsill-base-filter" checked="checked"
+                    input#wbf-internal type="radio" value="internal" name="filterrific[with_type]" checked="checked"
                     label for="wbf-internal" Внутрішні
                   li
-                    input#wbf-outdoor type="radio" value="outdoor" name="windowsill-base-filter"
+                    input#wbf-outdoor type="radio" value="external" name="filterrific[with_type]"
                     label for="wbf-outdoor" Зовнішні
                   .clearfix
 
@@ -99,13 +101,12 @@ ul.breadcrumbs
                       label.cch-text for="test-checkbox2" Глянець
 
         .medium-9.columns
-          .row
+          /.row
             .columns
               = page_entries_info @windowsill_list
-          .row
+          /.row
             .columns
-
-              = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
+              /= f.select(:sorted_by, @filterrific.select_options[:sorted_by])
           #windowsill-list
             = render partial: "main/windowsill_list",
                      locals: { windowsill_list: @windowsill_list }

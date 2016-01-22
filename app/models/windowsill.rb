@@ -29,11 +29,17 @@ class Windowsill < ActiveRecord::Base
 
   extend Enumerize
   # attr_accessor :decor, :kapinos, :type, :material, :type_of_surface
-  enumerize :type, in: [:'internal', :'external']
+  enumerize :wind_type, in: [:'internal', :'external']
   enumerize :decor, in: [:'wooden', :'stone', :'hi-tech', :'white']
   enumerize :kapinos, in: [:'round', :'direct']
   enumerize :material, in: [:'aluminum', :'steel', :'plastic']
   enumerize :type_of_surface, in: [:'wood', :'glossiness', :'opaque']
+
+  # before_save do
+  #   if wind_type == 1
+  #     wind_type = nil
+  #   end
+  # end
 
   rails_admin do
     navigation_label 'Підвіконня'
@@ -65,11 +71,12 @@ class Windowsill < ActiveRecord::Base
       end
 
 
-      field :type, :enum do
+      field :wind_type, :enum do
         label 'Тип:'
       end
       group :char_internal do
         label 'Характеристики внутрішніх'
+        active false
         field :decor, :enum do
           label 'Декор:'
         end
@@ -79,6 +86,7 @@ class Windowsill < ActiveRecord::Base
       end
       group :char_external do
         label 'Характеристики зовнішніх'
+        active false
         field :kapinos, :enum do
           label 'Капінос:'
         end
@@ -100,6 +108,7 @@ class Windowsill < ActiveRecord::Base
       end
       group :custom_filed do
         label 'Нестандартні'
+        active false
         field :customised do
           label 'Нестандарт:'
         end
@@ -120,7 +129,8 @@ class Windowsill < ActiveRecord::Base
       default_filter_params: { sorted_by: 'created_at_desc' },
       available_filters: [
           :sorted_by,
-          :with_brand
+          :with_brand,
+          :with_type
       ]
   )
 
@@ -154,4 +164,8 @@ class Windowsill < ActiveRecord::Base
   scope :with_brand, lambda { |brand_id|
                                      joins(:brand).where(brands: { id: brand_id })
                                    }
+  # with brand
+  scope :with_type, lambda { |wind_type|
+                     where(wind_type: [ *wind_type ])
+                   }
 end
