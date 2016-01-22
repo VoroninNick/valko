@@ -28,8 +28,12 @@ class Windowsill < ActiveRecord::Base
 
 
   extend Enumerize
-  attr_accessor :decor
-  enumerize :decor, in: [:'wooden', :'stone']
+  # attr_accessor :decor, :kapinos, :type, :material, :type_of_surface
+  enumerize :type, in: [:'internal', :'external']
+  enumerize :decor, in: [:'wooden', :'stone', :'hi-tech', :'white']
+  enumerize :kapinos, in: [:'round', :'direct']
+  enumerize :material, in: [:'aluminum', :'steel', :'plastic']
+  enumerize :type_of_surface, in: [:'wood', :'glossiness', :'opaque']
 
   rails_admin do
     navigation_label 'Підвіконня'
@@ -60,27 +64,52 @@ class Windowsill < ActiveRecord::Base
         label 'Опис:'
       end
 
-      field :decor, :enum do
-        label 'Декор:'
-      end
 
-      field :with_flap do
-        label 'З заглушкою:'
+      field :type, :enum do
+        label 'Тип:'
       end
-      field :without_cap do
-        label 'Без заглушки:'
+      group :char_internal do
+        label 'Характеристики внутрішніх'
+        field :decor, :enum do
+          label 'Декор:'
+        end
+        field :type_of_surface, :enum do
+          label 'Вид поверхні:'
+        end
       end
-      field :on_the_edge do
-        label 'З кромкою:'
+      group :char_external do
+        label 'Характеристики зовнішніх'
+        field :kapinos, :enum do
+          label 'Капінос:'
+        end
+        field :material, :enum do
+          label 'Матеріал:'
+        end
       end
-      field :customised do
-        label 'Нестандарт:'
+      group :options do
+        label 'Додаткові опції'
+        field :with_flap do
+          label 'З заглушкою:'
+        end
+        field :without_cap do
+          label 'Без заглушки:'
+        end
+        field :on_the_edge do
+          label 'З кромкою:'
+        end
       end
-      field :custom, :ck_editor do
-        label 'Нестандартні вироби:'
+      group :custom_filed do
+        label 'Нестандартні'
+        field :customised do
+          label 'Нестандарт:'
+        end
+        field :custom, :ck_editor do
+          label 'Нестандартні вироби:'
+        end
       end
     end
   end
+
   # scope :with_public, -> { where(:is_public => true).order(date_published: :desc)}
   scope :with_public, -> { where(:published => true)}
   scope :new_items, -> { where(:status => true)}

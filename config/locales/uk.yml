@@ -7,7 +7,23 @@ uk:
       last: ">>"
 
   enumerize:
+    type:
+      internal: Внутрішній
+      external: Зовнішній
     decor:
       wooden: "Дерев'яний"
-      stone: "Кам’яні"
+      stone: "Кам’яний"
+      hi-tech: "Хай-тек"
+      white: Білий
+    kapinos:
+      round: Круглий
+      direct: Прямий
+    material:
+      aluminum: Алюміній
+      steel: Сталь
+      plastic: Пластик
+    type_of_surface:
+      wood: дерево
+      glossiness: глянець
+      opaque: матовий
 
