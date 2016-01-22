@@ -48,9 +48,9 @@ class Windowsill < ActiveRecord::Base
     label_plural 'Підвіконня'
 
     edit do
-      field :published do
-        label 'Чи публікувати?'
-      end
+      # field :published do
+      #   label 'Чи публікувати?'
+      # end
       field :status do
         label 'Статус (Нове!):'
       end
