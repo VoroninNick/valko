@@ -23,7 +23,7 @@ uk:
       steel: Сталь
       plastic: Пластик
     type_of_surface:
-      wood: дерево
-      glossiness: глянець
-      opaque: матовий
+      wood: Дерево
+      glossiness: Глянець
+      opaque: Матовий
 

@@ -82,12 +82,51 @@ ul.breadcrumbs
                           label.cch-icon for="filterrific_with_brand_#{item[:id]}"
                           label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
-                .control-filter.expanded
-                  .filter-head
-                    .title Матеріал
-                  .filter-body
+                - if Windowsill.decor.values.any?
+                  .control-filter
+                    .filter-head
+                      .title Декор
+                    .filter-body
+                      - Windowsill.decor.values.each do |decor|
+                        .custom-checkbox
+                          = f.check_box(:with_decor, {multiple: true}, decor, nil)
+                          label.cch-icon for="filterrific_with_decor_#{decor}"
+                          label.cch-text for="filterrific_with_decor_#{decor}" = t("enumerize.decor.#{decor}")
 
-                .control-filter.expanded
+                - if Windowsill.type_of_surface.values.any?
+                  .control-filter
+                    .filter-head
+                      .title Вид поверхні
+                    .filter-body
+                      - Windowsill.type_of_surface.values.each do |surface|
+                        .custom-checkbox
+                          = f.check_box(:with_type_of_surface, {multiple: true}, surface, nil)
+                          label.cch-icon for="filterrific_with_type_of_surface_#{surface}"
+                          label.cch-text for="filterrific_with_type_of_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
+
+                - if Windowsill.kapinos.values.any?
+                  .control-filter
+                    .filter-head
+                      .title Капінос
+                    .filter-body
+                      - Windowsill.kapinos.values.each do |kapinos|
+                        .custom-checkbox
+                          = f.check_box(:with_kapinos, {multiple: true}, kapinos, nil)
+                          label.cch-icon for="filterrific_with_kapinos_#{kapinos}"
+                          label.cch-text for="filterrific_with_kapinos_#{kapinos}" = t("enumerize.kapinos.#{kapinos}")
+
+                - if Windowsill.material.values.any?
+                  .control-filter
+                    .filter-head
+                      .title Матеріал
+                    .filter-body
+                      - Windowsill.material.values.each do |material|
+                        .custom-checkbox
+                          = f.check_box(:with_material, {multiple: true}, material, nil)
+                          label.cch-icon for="filterrific_with_material_#{material}"
+                          label.cch-text for="filterrific_with_material_#{material}" = t("enumerize.material.#{material}")
+
+        /.control-filter
                   .filter-head
                     .title Вид поверхні
                   .filter-body

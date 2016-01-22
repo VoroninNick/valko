@@ -35,11 +35,6 @@ class Windowsill < ActiveRecord::Base
   enumerize :material, in: [:'aluminum', :'steel', :'plastic']
   enumerize :type_of_surface, in: [:'wood', :'glossiness', :'opaque']
 
-  # before_save do
-  #   if wind_type == 1
-  #     wind_type = nil
-  #   end
-  # end
 
   rails_admin do
     navigation_label 'Підвіконня'
@@ -130,7 +125,11 @@ class Windowsill < ActiveRecord::Base
       available_filters: [
           :sorted_by,
           :with_brand,
-          :with_type
+          :with_type,
+          :with_material,
+          :with_decor,
+          :with_type_of_surface,
+          :with_kapinos
       ]
   )
 
@@ -150,6 +149,7 @@ class Windowsill < ActiveRecord::Base
                     end
 
                   }
+
   def self.options_for_sorted_by
     [
         ['Дата створення (старіші перші)', 'created_at_asc'],
@@ -166,6 +166,22 @@ class Windowsill < ActiveRecord::Base
                                    }
   # with brand
   scope :with_type, lambda { |wind_type|
-                     where(wind_type: [ *wind_type ])
+                     where(wind_type:  wind_type )
                    }
+  # with material
+  scope :with_material, lambda { |material|
+                     where(material: [ *material])
+                   }
+ # with decor
+  scope :with_decor, lambda { |decor|
+                     where(decor: [ *decor])
+                   }
+ # with type_of_surface
+  scope :with_type_of_surface, lambda { |surface|
+                     where(surface: [ *surface])
+                   }
+  # with kapinos
+  scope :with_kapinos, lambda { |kapinos|
+                               where(kapinos: [ *kapinos])
+                             }
 end
