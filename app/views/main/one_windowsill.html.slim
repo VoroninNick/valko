@@ -10,7 +10,12 @@ ul.breadcrumbs
 - i = 1
 .one-windowsill-page
   .row
-    .medium-4.columns
+    .medium-4.columns.windowsill-photos
+      - if @windowsill.promo_labels && @windowsill.promo_labels.any?
+        .ow-status
+          - @windowsill.promo_labels.each do |item|
+            .ows-one
+              = image_tag item.icon.url(:large)
       - if @windowsill.windowsill_photos.any?
         ul#windowsill-images-carousel
           - @windowsill.windowsill_photos.each do |slide|

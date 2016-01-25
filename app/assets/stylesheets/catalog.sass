@@ -1,4 +1,5 @@
 .one-windowsill-page
+  padding-top: 10px
   .bx-wrapper
     .bx-viewport
       border: 7px solid #eceff1
@@ -443,27 +444,6 @@
   margin-top: 26px
   border: 7px solid #eceff1
   border-bottom: none
-  .ow-status
-    height: 62px
-    position: absolute
-    top: 0px
-    right: -2px
-    z-index: 1
-    .ows-one
-      float: right
-      position: relative
-      right: -20px
-      &:first-child
-        right: 0
-    //&:after
-      content: attr(data-status)
-      +my_center_align()
-        position: absolute
-      color: #eceff1
-      font:
-        size: rem-calc(16)
-        weight: 500
-        family: 'Roboto', sans-serif
 
   .ow-image
     border-bottom: 4px solid #eceff1
@@ -538,3 +518,20 @@
       display: block
     .show-large-image
       display: block
+
+.ow-status
+  height: 62px
+  position: absolute
+  top: 0px
+  right: -2px
+  z-index: 1
+  .ows-one
+    float: right
+    position: relative
+    right: -20px
+    &:first-child
+      right: 0
+
+.windowsill-photos
+  .ow-status
+    top: -23px
