@@ -1,6 +1,9 @@
 .one-windowsill
-  .ow-status data-status="Нове!"
-    = image_tag "Valko-basket-button-passive-horisontal.png"
+  - if windowsill.promo_labels && windowsill.promo_labels.any?
+    .ow-status
+      - windowsill.promo_labels.each do |item|
+        .ows-one
+          = image_tag item.icon.url(:large)
   .ow-image
     a href=one_windowsill_path(windowsill.slug)
       .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"

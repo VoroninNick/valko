@@ -20,6 +20,7 @@ class BrandIcon < ActiveRecord::Base
     visible false
     field :icon, :paperclip do
       label 'Аватарка:'
+      help 'в форматі SVG'
     end
     field :title do
       label 'Назва:'

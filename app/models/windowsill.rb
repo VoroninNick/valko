@@ -20,6 +20,11 @@ class Windowsill < ActiveRecord::Base
   attr_accessible *attribute_names
   belongs_to :brand
 
+  has_and_belongs_to_many :promo_labels, join_table: :table_windowsills_promo_labels
+  attr_accessible :promo_label_ids
+  # accepts_nested_attributes_for :promo_labels, :allow_destroy => true
+  # attr_accessible :promo_labels_attributes
+
   has_many :windowsill_photos
   attr_accessible :windowsill_photos
   accepts_nested_attributes_for :windowsill_photos, allow_destroy: true
@@ -54,6 +59,9 @@ class Windowsill < ActiveRecord::Base
       # end
       field :status do
         label 'Статус (Нове!):'
+      end
+      field :promo_labels do
+        label 'Іконки акцій:'
       end
       field :title do
         label 'Назва:'
@@ -119,6 +127,8 @@ class Windowsill < ActiveRecord::Base
           help 'заповнюється якщо потрібно щоб показувало вкладку "Нестандартні вироби"'
         end
       end
+
+
     end
   end
 

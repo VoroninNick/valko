@@ -444,13 +444,18 @@
   border: 7px solid #eceff1
   border-bottom: none
   .ow-status
-    width: 72px
-    height: 63px
+    height: 62px
     position: absolute
     top: 0px
     right: -2px
     z-index: 1
-    &:after
+    .ows-one
+      float: right
+      position: relative
+      right: -20px
+      &:first-child
+        right: 0
+    //&:after
       content: attr(data-status)
       +my_center_align()
         position: absolute
