@@ -1,6 +1,7 @@
 
 
 .about-us-page
+  margin-bottom: 55px
   .bx-wrapper
     position: relative
     margin: 0
@@ -74,8 +75,50 @@
       line-height: 134px
       span
         display: block
-        color: #263238
-        font:
-          size: rem-calc(14)
-          weight: 400
-        line-height: 16.8px
+        +default_font_style(#263238, 14, 400, 16.8)
+        //color: #263238
+        //font:
+        //  size: rem-calc(14)
+        //  weight: 400
+        //line-height: 16.8px
+
+  .about-trademark-wrap
+    border: 1px solid #eceff1
+    padding-top: 16px
+    padding-bottom: 16px
+    @media #{$medium-up}
+      +grid-column(4)
+    .about-trademark
+      width: 100%
+      height: 0
+      padding-bottom: 66%
+      position: relative
+      .about-trademark-info, .about-trademark-avatar
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+
+      .about-trademark-info
+        .title
+          color: #1c282e
+          font:
+            size: rem-calc(18)
+            weight: 400
+          line-height: 21.6px
+          margin-bottom: 8px
+        p
+          +default_font_style(#fff, 14, 400, 18)
+
+      .about-trademark-avatar
+        background: #fff
+        svg
+          width: 70%
+          +my_center_align()
+            position: absolute
+    &:hover
+      background: #42a5f5
+      .about-trademark
+        .about-trademark-avatar
+          opacity: 0

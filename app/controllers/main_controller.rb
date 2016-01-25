@@ -70,7 +70,7 @@ class MainController < ApplicationController
     @similar = Windowsill.where(brand_id: @windowsill.brand_id).where.not(id: @windowsill)
   end
   def dev
-
+    render inline: session["main#windowsill"].keys.inspect
   end
   
 end

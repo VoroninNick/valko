@@ -13,6 +13,12 @@
   transition: .3s
   box-shadow: inset 0 0 0 .125rem
 
+= default_font_style($color, $size, $weight, $line-height)
+  color: $color
+  font-size: rem-calc($size)
+  font-weight: $weight
+  line-height: $line-height+px
+
 = triangle($dir, $size, $color)
   border: $size transparent solid
   width: $size

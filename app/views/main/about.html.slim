@@ -113,7 +113,14 @@ ul.breadcrumbs
           span Бренди:
 
   - if @brands.any?
-    .row.collapse
-      - @brands.each do |brand|
-        .medium-4.columns class=("end" if @brands.last == brand)
-          = inline_svg brand.avatar.path
+    .row
+      .columns
+        .row.collapse
+          - @brands.each do |brand|
+            .about-trademark-wrap class=("end" if @brands.last == brand)
+              .about-trademark
+                .about-trademark-info
+                  .title = brand.title
+                  p = truncate(brand.description, length: 200, omission: '...')
+                .about-trademark-avatar
+                  = inline_svg brand.avatar.path

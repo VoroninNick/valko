@@ -25,6 +25,10 @@ class AboutBrand < ActiveRecord::Base
       label 'Логотип:'
       help 'Логотип завантажувати типу svg'
     end
+    field :description do
+      html_attributes rows: 10, cols: 100
+      label 'Опис:'
+    end
   end
 
 end
