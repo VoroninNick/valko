@@ -59,7 +59,8 @@ class Windowsill < ActiveRecord::Base
         label 'Назва:'
       end
       field :windowsill_photos do
-        label 'Зображення:'
+        label 'Зображення (виробу):'
+        help 'з заглушкою, без заглушки і тектстура'
       end
       field :prices do
         label 'Ціни:'
@@ -115,6 +116,7 @@ class Windowsill < ActiveRecord::Base
         end
         field :custom, :ck_editor do
           label 'Нестандартні вироби:'
+          help 'заповнюється якщо потрібно щоб показувало вкладку "Нестандартні вироби"'
         end
       end
     end

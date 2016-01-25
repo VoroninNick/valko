@@ -20,6 +20,7 @@ class WindowsillPhoto < ActiveRecord::Base
     edit do
       field :image, :paperclip do
         label 'Зображення:'
+        help 'розмір зображення 1400x840'
       end
     end
   end
