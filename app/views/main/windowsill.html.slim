@@ -54,10 +54,10 @@ ul.breadcrumbs
               .cf-head
                 ul
                   li
-                    input#wbf-internal type="radio" value="internal" name="filterrific[with_type]" checked="checked"
+                    input#wbf-internal type="radio" value="internal" name="filterrific[with_type]" checked=("checked" if session["main#windowsill"]["with_type"] == "internal")
                     label for="wbf-internal" Внутрішні
                   li
-                    input#wbf-outdoor type="radio" value="external" name="filterrific[with_type]"
+                    input#wbf-outdoor type="radio" value="external" name="filterrific[with_type]" checked=("checked" if session["main#windowsill"]["with_type"] == "external")
                     label for="wbf-outdoor" Зовнішні
                   .clearfix
 
