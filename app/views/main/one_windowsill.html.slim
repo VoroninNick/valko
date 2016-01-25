@@ -101,12 +101,12 @@ ul.breadcrumbs
         - if @windowsill.custom.present?
           li.tab-title
             a href="#custom_products" Нестандартні вироби
-        li.tab-title.active
+        li.tab-title
           a href="#specifications" Характеристики
         li.tab-title
           a href="#photo_and_video" Фото та відео
         - if !@windowsill.custom.present?
-          li.tab-title
+          li.tab-title.active
             a href="#useful_publications" Корисні публікації
         li.tab-title
           a href="#reviews" Відгуки
@@ -116,7 +116,7 @@ ul.breadcrumbs
           #custom_products.content
             = raw @windowsill.custom
 
-        #specifications.content.active
+        #specifications.content
           .row.text-center
             - if @windowsill.brand && @windowsill.brand.brand_icons.any?
               - @windowsill.brand.brand_icons.each do |bi|
@@ -140,9 +140,20 @@ ul.breadcrumbs
           p
             |Фото та відео
         - if !@windowsill.custom.present?
-          #useful_publications.content
-            p
-              |Корисні публікації
+          #useful_publications.content.active
+            - if @windowsill.informations && @windowsill.informations.any?
+              .row
+                .columns
+                  .row.collapse
+                    - @windowsill.informations.each do |publication|
+                      .medium-6.columns.publication-default class=("end" if @windowsill.informations.last == publication)
+                        a href=one_publication_path(publication.slug)
+                          .image.grayscale style="background: url('#{publication.cover.url(:large)}')no-repeat center center;"
+                          .pb-publication-body
+                            .title = publication.title
+                            p = truncate_html(publication.short_description, length: 120, omission: '...')
+                            .valko-arrow
+
         #reviews.content
           = disqus_init
           - disqus_thread

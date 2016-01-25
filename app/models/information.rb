@@ -24,6 +24,9 @@ class Information < ActiveRecord::Base
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
+  has_and_belongs_to_many :windowsills, join_table: :table_windowsills_informations
+  attr_accessible :windowsill_ids
+
   rails_admin do
     navigation_label 'Інформація'
     label 'Публікація'
@@ -53,9 +56,9 @@ class Information < ActiveRecord::Base
       field :position do
         label 'Позиція:'
       end
-      # field :slug do
-      #   label 'Транслітерація:'
-      # end
+      field :windowsills do
+        label 'Підвіконня:'
+      end
     end
   end
   scope :with_public, -> { where(:published => true).order('position asc')}

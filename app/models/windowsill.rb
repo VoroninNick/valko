@@ -22,8 +22,8 @@ class Windowsill < ActiveRecord::Base
 
   has_and_belongs_to_many :promo_labels, join_table: :table_windowsills_promo_labels
   attr_accessible :promo_label_ids
-  # accepts_nested_attributes_for :promo_labels, :allow_destroy => true
-  # attr_accessible :promo_labels_attributes
+
+  has_and_belongs_to_many :informations, join_table: :table_windowsills_informations
 
   has_many :windowsill_photos
   attr_accessible :windowsill_photos
