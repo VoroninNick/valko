@@ -41,6 +41,9 @@ class Promotion < ActiveRecord::Base
 
   before_save :set_start_date, :set_date_of
 
+  has_and_belongs_to_many :windowsills, join_table: :table_windowsills_promotions
+  attr_accessible :windowsill_ids
+
   rails_admin do
     # navigation_label 'Акційні прайси'
     label 'Акційна пропозиція'
@@ -74,6 +77,9 @@ class Promotion < ActiveRecord::Base
       end
       field :position do
         label 'Позиція:'
+      end
+      field :windowsills do
+        label 'Підвіконня:'
       end
     end
   end

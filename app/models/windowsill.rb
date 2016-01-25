@@ -24,6 +24,7 @@ class Windowsill < ActiveRecord::Base
   attr_accessible :promo_label_ids
 
   has_and_belongs_to_many :informations, join_table: :table_windowsills_informations
+  has_and_belongs_to_many :promotions, join_table: :table_windowsills_promotions
 
   has_many :windowsill_photos
   attr_accessible :windowsill_photos
