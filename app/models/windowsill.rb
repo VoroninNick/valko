@@ -5,6 +5,12 @@
 # t.belongs_to :brand
 # t.boolean :published
 
+# t.string :decor
+# t.string :kapinos
+# t.string :type
+# t.string :material
+# t.string :type_of_surface
+
 # t.text :custom
 # t.boolean :with_flap
 # t.boolean :without_cap

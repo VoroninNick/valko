@@ -1,0 +1,50 @@
+- if session["main#windowsill"].has_key?("sorted_by")
+- else
+  .selected-filters
+    .sf-head
+      .title Вибрані фільтри
+    .sf-body
+
+      / type
+      - if session["main#windowsill"].has_key?("with_type")
+        .sf-group
+          .title Тип
+          .sf-filter
+            - if session["main#windowsill"]["with_type"] == "internal"
+              |Внутрішні
+              label for="wbf-internal"
+                = inline_svg"ic_close_black_24px.svg"
+            - elsif session["main#windowsill"]["with_type"] == "external"
+              |Зовнішні
+              label for="wbf-outdoor"
+                = inline_svg"ic_close_black_24px.svg"
+
+      / trademarks
+      - if session["main#windowsill"].has_key?("with_brand")
+        .sf-group
+          .title Торгові марки
+          - if Brand.brands_list.any?
+            -  Brand.brands_list.each do |item|
+              - if session["main#windowsill"]["with_brand"].include? item[:id]
+                .sf-filter
+                  = item[:title]
+                  label.cch-text for="filterrific_with_brand_#{item[:id]}"
+                    = inline_svg"ic_close_black_24px.svg"
+      / decors
+      - if session["main#windowsill"].has_key?("with_decor")
+        .sf-group
+          .title Декор
+          - if Windowsill.decor.values.any?
+            - Windowsill.decor.values.each do |decor|
+              - if session["main#windowsill"]["with_decor"].include? decor
+                .sf-filter
+                  = t("enumerize.decor.#{decor}")
+                  label.cch-text for="filterrific_with_decor_#{decor}"
+                    = inline_svg"ic_close_black_24px.svg"
+
+    .sf-footer
+      = link_to reset_filterrific_url do
+        = inline_svg"Valko-icon-sort-renew.svg"
+        |Скинути всі фільтри
+
+  /= session["main#windowsill"]

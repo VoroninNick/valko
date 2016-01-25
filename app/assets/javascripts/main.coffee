@@ -116,5 +116,7 @@ $(document).ready ->
     pause: 5000,
     controls: false
 
+#    console.log $.session.get('main#windowsill')
+
 
 

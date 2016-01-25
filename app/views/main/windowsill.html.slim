@@ -48,16 +48,8 @@ ul.breadcrumbs
       .row
         .medium-3.columns
           .catalog-filters-wrap
-            .selected-filters
-              .sf-head
-                .title Вибрані фільтри
-              .sf-body
-
-              .sf-footer
-                = link_to reset_filterrific_url do
-                  = inline_svg"Valko-icon-sort-renew.svg"
-                  |Скинути всі фільтри
-
+            #selected-filters
+              = render partial: "main/windowsill_selected_filters"
             .control-filters
               .cf-head
                 ul
