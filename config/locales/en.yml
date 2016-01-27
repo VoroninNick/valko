@@ -27,3 +27,24 @@ en:
       previous: "<"
       next: ">"
       last: ">>"
+
+  enumerize:
+    wind_type:
+      internal: Внутрішній
+      external: Зовнішній
+    decor:
+      wooden: "Дерев'яний"
+      stone: "Кам’яний"
+      hi-tech: "Хай-тек"
+      white: Білий
+    kapinos:
+      round: Круглий
+      direct: Прямий
+    material:
+      aluminum: Алюміній
+      steel: Сталь
+      plastic: Пластик
+    type_of_surface:
+      wood: Дерево
+      glossiness: Глянець
+      opaque: Матовий
