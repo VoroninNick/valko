@@ -14,13 +14,14 @@
                         .promotion-banner-countdown-timer
                           .valko-countdown-promo data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
 
-                .promo-banner-body
+                /.promo-banner-body
                   =promotion.title
 
           .promotion-banner-pager
             - promotions.each_with_index do |promo_pager, index|
               a data-slide-index=index href=""
-                .valko-arrow
+                .valko-arrow.va-right
+                  div
                 .title = promo_pager.title
                 p = truncate_html(promo_pager.short_description, length: 100, omission: '...')
                 - if promo_pager.date_of.present?

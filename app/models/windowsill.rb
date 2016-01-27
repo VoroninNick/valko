@@ -160,9 +160,10 @@ class Windowsill < ActiveRecord::Base
                         order("windowsills.created_at #{ direction }")
                       # when /^street_/
                       #   joins(:building_complex).order("LOWER(sigma_building_complexes.street) #{ direction }")
-                      # when /^name_/
-                      #   # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
-                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
+                      when /^title_/
+                        order("windowsills.title #{ direction }")
+                        # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
+                        # joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
                       else
                         raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
                     end
@@ -171,14 +172,27 @@ class Windowsill < ActiveRecord::Base
 
   def self.options_for_sorted_by
     [
-        ['Дата створення (старіші перші)', 'created_at_asc'],
-        ['Дата створення (новіші перші)', 'created_at_desc']
-    # ['Назва комплексу (a-я)', 'building_complex_name_asc'],
-    # ['Назва комплексу (я-а)', 'building_complex_name_desc'],
+        ['Дата(старіші перші)', 'created_at_asc'],
+        ['Дата (новіші перші)', 'created_at_desc'],
+        ['Назва (a-я)', 'title_asc'],
+        ['Назва (я-а)', 'title_desc']
     # ['Назва вулиці (а-я)', 'building_complex_street_asc'],
     # ['Назва вулиці (я-а)', 'building_complex_street_desc']
     ]
   end
+
+  # sorted_date
+  # scope :sorted_by_date, lambda { |sort_key|
+  #                   direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
+  #                   case sort_key.to_s
+  #                     when /^created_at_/
+  #                       order("windowsills.created_at #{ direction }")
+  #                     else
+  #                       raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
+  #                   end
+  #
+  #                 }
+  # end
   # with brand
   scope :with_brand, lambda { |brand_id|
                                      joins(:brand).where(brands: { id: brand_id })

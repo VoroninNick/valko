@@ -93,6 +93,18 @@ $(document).ready ->
 #============================================================
 # reveal modal
 #============================================================
+  $('#promotion-windowsill').owlCarousel
+#    loop: true
+    margin: 30
+    dotsContainer: '#promotion-windowsill-dots'
+    responsive:
+      0: items: 2
+      600: items: 3
+      1000: items: 4
+
+#============================================================
+# reveal modal
+#============================================================
   $('input:radio[name="windowsill_option"]').change ->
     $this = $(@)
     $wrap = $this.closest('.windowsill-calculator-wrap')

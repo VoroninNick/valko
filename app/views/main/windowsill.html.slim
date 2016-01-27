@@ -40,6 +40,7 @@ ul.breadcrumbs
 
             span
               |Сортувати по:
+              = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
               = inline_svg"Valko-icon-sort-alphabet.svg"
               = inline_svg"Valko-icon-sort-time.svg"
       /.row
@@ -135,9 +136,7 @@ ul.breadcrumbs
           /.row
             .columns
               = page_entries_info @windowsill_list
-          /.row
-            .columns
-              /= f.select(:sorted_by, @filterrific.select_options[:sorted_by])
+
           #windowsill-list
             = render partial: "main/windowsill_list",
                      locals: { windowsill_list: @windowsill_list }

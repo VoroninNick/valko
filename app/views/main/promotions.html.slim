@@ -1,9 +1,6 @@
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
-  /li
-    a href="#" Features
-  /li.disabled Gene Splicing
   li
     span Акції
 
@@ -39,4 +36,4 @@ ul.breadcrumbs
                 .one-promotion-body-read-more
                   .columns
                     .material-component.ripple.right.read-more
-                      a Детальніше
+                      a href=one_promotions_path(item.slug) Детальніше
