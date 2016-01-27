@@ -443,6 +443,22 @@
           background: #eceff1
           .title
             color: #f50057
+.gallery-item
+  position: relative
+  margin-top: 14px
+  margin-bottom: 14px
+  display: block
+  @media #{$medium-up}
+    +grid-column(3)
+
+  .image
+    height: 0
+    padding-bottom: 70%
+  &.video_gallery
+    .vg-play-button
+      +my_center_align()
+        position: absolute
+
 
 .one-windowsill
   margin-top: 26px

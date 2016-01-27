@@ -22,6 +22,11 @@
 
 //= require filterrific/filterrific-jquery
 
+//= require lightgallery/dist/js/lightgallery.min
+//= require lightgallery/dist/js/lg-thumbnail.min
+//= require lightgallery/dist/js/lg-fullscreen.min
+//= require lightgallery/dist/js/lg-video
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

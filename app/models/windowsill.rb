@@ -52,6 +52,11 @@ class Windowsill < ActiveRecord::Base
 
   validates_attachment_content_type :video_poster, content_type: /\Aimage\/.*\Z/
 
+  has_many :photo_galleries, as: :imageable
+  attr_accessible :photo_galleries
+  accepts_nested_attributes_for :photo_galleries, allow_destroy: true
+  attr_accessible :photo_galleries_attributes
+
   extend Enumerize
   # attr_accessor :decor, :kapinos, :type, :material, :type_of_surface
   enumerize :wind_type, in: [:'internal', :'external']
@@ -107,13 +112,13 @@ class Windowsill < ActiveRecord::Base
         field :type_of_surface, :enum do
           label 'Вид поверхні:'
         end
+        field :kapinos, :enum do
+          label 'Капінос:'
+        end
       end
       group :char_external do
         label 'Характеристики зовнішніх'
         active false
-        field :kapinos, :enum do
-          label 'Капінос:'
-        end
         field :material, :enum do
           label 'Матеріал:'
         end
@@ -145,6 +150,9 @@ class Windowsill < ActiveRecord::Base
       group :gallery do
         label 'Галерея'
         active false
+        field :photo_galleries do
+          label 'Фотогалерея:'
+        end
         field :video_published do
           label 'Чи публікувати відео?:'
         end
@@ -158,6 +166,7 @@ class Windowsill < ActiveRecord::Base
           label 'Відео постер:'
           help 'розмір зображення 440x300'
         end
+
       end
 
     end

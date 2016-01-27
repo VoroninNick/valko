@@ -130,5 +130,12 @@ $(document).ready ->
 
 #    console.log $.session.get('main#windowsill')
 
+#===================================================================
+#  photo - video gallery
+#===================================================================
+#  $("#windowsill-images-carousel").lightSlider()
+  $('.lightGallery').lightGallery ->
+    thumbnail:true
+
 
 
