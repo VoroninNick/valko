@@ -5,15 +5,19 @@ ul.breadcrumbs
     span Про нас
 
 .about-us-page
-  .row
-    .columns
-      ul#about-us-banner
-        li
-          .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
-        li
-          .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
-        li
-          .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
+  - if @about_banner.any?
+    .row
+      .columns
+        ul#about-us-banner
+          - @about_banner.each do |slide|
+            li
+              .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+          /li
+            .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
+          /li
+            .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
+          /li
+            .image style="background: url('#{asset_path("DSC_0237.JPG")}')no-repeat center center;"
 
   .row
     .columns

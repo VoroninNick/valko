@@ -20,6 +20,7 @@ class MainController < ApplicationController
   end
 
   def about
+    @about_banner = AboutBanner.with_public
     @brands = AboutBrand.order(created_at: :asc)
   end
 

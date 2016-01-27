@@ -3,7 +3,9 @@
 # t.integer :position
 # t.boolean :published
 class AboutBanner < ActiveRecord::Base
-  attr_accessible * attribute_names
+
+  attr_accessible *attribute_names
+
   attr_accessible :image
   has_attached_file :image,
                     styles: { large: "980x400>"},
@@ -33,5 +35,5 @@ class AboutBanner < ActiveRecord::Base
       end
     end
   end
-  scope :published, where(published: 't').order(position: :desc)
+  scope :with_public, -> { where(:published => true).order('position asc')}
 end
