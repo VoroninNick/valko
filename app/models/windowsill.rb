@@ -16,6 +16,12 @@
 # t.boolean :without_cap
 # t.boolean :on_the_edge
 # t.boolean :customised
+
+
+# t.string :video_title
+# t.string :video_url
+# t.attachment :video_poster
+# t.boolean :video_published
 class Windowsill < ActiveRecord::Base
   attr_accessible *attribute_names
   belongs_to :brand
@@ -38,6 +44,13 @@ class Windowsill < ActiveRecord::Base
 
   before_save { save_slug(title, slug) }
 
+  attr_accessible :video_poster
+  has_attached_file :video_poster,
+                    styles: { large: "440x300>"},
+                    convert_options: { large: "-quality 94 -interlace Plane"},
+                    default_url: "/images/:style/missing.png"
+
+  validates_attachment_content_type :video_poster, content_type: /\Aimage\/.*\Z/
 
   extend Enumerize
   # attr_accessor :decor, :kapinos, :type, :material, :type_of_surface
@@ -129,6 +142,23 @@ class Windowsill < ActiveRecord::Base
         end
       end
 
+      group :gallery do
+        label 'Галерея'
+        active false
+        field :video_published do
+          label 'Чи публікувати відео?:'
+        end
+        field :video_title do
+          label 'Назва відео:'
+        end
+        field :video_url do
+          label 'Лінк на відео:'
+        end
+        field :video_poster, :paperclip do
+          label 'Відео постер:'
+          help 'розмір зображення 440x300'
+        end
+      end
 
     end
   end
