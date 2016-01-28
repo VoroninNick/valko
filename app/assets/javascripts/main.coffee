@@ -23,8 +23,16 @@ windowsillCalculator = () ->
 #  console.log count_element
 #  console.log weight_element
 #  console.log long_element
-
-  total_price = (long_element* weight_element)*count_element
+  gag_price = 0
+  if $('input#with_flap').is(':checked')
+    gag_price = parseInt($(@).val())
+    console.log('gag val', $(@).val())
+#    alert '1'
+  else if $('input#without_cap').is(':checked')
+    gag_price = 0
+#    alert '2'
+  console.log gag_price
+  total_price = (long_element* weight_element)*count_element+gag_price
   $total_price.text(total_price)
 #    alert 'this value ='+count_element * weight_element
 
@@ -68,6 +76,8 @@ $(document).ready ->
     windowsillCalculator.call(this)
 
   $('input#windowsill-long').change ->
+    windowsillCalculator.call(this)
+  $(".cr-wrap input[type='radio']").change ->
     windowsillCalculator.call(this)
 
 #============================================================

@@ -39,7 +39,7 @@ ul.breadcrumbs
               .windowsill-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .windowsill-price
-                  .wp-price = @windowsill.prices.first.value * 1
+                  .wp-price = @windowsill.prices.first.value * 1 + (@windowsill.brand.gag.price if @windowsill.brand.gag.price.present?)
                   .wp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
@@ -58,7 +58,11 @@ ul.breadcrumbs
               .small-6.columns
                 - if @windowsill.with_flap.present?
                   .cr-wrap
-                    input.custom-radiobutton#with_flap type="radio" value="pretty" name="windowsill_option" checked="checked"
+                    - if @windowsill.brand && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
+                      - gag_price = @windowsill.brand.gag.price
+                    - else
+                      - gag_price = 0
+                    input.custom-radiobutton#with_flap type="radio" value=gag_price name="windowsill_option" checked="checked"
                     label.custom-radiobutton-icon for="with_flap"
                     label.custom-radiobutton-label for="with_flap"
                       |З заглушкою
