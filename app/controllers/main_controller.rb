@@ -1,22 +1,19 @@
 class MainController < ApplicationController
+  after_action :recently_viewed, only: :one_windowsill
+
+  def recently_viewed
+    return unless request.get?
+    return if request.xhr?
+
+    session[:recently_viewed] ||= []
+    session[:recently_viewed] << @windowsill.id unless session[:recently_viewed].include? @windowsill.id
+    session[:recently_viewed].delete_at 0 if session[:recently_viewed].size == 12
+  end
+
   def index
     # return render inline: session.keys.inspect
     @publications = Information.with_main.limit(5)
-    # @windowsill_new = Windowsill.new_items.limit(12)
     @windowsill_new = Windowsill.with_public
-    # @filterrific = initialize_filterrific(
-    #     Windowsill,
-    #     params[:filterrific],
-    #     select_options: {
-    #         sorted_by: Windowsill.options_for_sorted_by
-    #     }
-    # ) or return
-    #
-    #
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
   end
 
   def about
@@ -50,7 +47,6 @@ class MainController < ApplicationController
 
   def windowsill
     # @windowsill_list = Windowsill.with_public
-
     @filterrific = initialize_filterrific(
         Windowsill,
         params[:filterrific],

@@ -6,7 +6,6 @@ ul.breadcrumbs
   li
     span = @windowsill.title
 
-- i = 1
 .one-windowsill-page
   .row
     .medium-4.columns.windowsill-photos
@@ -190,6 +189,6 @@ ul.breadcrumbs
           - @similar.each do |windowsill|
             = render "partials/windowsill", windowsill: windowsill
 
-  coffee:
-    recentlyViewed = localStorage.getItem('recently_viewed')
-    localStorage.setItem '#{@windowsill.id}', recentlyViewed
+  - if session[:recently_viewed] && session[:recently_viewed].any?
+    = session[:recently_viewed]
+
