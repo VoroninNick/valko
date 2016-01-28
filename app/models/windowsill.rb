@@ -194,7 +194,7 @@ class Windowsill < ActiveRecord::Base
   scope :with_public, -> { where(:published => true)}
   scope :new_items, -> { where(:status => true)}
 
-
+  paginates_per 12
 
   filterrific(
       default_filter_params: { sorted_by: 'created_at_desc' },
@@ -238,18 +238,6 @@ class Windowsill < ActiveRecord::Base
     ]
   end
 
-  # sorted_date
-  # scope :sorted_by_date, lambda { |sort_key|
-  #                   direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
-  #                   case sort_key.to_s
-  #                     when /^created_at_/
-  #                       order("windowsills.created_at #{ direction }")
-  #                     else
-  #                       raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
-  #                   end
-  #
-  #                 }
-  # end
   # with brand
   scope :with_brand, lambda { |brand_id|
                                      joins(:brand).where(brands: { id: brand_id })

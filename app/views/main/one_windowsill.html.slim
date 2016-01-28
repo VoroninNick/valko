@@ -188,10 +188,5 @@ ul.breadcrumbs
             - @similar.each do |windowsill|
               = render "partials/windowsill", windowsill: windowsill
 
-  /- if session[:recently_viewed] && session[:recently_viewed].any?
-    .row
-      .columns
-        = session[:recently_viewed]
-
   - if recently_viewed.any?
     = render "partials/recently_viewed_list", recently_viewed_list: recently_viewed

@@ -46,6 +46,7 @@ class MainController < ApplicationController
   end
 
   def windowsill
+    @gags = Gag.all
     # @windowsill_list = Windowsill.with_public
     @filterrific = initialize_filterrific(
         Windowsill,
@@ -56,7 +57,7 @@ class MainController < ApplicationController
     ) or return
 
     @windowsill_list = @filterrific.find.page(params[:page])
-    @gags = Gag.all
+
 
     respond_to do |format|
       format.html

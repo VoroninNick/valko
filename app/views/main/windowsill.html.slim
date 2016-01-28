@@ -140,4 +140,7 @@ ul.breadcrumbs
           #windowsill-list
             = render partial: "main/windowsill_list",
                      locals: { windowsill_list: @windowsill_list, gags: @gags }
+          .row
+            .columns
+              = paginate @windowsill_list
 

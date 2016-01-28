@@ -71,3 +71,5 @@ gem 'pluck_to_hash'
 gem "enumerize"
 
 gem 'filterrific'
+
+gem 'kaminari'
