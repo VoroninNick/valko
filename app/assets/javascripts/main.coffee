@@ -137,5 +137,31 @@ $(document).ready ->
   $('.lightGallery').lightGallery ->
     thumbnail:true
 
+#===================================================================
+#  json parser
+#===================================================================
+#  myData = []
+#  $.ajax
+#    url: 'http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=20160127&json'
+#    data: myData
+#    type: 'GET'
+#    crossDomain: true
+#    dataType: 'jsonp'
+#    success: ->
+#      alert 'Success'
+#
+#    error: ->
+#      alert 'Failed!'
+
+#  $.getJSON 'http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=20160127&json', (data) ->
+#    items = []
+#    $.each data, (key, val) ->
+#      items.push '<li id=\'' + key + '\'>' + val + '</li>'
+#    alert 't'
+#    $('<ul/>',
+#      'class': 'my-new-list'
+#      html: items.join('')).appendTo 'body'
+
+
 
 

@@ -18,6 +18,7 @@ class Brand < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :windowsills
+  has_one :gag
 
   has_many :brand_icons
   attr_accessible :brand_icons
