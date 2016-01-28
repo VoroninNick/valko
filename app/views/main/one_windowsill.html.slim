@@ -181,14 +181,17 @@ ul.breadcrumbs
           .columns
             span Схожі товари::
             #similar-windowsill-dots.owl-dots
+      .row
+        .columns
+          ul#news-windowsill
+            /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+            - @similar.each do |windowsill|
+              = render "partials/windowsill", windowsill: windowsill
 
+  /- if session[:recently_viewed] && session[:recently_viewed].any?
     .row
       .columns
-        ul#news-windowsill
-          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
-          - @similar.each do |windowsill|
-            = render "partials/windowsill", windowsill: windowsill
+        = session[:recently_viewed]
 
-  - if session[:recently_viewed] && session[:recently_viewed].any?
-    = session[:recently_viewed]
-
+  - if recently_viewed.any?
+    = render "partials/recently_viewed_list", recently_viewed_list: recently_viewed

@@ -112,6 +112,17 @@ $(document).ready ->
       0: items: 2
       600: items: 3
       1000: items: 4
+#============================================================
+# recently viewed windowsill
+#============================================================
+  $('#recently-viewed-windowsill').owlCarousel
+#    loop: true
+    margin: 30
+    dotsContainer: '#recently-viewed-windowsill-dots'
+    responsive:
+      0: items: 2
+      600: items: 3
+      1000: items: 4
 
 #============================================================
 # reveal modal

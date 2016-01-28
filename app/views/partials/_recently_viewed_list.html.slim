@@ -1,0 +1,11 @@
+.page-block
+  .page-block-title
+    .row
+      .columns
+        span Нещодавно пререглянуті:
+        #recently-viewed-windowsill-dots.owl-dots
+  .row
+    .columns
+      #recently-viewed-windowsill
+        - recently_viewed_list.each do |windowsill|
+          = render "partials/windowsill", windowsill: windowsill

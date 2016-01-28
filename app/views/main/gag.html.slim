@@ -41,10 +41,12 @@ ul.breadcrumbs
           .columns
             span Схожі товари::
             #similar-windowsill-dots.owl-dots
+      .row
+        .columns
+          ul#news-windowsill
+            /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+            - @similar_gags.each do |gag|
+              = render "partials/gag", gag: gag
 
-    .row
-      .columns
-        ul#news-windowsill
-          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
-          - @similar_gags.each do |gag|
-            = render "partials/gag", gag: gag
+  - if recently_viewed.any?
+    = render "partials/recently_viewed_list", recently_viewed_list: recently_viewed
