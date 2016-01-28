@@ -6,7 +6,8 @@
           = image_tag item.icon.url(:large)
   .ow-image
     a href=one_windowsill_path(windowsill.slug)
-      .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+      - if windowsill.windowsill_photos && windowsill.windowsill_photos.first.image.exists?
+        .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
     a.show-large-image
       = inline_svg"Valko-icon-search.svg"
   .ow-body
