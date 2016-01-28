@@ -60,6 +60,7 @@ class MainController < ApplicationController
     ) or return
 
     @windowsill_list = @filterrific.find.page(params[:page])
+    @gags = Gag.all
 
     respond_to do |format|
       format.html
@@ -70,6 +71,12 @@ class MainController < ApplicationController
     @windowsill = Windowsill.find_by_slug(params[:title])
     @similar = Windowsill.where(brand_id: @windowsill.brand_id).where.not(id: @windowsill)
   end
+  def gag
+    @gag = Gag.find_by_slug(params[:title])
+    @similar_gags = Gag.where.not(id: @gag)
+  end
+
+
   def dev
     render inline: session["main#windowsill"].keys.inspect
   end

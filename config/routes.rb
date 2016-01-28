@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get 'windowsill' => 'main#windowsill'
   get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
+  get 'gag/:title' => 'main#gag', as: :one_gag
 
   post 'recently_viewed' => 'main#recently_viewed'
 

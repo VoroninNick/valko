@@ -50,4 +50,5 @@ class Gag < ActiveRecord::Base
       end
     end
   end
+
 end

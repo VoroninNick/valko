@@ -1,0 +1,22 @@
+.one-windowsill
+  .ow-image
+    a href=one_gag_path(gag.slug)
+      - if gag.image.exists?
+        .image style="background: url('#{gag.image.url(:thumb)}')no-repeat center center;"
+    a.show-large-image
+      = inline_svg"Valko-icon-search.svg"
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = truncate(gag.title, length: 21, omission: '')
+      .small-6.columns
+        .price
+          = gag.try(:price)
+          sup &nbsp;грн.
+      .columns
+        .brand-title = gag.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      form action="/"
+        button Придбати

@@ -4,6 +4,6 @@
 $("#selected-filters").html("<%= js_sel_filters %>");
 
 <% js = escape_javascript(
-    render(partial: 'main/windowsill_list', locals: { windowsill_list: @windowsill_list })
+    render(partial: 'main/windowsill_list', locals: { windowsill_list: @windowsill_list, gags: @gags })
 ) %>
 $("#windowsill-list").html("<%= js %>");

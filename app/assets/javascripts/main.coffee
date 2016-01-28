@@ -77,6 +77,7 @@ $(document).ready ->
 
   $('input#windowsill-long').change ->
     windowsillCalculator.call(this)
+
   $(".cr-wrap input[type='radio']").change ->
     windowsillCalculator.call(this)
 

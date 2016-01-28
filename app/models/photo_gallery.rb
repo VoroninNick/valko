@@ -34,4 +34,5 @@ class PhotoGallery < ActiveRecord::Base
       end
     end
   end
+  scope :with_public, -> { where(:published => true).order('created_at asc')}
 end

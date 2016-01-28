@@ -1,0 +1,50 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    a href=windowsill_path Підвіконня
+  li
+    span = @gag.title
+
+.one-windowsill-page
+  .row
+    .medium-4.columns.windowsill-photos
+      - if @gag.image.exists?
+        .one-gag-photo
+          .image style="background: url('#{@gag.image.url(:thumb)}')no-repeat center center;"
+
+    .medium-8.columns
+      .title = @gag.title
+      .brand-title = @gag.brand.title
+      = raw @gag.description
+
+      .windowsill-calculator-wrap
+        .row
+          form
+            .columns
+              .input.count-windowsill
+                input#count-windowsills type="number" value="1"
+                label for="count-windowsills" Кількість
+              .windowsill-price-wrap
+                = image_tag "Valko-basket-button-passive-horisontal.png"
+                .windowsill-price
+                  .wp-price = @gag.try(:price)
+                  .wp-currency грн
+              .material-component.ripple.button-box-shadow
+                button type="submit" В кошик
+            .clearfix
+
+  - if @similar_gags.any?
+    .page-block
+      .page-block-title
+        .row
+          .columns
+            span Схожі товари::
+            #similar-windowsill-dots.owl-dots
+
+    .row
+      .columns
+        ul#news-windowsill
+          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+          - @similar_gags.each do |gag|
+            = render "partials/gag", gag: gag
