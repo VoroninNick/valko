@@ -66,12 +66,30 @@ class Windowsill < ActiveRecord::Base
   enumerize :type_of_surface, in: [:'wood', :'glossiness', :'opaque']
 
 
+  def get_image
+    windowsill_photos.first.try(:image)
+  end
+
   rails_admin do
     navigation_label 'Підвіконня'
 
     label 'Підвіконня'
     label_plural 'Підвіконня'
 
+    list do
+      field :title do
+        label 'Назва:'
+      end
+      field :get_image, :paperclip do
+        label 'Аватар:'
+      end
+      field :description do
+        label 'Опис'
+      end
+      field :brand do
+        label 'Бренд'
+      end
+    end
     edit do
       # field :published do
       #   label 'Чи публікувати?'
