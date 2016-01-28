@@ -122,3 +122,69 @@
       .about-trademark
         .about-trademark-avatar
           opacity: 0
+
+.basket-wrap
+  .basket-header
+    margin-top: 20px
+    margin-bottom: 30px
+  .title
+    +default_font_style(#607d8b, 24, 500, 28.8)
+    text-transform: uppercase
+    svg
+      height: 28.8px
+      path
+        fill: #607d8b
+  .basket-list
+    border-bottom: 3px solid #eceff1
+    margin-bottom: 18px
+    .basket-list-one
+      border-top: 1px solid #eceff1
+      .basket-delete-item-wrap
+        height: 0
+        padding-bottom: 275%
+        position: relative
+      a.delete-item
+        display: block
+        width: 40px
+        height: 40px
+        padding: 10px
+        +my_center_align()
+          position: absolute
+        svg
+          path
+            fill: #d1d3d4
+      .image
+        border: 5px solid #eceff1
+        height: 0
+        padding-bottom: 100%
+      .title
+        color: #1c282e
+        margin-top: 16px
+      .brand-title
+        +default_font_style(#939598, 12, 400, 21)
+        margin-bottom: 10px
+      p
+        +default_font_style(#607d8b, 16, 500, 20)
+        margin-bottom: 0px
+        span
+          +default_font_style(#939598, 12, 400, 21)
+          width: 83px
+          display: inline-block
+        sup
+          font-size: 50%
+      &:hover
+        a.delete-item
+          svg
+            path
+              fill: #607d8b
+
+  .basket-footer
+    padding-bottom: 95px
+    .basket-total-price-wrap
+      background: #eceff1
+      height: 100px
+      margin-bottom: 20px
+
+    .red-button
+      margin-left: 20px
+

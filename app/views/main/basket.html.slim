@@ -1,0 +1,42 @@
+.basket-wrap
+  .row.basket-header
+    .medium-6.columns
+      .title
+        = inline_svg "Valko-icon-korzuna.svg"
+        |Перелік товарів
+    .medium-6.columns
+  .basket-list
+    - 3.times do
+      .basket-list-one
+        .row
+          .medium-1.columns
+            .basket-delete-item-wrap
+              a.delete-item
+                = inline_svg "ic_delete_black_24px.svg"
+          .medium-2.columns
+            .image style="background: url('#{asset_path("61.jpg")}')no-repeat center center;"
+          .medium-6.columns
+            .title glance 2w
+            .brand-title Підвіконня Crystalit
+            p
+              span Ширина:
+              |300
+              sup мм
+            p
+              span Довжина:
+              |450
+              sup мм
+          .medium-1.columns
+            .input.basket-count-product
+              input#count-product type="number" value="1"
+          .medium-2.columns
+  .basket-footer
+    .row
+      .columns
+        .basket-total-price-wrap
+    .row
+      .columns
+        .material-component.ripple.button-box-shadow.red-button.right
+          a Доставка
+        .material-component.ripple.button-box-shadow.blue-text.right
+          a Повернутись

@@ -72,7 +72,9 @@ class MainController < ApplicationController
     @gag = Gag.find_by_slug(params[:title])
     @similar_gags = Gag.where.not(id: @gag)
   end
-
+  def basket
+    
+  end
 
   def dev
     render inline: session["main#windowsill"].keys.inspect

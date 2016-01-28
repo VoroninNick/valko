@@ -18,7 +18,7 @@ html lang="en"
     = render "layouts/header"
 
     .cart-link
-      a
+      a href=basket_path
         = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
         = inline_svg "Valko-icon-korzuna.svg"
 
@@ -26,7 +26,7 @@ html lang="en"
       = render "layouts/main_menu"
       = yield
       .cart-link.cart-link-m
-        a
+        a href=basket_path
           = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
           = inline_svg "Valko-icon-korzuna.svg"
       .main-footer
