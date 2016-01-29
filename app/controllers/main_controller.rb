@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+  before_action :set_cart, only: [:basket]
   after_action :recently_viewed, only: :one_windowsill
 
   def recently_viewed

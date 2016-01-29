@@ -28,11 +28,12 @@ ul.breadcrumbs
       = raw @windowsill.description
 
       .windowsill-calculator-wrap
-        .row
-          form
+        form.ajax-popup-form action=line_items_path(id: @windowsill.id)
+          .row
+            input type="hidden" name="type" value=Windowsill.name
             .columns
               .input.count-windowsill
-                input#count-windowsills type="number" value="1"
+                input#count-windowsills type="number" value="1" name="quantity"
                 label for="count-windowsills" Кількість
               .windowsill-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
@@ -43,61 +44,61 @@ ul.breadcrumbs
                 button type="submit" В кошик
             .clearfix
 
-        .row
-          .columns
-            b Введіть розміри підвіконня
-            p Система автоматично підрахує вартість згідно вказаних ромірів
-        .row
-          .medium-7.columns
-            = select_tag "windowsill-prices-option", options_for_select(@windowsill.prices.options_for_select)
-            input#windowsill-long type="number" value="1000"
-            = inline_svg "Valko-pidvikonnya-v1.svg"
-            .row
-              .small-6.columns
-                - if @windowsill.with_flap.present?
-                  .cr-wrap
-                    - if @windowsill.brand && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
-                      - gag_price = @windowsill.brand.gag.price
-                    - else
-                      - gag_price = 0
-                    input.custom-radiobutton#with_flap type="radio" value=gag_price name="windowsill_option" checked="checked"
-                    label.custom-radiobutton-icon for="with_flap"
-                    label.custom-radiobutton-label for="with_flap"
-                      |З заглушкою
-              .small-6.columns
-                - if @windowsill.without_cap.present?
-                  .cr-wrap
-                    input.custom-radiobutton#without_cap type="radio" value="pretty" name="windowsill_option"
-                    label.custom-radiobutton-icon for="without_cap"
-                    label.custom-radiobutton-label for="without_cap"
-                      |Без заглушки:
-              .small-6.columns
-                - if @windowsill.on_the_edge.present?
-                  .cr-wrap
-                    input.custom-radiobutton#on_the_edge type="radio" value="pretty" name="windowsill_option"
-                    label.custom-radiobutton-icon for="on_the_edge"
-                    label.custom-radiobutton-label for="on_the_edge"
-                      |З кромкою:
-              .small-6.columns
-                - if @windowsill.customised.present?
-                  .cr-wrap
-                    input.custom-radiobutton#customised type="radio" value="customized" name="windowsill_option"
-                    label.custom-radiobutton-icon for="customised"
-                    label.custom-radiobutton-label for="customised"
-                      |Нестандарт:
+          .row
+            .columns
+              b Введіть розміри підвіконня
+              p Система автоматично підрахує вартість згідно вказаних ромірів
+          .row
+            .medium-7.columns
+              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select)
+              input#windowsill-long type="number" name="long" value="1000"
+              = inline_svg "Valko-pidvikonnya-v1.svg"
+              .row
+                .small-6.columns
+                  - if @windowsill.with_flap.present?
+                    .cr-wrap
+                      - if @windowsill.brand && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
+                        - gag_price = @windowsill.brand.gag.price
+                      - else
+                        - gag_price = 0
+                      input.custom-radiobutton#with_flap type="radio" value="with_gag" data-status=gag_price name="windowsill_option" checked="checked"
+                      label.custom-radiobutton-icon for="with_flap"
+                      label.custom-radiobutton-label for="with_flap"
+                        |З заглушкою
+                .small-6.columns
+                  - if @windowsill.without_cap.present?
+                    .cr-wrap
+                      input.custom-radiobutton#without_cap type="radio" value="pretty" data-status="0" name="windowsill_option"
+                      label.custom-radiobutton-icon for="without_cap"
+                      label.custom-radiobutton-label for="without_cap"
+                        |Без заглушки:
+                .small-6.columns
+                  - if @windowsill.on_the_edge.present?
+                    .cr-wrap
+                      input.custom-radiobutton#on_the_edge type="radio" value="pretty" data-status="0" name="windowsill_option"
+                      label.custom-radiobutton-icon for="on_the_edge"
+                      label.custom-radiobutton-label for="on_the_edge"
+                        |З кромкою:
+                .small-6.columns
+                  - if @windowsill.customised.present?
+                    .cr-wrap
+                      input.custom-radiobutton#customised type="radio" value="customized" data-status="0" name="windowsill_option"
+                      label.custom-radiobutton-icon for="customised"
+                      label.custom-radiobutton-label for="customised"
+                        |Нестандарт:
 
-          .medium-5.columns
-            i * Не всім брендам доступні всі можливі ширини. Деталі уточнюйте у менеджера.
+            .medium-5.columns
+              i * Не всім брендам доступні всі можливі ширини. Деталі уточнюйте у менеджера.
 
-        .row
-          .medium-7.columns
-            .attention-message
-              .icon
-                = inline_svg "ic_report_problem_black_24px.svg"
-              .description
-                .title УВАГА!
-                .body Ціна на нестандартні вироби обраховується менеджером після оформлення покупки
-              .clearfix
+          .row
+            .medium-7.columns
+              .attention-message
+                .icon
+                  = inline_svg "ic_report_problem_black_24px.svg"
+                .description
+                  .title УВАГА!
+                  .body Ціна на нестандартні вироби обраховується менеджером після оформлення покупки
+                .clearfix
 
 
   .row

@@ -1,5 +1,4 @@
 class LineItemsController < ApplicationController
-  include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -26,9 +25,35 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    windowsill = Windowsill.find(params[:id])
-    @line_item = @cart.line_items.build(windowsill: windowsill)
     # @line_item = LineItem.new(line_item_params)
+
+    type = params[:type]
+    windowsill_id = params[:id]
+    quantity = params[:quantity]
+    weight = params[:weight]
+    long = params[:long]
+    options = params[:windowsill_option]
+
+    if type == 'Windowsill'
+      windowsill = Windowsill.find(windowsill_id)
+      #
+      existed_item = @cart.line_items.where(windowsill_id: windowsill_id).where(weight: weight).where(long: long)
+
+      if existed_item.count > 0
+        @line_item = existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(quantity)
+      else
+        if options == 'with_gag'
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: true)
+        else
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type)
+        end
+      end
+
+    end
 
     respond_to do |format|
       if @line_item.save
@@ -73,6 +98,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:windowsill_id, :quantity)
+      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :weight, :long)
     end
 end
