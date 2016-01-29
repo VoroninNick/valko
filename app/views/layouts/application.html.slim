@@ -18,17 +18,31 @@ html lang="en"
     = render "layouts/header"
 
     .cart-link
-      a href=basket_path
-        = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
-        = inline_svg "Valko-icon-korzuna.svg"
+      - if current_page?(basket_path)
+        a href=URI(request.referer).path class=cp(basket_path)
+          = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+          = inline_svg "Valko-icon-korzuna.svg"
+          = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+      - else
+        a href=basket_path class=cp(basket_path)
+          = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+          = inline_svg "Valko-icon-korzuna.svg"
+          = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
 
     main
       = render "layouts/main_menu"
       = yield
       .cart-link.cart-link-m
-        a href=basket_path
-          = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
-          = inline_svg "Valko-icon-korzuna.svg"
+        - if current_page?(basket_path)
+          a href=URI(request.referer).path class=cp(basket_path)
+            = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+            = inline_svg "Valko-icon-korzuna.svg"
+            = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+        - else
+          a href=basket_path class=cp(basket_path)
+            = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+            = inline_svg "Valko-icon-korzuna.svg"
+            = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
       .main-footer
         .row
           .medium-11.columns
