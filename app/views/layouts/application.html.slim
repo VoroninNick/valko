@@ -31,6 +31,10 @@ html lang="en"
 
     main
       = render "layouts/main_menu"
+
+      - if notice
+        p#notice = notice
+
       = yield
       .cart-link.cart-link-m
         - if current_page?(basket_path)

@@ -1,9 +1,6 @@
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
-  /li
-    a href=windowsill_path Підвіконня
-  /li.disabled Gene Splicing
   li
     span Підвіконня
 
@@ -28,6 +25,17 @@ ul.breadcrumbs
             p
               |Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
           .clearfix
+
+  /.row
+    .columns
+      = session["main#windowsill"]
+  /.row
+    .columns
+      = session["main#windowsill"].size
+  /.row
+    .columns
+      = link_to reset_filterrific_url do
+        |Скинути всі фільтри
 
   .windowsill-catalog-list-body
     = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|

@@ -23,6 +23,11 @@
 # t.attachment :video_poster
 # t.boolean :video_published
 class Windowsill < ActiveRecord::Base
+
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+
   attr_accessible *attribute_names
   belongs_to :brand
 
@@ -262,4 +267,14 @@ class Windowsill < ActiveRecord::Base
   scope :with_kapinos, lambda { |kapinos|
                                where(kapinos: [ *kapinos])
                              }
+
+  private
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
 end

@@ -6,10 +6,10 @@ module ApplicationHelper
 
   def windowsill_list_id
     # windowsill_ids = session[:recently_viewed].split(",").map(&:to_i).map(&:to_i)
-    windowsill_ids = session[:recently_viewed].split(",")
+    windowsill_ids = session[:recently_viewed].split(",") if session[:recently_viewed]
   end
   def recently_viewed
-    if windowsill_list_id.any?
+    if windowsill_list_id && windowsill_list_id.any?
       @recently_viewed = Windowsill.find(*windowsill_list_id) || []
       @recently_viewed = [@recently_viewed] if @recently_viewed && !@recently_viewed.respond_to?(:any?)
     else
