@@ -33,11 +33,14 @@ class LineItemsController < ApplicationController
     weight = params[:weight]
     long = params[:long]
     options = params[:windowsill_option]
-
+    option_return = false
+    if options == 'with_gag'
+      option_return = true
+    end
     if type == 'Windowsill'
       windowsill = Windowsill.find(windowsill_id)
       #
-      existed_item = @cart.line_items.where(windowsill_id: windowsill_id).where(weight: weight).where(long: long)
+      existed_item = @cart.line_items.where(:windowsill_id => windowsill_id, :weight => weight, :long => long, :with_gag => option_return)
 
       if existed_item.count > 0
         @line_item = existed_item.first
@@ -49,7 +52,8 @@ class LineItemsController < ApplicationController
         if options == 'with_gag'
           @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: true)
         else
-          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type)
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false)
+          test = 'e'
         end
       end
 

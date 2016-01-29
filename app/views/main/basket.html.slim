@@ -1,38 +1,50 @@
 .basket-wrap
   .row.basket-header
-    .medium-6.columns
+    .medium-4.columns
       .title
         = inline_svg "Valko-icon-korzuna.svg"
         |Перелік товарів
-    .medium-6.columns
-  .basket-list
-    - @cart.line_items.each do |item|
-      .basket-list-one
-        .row
-          .medium-1.columns
-            .basket-delete-item-wrap
-              a.delete-item data-href=line_items_path data-line-item-id=item.id
-                = inline_svg "ic_delete_black_24px.svg"
-          .medium-2.columns
-            .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-          .medium-6.columns
-            .title = item.windowsill.title
-            .brand-title
-              |Підвіконня Crystalit
-              - if item.with_gag.present?
-                |&nbsp;(з заглушкою)
-            p
-              span Ширина:
-              = item.weight
-              sup мм
-            p
-              span Довжина:
-              = item.long
-              sup мм
-          .medium-1.columns
-            .input.basket-count-product
-              input#count-product type="number" value=item.quantity
-          .medium-2.columns
+    .medium-8.columns
+      ul.basket-navigation
+        li.current
+          .bn-icon 1
+          .bn-label Перелік товарів
+        li
+          .bn-icon 2
+          .bn-label Доставка
+        li
+          .bn-icon 3
+          .bn-label Підтвердження
+  .row
+    .columns
+      .basket-list
+        - @cart.line_items.each do |item|
+          .basket-list-one
+            .row
+              .medium-1.columns
+                .basket-delete-item-wrap
+                  a.delete-item data-href=line_items_path data-line-item-id=item.id
+                    = inline_svg "ic_delete_black_24px.svg"
+              .medium-2.columns
+                .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+              .medium-6.columns
+                .title = item.windowsill.title
+                .brand-title
+                  |Підвіконня Crystalit
+                  - if item.with_gag.present?
+                    |&nbsp;з заглушкою
+                p
+                  span Ширина:
+                  = item.weight
+                  sup мм
+                p
+                  span Довжина:
+                  = item.long
+                  sup мм
+              .medium-1.columns
+                .input.basket-count-product
+                  input#count-product type="number" value=item.quantity
+              .medium-2.columns
 
   .basket-footer
     .row
@@ -43,4 +55,4 @@
         .material-component.ripple.button-box-shadow.red-button.right
           a Доставка
         .material-component.ripple.button-box-shadow.blue-text.right
-          a Повернутись
+          a href=URI(request.referer).path Повернутись
