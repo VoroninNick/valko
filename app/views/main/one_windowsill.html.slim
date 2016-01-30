@@ -38,7 +38,11 @@ ul.breadcrumbs
               .windowsill-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .windowsill-price
-                  .wp-price = @windowsill.prices.first.value * 1 + (@windowsill.brand.gag.try(:price))
+                  - if @windowsill.brand.gag && @windowsill.brand.gag.price.present?
+                    .wp-price = @windowsill.prices.first.value * 1 + (@windowsill.brand.gag.try(:price))
+                  - else
+                    .wp-price = @windowsill.prices.first.value * 1
+
                   .wp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
