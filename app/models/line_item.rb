@@ -17,7 +17,7 @@ class LineItem < ActiveRecord::Base
 
   def price
     o = windowsill.prices.where(key: self.weight).first.value
-    if with_gag?
+    if with_gag? && windowsill.brand.gag
       if o
         return (o*self.long/1000) + windowsill.brand.gag.price
       else
