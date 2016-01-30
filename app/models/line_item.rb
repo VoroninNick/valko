@@ -15,4 +15,23 @@ class LineItem < ActiveRecord::Base
     self.quantity = self.quantity + count.to_i
   end
 
+  def price
+    o = windowsill.prices.where(key: self.weight).first.value
+    if with_gag?
+      if o
+        return (o*self.long/1000) + windowsill.brand.gag.price
+      else
+        return nil
+      end
+    else
+      if o
+        return o
+      else
+        return nil
+      end
+    end
+  end
+  def total_price
+    price * quantity
+  end
 end

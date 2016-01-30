@@ -198,6 +198,36 @@
           display: inline-block
         sup
           font-size: 50%
+      .basket-count-product
+        margin-top: 15px
+        input
+          height: 30px
+          padding: 0
+
+          +default_font_style(#bcbec0, 16, 500, 30)
+          border: none
+          border-bottom: 1px solid #bcbec0
+          box-shadow: none
+          outline: none
+          background: transparent
+          &:focus
+            +default_font_style(#263238, 16, 500, 30)
+            border-bottom: 2px solid #1e88e5
+
+
+      .one-total-price
+        +default_font_style(#1e88e5, 30, 500, 48)
+        font-family: 'Roboto', sans-serif
+        sup
+          font-size: 50%
+      .one-price
+        +default_font_style(#bcbec0, 18, 500, 48)
+        font-family: 'Roboto', sans-serif
+        position: relative
+        top: -25px
+        sup
+          font-size: 50%
+
       &:hover
         a.delete-item
           svg
@@ -206,11 +236,23 @@
 
   .basket-footer
     padding-bottom: 95px
-    .basket-total-price-wrap
+    .basket-total-price
       background: #eceff1
       height: 100px
       margin-bottom: 20px
+      padding-top: 28px
+      padding-right: 30px
+      p
+        float: right
+        +default_font_style(#1e88e5, 30, 500, 30)
+        sub
+          +default_font_style(#bcbec0, 18, 500, 30)
+          position: relative
+          top: -6px
 
+        sup
+          +default_font_style(#1e88e5, 30, 400, 30)
+          font-size: 60%
     .red-button
       margin-left: 20px
 

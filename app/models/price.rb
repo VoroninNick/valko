@@ -25,6 +25,6 @@ class Price < ActiveRecord::Base
   end
 
   def self.options_for_select
-    order('LOWER(key)').map { |e| [e.key, e.value] }
+    order('LOWER(key)').map { |e| {key: e.key, value: e.value} }
   end
 end

@@ -50,7 +50,10 @@ ul.breadcrumbs
               p Система автоматично підрахує вартість згідно вказаних ромірів
           .row
             .medium-7.columns
-              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select)
+              /= select_tag "weight", options_for_select(@windowsill.prices.options_for_select)
+              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select.map{ |c| [c[:key], c[:key], { 'data-value'=>c[:value] }] } )
+              /= @windowsill.prices.options_for_select.size
+              /= f.select :country_id, options_for_select(@countries.map{ |c| [c.name, c.id, {'data-currency_code'=>c.currency_code}] }, selected_key = f.object.country_id) %
               input#windowsill-long type="number" name="long" value="1000"
               = inline_svg "Valko-pidvikonnya-v1.svg"
               .row

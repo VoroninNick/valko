@@ -36,20 +36,30 @@
                 p
                   span Ширина:
                   = item.weight
-                  sup мм
+                  sup &nbsp;мм
                 p
                   span Довжина:
                   = item.long
-                  sup мм
+                  sup &nbsp;мм
               .medium-1.columns
                 .input.basket-count-product
                   input#count-product type="number" value=item.quantity
               .medium-2.columns
+                .one-total-price
+                  = item.total_price
+                  sup &nbsp;грн.
+                .one-price
+                  = item.price
+                  sup &nbsp;грн./шт.
 
   .basket-footer
     .row
       .columns
-        .basket-total-price-wrap
+        .basket-total-price
+          p
+            sub Σ:
+            = @cart.total_price
+            sup &nbsp;грн.
     .row
       .columns
         .material-component.ripple.button-box-shadow.red-button.right

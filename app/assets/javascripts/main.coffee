@@ -17,11 +17,11 @@ windowsillCalculator = () ->
   $total_price = $wrap.find('.wp-price')
 
   count_element = $wrap.find('#count-windowsills').val()
-  weight_element = $wrap.find(':selected').val()
+  weight_element = $wrap.find(':selected').attr('data-value')
   long_element = $wrap.find('#windowsill-long').val()/1000
 
 #  console.log count_element
-#  console.log weight_element
+  console.log 'weight',weight_element
 #  console.log long_element
   gag_price = 0
   if $('input#with_flap').is(':checked')
