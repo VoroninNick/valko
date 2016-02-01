@@ -62,6 +62,8 @@ class Windowsill < ActiveRecord::Base
                     default_url: "/images/:style/missing.png"
 
   validates_attachment_content_type :video_poster, content_type: /\Aimage\/.*\Z/
+  validates_presence_of :brand, :message => "Виберіть бренд!"
+
 
   has_many :photo_galleries, as: :imageable
   attr_accessible :photo_galleries
