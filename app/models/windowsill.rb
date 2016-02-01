@@ -47,7 +47,13 @@ class Windowsill < ActiveRecord::Base
   accepts_nested_attributes_for :prices, allow_destroy: true
   attr_accessible :prices_attributes
 
-  before_save { save_slug(title, slug) }
+  def to_slug
+    "#{brand.slug}-#{title.parameterize}"
+  end
+  def save_slug
+    self.slug = to_slug
+  end
+  before_save :save_slug
 
   attr_accessible :video_poster
   has_attached_file :video_poster,
@@ -93,6 +99,9 @@ class Windowsill < ActiveRecord::Base
       end
       field :brand do
         label 'Бренд'
+      end
+      field :slug do
+
       end
     end
     edit do
