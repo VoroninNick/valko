@@ -258,19 +258,87 @@ $(document).ready ->
 #===========================================================
   $('a.delete-item').click (e)->
     $this = $(@)
+    $wrap = $this.closest('.basket-wrap')
+    $total_price = $wrap.find('.basket-total-price b')
+    $item = $this.closest('.basket-list-one')
+    $item_price = $item.find('.one-total-price')
+
     action_path = $this.attr('data-href')+'/'+$this.attr('data-line-item-id')
 
     token = $(this).data('token')
 
+#    console.log 'item price:', $item_price.text()
+#    console.log 'total price:', parseInt($total_price.text()
+    rez = parseInt($total_price.text()) - parseInt($item_price.text())
+    console.log 'rez:', rez
     $.ajax
       url: action_path
       type: 'post'
 #      data: {_method: 'delete', _token :token},
       data: {_method: 'delete'}
-      success:
-        alert 'deleted'
+      success: ->
+        $total_price.text(rez)
+        $item.remove()
 
     e.preventDefault()
+
+#===========================================================
+# update quantity items
+#===========================================================
+  $('.basket-count-product input').change ->
+    $this = $(@)
+    $wrap = $this.closest('.basket-wrap')
+    $total_price = $wrap.find('.basket-total-price b')
+    $item = $this.closest('.basket-list-one')
+    $item_total_price = $item.find('.one-total-price')
+
+    default_total_price = parseInt($this.attr 'data-total-price')
+    start_quantity = parseInt($this.attr 'data-old-value')
+    item_price = parseInt($item.find('.one-price b').text())
+
+    total_price = default_total_price - start_quantity * item_price
+
+#    console.log 'total price old:', total_price
+#    console.log 'total price new:', total_price + parseInt(@value*item_price)
+
+    $total_price.text(total_price + parseInt(@value*item_price))
+
+#    console.log 'quantity:', @value
+
+    $product_id = $this.attr 'data-product-id'
+    $weight = $this.attr 'data-weight'
+    $long = $this.attr 'data-long'
+    $type_product = $this.attr 'data-type'
+    $gag = $this.attr 'data-gag'
+
+    console.log 'product id:', $product_id, 'weight:', $weight, 'long:', $long, 'type:', $type_product, 'gag:', $gag, 'value:', parseInt($this.val())
+    action_path = $this.attr('data-href')+'/'+$this.attr('data-line-item-id')
+
+    DataToSend =
+      product_id: $product_id
+      quantity: parseInt($this.val())
+      weight: $weight
+      long: $long
+      class_name: $type_product
+      with_gag: $gag
+
+    #Call jQuery ajax
+    $.ajax
+      type: "PUT"
+      contentType: "application/json; charset=utf-8"
+      url: action_path
+      data: JSON.stringify(DataToSend)
+      dataType: "json"
+      before: ->
+#          alert 'before'
+      success: (msg) ->
+
+#          loadPartials()
+#          alert 'succes'
+      error: (err) ->
+        alert "Error"
+
+
 
 
 

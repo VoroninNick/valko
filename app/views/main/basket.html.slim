@@ -28,7 +28,8 @@
               .medium-2.columns
                 .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
               .medium-6.columns
-                .title = item.windowsill.title
+                a href=one_windowsill_path(item.windowsill.slug)
+                  .title = item.windowsill.title
                 .brand-title
                   |Підвіконня Crystalit
                   - if item.with_gag.present?
@@ -43,13 +44,21 @@
                   sup &nbsp;мм
               .medium-1.columns
                 .input.basket-count-product
-                  input#count-product type="number" value=item.quantity
+                  /.custom-input =item.quantity
+                    .ci.ci-up
+                    .ci.ci-up
+                  - if item.with_gag.present?
+                    input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="true"
+                  - else
+                    input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="false"
+
               .medium-2.columns
                 .one-total-price
                   = item.total_price
                   sup &nbsp;грн.
                 .one-price
-                  = item.price
+                  b
+                    = item.price
                   sup &nbsp;грн./шт.
 
   .basket-footer
@@ -58,7 +67,8 @@
         .basket-total-price
           p
             sub Σ:
-            = @cart.total_price
+            b
+              = @cart.total_price
             sup &nbsp;грн.
     .row
       .columns
