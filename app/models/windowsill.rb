@@ -48,7 +48,7 @@ class Windowsill < ActiveRecord::Base
   attr_accessible :prices_attributes
 
   def to_slug
-    "#{brand.slug}-#{title.parameterize}"
+    "#{brand.slug}-#{id}-#{title.parameterize}"
   end
   def save_slug
     self.slug = to_slug
