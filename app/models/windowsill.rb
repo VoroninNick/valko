@@ -90,6 +90,9 @@ class Windowsill < ActiveRecord::Base
     label_plural 'Підвіконня'
 
     list do
+      field :id do
+
+      end
       field :title do
         label 'Назва:'
       end
