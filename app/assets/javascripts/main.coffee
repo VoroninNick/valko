@@ -73,7 +73,7 @@ $(document).ready ->
   $('#count-windowsills').change ->
     windowsillCalculator.call(this)
 
-  $('#windowsill-prices-option').change ->
+  $('#weight').change ->
     windowsillCalculator.call(this)
 
   $('input#windowsill-long').change ->
@@ -337,6 +337,20 @@ $(document).ready ->
 #          alert 'succes'
       error: (err) ->
         alert "Error"
+
+
+#===========================================================
+# cart states
+#===========================================================
+$('.cart-button').click ->
+  alert 'test'
+  $this = $(@)
+  $wrap = $this.closest('.cart-tab')
+  $cart_tabs = $('.cart-tab')
+
+  if $this.hasClass('cb-to-confirm')
+    $cart_tabs.removeClass('active')
+    $('.cart-confirmation').addClass('active')
 
 
 

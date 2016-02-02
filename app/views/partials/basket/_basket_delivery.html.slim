@@ -1,0 +1,80 @@
+.row.basket-header
+  .medium-5.columns
+    .title
+      = inline_svg "Valko-icon-basket-step-2.svg"
+      |Оформлення замовлення
+  .medium-7.columns
+    ul.basket-navigation
+      li
+        .bn-icon 1
+        .bn-label Перелік товарів
+      li.current
+        .bn-icon 2
+        .bn-label Доставка
+      li
+        .bn-icon 3
+        .bn-label Підтвердження
+
+  .basket-body
+    .row
+      .columns
+        h5 Контактні дані:
+
+    form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
+      .row
+        .medium-6.columns
+          .input.animate-input
+            .input-ico
+              =inline_svg "ic_person_48px.svg"
+            label Ваше ім’я
+            input name="name" type="text" required=""
+          .input.animate-input
+            .input-ico
+              =inline_svg "ic_phone_24px.svg"
+            label Контактний телефон
+            input name="phone" type="tel"
+
+          .input.animate-input.animated-select.is-completed
+            .input-ico
+              =inline_svg "Valko-icon-delivery.svg"
+            label Спосіб доставки
+            select
+              option Самовивіз
+              option Нова пошта
+              option Міст Експресс
+              option Делівері
+              option Інше
+
+        .medium-6.columns
+          .input.animate-input
+            .input-ico
+              =inline_svg "Valko-icon-username-surname.svg"
+            label Прізвище
+            input name="name" type="text" required=""
+          .input.animate-input
+            .input-ico
+              =inline_svg "ic_mail_24px.svg"
+            label Електронна скринька
+            input name="email" type="email"
+          .input.animate-input.animate-textarea
+            .input-ico
+              =inline_svg "ic_insert_comment_24px.svg"
+            label Додаткові примітки
+            textarea name="message" rows="1"
+    .row
+      .columns
+        p.notes * Місто та номер відділення вкажіть, будь ласка, в полі «Додаткові примітки».
+    .row
+      .columns
+        h5 Спосіб оплати:
+    .row
+      .columns
+        p Можливі різноманітні способи оплати - прохання уточнити у менеджера
+
+  .basket-footer
+    .row
+      .columns
+        .material-component.ripple.button-box-shadow.red-button.right.cart-button.cb-to-confirm
+          a.cart-button Підтвердити
+        .material-component.ripple.button-box-shadow.blue-text.right.cart-button
+          a До переліку товарів

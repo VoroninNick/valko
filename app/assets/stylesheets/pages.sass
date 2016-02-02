@@ -124,6 +124,12 @@
           opacity: 0
 
 .basket-wrap
+  .cart-tab
+    display: none
+    &.cart-item-list
+    &.active
+      display: block
+
   .basket-header
     margin-top: 20px
     margin-bottom: 30px
@@ -233,6 +239,14 @@
           svg
             path
               fill: #607d8b
+  .basket-body
+    h5
+      +default_font_style(#607d8b, 12, 400, 14)
+      text-transform: uppercase
+    p
+      +default_font_style(#939598, 14, 400, 21)
+      &.notes
+        padding-left: 35px
 
   .basket-footer
     padding-bottom: 95px

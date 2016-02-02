@@ -18,8 +18,6 @@ ul.breadcrumbs
         ul#windowsill-images-carousel
           - @windowsill.windowsill_photos.each do |slide|
             li
-              /a href=slide.image.url(:large) data-src=slide.image.url(:thumb)
-                /= image_tag slide.image.url(:thumb), class: 'hide'
               .image style="background: url('#{slide.image.url(:thumb)}')no-repeat center center;"
 
     .medium-8.columns
@@ -55,7 +53,7 @@ ul.breadcrumbs
           .row
             .medium-7.columns
               /= select_tag "weight", options_for_select(@windowsill.prices.options_for_select)
-              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select.map{ |c| [c[:key], c[:key], { 'data-value'=>c[:value] }] } )
+              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select.map{ |c| [c[:key], c[:key], { 'data-value'=>c[:value] }] }, selected: @windowsill.prices.first )
 
               input#windowsill-long type="number" name="long" value="1000"
               = inline_svg "Valko-pidvikonnya-v1.svg"
@@ -113,12 +111,12 @@ ul.breadcrumbs
         - if @windowsill.custom.present?
           li.tab-title
             a href="#custom_products" Нестандартні вироби
-        li.tab-title
+        li.tab-title.active
           a href="#specifications" Характеристики
         li.tab-title
           a href="#photo_and_video" Фото та відео
         - if !@windowsill.custom.present?
-          li.tab-title.active
+          li.tab-title
             a href="#useful_publications" Корисні публікації
         li.tab-title
           a href="#reviews" Відгуки
@@ -128,7 +126,7 @@ ul.breadcrumbs
           #custom_products.content
             = raw @windowsill.custom
 
-        #specifications.content
+        #specifications.content.active
           .row.text-center
             - if @windowsill.brand && @windowsill.brand.brand_icons.any?
               - @windowsill.brand.brand_icons.each do |bi|
@@ -163,7 +161,7 @@ ul.breadcrumbs
                   .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
 
         - if !@windowsill.custom.present?
-          #useful_publications.content.active
+          #useful_publications.content
             - if @windowsill.informations && @windowsill.informations.any?
               .row
                 .columns

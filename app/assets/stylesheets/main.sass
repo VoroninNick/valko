@@ -5,7 +5,7 @@
 @import "mixins"
 
 
-span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4
+span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4, h5
   font-family: 'Roboto', sans-serif
 a
   &:focus
@@ -1151,7 +1151,7 @@ form
     &:not(.animate-input)
       label
         opacity: .5
-    input, textarea
+    input, textarea, select
       font:
         size: rem-calc(16)
         weight: 400
@@ -1170,9 +1170,9 @@ form
         line-height: rem-calc(20)
         opacity: .5
 
-      input
+      input, select
         height: 30px
-      input, textarea
+      input, textarea, select
         position: relative
         width: 100%
         border: 0 solid #AFBDC4
@@ -1190,7 +1190,7 @@ form
           color: #607d8b
           font:
             size: rem-calc(12)
-        input, textarea
+        input, textarea, select
           border-bottom: 2px solid #1e88e5
 
       &.is-completed
@@ -1201,6 +1201,10 @@ form
         svg
           path
             fill: #607d8b
+    &.animated-select
+      select
+        margin: 0
+        padding: 0
 
   .button-wrap
     margin-top: 20px
@@ -1230,6 +1234,8 @@ form
         position: absolute
         bottom: -8px
         left: 0
+        svg
+          height: 22px
       &.is-active
         .input-ico
           svg
