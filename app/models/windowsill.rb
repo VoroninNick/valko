@@ -236,7 +236,9 @@ class Windowsill < ActiveRecord::Base
           :with_material,
           :with_decor,
           :with_surface,
-          :with_kapinos
+          :with_kapinos,
+          :with_color_type,
+          :with_color
       ]
   )
 
@@ -293,7 +295,14 @@ class Windowsill < ActiveRecord::Base
   scope :with_kapinos, lambda { |kapinos|
                                where(kapinos: [ *kapinos])
                              }
-
+  # with color type
+  scope :with_color_type, lambda { |value|
+                       where(color_type: [ *value])
+                     }
+  # with color
+  scope :with_color, lambda { |value|
+                          where(color: [ *value])
+                        }
   private
   def ensure_not_referenced_by_any_line_item
       if line_items.empty?
