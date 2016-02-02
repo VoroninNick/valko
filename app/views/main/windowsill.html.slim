@@ -101,9 +101,9 @@ ul.breadcrumbs
                     .filter-body
                       - Windowsill.type_of_surface.values.each do |surface|
                         .custom-checkbox
-                          = f.check_box(:with_type_of_surface, {multiple: true}, surface, nil)
-                          label.cch-icon for="filterrific_with_type_of_surface_#{surface}"
-                          label.cch-text for="filterrific_with_type_of_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
+                          = f.check_box(:with_surface, {multiple: true}, surface, nil)
+                          label.cch-icon for="filterrific_with_surface_#{surface}"
+                          label.cch-text for="filterrific_with_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
 
                 - if Windowsill.kapinos.values.any?
                   .control-filter

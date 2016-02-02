@@ -223,7 +223,7 @@ class Windowsill < ActiveRecord::Base
           :with_type,
           :with_material,
           :with_decor,
-          :with_type_of_surface,
+          :with_surface,
           :with_kapinos
       ]
   )
@@ -273,9 +273,9 @@ class Windowsill < ActiveRecord::Base
   scope :with_decor, lambda { |decor|
                      where(decor: [ *decor])
                    }
- # with type_of_surface
-  scope :with_type_of_surface, lambda { |surface|
-                     where(surface: [ *surface])
+ # with surface
+  scope :with_surface, lambda { |surface|
+                     where(type_of_surface: [ *surface])
                    }
   # with kapinos
   scope :with_kapinos, lambda { |kapinos|
