@@ -53,7 +53,7 @@ ul.breadcrumbs
           .row
             .medium-7.columns
               /= select_tag "weight", options_for_select(@windowsill.prices.options_for_select)
-              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select.map{ |c| [c[:key], c[:key], { 'data-value'=>c[:value] }] }, selected: @windowsill.prices.first )
+              = select_tag "weight", options_for_select(@windowsill.prices.options_for_select.map{ |c| [c[:key], c[:key], { 'data-value'=>c[:value] }] }, "#{@windowsill.prices.first.key}" )
 
               input#windowsill-long type="number" name="long" value="1000"
               = inline_svg "Valko-pidvikonnya-v1.svg"
