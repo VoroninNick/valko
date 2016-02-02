@@ -290,7 +290,7 @@ $(document).ready ->
     $wrap = $this.closest('.basket-wrap')
     $total_price = $wrap.find('.basket-total-price b')
     $item = $this.closest('.basket-list-one')
-    $item_total_price = $item.find('.one-total-price')
+    $item_total_price = $item.find('.one-total-price b')
 
     default_total_price = parseInt($this.attr 'data-total-price')
     start_quantity = parseInt($this.attr 'data-old-value')
@@ -300,7 +300,7 @@ $(document).ready ->
 
 #    console.log 'total price old:', total_price
 #    console.log 'total price new:', total_price + parseInt(@value*item_price)
-
+    $item_total_price.text(parseInt(@value*item_price))
     $total_price.text(total_price + parseInt(@value*item_price))
 
 #    console.log 'quantity:', @value
@@ -321,22 +321,22 @@ $(document).ready ->
       long: $long
       class_name: $type_product
       with_gag: $gag
-
-    #Call jQuery ajax
-    $.ajax
-      type: "PUT"
-      contentType: "application/json; charset=utf-8"
-      url: action_path
-      data: JSON.stringify(DataToSend)
-      dataType: "json"
-      before: ->
-#          alert 'before'
-      success: (msg) ->
-
-#          loadPartials()
-#          alert 'succes'
-      error: (err) ->
-        alert "Error"
+#
+#    #Call jQuery ajax
+#    $.ajax
+#      type: "PUT"
+#      contentType: "application/json; charset=utf-8"
+#      url: action_path
+#      data: JSON.stringify(DataToSend)
+#      dataType: "json"
+#      before: ->
+##          alert 'before'
+#      success: (msg) ->
+#
+##          loadPartials()
+##          alert 'succes'
+#      error: (err) ->
+#        alert "Error"
 
 
 #===========================================================
