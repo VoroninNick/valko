@@ -8,3 +8,6 @@
       - gags.each do |gag|
         .medium-4.columns class=("end" if gag == gags.last)
           = render "partials/gag", gag: gag
+  .row
+    .columns
+      = paginate windowsill_list
