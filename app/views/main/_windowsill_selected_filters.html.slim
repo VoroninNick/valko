@@ -40,10 +40,46 @@
                   = t("enumerize.decor.#{decor}")
                   label.cch-text for="filterrific_with_decor_#{decor}"
                     = inline_svg"ic_close_black_24px.svg"
+      / kapinos
+      - if session["main#windowsill"].has_key?("with_kapinos")
+        .sf-group
+          .title Капінос
+          - if Windowsill.kapinos.values.any?
+            - Windowsill.kapinos.values.each do |kapinos|
+              - if session["main#windowsill"]["with_kapinos"].include? kapinos
+                .sf-filter
+                  = t("enumerize.kapinos.#{kapinos}")
+                  label.cch-text for="filterrific_with_kapinos_#{kapinos}"
+                    = inline_svg"ic_close_black_24px.svg"
+
+
+      / with_material
+      - if session["main#windowsill"].has_key?("with_material")
+        .sf-group
+          .title Матеріал
+          - if Windowsill.material.values.any?
+            - Windowsill.material.values.each do |material|
+              - if session["main#windowsill"]["with_material"].include? material
+                .sf-filter
+                  = t("enumerize.material.#{material}")
+                  label.cch-text for="filterrific_with_material_#{material}"
+                    = inline_svg"ic_close_black_24px.svg"
+
+      / with_material
+      /- if session["main#windowsill"].has_key?("with_material")
+        .sf-group
+          .title Матеріал
+          - if Windowsill.material.values.any?
+            - Windowsill.material.values.each do |material|
+              - if session["main#windowsill"]["with_material"].include? material
+                .sf-filter
+                  = t("enumerize.material.#{material}")
+                  label.cch-text for="filterrific_with_material_#{material}"
+                    = inline_svg"ic_close_black_24px.svg"
 
     .sf-footer
       = link_to reset_filterrific_url do
         = inline_svg"Valko-icon-sort-renew.svg"
         |Скинути всі фільтри
 
-  /= session["main#windowsill"]
+  = session["main#windowsill"]
