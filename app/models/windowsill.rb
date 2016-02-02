@@ -22,6 +22,9 @@
 # t.string :video_url
 # t.attachment :video_poster
 # t.boolean :video_published
+
+# t.string :color_type
+# t.string :color
 class Windowsill < ActiveRecord::Base
 
   has_many :line_items
@@ -77,7 +80,10 @@ class Windowsill < ActiveRecord::Base
   enumerize :kapinos, in: [:'round', :'direct']
   enumerize :material, in: [:'aluminum', :'steel', :'plastic']
   enumerize :type_of_surface, in: [:'wood', :'glossiness', :'opaque']
+  enumerize :color_type, in: [:'mat', :'glossy']
+  enumerize :color, in: [:'white', :'milk', :'silver', :'anthracite', :'yellow', :'blue', :'brick', :'red', :'cherry', :'brick_red', :'brown', :'dark_brown', :'green', :'light_green', :'zinc', :'nut', :'golden_oak']
 
+  # attr_accessor :color_type
 
   def get_image
     windowsill_photos.first.try(:image)
@@ -158,6 +164,12 @@ class Windowsill < ActiveRecord::Base
         active false
         field :material, :enum do
           label 'Матеріал:'
+        end
+        field :color_type, :enum do
+          label 'Тип кольору:'
+        end
+        field :color, :enum do
+          label 'Колір:'
         end
       end
       group :options do

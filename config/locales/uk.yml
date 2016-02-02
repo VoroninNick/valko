@@ -26,4 +26,25 @@ uk:
       wood: Дерево
       glossiness: Глянець
       opaque: Матовий
+    color_type:
+      mat: Матовий
+      glossy: Глянцевий
+    color:
+      white: Білий
+      milk: Молочний
+      silver: Срібний
+      anthracite: Антрацит
+      yellow: Жовтий
+      blue: Синій
+      brick: Цегловий
+      red: Червоний
+      cherry: Вишневий
+      brick_red: Цеглово-червоний
+      brown: Коричневий
+      dark_brown: Темно-коричневий
+      green: Зелений
+      light_green: Світло-зелений
+      zinc: Цинк
+      nut: Горіх
+      golden_oak: Золотий-дуб
 
