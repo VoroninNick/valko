@@ -5,7 +5,7 @@ ul.breadcrumbs
     a href=windowsill_path Підвіконня
   li
     span = @windowsill.title
-
+#lightgallery
 .one-windowsill-page
   .row
     .medium-4.columns.windowsill-photos
@@ -17,7 +17,7 @@ ul.breadcrumbs
       - if @windowsill.windowsill_photos.any?
         ul#windowsill-images-carousel
           - @windowsill.windowsill_photos.each do |slide|
-            li
+            li data-gallery-src=slide.image.url(:large) data-gallery-thumb=slide.image.url(:thumb)
               .image style="background: url('#{slide.image.url(:thumb)}')no-repeat center center;"
 
     .medium-8.columns

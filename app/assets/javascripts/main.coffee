@@ -62,9 +62,10 @@ $(document).ready ->
 #  windowsill photos carousel
 #===================================================================
   $("ul#windowsill-images-carousel").bxSlider
-    auto: false,
-    pause: 5000,
+    auto: false
+    pause: 5000
     controls: false
+    infiniteLoop: false
 
 #===================================================================
 #  windowsill calculator
@@ -159,6 +160,36 @@ $(document).ready ->
 #  $("#windowsill-images-carousel").lightSlider()
   $('.lightGallery').lightGallery ->
     thumbnail:true
+
+#===================================================================
+#  photo - video gallery
+#===================================================================
+  gallery = null
+
+  #  apartment light gallery
+  $('ul#windowsill-images-carousel li').click ->
+    $this = $(@)
+    $wrap = $this.closest('ul')
+    slides = $wrap.find('li')
+
+    cii = $this.index()
+    elmenetsListData = $.map($wrap.find('li'), (el) ->
+      {
+      src: $(el).attr 'data-gallery-src'
+      thumb: $(el).attr 'data-gallery-thumb'
+      }
+    )
+    console.log("cii", cii)
+    $gallery = $('#lightgallery')
+    $gallery.lightGallery
+      dynamic: true
+      dynamicEl: elmenetsListData
+      index: cii
+
+    gallery ?= $gallery.data("lightGallery")
+    gallery.index = cii
+    console.log("gallery", gallery)
+    window.gallery = gallery
 
 #===================================================================
 #  json parser
