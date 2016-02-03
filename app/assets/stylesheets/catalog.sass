@@ -229,6 +229,27 @@
       @media #{$medium-up}
         +grid-column(3)
 
+    .wch-table
+      p
+        margin: 0
+      .wt-row
+        border-bottom: 1px solid #eceff1
+        .wt-column
+          display: inline-block
+          float: left
+          &:first-child
+            width: 35%
+            p
+              +default_font_style(#263238, 14, 500, 50)
+          &:last-child
+            width: 65%
+            p
+              +default_font_style(#607d8b, 14, 400, 50)
+        &:after
+          content: ""
+          display: block
+          clear: both
+
 .windowsill-catalog-list-page
   .windowsill-catalog-list-header
     margin-bottom: 27px

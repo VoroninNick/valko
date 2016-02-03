@@ -117,7 +117,7 @@ ul.breadcrumbs
           a href="#photo_and_video" Фото та відео
         - if !@windowsill.custom.present?
           li.tab-title
-            a href="#useful_publications" Корисні публікації
+            a href="#useful_publications" Корисна інформація
         li.tab-title
           a href="#reviews" Відгуки
 
@@ -144,7 +144,35 @@ ul.breadcrumbs
                 = raw @windowsill.brand.description
 
               .medium-4.columns
-
+                .wch-table
+                  .wt-row
+                    .wt-column
+                      p Тип:
+                    .wt-column
+                      p = t("enumerize.wind_type.#{@windowsill.wind_type}")
+                  .wt-row
+                    .wt-column
+                      p Матеріал:
+                    .wt-column
+                      - @windowsill.material.present?
+                        p = t("enumerize.material.#{@windowsill.material}")
+                  .wt-row
+                    .wt-column
+                      p Колір:
+                    .wt-column
+                      - @windowsill.color.present?
+                        p = t("enumerize.color.#{@windowsill.color}")
+                  .wt-row
+                    .wt-column
+                      p Бренд:
+                    .wt-column
+                      p = @windowsill.brand.title
+                  .wt-row
+                    .wt-column
+                      p Капінос:
+                    .wt-column
+                      - @windowsill.kapinos.present?
+                        p = t("enumerize.kapinos.#{@windowsill.kapinos}")
 
         #photo_and_video.content
           .row.item-galleries.lightGallery
@@ -178,7 +206,9 @@ ul.breadcrumbs
         #reviews.content
           = disqus_init
           - disqus_thread
-
+  .row
+    .columns
+      = @windowsill.inspect
   - if @similar.any?
     .page-block
       .page-block-title
