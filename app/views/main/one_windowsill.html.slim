@@ -134,7 +134,10 @@ ul.breadcrumbs
                   .one-brand-characteristic
                     = inline_svg bi.icon.path
                     .title = bi.title
-          .hr
+
+          - if @windowsill.brand && @windowsill.brand.brand_icons.any?
+            .hr
+
           .windowsill-characteristic-body
             .row
               .medium-8.columns
