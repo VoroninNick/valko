@@ -13,6 +13,45 @@ a
 
 body
   background: #eceff1
+  &.opened-mobile-menu
+    overflow: hidden
+    .mobile-menu-panel, .mobile-menu-background-cover
+      display: block
+
+.mobile-menu-panel
+  background: #263238
+  width: 490px
+  height: 100%
+  position: fixed
+  z-index: 2
+  display: none
+  ul
+    margin: 0
+    list-style: none
+    margin-top: 15px
+    li
+      height: 62px
+      border-bottom: 1px solid #1c282e
+      a
+        +default_font_style(#fff, 20, 500, 62)
+        text-transform: uppercase
+        svg
+          display: inline
+          width: 85px
+          height: 62px
+          padding: 18px
+          float: left
+          path
+            fill: #656d72
+
+.mobile-menu-background-cover
+  background: #263238
+  opacity: .4
+  position: fixed
+  width: 100%
+  height: 100%
+  z-index: 1
+  display: none
 
 header
   background: #1976d2
@@ -111,7 +150,14 @@ header
             padding: 7px
             path
               fill: #eceff1
-
+    &.header-main-hide-for-mobile
+      @media screen and ( max-width: 950px)
+        display: none
+    &.header-main-show-for-mobile
+      @media screen and ( max-width: 950px)
+        width: 50%
+        p
+          text-align: right
 .button-box-shadow
   -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
   -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
@@ -206,44 +252,75 @@ main
 
   +grid-row()
 
-  nav#main-menu
+  .main-menu-wrap
     height: 60px
     background: #263238
-    ul
-      margin: 0
-      list-style: none
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+    -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+    position: relative
+    z-index: 10
+    nav#main-menu
       height: inherit
-      li
+      ul
+        margin: 0
+        list-style: none
         height: inherit
-        float: left
-        span
-          background: red
-        a
-          display: block
+        li
           height: inherit
-          color: #eceff1
-          font:
-            size: rem-calc(20)
-            weight: 500
-          line-height: 60px
-          text-transform: uppercase
-          padding-left: 15px
-          padding-right: 20px
-          padding-top: 0
-          padding-bottom: 0
-          svg
-            height: 100%
-            width: auto
-            padding-top: 21px
-            padding-bottom: 21px
-            float: left
-            margin-right: 10px
-        &:hover
-          background: #1c282e
+          float: left
+          span
+            background: red
           a
-            color: #1976d2
-          path
-            fill: #1976d2
+            display: block
+            height: inherit
+            color: #eceff1
+            font:
+              size: rem-calc(20)
+              weight: 500
+            line-height: 60px
+            text-transform: uppercase
+            padding-left: 15px
+            padding-right: 20px
+            padding-top: 0
+            padding-bottom: 0
+            svg
+              height: 100%
+              width: auto
+              padding-top: 21px
+              padding-bottom: 21px
+              float: left
+              margin-right: 10px
+          &:hover
+            background: #1c282e
+            a
+              color: #1976d2
+            path
+              fill: #1976d2
+    .mobile-main-menu
+      height: inherit
+      .right-controls
+        float: right
+        a
+          display: inline-block
+          height: 60px
+          width: 40px
+          padding-top: 18px
+          padding-bottom: 18px
+          svg
+            width: 100%
+            height: 100%
+            path
+              fill: #656d72
+              opacity: 1
+    @media screen and ( max-width: 950px)
+      nav#main-menu
+        display: none
+      .mobile-main-menu
+        display: none
+        @media screen and ( max-width: 950px)
+          display: block
+
   .main-body
     min-height: 523px
   .page-block

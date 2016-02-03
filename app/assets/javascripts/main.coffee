@@ -250,6 +250,22 @@ $(document).ready ->
 #    e.preventDefault()
 
 #===========================================================
+#  main-menu binder
+#===========================================================
+  $("a.navicon-button").click ->
+    $this = $(@)
+    $wrap = $this.closest('body')
+    if $wrap.hasClass('opened-mobile-menu')
+      $wrap.removeClass('opened-mobile-menu')
+    else
+      $wrap.addClass('opened-mobile-menu')
+
+    if $this.hasClass('open')
+      $this.removeClass('open')
+    else
+      $this.addClass('open')
+
+#===========================================================
 # add product to curt
 #===========================================================
   $('form.ajax-popup-form').submit (e) ->

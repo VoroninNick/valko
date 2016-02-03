@@ -156,3 +156,80 @@ input[type=radio].custom-radiobutton
     user-select: none
 
 
+$duration: .5s
+
+$size : 100%
+$toggled-size : .75
+
+$bg : #449A88
+$nav-bg  : #2A2A2A
+$content-bg : #656d72
+
+.navicon-button
+  display: inline-block
+  position: relative
+  padding: 1.75rem 1.5rem
+  transition: $duration/2
+  cursor: pointer
+  user-select: none
+  /*opacity: .8*/
+
+  .navicon:before, .navicon:after
+    transition: $duration/2
+
+  &:hover
+    transition: $duration
+    opacity: 1
+
+    .navicon:before, .navicon:after
+      transition: $duration/2
+
+    .navicon:before
+      top: .625rem
+    .navicon:after
+      top: -.625rem
+
+
+.navicon
+  position: relative
+  width: 2em
+  height: .25rem
+  background: $content-bg
+  transition: $duration
+  /*border-radius: 2.5rem*/
+
+  &:before, &:after
+    display: block
+    content: ""
+    height: .25rem
+    width: 2rem
+    background: $content-bg
+    position: absolute
+    z-index: 1
+    transition: $duration $duration/2
+  /*border-radius: 1rem*/
+
+  &:before
+    top: .5rem
+  &:after
+    top: -.5rem
+
+.open:not(.steps) .navicon:before,
+.open:not(.steps) .navicon:after
+  top: 0 !important
+
+.open .navicon:before,
+.open .navicon:after
+  transition: $duration
+
+.open.larr .navicon
+  &:before, &:after
+    width: 1.2rem
+  &:before
+    transform: rotate(45deg)
+    transform-origin: left top
+  &:after
+    transform: rotate(-45deg)
+    transform-origin: left bottom
+
+

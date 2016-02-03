@@ -27,7 +27,7 @@ header
       -else
         =image_tag "valko-logo-v1.png"
 
-    .medium-4.columns.header-main
+    .medium-4.columns.header-main.header-main-hide-for-mobile
       form
         .input
           input type="text" placeholder="Я шукаю..."
@@ -35,7 +35,7 @@ header
           button
             = inline_svg "Valko-icon-search.svg"
 
-    .medium-2.columns.header-main
+    .medium-2.columns.header-main.header-main-hide-for-mobile
       ul
         li
           a data-reveal-id="CallOrder"
@@ -43,7 +43,7 @@ header
         li
           a data-reveal-id="ContactForm"
             = inline_svg "Valko-icon-mail.svg"
-    .medium-3.columns.header-main
+    .medium-3.columns.header-main.header-main-show-for-mobile
       p
         |тел.:
         a href="tel:+380322941012" +38 (032) 294 10 12
