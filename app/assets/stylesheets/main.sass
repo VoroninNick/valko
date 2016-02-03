@@ -399,13 +399,13 @@ main
     h6
       +default_font_style(#263238, 16, 500, 26)
     p
-      +default_font_style(#263238, 14, 400, 26)
+      +default_font_style(#607d8b, 15, 400, 26)
     blockquote
-      +default_font_style(#1e88e5, 14, 300, 18)
+      +default_font_style(#1e88e5, 20, 300, 23)
       font:
         style: italic
         family: Georgia
-      width: 70%
+      width: 80%
       display: block
       margin: 0 auto
       margin-bottom: 20px
@@ -434,16 +434,22 @@ main
       list-style-type: none
       li
         text-indent: -18px
-        +default_font_style(#263238, 14, 400, 36)
+        +default_font_style(#607d8b, 15, 400, 26)
+        margin-bottom: 7px
         &:before
           content: "— "
           text-indent: -18px
           color: #42a5f5
     ol
       li
-        +default_font_style(#42a5f5, 14, 400, 36)
+        +default_font_style(#42a5f5, 15, 400, 26)
+        margin-bottom: 7px
         span
-          color: #263238
+          color: #607d8b
+
+//@media only screen and (min-width: 90.063em)
+  .row-wide
+    width: 1441px
 
 .promotions-page
   .one-promotions
