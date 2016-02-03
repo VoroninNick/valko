@@ -8,8 +8,9 @@
     a href=one_windowsill_path(windowsill.slug)
       - if windowsill.windowsill_photos && windowsill.windowsill_photos.first.image.exists?
         .image style="background: url('#{windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-    a.show-large-image
-      = inline_svg"Valko-icon-search.svg"
+    .show-large-image.lightGallery
+      a href=windowsill.windowsill_photos.first.image.url(:large)
+        = inline_svg"Valko-icon-search.svg"
   .ow-body
     .ow-body-information
       .small-6.columns
