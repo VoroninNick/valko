@@ -126,7 +126,7 @@ ul.breadcrumbs
           #custom_products.content
             = raw @windowsill.custom
 
-        #specifications.content.active
+        #specifications.content.article.active
           .row.text-center
             - if @windowsill.brand && @windowsill.brand.brand_icons.any?
               - @windowsill.brand.brand_icons.each do |bi|
@@ -206,9 +206,7 @@ ul.breadcrumbs
         #reviews.content
           = disqus_init
           - disqus_thread
-  .row
-    .columns
-      = @windowsill.inspect
+
   - if @similar.any?
     .page-block
       .page-block-title

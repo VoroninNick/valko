@@ -5,7 +5,7 @@
 @import "mixins"
 
 
-span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4, h5
+span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4, h5, h6, q
   font-family: 'Roboto', sans-serif
 a
   &:focus
@@ -386,6 +386,64 @@ main
         size: rem-calc(14)
         weight: 400
       line-height: 20px
+
+  .article
+    h3
+      +default_font_style(#1c282e, 24, 400, 28.8)
+      text-transform: uppercase
+    h4
+      +default_font_style(#1c282e, 18, 500, 21.6)
+      text-transform: uppercase
+    h5
+      +default_font_style(#263238, 18, 500, 26)
+    h6
+      +default_font_style(#263238, 16, 500, 26)
+    p
+      +default_font_style(#263238, 14, 400, 26)
+    blockquote
+      +default_font_style(#1e88e5, 14, 300, 18)
+      font:
+        style: italic
+        family: Georgia
+      width: 70%
+      display: block
+      margin: 0 auto
+      margin-bottom: 20px
+      border: none
+      padding-top: 32px
+      padding-bottom: 24px
+      position: relative
+      &:before, &:after
+        font:
+          family: Georgia
+          style: italic
+        position: absolute
+
+      &:before
+        content: '«'
+        +default_font_style(#607d8b, 60, 300, 30)
+        left: 15px
+        top: -5px
+      &:after
+        content: '»'
+        +default_font_style(#607d8b, 24, 300, 24)
+        right: 20px
+        bottom: -5px
+    i
+    ul
+      list-style-type: none
+      li
+        text-indent: -18px
+        +default_font_style(#263238, 14, 400, 36)
+        &:before
+          content: "— "
+          text-indent: -18px
+          color: #42a5f5
+    ol
+      li
+        +default_font_style(#42a5f5, 14, 400, 36)
+        span
+          color: #263238
 
 .promotions-page
   .one-promotions
