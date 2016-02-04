@@ -296,6 +296,29 @@
           top: 2px
           path
             fill: #1e88e5
+      .sorted-control
+        width: 40px
+        height: 40px
+        padding: 7px
+        float: right
+        cursor: pointer
+        svg
+          path, polygon
+            fill: #607d8b
+        &.sc-desc, &.sc-asc
+          svg
+            path, polygon
+              fill: #f50057
+        &.sc-desc
+          polygon
+            &.up
+            &.down
+              fill: #607d8b
+        &.sc-asc
+          polygon
+            &.up
+              fill: #607d8b
+            &.down
       span
         float: right
         color: #263238
@@ -306,10 +329,11 @@
         margin-right: 10px
         select
           width: auto
+          display: none
         svg
           height: 100%
-          width: 18px
-          margin-left: 15px
+          width: 100%
+          //margin-left: 15px
 
 .catalog-filters-wrap
   margin-top: 28px

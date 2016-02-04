@@ -456,6 +456,48 @@ $(document).ready ->
         $('.hch-arrow.valko-arrow').addClass('va-top')
         $('.hide-catalog-header .title').text('Згорнути')
 
+#===========================================================
+# catalog list order
+#===========================================================
+  $('body').on "click",".sorted-control", ->
+    $this = $(@)
 
+    if $this.hasClass('sby-date')
+      if $this.hasClass('sc-desc')
+        $('.wclb-header option').removeAttr('selected').filter('[value=created_at_asc]').attr('selected', true).change()
+        $this.removeClass('sc-desc')
+        $this.addClass('sc-asc')
+
+      else if $this.hasClass('sc-asc')
+        $('.wclb-header option').removeAttr('selected').filter('[value=created_at_desc]').attr('selected', true).change()
+        $this.removeClass('sc-asc')
+        $this.addClass('sc-desc')
+      else
+        $('.wclb-header option').removeAttr('selected').filter('[value=created_at_asc]').attr('selected', true).change()
+        $('.sorted-control.sby-name').removeClass('sc-asc sc-desc')
+        $this.addClass('sc-asc')
+
+
+    else if $this.hasClass('sby-name')
+      if $this.hasClass('sc-desc')
+        $('.wclb-header option').removeAttr('selected').filter('[value=title_asc]').attr('selected', true).change()
+        $this.removeClass('sc-desc')
+        $this.addClass('sc-asc')
+
+      else if $this.hasClass('sc-asc')
+        $('.wclb-header option').removeAttr('selected').filter('[value=title_desc]').attr('selected', true).change()
+        $this.removeClass('sc-asc')
+        $this.addClass('sc-desc')
+
+      else
+        $('.wclb-header option').removeAttr('selected').filter('[value=title_asc]').attr('selected', true).change()
+        $('.sorted-control.sby-date').removeClass('sc-asc sc-desc')
+        $this.addClass('sc-asc')
+
+
+#    $('.wclb-header option[value=created_at_asc]')
+#    $('.wclb-header option[value=created_at_desc]')
+#    $('.wclb-header option[value=title_asc]')
+#    $('.wclb-header option[value=title_desc]')
 
 

@@ -59,11 +59,27 @@ ul.breadcrumbs
             span
               |Сортувати по:
               = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
-              = inline_svg"Valko-icon-sort-alphabet.svg"
-              = inline_svg"Valko-icon-sort-time.svg"
-      /.row
-        = filterrific_sorting_link(@filterrific, :title)
-        = filterrific_sorting_link(@filterrific, :created_at)
+              - if session["main#windowsill"]["sorted_by"] == "created_at_desc"
+                .sorted-control.sby-date.sc-desc
+                  = inline_svg "Valko-icon-sort-time.svg"
+              - elsif session["main#windowsill"]["sorted_by"] == "created_at_asc"
+                .sorted-control.sby-date.sc-asc
+                  = inline_svg "Valko-icon-sort-time.svg"
+              - else
+                .sorted-control.sby-date
+                  = inline_svg "Valko-icon-sort-time.svg"
+
+
+              - if session["main#windowsill"]["sorted_by"] == "title_asc"
+                .sorted-control.sby-name.sc-asc
+                  = inline_svg"Valko-icon-sort-alphabet.svg"
+              - elsif session["main#windowsill"]["sorted_by"] == "title_desc"
+                .sorted-control.sby-name.sc-desc
+                  = inline_svg"Valko-icon-sort-alphabet.svg"
+              - else
+                .sorted-control.sby-name
+                  = inline_svg"Valko-icon-sort-alphabet.svg"
+
       .row
         .medium-3.columns
           .catalog-filters-wrap
