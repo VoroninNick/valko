@@ -368,36 +368,36 @@ $(document).ready ->
       long: $long
       class_name: $type_product
       with_gag: $gag
-#
-#    #Call jQuery ajax
-#    $.ajax
-#      type: "PUT"
-#      contentType: "application/json; charset=utf-8"
-#      url: action_path
-#      data: JSON.stringify(DataToSend)
-#      dataType: "json"
-#      before: ->
-##          alert 'before'
-#      success: (msg) ->
-#
-##          loadPartials()
-##          alert 'succes'
-#      error: (err) ->
-#        alert "Error"
+
+    #Call jQuery ajax
+    $.ajax
+      type: "PUT"
+      contentType: "application/json; charset=utf-8"
+      url: action_path
+      data: JSON.stringify(DataToSend)
+      dataType: "json"
+      before: ->
+#          alert 'before'
+      success: (msg) ->
+
+#          loadPartials()
+#          alert 'succes'
+      error: (err) ->
+        alert "Error"
 
 
 #===========================================================
 # cart states
 #===========================================================
-  $('.cart-button').click ->
-    alert 'test'
+  $('.cart-button a').click ->
     $this = $(@)
     $wrap = $this.closest('.cart-tab')
-    $cart_tabs = $('.cart-tab')
+    go_to = $this.attr('data-step')
 
-    if $this.hasClass('cb-to-confirm')
-      $cart_tabs.removeClass('active')
-      $('.cart-confirmation').addClass('active')
+#    console.log 'attribute:',go_to
+    $('.cart-tab').removeClass('active')
+    $(".cart-tab.#{go_to}").addClass('active')
+
 
 
 #===========================================================
