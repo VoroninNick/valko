@@ -415,6 +415,15 @@ $(document).ready ->
 
   if $.session.get("catalog-header-status") == 'hiden'
     $('.windowsill-catalog-list-header').addClass('hiden-catalog-header')
+    if $('.hch-arrow.valko-arrow').hasClass('va-top')
+      $('.hch-arrow.valko-arrow').removeClass('va-top')
+      $('.hch-arrow.valko-arrow').addClass('va-bottom')
+      $('.hide-catalog-header .title').text('Розгорнути')
+    else
+      $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+      $('.hch-arrow.valko-arrow').addClass('va-top')
+      $('.hide-catalog-header .title').text('Згорнути')
+
 
   $('.hide-catalog-header').click ->
     $this = $(@)
@@ -423,11 +432,29 @@ $(document).ready ->
     if $obj.hasClass('hiden-catalog-header')
       $obj.removeClass('hiden-catalog-header')
       $.session.set("catalog-header-status", "open")
-#      localStorage['catalog-header-status'] = 'hiden'
+
+      if $('.hch-arrow.valko-arrow').hasClass('va-top')
+        $('.hch-arrow.valko-arrow').removeClass('va-top')
+        $('.hch-arrow.valko-arrow').addClass('va-bottom')
+        $('.hide-catalog-header .title').text('Розгорнути')
+      else
+        $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+        $('.hch-arrow.valko-arrow').addClass('va-top')
+        $('.hide-catalog-header .title').text('Згорнути')
+
     else
       $obj.addClass('hiden-catalog-header')
-#      localStorage['catalog-header-status'] = 'open'
       $.session.set("catalog-header-status", "hiden")
+      $('.hide-catalog-header .title').text('Розгорнути')
+
+      if $('.hch-arrow.valko-arrow').hasClass('va-top')
+        $('.hch-arrow.valko-arrow').removeClass('va-top')
+        $('.hch-arrow.valko-arrow').addClass('va-bottom')
+        $('.hide-catalog-header .title').text('Розгорнути')
+      else
+        $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+        $('.hch-arrow.valko-arrow').addClass('va-top')
+        $('.hide-catalog-header .title').text('Згорнути')
 
 
 
