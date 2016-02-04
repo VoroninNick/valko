@@ -389,16 +389,45 @@ $(document).ready ->
 #===========================================================
 # cart states
 #===========================================================
-$('.cart-button').click ->
-  alert 'test'
-  $this = $(@)
-  $wrap = $this.closest('.cart-tab')
-  $cart_tabs = $('.cart-tab')
+  $('.cart-button').click ->
+    alert 'test'
+    $this = $(@)
+    $wrap = $this.closest('.cart-tab')
+    $cart_tabs = $('.cart-tab')
 
-  if $this.hasClass('cb-to-confirm')
-    $cart_tabs.removeClass('active')
-    $('.cart-confirmation').addClass('active')
+    if $this.hasClass('cb-to-confirm')
+      $cart_tabs.removeClass('active')
+      $('.cart-confirmation').addClass('active')
 
+
+#===========================================================
+# page up
+#===========================================================
+  $('.scroll-top-button').click ->
+    $("html, body").animate
+      scrollTop: 0
+    , 800
+    false
+
+#===========================================================
+# catalog hiden header
+#===========================================================
+
+  if $.session.get("catalog-header-status") == 'hiden'
+    $('.windowsill-catalog-list-header').addClass('hiden-catalog-header')
+
+  $('.hide-catalog-header').click ->
+    $this = $(@)
+    $wrap = $this.closest('.main-body')
+    $obj = $wrap.find('.windowsill-catalog-list-header')
+    if $obj.hasClass('hiden-catalog-header')
+      $obj.removeClass('hiden-catalog-header')
+      $.session.set("catalog-header-status", "open")
+#      localStorage['catalog-header-status'] = 'hiden'
+    else
+      $obj.addClass('hiden-catalog-header')
+#      localStorage['catalog-header-status'] = 'open'
+      $.session.set("catalog-header-status", "hiden")
 
 
 

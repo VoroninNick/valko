@@ -4,7 +4,15 @@ ul.breadcrumbs
   li
     span Підвіконня
 
+  .hide-catalog-header
+    |Перейти до каталогу
+    .hch-arrow
+
 .windowsill-catalog-list-page
+  .row
+    .columns
+      = session['catalog-header-status']
+
   .windowsill-catalog-list-header
     .row
       .columns

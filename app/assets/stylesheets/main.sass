@@ -208,6 +208,7 @@ ul.breadcrumbs
   border: none
   padding-top: 12px
   padding-bottom: 11px
+  position: relative
   li
     position: relative
     margin-right: 4px
@@ -240,6 +241,22 @@ ul.breadcrumbs
           weight: 400
       &:before
         content: '||'
+
+  .hide-catalog-header
+    position: absolute
+    right: 0.9375rem
+    +default_font_style(#607d8b, 12, 300, 13)
+    text-transform: uppercase
+    padding-right: 35px
+    &:before
+      display: none
+    .hch-arrow
+      width: 25px
+      height: 25px
+      background: #d1d3d4
+      position: absolute
+      top: -6px
+      right: 0
 
 main
   min-height: 450px
@@ -921,6 +938,7 @@ main
     padding-bottom: 80%
     height: 0
     position: relative
+    cursor: pointer
     div
       width: 24px
       height: 24px
@@ -1083,6 +1101,11 @@ ul.voronin-block-wrap
         line-height: 25px
         text-transform: uppercase
         display: inline-block
+        a
+          color: inherit
+          font:
+            size: inherit
+            weight: inherit
         .valko-arrow
           margin-right: 8px
 
