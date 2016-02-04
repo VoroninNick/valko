@@ -36,17 +36,6 @@ ul.breadcrumbs
               |Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
           .clearfix
 
-  /.row
-    .columns
-      = session["main#windowsill"]
-  /.row
-    .columns
-      = session["main#windowsill"].size
-  /.row
-    .columns
-      = link_to reset_filterrific_url do
-        |Скинути всі фільтри
-
   .windowsill-catalog-list-body
     = form_for_filterrific @filterrific, html: {class: 'catalog-filters-form'} do |f|
       .wclb-header
@@ -97,7 +86,7 @@ ul.breadcrumbs
                   .clearfix
 
               .cf-body
-                .control-filter
+                .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_brand"))
                   .filter-head
                     .title Торгові марки
                   .filter-body
@@ -105,12 +94,11 @@ ul.breadcrumbs
                       -  Brand.brands_list.each do |item|
                         .custom-checkbox
                           = f.check_box(:with_brand, {multiple: true}, item[:id], nil)
-                          /input id=item[:slug] type="checkbox" name="brand" value=item[:id]
                           label.cch-icon for="filterrific_with_brand_#{item[:id]}"
                           label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
                 - if Windowsill.decor.values.any?
-                  .control-filter
+                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_decor"))
                     .filter-head
                       .title Декор
                     .filter-body
@@ -121,7 +109,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_decor_#{decor}" = t("enumerize.decor.#{decor}")
 
                 - if Windowsill.type_of_surface.values.any?
-                  .control-filter
+                  .control-filter  class=('expanded' if session["main#windowsill"].has_key?("with_surface"))
                     .filter-head
                       .title Вид поверхні
                     .filter-body
@@ -132,7 +120,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
 
                 - if Windowsill.kapinos.values.any?
-                  .control-filter
+                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_kapinos"))
                     .filter-head
                       .title Капінос
                     .filter-body
@@ -143,7 +131,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_kapinos_#{kapinos}" = t("enumerize.kapinos.#{kapinos}")
 
                 - if Windowsill.material.values.any?
-                  .control-filter
+                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_material"))
                     .filter-head
                       .title Матеріал
                     .filter-body
@@ -154,7 +142,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_material_#{material}" = t("enumerize.material.#{material}")
 
                 - if Windowsill.color_type.values.any?
-                  .control-filter
+                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_color_type"))
                     .filter-head
                       .title Вид кольору
                     .filter-body
@@ -165,7 +153,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_color_type_#{obj}" = t("enumerize.color_type.#{obj}")
 
                 - if Windowsill.color.values.any?
-                  .control-filter
+                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_color"))
                     .filter-head
                       .title Колір
                     .filter-body
