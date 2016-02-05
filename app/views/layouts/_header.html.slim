@@ -23,9 +23,11 @@ header
     .medium-3.columns.header-logo
       -if !current_page?(root_url)
         = link_to root_path do
-          =image_tag "valko-logo-v1.png"
+          =image_tag "valko-logo-v1.png", class: 'hide-for-small-only'
+          =image_tag "valko-logo-v2.png", class: 'show-for-small-only'
       -else
-        =image_tag "valko-logo-v1.png"
+        =image_tag "valko-logo-v1.png", class: 'hide-for-small-only'
+        =image_tag "valko-logo-v2.png", class: 'show-for-small-only'
 
     .medium-4.columns.header-main.header-main-hide-for-mobile
       form

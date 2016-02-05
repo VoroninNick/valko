@@ -164,10 +164,6 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_color_#{obj}" = t("enumerize.color.#{obj}")
 
         .medium-9.columns
-          /.row
-            .columns
-              = page_entries_info @windowsill_list
-
           #windowsill-list
             = render partial: "main/windowsill_list",
                      locals: { windowsill_list: @windowsill_list, gags: @gags }

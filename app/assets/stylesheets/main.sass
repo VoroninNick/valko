@@ -118,6 +118,10 @@ header
       opacity: .5
   .header-logo
     padding-top: 6px
+    width: 187px
+    overflow: hidden
+    @media screen and ( max-width: 480px)
+      width: 80px
   .header-main
     padding-top: 25px
     ul
@@ -175,6 +179,9 @@ header
         width: 50%
         p
           text-align: right
+      @media #{$small-only}
+        width: 69%
+
 .button-box-shadow
   -webkit-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
   -moz-box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.35)
@@ -1229,8 +1236,14 @@ ul.voronin-block-wrap
     left: 0
     top: 0
     background: #eceff1
-    +grid-column(4)
     padding: 0
+    +grid-column(4)
+    @media screen and ( max-width: 840px)
+      width: 50%
+    @media screen and ( max-width: 700px)
+      width: 60%
+    @media #{$small-only}
+      display: none
     a
       display: block
       height: 135px
@@ -1298,6 +1311,8 @@ ul#promotion-banner
       .promotion-banner-countdown-timer
         height: 100px
         background: #eceff1
+        @media screen and ( max-width: 840px)
+          display: none
 
     .promo-banner-body
       position: absolute
