@@ -1,1 +1,15 @@
 #CallOrder.reveal-modal.small data-reveal=""
+  .row
+    .columns
+      strong Замовити дзвінок
+      p Введь свій номер телефону і ми самі Вам передзвонимо.
+
+      form.ajax-contact-form.default-animation-form.default-form-with-icons action=call_order_path method="POST"
+        .input.animate-input
+          .input-ico
+            =inline_svg "ic_phone_24px.svg"
+          label Контактний телефон
+          input name="phone" type="tel"
+
+        .button-wrap.material-component.ripple.right
+          button.right type="submit" Надіслати

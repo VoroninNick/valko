@@ -1,1 +1,38 @@
 #ContactForm.reveal-modal.small data-reveal=""
+  .row
+    .columns
+      strong Замовити дзвінок
+      p Введь свій номер телефону і ми самі Вам передзвонимо.
+
+      form.ajax-contact-form.default-animation-form.default-form-with-icons action=contact_form_path method="POST"
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =inline_svg "ic_person_48px.svg"
+              label Ваше ім’я
+              input name="name" type="text" required=""
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =inline_svg "ic_phone_24px.svg"
+              label Контактний телефон
+              input name="phone" type="tel"
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =inline_svg "ic_mail_24px.svg"
+              label Електронна скринька
+              input name="email" type="email"
+        .row
+          .columns
+            .input.animate-input.animate-textarea
+              .input-ico
+                =inline_svg "ic_insert_comment_24px.svg"
+              label Текст повідомлення...
+              textarea name="message" rows="6"
+
+        .button-wrap.material-component.ripple.right
+          button.right type="submit" Надіслати

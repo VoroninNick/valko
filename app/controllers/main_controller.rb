@@ -92,10 +92,15 @@ class MainController < ApplicationController
   end
 
   def contact_form
-    # data = params.permit(:name, :phone, :email, :date, :time, :message, cottages: [])
     data = params.permit(:name, :phone, :email, :factory, :city, :status, :message)
-    # return render inline: data.inspect
     ContactMailer.contact_form(data).deliver
     head :ok
   end
+
+  def call_order
+    data = params.permit(:phone)
+    ContactMailer.call_order(data).deliver
+    head :ok
+  end
+
 end
