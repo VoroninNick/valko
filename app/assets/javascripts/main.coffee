@@ -87,7 +87,7 @@ $(document).ready ->
 # reveal modal
 #============================================================
 
-  $('#offers-and-comments').foundation('reveal', 'open');
+#  $('#offers-and-comments').foundation('reveal', 'open');
 
 #============================================================
 # reveal modal
@@ -232,15 +232,18 @@ $(document).ready ->
       type: "POST"
       data: postData
       beforeSend: ->
-        console.log('перед відсиланням')
+#        console.log('перед відсиланням')
       success: ->
-#        form.reset()
-        console.log('успішно')
-        #        $this.closest('form').find('.animate-input').each ->
-        #          if !$(@).hasClass('is-locked-for-clear')
-        #            $(@).removeClass('is-completed')
-        #
-#        $('#SuccessModal').foundation 'reveal', 'open'
+        form.reset()
+#        console.log('успішно')
+        $this.closest('form').find('.animate-input').each ->
+#          if !$(@).hasClass('is-locked-for-clear')
+          $(@).removeClass('is-completed')
+
+        $this.closest('form').find('.field-to-hide').each ->
+          $(@).addClass('hide')
+
+        $('#success-contact-form').foundation 'reveal', 'open'
       complete: ->
 
       error: ->
@@ -497,5 +500,21 @@ $(document).ready ->
 #    $('.wclb-header option[value=created_at_desc]')
 #    $('.wclb-header option[value=title_asc]')
 #    $('.wclb-header option[value=title_desc]')
+
+#===========================================================
+# contacts form
+#===========================================================
+  $('input#or_person_is_wholesale_buyer').change ->
+    n = $( "input#or_person_is_wholesale_buyer:checked" ).length
+    $this = $(@)
+    $wrap = $this.closest('.feedback-form')
+
+    if n < 1
+      console.log '0'
+      $wrap.find('.field-to-hide').addClass('hide')
+    else
+      console.log '1'
+      $wrap.find('.field-to-hide').removeClass('hide')
+#    console.log 'checkbox status:', n
 
 

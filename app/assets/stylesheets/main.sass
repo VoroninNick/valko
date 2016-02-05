@@ -274,7 +274,11 @@ ul.breadcrumbs
       top: -6px
       right: 0
       cursor: pointer
-
+.reveal-modal
+  .close-reveal-modal
+    position: static
+    +default_font_style(#1e88e5, 14, 500, 16.8)
+    text-transform: uppercase
 main
   min-height: 450px
   background: #fff
@@ -832,6 +836,14 @@ main
         &.cch-icon
           border-color: #f50057
           background: #f50057
+  &.cc-blue
+    input[type=checkbox]
+      & + label
+      &:checked
+        & + label
+          &.cch-icon
+            border-color: #1e88e5
+            background: #1e88e5
 
 .publications-page
   padding-bottom: 55px
@@ -1341,6 +1353,9 @@ ul#promotion-banner
     line-height: 28.8px
     text-transform: uppercase
     margin-bottom: 20px
+  .custom-checkbox
+    margin-top: 30px
+    margin-left: 35px
 form
   .input
     label

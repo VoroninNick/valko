@@ -90,5 +90,12 @@ class MainController < ApplicationController
     ContactMailer.offers_and_comments(data).deliver
     head :ok
   end
-  
+
+  def contact_form
+    # data = params.permit(:name, :phone, :email, :date, :time, :message, cottages: [])
+    data = params.permit(:name, :phone, :email, :factory, :city, :status, :message)
+    # return render inline: data.inspect
+    ContactMailer.contact_form(data).deliver
+    head :ok
+  end
 end

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post 'recently_viewed' => 'main#recently_viewed'
 
   post 'offers_and_comments' => 'main#offers_and_comments'
+  post 'contact_form' => 'main#contact_form'
 
   get 'dev' => 'main#dev'
 

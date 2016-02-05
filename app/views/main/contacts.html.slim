@@ -46,7 +46,7 @@ ul.breadcrumbs
         .title Зворотній зв’язок
     .row
       .columns
-        form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
+        form.ajax-contact-form.default-animation-form.default-form-with-icons  action=contact_form_path method="POST"
           .medium-6.columns
             .row
               .columns
@@ -72,14 +72,14 @@ ul.breadcrumbs
 
             .row
               .columns
-                .input.animate-input
+                .input.animate-input.field-to-hide.hide
                   .input-ico
                     =inline_svg "factory.svg"
                   label Підприємство
                   input name="factory" type="text"
             .row
               .columns
-                .input.animate-input
+                .input.animate-input.field-to-hide.hide
                   .input-ico
                     =inline_svg "ic_location_city_24px.svg"
                   label Місто
@@ -94,7 +94,12 @@ ul.breadcrumbs
                   label Текст повідомлення...
                   textarea name="message" rows="6"
             .row
-              .columns
+              .medium-6.columns
+                .custom-checkbox.cc-blue
+                  input#or_person_is_wholesale_buyer type="checkbox" name="status"
+                  label.cch-icon for="or_person_is_wholesale_buyer"
+                  label.cch-text for="or_person_is_wholesale_buyer" Я гуртовий покупець
+              .medium-6.columns
                 .button-wrap.material-component.ripple.right.button-box-shadow
                   /.b-turn-off
                   button.right type="submit" Надіслати
