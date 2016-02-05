@@ -87,13 +87,14 @@ $(document).ready ->
 # reveal modal
 #============================================================
 
-#  $('#offers-and-comments').foundation('reveal', 'open');
+  $('#offers-and-comments').foundation('reveal', 'open');
 
 #============================================================
 # reveal modal
 #============================================================
   $('#news-windowsill').owlCarousel
 #    loop: true
+    margin: 30
     margin: 30
 #    nav: true
   #  navContainer: '#customNav'
@@ -217,37 +218,34 @@ $(document).ready ->
 #      html: items.join('')).appendTo 'body'
 
 #===========================================================
-#callback handler for form submit
+# callback handler for contact form submit
 #===========================================================
-#  $('form.ajax-popup-form').submit (e) ->
-#    $this = $(@)
-#    postData = $this.serializeArray()
-#    formURL = $this.attr('action')
-#    form = this
-#
-#    $.ajax
-#      url: formURL
-#      dataType: 'html'
-#      type: "POST"
-#      data: postData
-#      beforeSend: ->
-#        console.log('перед відсиланням')
-#      success: ->
+  $('form.ajax-contact-form').submit (e) ->
+    $this = $(@)
+    postData = $this.serializeArray()
+    formURL = $this.attr('action')
+    form = this
+
+    $.ajax
+      url: formURL
+      dataType: 'html'
+      type: "POST"
+      data: postData
+      beforeSend: ->
+        console.log('перед відсиланням')
+      success: ->
 #        form.reset()
-#        if $this.closest('.call-order-wrap')
-#          $this.closest('.call-order-wrap').removeClass('opened')
-#
-#        console.log('успішно')
-#        #        $this.closest('form').find('.animate-input').each ->
-#        #          if !$(@).hasClass('is-locked-for-clear')
-#        #            $(@).removeClass('is-completed')
-#        #
+        console.log('успішно')
+        #        $this.closest('form').find('.animate-input').each ->
+        #          if !$(@).hasClass('is-locked-for-clear')
+        #            $(@).removeClass('is-completed')
+        #
 #        $('#SuccessModal').foundation 'reveal', 'open'
-#      complete: ->
-#
-#      error: ->
-#
-#    e.preventDefault()
+      complete: ->
+
+      error: ->
+
+    e.preventDefault()
 
 #===========================================================
 #  main-menu binder

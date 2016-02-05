@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'
 
+  post 'offers_and_comments' => 'main#offers_and_comments'
+
   get 'dev' => 'main#dev'
 
   resources :line_items

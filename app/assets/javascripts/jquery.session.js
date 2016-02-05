@@ -93,7 +93,7 @@
             this._setFallback(key, value, onceOnly || false);
             return this;
         },
-        
+
         'delete': function(key){
             return this.remove(key);
         },

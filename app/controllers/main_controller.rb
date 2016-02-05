@@ -78,7 +78,17 @@ class MainController < ApplicationController
   end
 
   def dev
-    render inline: session["main#windowsill"].keys.inspect
+    # render inline: session["main#windowsill"].keys.inspect
+  end
+
+
+#   mailer methods
+  def offers_and_comments
+    # data = params.permit(:name, :phone, :email, :date, :time, :message, cottages: [])
+    data = params.permit(:name, :message)
+    # return render inline: data.inspect
+    ContactMailer.offers_and_comments(data).deliver
+    head :ok
   end
   
 end
