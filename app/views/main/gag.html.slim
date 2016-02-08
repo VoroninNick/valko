@@ -10,8 +10,9 @@ ul.breadcrumbs
   .row
     .medium-4.columns.windowsill-photos
       - if @gag.image.exists?
-        .one-gag-photo
-          .image style="background: url('#{@gag.image.url(:thumb)}')no-repeat center center;"
+        .one-gag-photo.lightGallery
+          a href=@gag.image.url(:large)
+            .image style="background: url('#{@gag.image.url(:thumb)}')no-repeat center center;"
 
     .medium-8.columns
       .title = @gag.title
