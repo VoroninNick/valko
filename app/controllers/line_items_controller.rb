@@ -57,7 +57,20 @@ class LineItemsController < ApplicationController
         end
       end
 
+    elsif type == 'Gag'
+      gag = Gag.find(params[:id])
+      existed_item = @cart.line_items.where(:gag_id => params[:id])
+      if existed_item.count > 0
+        @line_item = existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(quantity)
+      else
+        @line_item = @cart.line_items.build(gag: gag, quantity: quantity, class_name: type)
+      end
     end
+
 
     respond_to do |format|
       if @line_item.save

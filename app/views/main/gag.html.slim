@@ -21,10 +21,11 @@ ul.breadcrumbs
 
       .windowsill-calculator-wrap
         .row
-          form
+          form.ajax-popup-form action=line_items_path(id: @gag.id)
+            input type="hidden" name="type" value=Gag.name
             .columns
               .input.count-windowsill
-                input#count-windowsills type="number" value="1"
+                input#count-windowsills type="number" value="1" name="quantity"
                 label for="count-windowsills" Кількість
               .windowsill-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
