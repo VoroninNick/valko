@@ -6,7 +6,14 @@
 # t.boolean :published
 # t.integer :price
 class Gag < ActiveRecord::Base
-  before_save { save_slug(title, slug) }
+
+  def to_slug
+    "#{brand.slug}-#{id}-#{title.parameterize}"
+  end
+  def save_slug
+    self.slug = to_slug
+  end
+  before_save :save_slug
 
   attr_accessible *attribute_names
 
