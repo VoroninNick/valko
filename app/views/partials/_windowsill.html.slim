@@ -20,7 +20,14 @@
           = windowsill.prices.first.try(:value)
           sup &nbsp;грн.
       .columns
-        .brand-title = windowsill.brand.title
+        .brand-title
+          = windowsill.brand.title
+          - if windowsill.decor.present?
+            |,&nbsp;
+            = t("enumerize.decor.#{windowsill.decor}")
+          - if windowsill.kapinos.present?
+            |,&nbsp
+            = t("enumerize.kapinos.#{windowsill.kapinos}")
       .clearfix
 
     .ow-body-order-form
