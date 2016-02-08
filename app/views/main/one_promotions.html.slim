@@ -50,8 +50,15 @@ ul.breadcrumbs
             span Товари які беруть участь в акції:
             #promotion-windowsill-dots.owl-dots
 
-      .row
+      /.row
         .columns
           ul#promotion-windowsill
             - @one_promotion.windowsills.each do |windowsill|
               = render "partials/windowsill", windowsill: windowsill
+
+      .carousel-product-list#promotion-windowsill
+        - @one_promotion.windowsills.in_groups_of(4, false).each do |windowsill_sublist|
+          .row
+            - windowsill_sublist.each do |windowsill|
+              .large-3.medium-6.columns class=("end" if @one_promotion.windowsills.last == windowsill)
+                = render "partials/windowsill", windowsill: windowsill
