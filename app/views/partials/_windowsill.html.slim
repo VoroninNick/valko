@@ -24,10 +24,10 @@
           = windowsill.brand.title
           - if windowsill.decor.present?
             |,&nbsp;
-            = t("enumerize.decor.#{windowsill.decor}")
+            = t("enumerize.decor.#{windowsill.decor}").mb_chars.downcase.to_s
           - if windowsill.kapinos.present?
             |,&nbsp
-            = t("enumerize.kapinos.#{windowsill.kapinos}")
+            = t("enumerize.kapinos.#{windowsill.kapinos}").mb_chars.downcase.to_s
       .clearfix
 
     .ow-body-order-form
