@@ -90,19 +90,32 @@ $(document).ready ->
 #  $('#offers-and-comments').foundation('reveal', 'open');
 
 #============================================================
-# reveal modal
+# new windowsill
 #============================================================
   $('#news-windowsill').owlCarousel
-#    loop: true
-    margin: 30
-    margin: 30
-#    nav: true
-  #  navContainer: '#customNav'
+    items: 1
     dotsContainer: '#news-windowsill-dots'
-    responsive:
-      0: items: 2
-      600: items: 3
-      1000: items: 4
+
+#============================================================
+# similar windowsill
+#============================================================
+  $('#similar-windowsill').owlCarousel
+    items: 1
+    dotsContainer: '#similar-windowsill-dots'
+
+#============================================================
+# recently viewed windowsill
+#============================================================
+  $('#recently-viewed-windowsill').owlCarousel
+    items: 1
+    dotsContainer: '#recently-viewed-windowsill-dots'
+
+#============================================================
+# similar gag
+#============================================================
+  $('#similar-gags').owlCarousel
+    items: 1
+    dotsContainer: '#similar-gag-dots'
 
 #============================================================
 # reveal modal
@@ -111,17 +124,6 @@ $(document).ready ->
 #    loop: true
     margin: 30
     dotsContainer: '#promotion-windowsill-dots'
-    responsive:
-      0: items: 2
-      600: items: 3
-      1000: items: 4
-#============================================================
-# recently viewed windowsill
-#============================================================
-  $('#recently-viewed-windowsill').owlCarousel
-#    loop: true
-    margin: 30
-    dotsContainer: '#recently-viewed-windowsill-dots'
     responsive:
       0: items: 2
       600: items: 3

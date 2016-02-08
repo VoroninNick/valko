@@ -90,11 +90,6 @@
           |Огорожі
 
     .medium-6.columns
-.row
-  .columns
-    /= form_for_filterrific(@filterrific, url: windowsill_path, html: { id: :manual_filterrific_form }) do |f|
-      /[form inputs go here ...]
-      = f.submit "Show students"
 
 - if @windowsill_new.any?
   .page-block.new-windowsill-block
@@ -105,13 +100,12 @@
           span Новинки:
           #news-windowsill-dots.owl-dots
 
-    .row
-      .columns
-        ul#news-windowsill
-          /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
-          - @windowsill_new.each do |windowsill|
-            /li
-            = render "partials/windowsill", windowsill: windowsill
+    .carousel-product-list#news-windowsill
+      - @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
+        .row
+          - windowsill_sublist.each do |windowsill|
+            .large-3.medium-6.columns class=("end" if @windowsill_new.last == windowsill)
+              = render "partials/windowsill", windowsill: windowsill
 
 - if @publications.any?
   .page-block.publications-block

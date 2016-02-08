@@ -4,8 +4,10 @@
       .columns
         span Нещодавно пререглянуті:
         #recently-viewed-windowsill-dots.owl-dots
-  .row
-    .columns
-      #recently-viewed-windowsill
-        - recently_viewed_list.each do |windowsill|
-          = render "partials/windowsill", windowsill: windowsill
+
+  .carousel-product-list#recently-viewed-windowsill
+    - recently_viewed.in_groups_of(4, false).each do |windowsill_sublist|
+      .row
+        - windowsill_sublist.each do |windowsill|
+          .large-3.medium-6.columns class=("end" if recently_viewed.last == windowsill)
+            = render "partials/windowsill", windowsill: windowsill

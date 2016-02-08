@@ -41,14 +41,14 @@ ul.breadcrumbs
       .page-block-title
         .row
           .columns
-            span Схожі товари::
-            #similar-windowsill-dots.owl-dots
-      .row
-        .columns
-          ul#news-windowsill
-            /- @windowsill_new.in_groups_of(4, false).each do |windowsill_sublist|
-            - @similar_gags.each do |gag|
-              = render "partials/gag", gag: gag
+            span.left Схожі товари:
+            #similar-gag-dots.owl-dots.left
+      .carousel-product-list#similar-gags
+        - @similar_gags.in_groups_of(4, false).each do |gag_sublist|
+          .row
+            - gag_sublist.each do |gag|
+              .large-3.medium-6.columns class=("end" if @similar_gags.last == gag)
+                = render "partials/gag", gag: gag
 
   - if recently_viewed.any?
     = render "partials/recently_viewed_list", recently_viewed_list: recently_viewed
