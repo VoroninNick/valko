@@ -74,6 +74,7 @@ ul.breadcrumbs
           .catalog-filters-wrap
             #selected-filters
               = render partial: "main/windowsill_selected_filters"
+
             .control-filters
               .cf-head
                 ul
@@ -86,7 +87,8 @@ ul.breadcrumbs
                   .clearfix
 
               .cf-body
-                .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_brand"))
+                /.control-filter class=("#{'expanded' if session["main#windowsill"].has_key?("with_brand")}#{'internal external' if session["main#windowsill"]["with_type"] == "internal" || session["main#windowsill"]["with_type"] == "external"}")
+                .control-filter.internal.external class=('expanded' if session["main#windowsill"].has_key?("with_brand"))
                   .filter-head
                     .title Торгові марки
                   .filter-body
@@ -98,7 +100,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
                 - if Windowsill.decor.values.any?
-                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_decor"))
+                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_decor")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Декор
                     .filter-body
@@ -109,7 +111,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_decor_#{decor}" = t("enumerize.decor.#{decor}")
 
                 - if Windowsill.type_of_surface.values.any?
-                  .control-filter  class=('expanded' if session["main#windowsill"].has_key?("with_surface"))
+                  .control-filter.internal  class=('expanded' if session["main#windowsill"].has_key?("with_surface")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Вид поверхні
                     .filter-body
@@ -120,7 +122,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
 
                 - if Windowsill.kapinos.values.any?
-                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_kapinos"))
+                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_kapinos")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Капінос
                     .filter-body
@@ -131,7 +133,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_kapinos_#{kapinos}" = t("enumerize.kapinos.#{kapinos}")
 
                 - if Windowsill.material.values.any?
-                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_material"))
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_material")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Матеріал
                     .filter-body
@@ -142,7 +144,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_material_#{material}" = t("enumerize.material.#{material}")
 
                 - if Windowsill.color_type.values.any?
-                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_color_type"))
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color_type")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Вид кольору
                     .filter-body
@@ -153,7 +155,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_color_type_#{obj}" = t("enumerize.color_type.#{obj}")
 
                 - if Windowsill.color.values.any?
-                  .control-filter class=('expanded' if session["main#windowsill"].has_key?("with_color"))
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
                     .filter-head
                       .title Колір
                     .filter-body

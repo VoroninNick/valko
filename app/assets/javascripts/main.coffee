@@ -517,4 +517,18 @@ $(document).ready ->
       $wrap.find('.field-to-hide').removeClass('hide')
 #    console.log 'checkbox status:', n
 
+#===========================================================
+# catalog filters switcher
+#===========================================================
+  $(".cf-head input[type='radio']").change ->
+    $this = $(@)
+    $wrap = $this.closest('.control-filters')
+    if $this.val() == 'internal'
+      $wrap.find('.control-filter').hide()
+      $wrap.find('.control-filter').filter('.internal').show()
+    else if $this.val() == 'external'
+      $wrap.find('.control-filter').hide()
+      $wrap.find('.control-filter').filter('.external').show()
+
+
 
