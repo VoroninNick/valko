@@ -414,7 +414,7 @@ $(document).ready ->
 # catalog hiden header
 #===========================================================
 
-  if $.session.get("catalog-header-status") == 'hiden'
+  if localStorage.getItem("catalog-header-status") == 'hiden'
     $('.windowsill-catalog-list-header').addClass('hiden-catalog-header')
     if $('.hch-arrow.valko-arrow').hasClass('va-top')
       $('.hch-arrow.valko-arrow').removeClass('va-top')
@@ -432,7 +432,8 @@ $(document).ready ->
     $obj = $wrap.find('.windowsill-catalog-list-header')
     if $obj.hasClass('hiden-catalog-header')
       $obj.removeClass('hiden-catalog-header')
-      $.session.set("catalog-header-status", "open")
+#      $.session.set("catalog-header-status", "open")
+      localStorage.setItem("catalog-header-status", "open")
 
       if $('.hch-arrow.valko-arrow').hasClass('va-top')
         $('.hch-arrow.valko-arrow').removeClass('va-top')
@@ -445,7 +446,8 @@ $(document).ready ->
 
     else
       $obj.addClass('hiden-catalog-header')
-      $.session.set("catalog-header-status", "hiden")
+#      $.session.set("catalog-header-status", "hiden")
+      localStorage.setItem("catalog-header-status", "hiden")
       $('.hide-catalog-header .title').text('Розгорнути')
 
       if $('.hch-arrow.valko-arrow').hasClass('va-top')
