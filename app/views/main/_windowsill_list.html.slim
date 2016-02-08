@@ -1,12 +1,13 @@
 - if windowsill_list.any?
   .row
     - windowsill_list.each_with_index do |windowsill, i|
-      .medium-4.columns class=("end" if windowsill == windowsill_list.last)
+      .medium-6.large-4.columns class=("end" if windowsill == windowsill_list.last)
         = render "partials/windowsill", windowsill: windowsill
     - if gags.any?
       - gags.each do |gag|
-        .medium-4.columns class=("end" if gag == gags.last)
+        .medium-6.large-4.columns class=("end" if gag == gags.last)
           = render "partials/gag", gag: gag
+
   .row
     .columns
       = paginate windowsill_list

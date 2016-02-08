@@ -5,7 +5,7 @@ class WindowsillPhoto < ActiveRecord::Base
   attr_accessible *attribute_names
   attr_accessible :image
   has_attached_file :image,
-                    styles: { thumb: "280x280>",
+                    styles: { thumb: "580x580>",
                               large: "1400x840>"},
                     convert_options: { thumb: "-quality 94 -interlace Plane",
                                        large: "-quality 94 -interlace Plane"},
