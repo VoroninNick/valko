@@ -27,6 +27,8 @@
 //= require lightgallery/dist/js/lg-fullscreen.min
 //= require lightgallery/dist/js/lg-video
 
+//= require clipboard/dist/clipboard.min
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -1605,8 +1605,27 @@ nav
       margin-bottom: 40px
     .material-component
       background: transparent
-      button
+      button, .copy-btn
         color: #1e88e5
+  .share-icons
+    margin-top: 20px
+    margin-bottom: 40px
+    a
+      display: block
+      +default_font_style(#1e88e5, 14, 500, 16.8)
+      text-transform: uppercase
+      text-align: center
+    svg
+      height: 48px
+      width: 100%
+      margin-bottom: 20px
+      path
+        fill: #1e88e5
+  .modal-form
+    margin-bottom: 40px
+    form
+      .input
+        margin-bottom: 0
 
 .reveal-modal-bg
   background: rgba(35, 31, 32, .8)

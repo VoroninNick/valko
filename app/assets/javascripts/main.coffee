@@ -532,69 +532,9 @@ $(document).ready ->
 #===========================================================
 # copy to clipboard
 #===========================================================
-#copyToClipboardMsg = (elem, msgElem) ->
-#  succeed = copyToClipboard(elem)
-#  msg = undefined
-#  if !succeed
-#    msg = 'Copy not supported or blocked.  Press Ctrl+c to copy.'
-#  else
-#    msg = 'Text copied to the clipboard.'
-#  if typeof msgElem == 'string'
-#    msgElem = document.getElementById(msgElem)
-#  msgElem.innerHTML = msg
-#  setTimeout (->
-#    msgElem.innerHTML = ''
-#    return
-#  ), 2000
-#  return
-#
-#copyToClipboard = (elem) ->
-## create hidden text element, if it doesn't already exist
-#  targetId = '_hiddenCopyText_'
-#  isInput = elem.tagName == 'INPUT' or elem.tagName == 'TEXTAREA'
-#  origSelectionStart = undefined
-#  origSelectionEnd = undefined
-#  if isInput
-## can just use the original source element for the selection and copy
-#    target = elem
-#    origSelectionStart = elem.selectionStart
-#    origSelectionEnd = elem.selectionEnd
-#  else
-## must use a temporary form element for the selection and copy
-#    target = document.getElementById(targetId)
-#    if !target
-#      target = document.createElement('textarea')
-#      target.style.position = 'absolute'
-#      target.style.left = '-9999px'
-#      target.style.top = '0'
-#      target.id = targetId
-#      document.body.appendChild target
-#    target.textContent = elem.textContent
-#  # select the content
-#  currentFocus = document.activeElement
-#  target.focus()
-#  target.setSelectionRange 0, target.value.length
-#  # copy the selection
-#  succeed = undefined
-#  try
-#    succeed = document.execCommand('copy')
-#  catch e
-#    succeed = false
-#  # restore original focus
-#  if currentFocus and typeof currentFocus.focus == 'function'
-#    currentFocus.focus()
-#  if isInput
-## restore prior selection
-#    elem.setSelectionRange origSelectionStart, origSelectionEnd
-#  else
-## clear temporary content
-#    target.textContent = ''
-#  succeed
-#
-#document.getElementById('copyButton').addEventListener 'click', ->
-#  copyToClipboardMsg document.getElementById('copyTarget'), 'msg'
-
-
+  clipboard = new Clipboard('.copy-btn')
+  clipboard.on 'success', (e) ->
+    console.log e
 
 
 

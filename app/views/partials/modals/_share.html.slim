@@ -1,9 +1,9 @@
-#share-modal.reveal-modal.medium data-reveal=""
+#share-modal.reveal-modal.small data-reveal=""
   .row
     .columns
       strong Поділитись!
       p «Як вірно вибрати підвіконник»
-  .row
+  .row.share-icons
     .medium-8.medium-centered.columns
       .row
         .medium-6.columns
@@ -14,15 +14,15 @@
           a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"
             = inline_svg "Valko-icon-social-google+.svg"
             |Google +
-  .row
+  .row.modal-form
     .columns
       form.default-animation-form.default-form-with-icons
         .input.animate-input.is-completed
           .input-ico
             =inline_svg "ic_link_48px.svg"
           label Посилання
-          input name="url" type="url" value= request.original_url
+          input#copy-url name="url" type="url" value= request.original_url
 
         .button-wrap.material-component.ripple.right
-          button.right type="submit" Скопіювати посилання
+          a.copy-btn.right data-clipboard-action="copy" data-clipboard-target="#copy-url" type="submit" Скопіювати посилання
 
