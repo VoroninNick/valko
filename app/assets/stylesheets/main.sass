@@ -487,6 +487,24 @@ main
           background: #263238
           display: block
           height: 100%
+          div
+            width: 18px
+            height: 30px
+            //border: 1px solid #fff
+            +my_center_align()
+              &:before, &:after
+                display: block
+                content: ''
+                background: #eceff1
+                height: 4px
+                width: 20px
+                position: absolute
+              &:before
+                +rotate(45deg)
+                top: 6px
+              &:after
+                +rotate(-45deg)
+                top: 18px
 
     &.new-windowsill-block
       .page-block-title
