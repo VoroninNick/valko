@@ -5,7 +5,11 @@ uk:
       previous: "<"
       next: ">"
       last: ">>"
-
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      long: "%Y-%m-%d"
+      short: "%b %d"
   enumerize:
     wind_type:
       internal: Внутрішній

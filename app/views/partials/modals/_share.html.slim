@@ -2,7 +2,7 @@
   .row
     .columns
       strong Поділитись!
-      p «Як вірно вибрати підвіконник»
+      p = title
   .row.share-icons
     .medium-8.medium-centered.columns
       .row
@@ -11,7 +11,7 @@
             = inline_svg "Valko-icon-social-facebook.svg"
             |Facebook
         .medium-6.columns
-          a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"
+          a href="https://plus.google.com/share?url=#{request.original_url}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
             = inline_svg "Valko-icon-social-google+.svg"
             |Google +
   .row.modal-form
@@ -26,3 +26,13 @@
         .button-wrap.material-component.ripple.right
           a.copy-btn.right data-clipboard-action="copy" data-clipboard-target="#copy-url" type="submit" Скопіювати посилання
 
+  #fb-root
+  javascript:
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v2.4&appId=1500520113595608";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));

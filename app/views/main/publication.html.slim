@@ -1,3 +1,6 @@
+-content_for :title do @publication.title end
+-content_for :f_image do @publication.cover.url(:large) end
+
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
@@ -30,7 +33,7 @@ ul.breadcrumbs
 
       .other-items
         .other-items-head
-          div Інші акції
+          div Читайте також
         .other-items-body
           - if @other_publications.any?
             - @other_publications.each do |item|
@@ -40,4 +43,4 @@ ul.breadcrumbs
                   .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
           .clearfix
 
-= render "partials/modals/share"
+= render "partials/modals/share", title: @publication.title

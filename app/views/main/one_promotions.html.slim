@@ -1,3 +1,6 @@
+-content_for :title do @one_promotion.title end
+-content_for :f_image do @one_promotion.cover.url(:large) end
+
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
@@ -29,6 +32,17 @@ ul.breadcrumbs
 
 
     .medium-4.columns
+      .row
+        .small-6.columns.no-pad-right
+          .default-field-date
+            = inline_svg "ic_date_range_black_48px.svg"
+            |#{@one_promotion.start_date.strftime("%d.%m.%y")} — #{@one_promotion.date_of.strftime("%d.%m.%y")}
+
+        .small-6.columns
+          a.share-button data-reveal-id="share-modal"
+            = inline_svg "Valko-icon-share.svg"
+            |Поділитися
+
       .other-items
         .other-items-head
           div Інші акції
@@ -50,15 +64,11 @@ ul.breadcrumbs
             span Товари які беруть участь в акції:
             #promotion-windowsill-dots.owl-dots
 
-      /.row
-        .columns
-          ul#promotion-windowsill
-            - @one_promotion.windowsills.each do |windowsill|
-              = render "partials/windowsill", windowsill: windowsill
-
       .carousel-product-list#promotion-windowsill
         - @one_promotion.windowsills.in_groups_of(4, false).each do |windowsill_sublist|
           .row
             - windowsill_sublist.each do |windowsill|
               .large-3.medium-6.columns class=("end" if @one_promotion.windowsills.last == windowsill)
                 = render "partials/windowsill", windowsill: windowsill
+
+= render "partials/modals/share", title: @one_promotion.title

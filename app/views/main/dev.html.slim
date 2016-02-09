@@ -9,4 +9,8 @@
       a class="close-reveal-modal" aria-label="Close" &#215;
 
 
-.row.expanded
+.row
+  .columns
+    - promotion = Promotion.first
+    .promotion-banner-countdown-timer
+      #defaultCountdown data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")

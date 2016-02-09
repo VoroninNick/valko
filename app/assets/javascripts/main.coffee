@@ -37,17 +37,22 @@ windowsillCalculator = () ->
   $total_price.text(total_price)
 #    alert 'this value ='+count_element * weight_element
 
-
-$ ->
 #===================================================================
 # countdown timer
 #===================================================================
+$ ->
   countdown_timer = $('.valko-countdown-promo')
   countdown_timer.each ->
     ct_year = $(@).attr "data-year"
     ct_month = $(@).attr "data-month"
     ct_day = $(@).attr "data-day"
-    $(@).countdown until: new Date(ct_year, ct_month, ct_day)
+    $(@).countdown
+      until: new Date(ct_year, parseInt(ct_month)-1, ct_day)
+
+#  newYear = new Date
+#  newYear = new Date(2016, 3, 1)
+#  $('#defaultCountdown').countdown until: newYear
+
 
 $(document).ready ->
 #===================================================================
