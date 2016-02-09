@@ -77,6 +77,9 @@ class MainController < ApplicationController
     
   end
 
+  def terms
+    @current_terms = TermsOfUse.if_published.first
+  end
   def dev
     # render inline: session["main#windowsill"].keys.inspect
   end

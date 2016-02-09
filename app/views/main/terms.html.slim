@@ -1,0 +1,13 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Правила користування
+
+.terms-and-delivery-page
+  .row
+    .columns
+      .td-header.text-center
+        .title Правила користування
+      .td-body.article
+        = raw(@current_terms.description)

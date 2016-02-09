@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'contact_form' => 'main#contact_form'
   post 'call_order' => 'main#call_order'
 
+  get 'terms-of-use' => 'main#terms'
   get 'dev' => 'main#dev'
 
   resources :line_items
