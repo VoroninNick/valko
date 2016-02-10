@@ -76,7 +76,7 @@ class MainController < ApplicationController
 
     set_meta_tags site: 'Валько',
                   title: @one_promotion.title,
-                  description: 'Member login page.',
+                  description: @one_promotion.short_description,
                   keywords: 'Site, Login, Members',
                   og: {
                       title: @one_promotion.title,
