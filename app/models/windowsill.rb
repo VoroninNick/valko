@@ -89,6 +89,11 @@ class Windowsill < ActiveRecord::Base
     windowsill_photos.first.try(:image)
   end
 
+  has_one :seo, as: :seo_poly
+  attr_accessible :seo
+  accepts_nested_attributes_for :seo, allow_destroy: true
+  attr_accessible :seo_attributes
+
   rails_admin do
     navigation_label 'Підвіконня'
 
@@ -217,7 +222,9 @@ class Windowsill < ActiveRecord::Base
         end
 
       end
-
+      field :seo do
+        label 'SEO'
+      end
     end
   end
 

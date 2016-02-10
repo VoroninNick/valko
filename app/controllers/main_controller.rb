@@ -11,25 +11,29 @@ class MainController < ApplicationController
     session[:recently_viewed].delete_at 0 if session[:recently_viewed].size == 12
   end
 
+  def set_seo(key)
+    @static_page = Page.find_by_slug(key)
+    set_meta_tags site: 'Валько',
+                  title: @static_page.seo.try(:seo_title),
+                  description: @static_page.seo.try(:seo_description),
+                  keywords: @static_page.seo.try(:keywords)
+  end
+
+
+
   def index
     # return render inline: session.keys.inspect
     @publications = Information.with_main.limit(5)
     @windowsill_new = Windowsill.with_public
 
-    set_meta_tags site: 'Валько',
-                  title: 'Головна сторінка',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('holovna')
   end
 
   def about
     @about_banner = AboutBanner.with_public
     @brands = AboutBrand.order(created_at: :asc)
 
-    set_meta_tags site: 'Валько',
-                  title: 'Про нас',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('pro-nas')
   end
 
   def publications
@@ -37,10 +41,7 @@ class MainController < ApplicationController
     @documents = InformationDocument.with_public
     @publications = Information.with_public.where.not(id: @main_publication)
 
-    set_meta_tags site: 'Валько',
-                  title: 'Інформація',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('informatsiia')
   end
   def publication
     @publication = Information.find_by_slug(params[:title])
@@ -67,10 +68,7 @@ class MainController < ApplicationController
   def promotions
     @promotions = Promotion.all
 
-    set_meta_tags site: 'Валько',
-                  title: 'Акції',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('aktsii')
   end
   def one_promotions
     @one_promotion = Promotion.find_by_slug(params[:title])
@@ -94,26 +92,16 @@ class MainController < ApplicationController
   end
 
   def contacts
-    set_meta_tags site: 'Валько',
-                  title: 'Контакти',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('kontakty')
   end
 
   def warranty
-    set_meta_tags site: 'Валько',
-                  title: 'Доставка та гарантія',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('dostavka-ta-harantiia')
   end
 
   def windowsill
     @gags = Gag.all
-
-    set_meta_tags site: 'Валько',
-                  title: 'Каталог підвіконня',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('pidvikonnia')
 
     @filterrific = initialize_filterrific(
         Windowsill,
@@ -138,33 +126,27 @@ class MainController < ApplicationController
     @similar = Windowsill.where(brand_id: @windowsill.brand_id).where.not(id: @windowsill)
 
     set_meta_tags site: 'Валько',
-                  title: @windowsill.title,
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+                  title: @windowsill.seo.try(:seo_title),
+                  description: @windowsill.seo.try(:seo_description),
+                  keywords: @windowsill.seo.try(:keywords)
   end
   def gag
     @gag = Gag.find_by_slug(params[:title])
     @similar_gags = Gag.where.not(id: @gag)
 
     set_meta_tags site: 'Валько',
-                  title: @gag.title,
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+                  title: @gag.seo.try(:seo_title),
+                  description: @gag.seo.try(:seo_description),
+                  keywords: @gag.seo.try(:keywords)
   end
   def basket
-    set_meta_tags site: 'Валько',
-                  title: 'Корзина',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('korzyna')
   end
 
   def terms
     @current_terms = TermsOfUse.if_published.first
 
-    set_meta_tags site: 'Валько',
-                  title: 'Правила користування',
-                  description: 'Member login page.',
-                  keywords: 'Site, Login, Members'
+    set_seo('pravyla-korystuvannia')
   end
   def dev
     # render inline: session["main#windowsill"].keys.inspect

@@ -31,6 +31,11 @@ class Gag < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  has_one :seo, as: :seo_poly
+  attr_accessible :seo
+  accepts_nested_attributes_for :seo, allow_destroy: true
+  attr_accessible :seo_attributes
+
   rails_admin do
     navigation_label 'Підвіконня'
 
@@ -56,6 +61,9 @@ class Gag < ActiveRecord::Base
       field :description do
         html_attributes rows: 10, cols: 100
         label 'Опис:'
+      end
+      field :seo do
+        label 'SEO'
       end
     end
   end
