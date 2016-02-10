@@ -8,17 +8,18 @@
       li
         .bn-icon 1
         .bn-label Перелік товарів
-      li
+      li.prev-current
         .bn-icon 2
         .bn-label Доставка
       li.current
         .bn-icon 3
         .bn-label Підтвердження
+      .clearfix
 
-  .basket-footer
-    .row
-      .columns
-        .material-component.ripple.button-box-shadow.red-button.right.cart-button
-          a Замовити
-        .material-component.ripple.button-box-shadow.blue-text.right.cart-button
-          a До доставки
+.basket-footer
+  .row
+    .columns
+      .material-component.ripple.button-box-shadow.red-button.right.cart-button
+        a.finish-step Замовити
+      .material-component.ripple.button-box-shadow.blue-text.right.cart-button
+        a data-step="cart-delivery" До доставки

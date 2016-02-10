@@ -397,10 +397,19 @@ $(document).ready ->
     $wrap = $this.closest('.cart-tab')
     go_to = $this.attr('data-step')
 
+    count_items = $wrap.find('.basket-list-one').size()
 #    console.log 'attribute:',go_to
-    $('.cart-tab').removeClass('active')
-    $(".cart-tab.#{go_to}").addClass('active')
 
+    if $this.hasClass('first-step')
+      if count_items > 0
+        $('.cart-tab').removeClass('active')
+        $(".cart-tab.#{go_to}").addClass('active')
+
+    else if $this.hasClass('finish-step')
+      console.log 'finish step'
+    else
+      $('.cart-tab').removeClass('active')
+      $(".cart-tab.#{go_to}").addClass('active')
 
 
 #===========================================================

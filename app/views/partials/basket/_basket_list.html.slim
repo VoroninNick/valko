@@ -14,8 +14,10 @@
       li
         .bn-icon 3
         .bn-label Підтвердження
+      .clearfix
 
-  .row
+.row
+  .columns
     .columns
       .basket-list
         - @cart.line_items.each do |item|
@@ -24,13 +26,13 @@
             / WINDOWSILL
             .basket-list-one
               .row
-                .medium-1.columns
+                .small-1.medium-1.columns
                   .basket-delete-item-wrap
                     a.delete-item data-href=line_items_path data-line-item-id=item.id
                       = inline_svg "ic_delete_black_24px.svg"
-                .medium-2.columns
+                .hide-for-small-only.medium-2.columns
                   .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-                .medium-6.columns
+                .small-6.medium-6.columns
                   a href=one_windowsill_path(item.windowsill.slug)
                     .title = item.windowsill.title
                   .brand-title
@@ -45,14 +47,14 @@
                     span Довжина:
                     = item.long
                     sup &nbsp;мм
-                .medium-1.columns
+                .small-2.medium-1.columns
                   .input.basket-count-product
                     - if item.with_gag.present?
                       input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="true"
                     - else
                       input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="false"
 
-                .medium-2.columns
+                .small-3.medium-2.columns
                   .one-total-price
                     b
                       = item.total_price
@@ -89,20 +91,20 @@
                     b
                       = item.price
                     sup &nbsp;грн./шт.
+      .clearfix
 
-
-  .basket-footer
-    .row
-      .columns
-        .basket-total-price
-          p
-            sub Σ:
-            b
-              = @cart.total_price
-            sup &nbsp;грн.
-    .row
-      .columns
-        .material-component.ripple.button-box-shadow.red-button.right.cart-button
-          a data-step="cart-delivery" Доставка
-        .material-component.ripple.button-box-shadow.blue-text.right
-          a href=URI(request.referer).path Повернутись
+.basket-footer
+  .row
+    .columns
+      .basket-total-price
+        p
+          sub Σ:
+          b
+            = @cart.total_price
+          sup &nbsp;грн.
+  .row
+    .columns
+      .material-component.ripple.button-box-shadow.red-button.right.cart-button
+        a.first-step data-step="cart-delivery" Доставка
+      .material-component.ripple.button-box-shadow.blue-text.right
+        a href=URI(request.referer).path Повернутись

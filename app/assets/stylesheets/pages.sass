@@ -143,7 +143,7 @@
     +default_font_style(#607d8b, 24, 500, 28.8)
     text-transform: uppercase
     svg
-      height: 28.8px
+      height: 20px
       path
         fill: #607d8b
 
@@ -151,8 +151,10 @@
     margin: 0
     list-style: none
     li
-      width: 30%
+      width: 33.333%
       display: inline-block
+      overflow: hidden
+      float: left
       .bn-icon
         width: 30px
         height: 30px
@@ -161,14 +163,33 @@
         border: 1px solid #bcbec0
         border-radius: 50%
         margin: 0 auto
+        position: relative
+        &:before, &:after
+          display: block
+          content: ''
+          height: 1px
+          width: 300px
+          background: #bcbec0
+          position: absolute
+          top: 14px
+        &:before
+          right: 35px
+        &:after
+          left: 35px
+
       .bn-label
         +default_font_style(#bcbec0, 12, 400, 21)
         text-align: center
+      &.prev-current
+        .bn-icon:after
+          background: #42a5f5
       &.current
         .bn-icon
           background: #42a5f5
           border-color: #42a5f5
           color: #fff
+          &:before
+            background: #42a5f5
         .bn-label
           color: #42a5f5
 
@@ -246,6 +267,15 @@
             path
               fill: #607d8b
   .basket-body
+    hr
+      margin-top: 0
+    .animate-input
+      margin-top: 25px
+    .animate-textarea
+      margin-top: 17px
+      textarea
+        min-height: 38px
+        height: 38px
     h5
       +default_font_style(#607d8b, 12, 400, 14)
       text-transform: uppercase
@@ -253,6 +283,8 @@
       +default_font_style(#939598, 14, 400, 21)
       &.notes
         padding-left: 35px
+        margin-top: 15px
+        margin-bottom: 50px
 
   .basket-footer
     padding-left: 0.9375rem
