@@ -85,7 +85,9 @@ class MainController < ApplicationController
                           # _: full_image_path(@publication.cover.url(:large)),
                           width: 150,
                           height: 75,
-                      }
+                      },
+                      description: @one_promotion.short_description,
+                      url: request.original_url
                   }
   end
 
