@@ -3,7 +3,9 @@ html lang="en"
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    title = content_for?(:title) ? yield(:title) : "Valko"
+    /title = content_for?(:title) ? yield(:title) : "Valko"
+
+    = display_meta_tags
 
     meta property="og:title" content=(yield(:title) if yield(:title))
     meta property="og:image" content=(yield(:f_image) if yield(:f_image))

@@ -75,3 +75,5 @@ gem 'filterrific'
 gem 'kaminari'
 
 gem 'figaro'
+
+gem 'meta-tags'

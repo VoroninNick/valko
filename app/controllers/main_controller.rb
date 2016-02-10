@@ -15,40 +15,102 @@ class MainController < ApplicationController
     # return render inline: session.keys.inspect
     @publications = Information.with_main.limit(5)
     @windowsill_new = Windowsill.with_public
+
+    set_meta_tags site: 'Валько',
+                  title: 'Головна сторінка',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
 
   def about
     @about_banner = AboutBanner.with_public
     @brands = AboutBrand.order(created_at: :asc)
+
+    set_meta_tags site: 'Валько',
+                  title: 'Про нас',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
 
   def publications
     @main_publication = Information.with_main.first
     @documents = InformationDocument.with_public
     @publications = Information.with_public.where.not(id: @main_publication)
+
+    set_meta_tags site: 'Валько',
+                  title: 'Інформація',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
   def publication
     @publication = Information.find_by_slug(params[:title])
     @other_publications = Information.with_public.where.not(id: @publication)
+
+    set_meta_tags site: 'Валько',
+                  title: @publication.title,
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members',
+                  og: {
+                    title: @publication.title,
+                    image:    {
+                                   _: root_url+@publication.cover.url(:large),
+                                   # _: full_image_path(@publication.cover.url(:large)),
+                                   width: 170,
+                                   height: 75,
+                               }
+                  }
+
   end
 
   def promotions
     @promotions = Promotion.all
+
+    set_meta_tags site: 'Валько',
+                  title: 'Акції',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
   def one_promotions
     @one_promotion = Promotion.find_by_slug(params[:title])
     @other_promotions = Promotion.where.not(id: @one_promotion)
+
+    set_meta_tags site: 'Валько',
+                  title: @one_promotion.title,
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members',
+                  og: {
+                      title: @one_promotion.title,
+                      image:    {
+                          _: root_url+@one_promotion.cover.url(:large),
+                          # _: full_image_path(@publication.cover.url(:large)),
+                          width: 150,
+                          height: 75,
+                      }
+                  }
   end
 
   def contacts
+    set_meta_tags site: 'Валько',
+                  title: 'Контакти',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
 
   def warranty
+    set_meta_tags site: 'Валько',
+                  title: 'Доставка та гарантія',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
 
   def windowsill
     @gags = Gag.all
-    # @windowsill_list = Windowsill.with_public
+
+    set_meta_tags site: 'Валько',
+                  title: 'Каталог підвіконня',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
+
     @filterrific = initialize_filterrific(
         Windowsill,
         params[:filterrific],
@@ -65,20 +127,40 @@ class MainController < ApplicationController
       format.js
     end
   end
+
+
   def one_windowsill
     @windowsill = Windowsill.find_by_slug(params[:title])
     @similar = Windowsill.where(brand_id: @windowsill.brand_id).where.not(id: @windowsill)
+
+    set_meta_tags site: 'Валько',
+                  title: @windowsill.title,
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
   def gag
     @gag = Gag.find_by_slug(params[:title])
     @similar_gags = Gag.where.not(id: @gag)
+
+    set_meta_tags site: 'Валько',
+                  title: @gag.title,
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
   def basket
-    
+    set_meta_tags site: 'Валько',
+                  title: 'Корзина',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
 
   def terms
     @current_terms = TermsOfUse.if_published.first
+
+    set_meta_tags site: 'Валько',
+                  title: 'Правила користування',
+                  description: 'Member login page.',
+                  keywords: 'Site, Login, Members'
   end
   def dev
     # render inline: session["main#windowsill"].keys.inspect
