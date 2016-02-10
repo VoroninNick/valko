@@ -24,7 +24,8 @@ ul.breadcrumbs
         .small-6.columns.no-pad-right
           .default-field-date
             = inline_svg "ic_date_range_black_48px.svg"
-            = @publication.created_at.strftime("%d %B, %Y")
+            /= @publication.created_at.strftime("%d %B, %Y")
+            = I18n.l @publication.created_at, :format => "%d %B, %Y"
 
         .small-6.columns
           a.share-button data-reveal-id="share-modal"

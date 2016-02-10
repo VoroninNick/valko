@@ -27,6 +27,10 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_informations
   attr_accessible :windowsill_ids
 
+  has_one :seo, as: :seo_poly
+  attr_accessible :seo
+  accepts_nested_attributes_for :seo, allow_destroy: true
+  attr_accessible :seo_attributes
   rails_admin do
     navigation_label 'Інформація'
     label 'Публікація'
@@ -58,6 +62,9 @@ class Information < ActiveRecord::Base
       end
       field :windowsills do
         label 'Підвіконня:'
+      end
+      field :seo do
+        label 'SEO'
       end
     end
   end

@@ -47,9 +47,9 @@ class MainController < ApplicationController
     @other_publications = Information.with_public.where.not(id: @publication)
 
     set_meta_tags site: 'Валько',
-                  title: @publication.title,
-                  description: @publication.short_description,
-                  keywords: 'Site, Login, Members',
+                  title: @publication.seo.try(:seo_title),
+                  description: @publication.seo.try(:seo_description),
+                  keywords: @publication.seo.try(:keywords),
                   og: {
                     title: @publication.title,
                     image:    {
@@ -77,9 +77,9 @@ class MainController < ApplicationController
     @other_promotions = Promotion.where.not(id: @one_promotion)
 
     set_meta_tags site: 'Валько',
-                  title: @one_promotion.title,
-                  description: @one_promotion.short_description,
-                  keywords: 'Site, Login, Members',
+                  title: @one_promotion.seo.try(:seo_title),
+                  description: @one_promotion.seo.try(:seo_description),
+                  keywords: @one_promotion.seo.try(:keywords),
                   og: {
                       title: @one_promotion.title,
                       image:    {
