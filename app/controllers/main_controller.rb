@@ -48,7 +48,7 @@ class MainController < ApplicationController
 
     set_meta_tags site: 'Валько',
                   title: @publication.title,
-                  description: 'Member login page.',
+                  description: @publication.short_description,
                   keywords: 'Site, Login, Members',
                   og: {
                     title: @publication.title,
@@ -57,7 +57,9 @@ class MainController < ApplicationController
                                    # _: full_image_path(@publication.cover.url(:large)),
                                    width: 170,
                                    height: 75,
-                               }
+                               },
+                    description: @publication.short_description,
+                    url: request.original_url
                   }
 
   end
