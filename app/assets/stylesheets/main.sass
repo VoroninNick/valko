@@ -17,6 +17,10 @@ body
     overflow: hidden
     .mobile-menu-panel, .mobile-menu-background-cover
       display: block
+    .mobile-main-menu
+      -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+      -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+      box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
 
 .mobile-menu-panel
   background: #263238
@@ -304,9 +308,6 @@ main
   .main-menu-wrap
     height: 60px
     background: #263238
-    -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
-    -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
-    box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
     position: relative
     z-index: 10
     nav#main-menu
@@ -318,6 +319,16 @@ main
         li
           height: inherit
           float: left
+          position: relative
+          &:after
+            display: block
+            content: ''
+            width: 1px
+            background: #1c282e
+            position: absolute
+            right: 0
+            top: 0
+            bottom: 0
           span
             background: red
           a
@@ -340,12 +351,19 @@ main
               padding-bottom: 21px
               float: left
               margin-right: 10px
+          &:first-child
+            svg
+              margin-left: 10px
+              margin-right: 10px
+          &:last-of-type:after
+            display: none
           &:hover
             background: #1c282e
             a
               color: #1976d2
             path
               fill: #1976d2
+
     .mobile-main-menu
       height: inherit
       display: none
