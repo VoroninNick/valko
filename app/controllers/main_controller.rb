@@ -2,6 +2,8 @@ class MainController < ApplicationController
   before_action :set_cart, only: [:basket]
   after_action :recently_viewed, only: :one_windowsill
 
+  require 'json'
+
   def recently_viewed
     return unless request.get?
     return if request.xhr?
@@ -25,6 +27,17 @@ class MainController < ApplicationController
     # return render inline: session.keys.inspect
     @publications = Information.with_main.limit(5)
     @windowsill_new = Windowsill.with_public
+
+    response_nbu = HTTParty.get('http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
+    response_private = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+    @data_nbu = JSON.parse(response_nbu.body)
+    @data_private = JSON.parse(response_private.body)
+
+    @usd_nbu = @data_nbu.select {|key| key["r030"] == 840 }
+    @eur_nbu = @data_nbu.select {|key| key["r030"] == 978 }
+
+    @usd_private = @data_private.select {|key| key["ccy"] == "USD" }
+    @eur_private = @data_private.select {|key| key["ccy"] == "EUR" }
 
     set_seo('holovna')
   end
@@ -156,6 +169,11 @@ class MainController < ApplicationController
 
   def dev
     # render inline: session["main#windowsill"].keys.inspect
+
+    # response = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+    # @data = JSON.parse(response.body)
+    #
+    # @usd = @data.select {|key| key["r030"] == 840 }
   end
 
 

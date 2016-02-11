@@ -77,3 +77,4 @@ gem 'kaminari'
 gem 'figaro'
 
 gem 'meta-tags'
+gem 'httparty'

@@ -90,6 +90,53 @@
           |Огорожі
 
     .medium-6.columns
+      #exchange-rate
+        .row
+          .small-4.columns
+            .ext-rate-title-wrap
+              .ext-rate-title
+                = inline_svg "exchange.svg"
+                .title Курс валют
+          .small-8.columns
+            .row
+              .ext-rate-one
+                .small-6.columns
+                  = inline_svg "dolar.svg"
+                  .ext-rate-body
+                    b #{@usd_private[0]["buy"].to_f.round(2)}/#{@usd_private[0]["sale"].to_f.round(2)}
+                    p
+                      |Курс долара
+                      br
+                      |готівковий
+
+                .small-6.columns
+                  b = @usd_nbu[0]["rate"].to_f.round(2)
+                  p
+                    |Курс долара
+                    br
+                    |на міжбанку
+                .clearfix
+            .row
+              .columns
+                .columns
+                  hr
+            .row
+              .ext-rate-one
+                .small-6.columns
+                  = inline_svg "euro.svg"
+                  .ext-rate-body
+                    b #{@eur_private[0]["buy"].to_f.round(2)}/#{@eur_private[0]["sale"].to_f.round(2)}
+                    p
+                      |Курс євро
+                      br
+                      |готівковий
+
+                .small-6.columns
+                  b = @eur_nbu[0]["rate"].to_f.round(2)
+                  p
+                    |Курс євро
+                    br
+                    |на міжбанку
 
 - if @windowsill_new.any?
   .page-block.new-windowsill-block

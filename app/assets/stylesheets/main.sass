@@ -615,6 +615,43 @@ main
 //@media only screen and (min-width: 90.063em)
   .row-wide
     width: 1441px
+#exchange-rate
+  border: 1px solid #eceff1
+  .ext-rate-title-wrap
+    position: relative
+    height: 137px
+    margin-left: 20px
+  .ext-rate-title
+    +my_center_align()
+      position: absolute
+    .title
+      +default_font_style(#607d8b, 12, 400, 14)
+      text-transform: uppercase
+      text-align: center
+      white-space: nowrap
+    svg
+      display: block
+      margin: 0 auto
+      margin-bottom: 10px
+      path
+        fill: #607d8b
+  .ext-rate-one
+    padding-top: 10px
+    padding-bottom: 10px
+    .ext-rate-body
+      padding-left: 20px
+    svg
+      position: absolute
+      top: 3px
+      left: 15px
+  hr
+    margin: 0
+    border-color: #eceff1
+  b
+    +default_font_style(#1976d2, 18, 500, 14)
+  p
+    +default_font_style(#607d8b, 12, 300, 12)
+    margin-bottom: 0
 
 .promotions-page
   .one-promotions

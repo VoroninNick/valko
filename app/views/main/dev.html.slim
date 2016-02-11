@@ -21,3 +21,28 @@
 .row
   .columns
     = request.original_url
+
+/.row
+  .columns
+    |test 1
+    ol
+      - @data.each do |data|
+        -if data['r030'] == 840
+          li
+            = data.inspect
+/.row
+  .columns
+    |dolar
+    = @usd.inspect
+/.row
+  .columns
+    = @usd[0]["rate"]
+.row
+  .columns
+    = @data.inspect
+/.row
+  .columns
+    |list
+    ol
+      - @data.each do |data|
+        li = data.inspect
