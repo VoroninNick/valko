@@ -10,4 +10,5 @@ ul.breadcrumbs
       .td-header.text-center
         .title Правила користування
       .td-body.article
-        = raw(@current_terms.description)
+        - if @current_terms
+          = raw(@current_terms.description)

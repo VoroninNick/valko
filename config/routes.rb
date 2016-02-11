@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post 'call_order' => 'main#call_order'
 
   get 'terms-of-use' => 'main#terms'
+  get 'warranty' => 'main#warranty'
+
   get 'dev' => 'main#dev'
 
   resources :line_items

@@ -148,6 +148,12 @@ class MainController < ApplicationController
 
     set_seo('pravyla-korystuvannia')
   end
+  def warranty
+    @warranty = Warranty.if_published.first
+
+    set_seo('dostavka-ta-harantiia')
+  end
+
   def dev
     # render inline: session["main#windowsill"].keys.inspect
   end

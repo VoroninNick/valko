@@ -1,0 +1,14 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Доставка та гарантія
+
+.terms-and-delivery-page
+  .row
+    .columns
+      .td-header.text-center
+        .title Доставка та гарантія
+      .td-body.article
+        - if @warranty
+          = raw(@warranty.description)
