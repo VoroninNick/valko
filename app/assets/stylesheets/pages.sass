@@ -288,6 +288,54 @@
         padding-left: 35px
         margin-top: 15px
         margin-bottom: 50px
+    .bc-contacts-info
+      .bc-ci-one
+        min-height: 46px
+        margin-bottom: 10px
+        border-bottom: 1px solid #eceff1
+        .bc-ci-key
+          height: 46px
+          width: 30%
+          float: left
+          +default_font_style(#607d8b, 14, 500, 46)
+          font-family: 'Roboto', sans-serif
+        .bc-ci-value
+          height: 46px
+          width: 70%
+          float: left
+          p
+            +default_font_style(#1c282e, 12, 500, 46)
+            text-transform: uppercase
+    .bc-basket-list
+      .bc-basket-list-body
+        .bc-bl-one
+          border-bottom: 1px solid #eceff1
+          padding-top: 6px
+          padding-bottom: 6px
+          .image
+            width: 40px
+            height: 40px
+            border: 1px solid #eceff1
+      .bc-basket-list-footer
+        margin-top: 25px
+        margin-bottom: 30px
+        .bc-bl-total-price
+          height: 63px
+          background: #eceff1
+          padding-left: 0.9375rem
+          padding-right: 0.9375rem
+          p
+            float: right
+            +default_font_style(#1e88e5, 21, 500, 63)
+            sub
+              color: #bcbec0
+              font:
+                size: rem-calc(18)
+                weight: 500
+            b
+
+            sup
+              font-size: 50%
 
   .basket-footer
     padding-left: 0.9375rem

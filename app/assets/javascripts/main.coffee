@@ -405,11 +405,15 @@ $(document).ready ->
         $('.cart-tab').removeClass('active')
         $(".cart-tab.#{go_to}").addClass('active')
 
+
     else if $this.hasClass('finish-step')
       console.log 'finish step'
     else
       $('.cart-tab').removeClass('active')
       $(".cart-tab.#{go_to}").addClass('active')
+      if go_to == 'cart-confirmation'
+        console.log('to')
+#        $wrap.find('')
 
 
 #===========================================================

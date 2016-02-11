@@ -16,6 +16,61 @@
         .bn-label Підтвердження
       .clearfix
 
+.basket-body
+  .row
+    .columns
+      hr
+  .row
+    .medium-6.columns
+      h5 Контактні дані:
+      .bc-contacts-info
+        .bc-ci-one
+          .bc-ci-key Ім’я
+          .bc-ci-value
+            p Тарас
+        .bc-ci-one
+          .bc-ci-key Прізвище
+          .bc-ci-value
+            p Шевченко
+        .bc-ci-one
+          .bc-ci-key Телефон
+          .bc-ci-value
+            p
+        .bc-ci-one
+          .bc-ci-key Ел. скринька
+          .bc-ci-value
+            p Useremail@gmail.com
+        .bc-ci-one
+          .bc-ci-key Спосіб довозу
+          .bc-ci-value
+            p
+        .bc-ci-one
+          .bc-ci-key Примітки
+          .bc-ci-value
+            p
+
+    .medium-6.columns
+      h5 Перелік Товарів:
+      .bc-basket-list
+        .bc-basket-list-body
+          - @cart.line_items.each do |item|
+            - if item.class_name == 'Windowsill'
+              / WINDOWSILL
+              .bc-bl-one
+                .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+                a href=one_windowsill_path(item.windowsill.slug)
+                  = item.windowsill.title
+
+        .bc-basket-list-footer
+          .bc-bl-total-price
+            p
+              sub Σ:
+              b
+                = @cart.total_price
+              sup &nbsp;грн.
+
+      h5 Спосіб оплати:
+      p Можливі різноманітні способи оплати - прохання уточнити у менеджера
 .basket-footer
   .row
     .columns
