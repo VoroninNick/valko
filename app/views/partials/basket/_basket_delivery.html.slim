@@ -24,19 +24,24 @@
     .columns
       h5 Контактні дані:
   .columns
-    form.ajax-popup-form.default-animation-form.default-form-with-icons  action="" method="POST"
+    form#basket-contacts-info.ajax-popup-form.default-animation-form.default-form-with-icons data-abide="" action="" method="POST"
       .row
         .medium-6.columns
           .input.animate-input
             .input-ico
               =inline_svg "ic_person_48px.svg"
-            label Ваше ім’я
+            label
+              |Ваше ім’я
+              span ,&nbsp;введено не вірно
             input name="first_name" type="text" required=""
+
           .input.animate-input
             .input-ico
               =inline_svg "ic_phone_24px.svg"
-            label Контактний телефон
-            input name="phone" type="tel"
+            label
+              |Контактний телефон
+              span ,&nbsp;введено не вірно
+            input name="phone" type="tel" required="" pattern="^([0|\+[0-9]{1,5})?([1-9][0-9]{11})$"
 
           .input.animate-input.animated-select.is-completed
             .input-ico
@@ -53,13 +58,17 @@
           .input.animate-input
             .input-ico
               =inline_svg "Valko-icon-username-surname.svg"
-            label Прізвище
+            label
+              |Прізвище
+              span ,&nbsp;введено не вірно
             input name="last_name" type="text" required=""
           .input.animate-input
             .input-ico
               =inline_svg "ic_mail_24px.svg"
-            label Електронна скринька
-            input name="email" type="email"
+            label
+              |Електронна скринька
+              span ,&nbsp;введена не вірно
+            input name="email" type="email" required=""
           .input.animate-input.animate-textarea
             .input-ico
               =inline_svg "ic_insert_comment_24px.svg"

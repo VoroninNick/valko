@@ -1472,6 +1472,8 @@ ul#promotion-banner
   .custom-checkbox
     margin-top: 30px
     margin-left: 35px
+
+$error_color: red
 form
   .input
     label
@@ -1500,7 +1502,8 @@ form
           size: rem-calc(14)
         line-height: rem-calc(20)
         opacity: .5
-
+        span
+          display: none
       input, select
         height: 30px
       input, textarea, select
@@ -1512,6 +1515,16 @@ form
         outline: none
         margin: 0
 
+      &.error
+        svg
+          path
+            fill: $error_color
+        label
+          color: $error_color
+          & span
+            display: inline-block
+        input, textarea, select
+          border-color: $error_color
 
       &.is-active
         &::after
