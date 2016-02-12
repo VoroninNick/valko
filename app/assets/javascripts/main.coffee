@@ -412,9 +412,22 @@ $(document).ready ->
       $('.cart-tab').removeClass('active')
       $(".cart-tab.#{go_to}").addClass('active')
       if go_to == 'cart-confirmation'
-        console.log('to')
-#        $wrap.find('')
 
+        first_name = $wrap.find('input[name="first_name"]').val()
+        last_name = $wrap.find('input[name="last_name"]').val()
+        phone_number = $wrap.find('input[name="phone"]').val()
+        email = $wrap.find('input[name="email"]').val()
+        message = $wrap.find('textarea[name="message"]').val()
+        shipping = $wrap.find('option:selected').val()
+
+        console.log 'values:'+ first_name + last_name + phone_number + email + message + shipping
+
+        $('.bc-ci-value.bcv-first-name p').text(first_name)
+        $('.bc-ci-value.bcv-last-name p').text(last_name)
+        $('.bc-ci-value.bcv-phone p').text(phone_number)
+        $('.bc-ci-value.bcv-email p').text(email)
+        $('.bc-ci-value.bcv-message p').text(message)
+        $('.bc-ci-value.bcv-shipping p').text(shipping)
 
 #===========================================================
 # page up

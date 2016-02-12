@@ -46,3 +46,22 @@
     ol
       - @data.each do |data|
         li = data.inspect
+
+.row
+  .columns
+    - str = "123.4056"
+    = str
+    br
+    = "%.2f" % str
+    br
+    = number_with_precision(str, precision: 2)
+    br
+    = str.to_f.round(2)
+    br
+    = Integer(str.to_f * 100) / Float(100)
+
+.row
+  .columns
+    .columns
+      div style="min-height: 450; background: red"
+    .clearfix
