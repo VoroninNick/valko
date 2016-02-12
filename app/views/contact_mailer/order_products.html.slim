@@ -1,0 +1,23 @@
+h3 #{@data[:first_name]} #{@data[:last_name]}, замовив товарів на суму #{@current_cart.total_price} грн.
+/= @current_cart.inspect
+h4 Список товарів
+ol
+  - @current_cart.line_items.each do |item|
+    - if item.class_name == 'Windowsill'
+      li
+        p #{item.windowsill.title} фірми #{item.windowsill.brand.title} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag} вартістю #{item.total_price} грн.
+    - elsif item.class_name == 'Gag'
+      li
+        p #{item.gag.title} виробника #{item.gag.brand.title} вартістю #{item.total_price} грн.
+
+h4 Контактна інформація
+p
+  a href="tel:+#{@data[:phone_number].gsub(/[+( )-]/, '')}" =@data[:phone_number]
+p
+  a href="mailto:+#{@data[:email]}" =@data[:email]
+
+h4 Спосіб достаки
+p #{@data[:shipping]}
+
+h4 Коментар
+p #{@data[:message]}

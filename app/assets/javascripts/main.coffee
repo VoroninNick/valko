@@ -394,11 +394,17 @@ $(document).ready ->
 #===========================================================
   $('.cart-button a').click ->
     $this = $(@)
-    $wrap = $this.closest('.cart-tab')
+    $wrap = $this.closest('.basket-wrap')
     go_to = $this.attr('data-step')
 
     count_items = $wrap.find('.basket-list-one').size()
-#    console.log 'attribute:',go_to
+
+    first_name = $wrap.find('input[name="first_name"]').val()
+    last_name = $wrap.find('input[name="last_name"]').val()
+    phone_number = $wrap.find('input[name="phone"]').val()
+    email = $wrap.find('input[name="email"]').val()
+    message = $wrap.find('textarea[name="message"]').val()
+    shipping = $wrap.find('option:selected').val()
 
     if $this.hasClass('first-step')
       if count_items > 0
@@ -407,19 +413,40 @@ $(document).ready ->
 
 
     else if $this.hasClass('finish-step')
-      console.log 'finish step'
+#      console.log 'finish step'
+      console.log 'values:'+ first_name + last_name + phone_number + email + message + shipping
+
+      action_path = $this.attr('data-href')
+      cart_id = $wrap.attr('data-cart')
+
+      DataToSend =
+        first_name: first_name
+        last_name: last_name
+        phone_number: phone_number
+        email: email
+        message: message
+        shipping: shipping
+        cart_id: cart_id
+
+      #Call jQuery ajax
+      $.ajax
+        url: action_path
+        dataType: 'html'
+        type: "POST"
+        data: DataToSend
+        before: ->
+            alert 'before'
+        success: (msg) ->
+
+  #          loadPartials()
+          alert 'succes'
+        error: (err) ->
+          alert "Error"
     else
       $('.cart-tab').removeClass('active')
       $(".cart-tab.#{go_to}").addClass('active')
+
       if go_to == 'cart-confirmation'
-
-        first_name = $wrap.find('input[name="first_name"]').val()
-        last_name = $wrap.find('input[name="last_name"]').val()
-        phone_number = $wrap.find('input[name="phone"]').val()
-        email = $wrap.find('input[name="email"]').val()
-        message = $wrap.find('textarea[name="message"]').val()
-        shipping = $wrap.find('option:selected').val()
-
         console.log 'values:'+ first_name + last_name + phone_number + email + message + shipping
 
         $('.bc-ci-value.bcv-first-name p').text(first_name)

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post 'offers_and_comments' => 'main#offers_and_comments'
   post 'contact_form' => 'main#contact_form'
   post 'call_order' => 'main#call_order'
+  post 'order_product' => 'main#order_product'
 
   get 'terms-of-use' => 'main#terms'
   get 'warranty' => 'main#warranty'

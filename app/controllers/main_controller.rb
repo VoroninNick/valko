@@ -198,4 +198,9 @@ class MainController < ApplicationController
     head :ok
   end
 
+  def order_product
+    data = params.permit(:first_name, :last_name, :phone_number, :email, :message, :shipping, :cart_id)
+    ContactMailer.order_products(data).deliver
+    head :ok
+  end
 end
