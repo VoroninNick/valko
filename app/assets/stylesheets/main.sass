@@ -108,6 +108,10 @@ header
           padding-left: 6px
           padding-right: 6px
           line-height: 25px
+          &:hover
+            color: #fff
+            opacity: 1
+
       &:before
         content: '...'
         position: absolute
@@ -121,16 +125,17 @@ header
     p, a
       opacity: .5
   .header-logo
-    padding-top: 6px
+    padding-top: 10px
     width: 187px
     overflow: hidden
     @media screen and ( max-width: 480px)
       width: 80px
   .header-main
-    padding-top: 25px
+    padding-top: 15px
     ul
       list-style: none
       margin: 0
+      margin-top: 6px
       li
         width: 40px
         float: left
@@ -138,7 +143,7 @@ header
           display: block
           padding: 10px
     p
-      color: #fff
+      color: rgba(255, 255, 255, .8)
       font:
         weight: 400
         size: rem-calc(12)
@@ -152,29 +157,42 @@ header
     form
       height: 30px
       position: relative
+      margin-top: 10px
       .input
         input
-          opacity: .4
+          //opacity: .4
           padding-left: 35px
           height: 30px
           margin: 0
           background: rgba(255, 255, 255, .4) !important
           border: none
-          +placeholder(#eceff1, 14px, none)
+          +placeholder(rgba(236, 239, 241, .7), 14px, none)
+            line-height: 18px
+          box-shadow: none
+          -webkit-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.35)
+          -moz-box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.35)
+          box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.35)
+          color: #fff
       .submit
         width: 30px
         height: 30px
         position: absolute
-        left: 3px
-        top: 3px
+        left: 0
+        top: 0
         button
+          display: block
+          width: 30px
+          height: 30px
           background: transparent
           padding: 0
+          margin: 0
           svg
             width: 100%
             padding: 7px
             path
-              fill: #eceff1
+              fill: #eceff1 !important
+              opacity: 1 !important
+
     &.header-main-hide-for-mobile
       @media screen and ( max-width: 950px)
         display: none
@@ -435,13 +453,13 @@ main
         &:first-of-type
           @media #{$medium-up}
             //+grid-column(6)
-            height: 265px
+            height: 300px
             padding-right: 2px
             margin-bottom: 4px
         &:nth-of-type(2)
           @media #{$medium-up}
             //+grid-column(6)
-            height: 265px
+            height: 300px
             padding-left: 2px
             margin-bottom: 4px
       .medium-11
@@ -461,7 +479,7 @@ main
               font:
                 size: rem-calc(20)
                 weight: 400
-              line-height: 28px
+              line-height: 25px
               text-transform: uppercase
           &:nth-of-type(2)
             @media #{$medium-up}
@@ -477,7 +495,7 @@ main
                 font:
                   size: rem-calc(20)
                   weight: 400
-                line-height: 28px
+                line-height: 25px
                 text-transform: uppercase
           &:nth-of-type(3)
             @media #{$medium-up}
@@ -494,7 +512,7 @@ main
                 font:
                   size: rem-calc(20)
                   weight: 400
-                line-height: 28px
+                line-height: 25px
                 text-transform: uppercase
       .pb-publications-more
         @media #{$medium-up}
@@ -632,18 +650,22 @@ main
     svg
       display: block
       margin: 0 auto
-      margin-bottom: 10px
+      margin-bottom: 15px
+      width: 85%
       path
         fill: #607d8b
   .ext-rate-one
     padding-top: 10px
-    padding-bottom: 10px
+    padding-bottom: 10px    
     .ext-rate-body
       padding-left: 20px
     svg
       position: absolute
       top: 3px
       left: 15px
+    &.ext-rate-one-euro
+      svg
+        top: 4px
   hr
     margin: 0
     border-color: #eceff1
@@ -860,7 +882,7 @@ main
       left: 0
       right: 0
       min-height: 112px
-
+      height: 130px
       padding-left: 30px
       padding-right: 18px
       padding-top: 15px
@@ -882,7 +904,7 @@ main
       .valko-arrow
         position: absolute
         left: 0
-        top: 10px
+        top: 16px
 
     &:hover
       .valko-arrow
@@ -902,6 +924,9 @@ main
       padding: 0 30px
       .valko-arrow
         float: initial
+        margin-bottom: 3px
+      &:hover
+        color: #fff !important
 
 .custom-checkbox
   input[type=checkbox]
@@ -1064,12 +1089,18 @@ main
         padding-left: 2px
 
 .main-footer
+  height: 42px
+  .small-10
+    height: 42px
   p
     margin-bottom: 0
     color: #939598
     font:
       size: rem-calc(12)
       weight: 400
+    position: absolute
+    bottom: 10px
+
   .scroll-top-button
     background: #607d8b
     padding-bottom: 80%
@@ -1130,8 +1161,10 @@ footer
   nav
     float: right
     margin-bottom: 20px
+    margin-top: 4px
     li
-      border-right: 2px solid #263238
+      border-right: 1px solid #263238
+      line-height: 16px
       a
         text-transform: uppercase
         font:
@@ -1155,7 +1188,7 @@ footer
   p.copyright
     font:
       size: rem-calc(16)
-      weight: 400
+      weight: 300
     line-height: 24px
     text-transform: uppercase
     margin-bottom: 10px
@@ -1184,7 +1217,7 @@ ul.voronin-block-wrap
       font:
         size: rem-calc(12)
         style: normal !important
-        weight: 400
+        weight: 300
       white-space: nowrap
       margin:
         bottom: 0 !important
@@ -1230,6 +1263,7 @@ ul.voronin-block-wrap
       width: 60%
       .sc-oi-title
         margin-top: 10px
+        margin-bottom: 4px
         color: #1c282e
         font:
           family: 'Roboto', sans-serif
@@ -1249,20 +1283,25 @@ ul.voronin-block-wrap
       ul
         margin: 0
         list-style: none
+        margin-bottom: 5px
         li
           float: left
-          padding-left: 4px
+          //padding-left: 4px
           padding-right: 4px
-          border-right: 2px solid #fff
+          //border-right: 2px solid #fff
           //height: 12px
           a
             color: #1c282e
             font:
               size: rem-calc(12)
               weight: 400
-          &:first-of-type
+            span
+              padding-left: 5px
+              color: #eceff1
+
+          //&:first-of-type
             padding-left: 0
-          &:last-of-type
+          //&:last-of-type
             border-right: none
       p
         color: #eceff1
@@ -1339,6 +1378,7 @@ ul.voronin-block-wrap
     background: #eceff1
     padding: 0
     +grid-column(4)
+    padding-left: 0
     @media screen and ( max-width: 840px)
       width: 50%
     @media screen and ( max-width: 700px)
@@ -1442,6 +1482,9 @@ ul#promotion-banner
           weight: 400
           family: 'Roboto', sans-serif
         line-height: 16px
+      &:last-child
+        .countdown-amount
+          color: #1565c0
 
 .image
   max-width: 100%
