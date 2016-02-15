@@ -6,7 +6,7 @@ class TermsOfUse < ActiveRecord::Base
   attr_accessible *attribute_names
 
   rails_admin do
-    navigation_label 'Інші'
+    navigation_label 'Інше'
 
     label 'Правила користування'
     label_plural 'Правила користування'

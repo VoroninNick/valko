@@ -6,7 +6,7 @@ class Warranty < ActiveRecord::Base
   attr_accessible *attribute_names
 
   rails_admin do
-    navigation_label 'Інші'
+    navigation_label 'Інше'
 
     label 'Доставка та гарантія'
     label_plural 'Доставка та гарантія'

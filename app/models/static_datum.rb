@@ -11,7 +11,7 @@ class StaticDatum < ActiveRecord::Base
 
 
   rails_admin do
-    navigation_label 'Інші'
+    navigation_label 'Інше'
 
     label 'Статичні дані'
     label_plural 'Статичні дані'
