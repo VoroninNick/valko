@@ -15,19 +15,24 @@ ul.breadcrumbs
         .contacts-block-head.text-center
           .title Контакти
         .contacts-block-body
-          .row
-            .columns.text-center
-              b
-                |м. Львів
+          - if static_data && static_data.city.present?
+            .row
+              .columns.text-center
+                b = static_data.city
           .medium-6.columns
-            p.medium-up-right
-              = inline_svg "Valko-icon-house.svg"
-              |вул. Ковельська, 109 б
+            - if static_data && static_data.street.present?
+              p.medium-up-right
+                = inline_svg "Valko-icon-house.svg"
+                = static_data.street
           .medium-6.columns
-            p
-              = inline_svg "ic_phone_24px.svg"
-              |тел.:  (032) 294 10 12
-            p моб.: (067) 310 70 27
+            - if static_data && static_data.tel1.present?
+              p
+                = inline_svg "ic_phone_24px.svg"
+                |тел.:  #{static_data.tel1}
+
+            - if static_data && static_data.tel2.present?
+              p моб.: #{static_data.tel2}
+
           .clearfix
     .medium-3.columns
       .offers-and-comments

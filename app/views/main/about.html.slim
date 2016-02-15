@@ -29,6 +29,23 @@ ul.breadcrumbs
                 .row
                   .small-8.small-centered.columns
                     = image_tag"valko-logo-v3.png"
+                .row
+                  .columns
+                    - if static_data && static_data.facebook.present? || static_data.youtube.present? || static_data.google.present?
+                      ul.socials
+                        - if static_data.google.present?
+                          li
+                            a href=static_data.google
+                              = inline_svg"Valko-icon-social-google+.svg"
+                        - if static_data.youtube.present?
+                          li
+                            a href=static_data.youtube
+                              = inline_svg"Valko-icon-social-youtube.svg"
+                        - if static_data.facebook.present?
+                          li
+                            a href=static_data.facebook
+                              = inline_svg"Valko-icon-social-facebook.svg"
+
               .medium-8.columns
                 h3 5 причин обрати «ВАЛЬКО»
 
