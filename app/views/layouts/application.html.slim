@@ -20,6 +20,8 @@ html lang="en"
     = javascript_include_tag 'application'
     = csrf_meta_tags
 
+    = analytics_init if GoogleAnalytics.valid_tracker?
+
   body
     = render "layouts/header"
 

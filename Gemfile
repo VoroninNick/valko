@@ -78,3 +78,6 @@ gem 'figaro'
 
 gem 'meta-tags'
 gem 'httparty'
+
+
+gem 'google-analytics-rails'
