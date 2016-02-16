@@ -4,4 +4,13 @@ class Cart < ActiveRecord::Base
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
+
+  def self.destroy_cart
+    Cart.expired.destroy_all
+  end
+  scope :expired, -> { where('created_at <= ?', 24.hours.ago) }
+
+  after_save do
+    Cart.destroy_cart
+  end
 end
