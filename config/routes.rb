@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   get 'terms-of-use' => 'main#terms'
   get 'warranty' => 'main#warranty'
 
+  get 'search' => 'main#search'
+
   get 'dev' => 'main#dev'
 
   resources :line_items

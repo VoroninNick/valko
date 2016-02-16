@@ -210,4 +210,7 @@ class MainController < ApplicationController
       format.js
     end
   end
+
+  def search
+  end
 end
