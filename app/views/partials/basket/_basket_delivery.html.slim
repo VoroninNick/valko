@@ -89,6 +89,6 @@
   .row
     .columns
       .material-component.ripple.button-box-shadow.red-button.right.cart-button.cb-to-confirm
-        a data-step="cart-confirmation" Підтвердити
+        a data-step="cart-confirmation" data-action=basket_items_list_path(@cart.id) Підтвердити
       .material-component.ripple.button-box-shadow.blue-text.right.cart-button
         a data-step="cart-item-list" До переліку товарів

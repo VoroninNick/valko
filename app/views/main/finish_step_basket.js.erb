@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+    render(partial: "partials/basket/basket_confirmation_list", locals: {cart: @cart})
+) %>
+$("#basket-conformation-list").html("<%= js %>");

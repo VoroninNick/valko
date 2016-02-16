@@ -50,24 +50,8 @@
             p
 
     .medium-6.columns
-      h5 Перелік Товарів:
-      .bc-basket-list
-        .bc-basket-list-body
-          - @cart.line_items.each do |item|
-            - if item.class_name == 'Windowsill'
-              / WINDOWSILL
-              .bc-bl-one
-                .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
-                a href=one_windowsill_path(item.windowsill.slug)
-                  = item.windowsill.title
-
-        .bc-basket-list-footer
-          .bc-bl-total-price
-            p
-              sub Σ:
-              b
-                = @cart.total_price
-              sup &nbsp;грн.
+      #basket-conformation-list
+        = render "partials/basket/basket_confirmation_list", cart: @cart
 
       h5 Спосіб оплати:
       p Можливі різноманітні способи оплати - прохання уточнити у менеджера
@@ -75,6 +59,6 @@
   .row
     .columns
       .material-component.ripple.button-box-shadow.red-button.right.cart-button
-        a.finish-step data-href=order_product_path Замовити
+        a.finish-step data-href=order_product_path data-action=cart_path(@cart.id) Замовити
       .material-component.ripple.button-box-shadow.blue-text.right.cart-button
         a data-step="cart-delivery" До доставки

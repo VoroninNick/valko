@@ -203,4 +203,11 @@ class MainController < ApplicationController
     ContactMailer.order_products(data).deliver
     head :ok
   end
+
+  def finish_step_basket
+    @cart = Cart.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
 end

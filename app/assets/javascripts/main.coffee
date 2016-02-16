@@ -194,31 +194,6 @@ $(document).ready ->
     console.log("gallery", gallery)
     window.gallery = gallery
 
-#===================================================================
-#  json parser
-#===================================================================
-#  myData = []
-#  $.ajax
-#    url: 'http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=20160127&json'
-#    data: myData
-#    type: 'GET'
-#    crossDomain: true
-#    dataType: 'jsonp'
-#    success: ->
-#      alert 'Success'
-#
-#    error: ->
-#      alert 'Failed!'
-
-#  $.getJSON 'http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=20160127&json', (data) ->
-#    items = []
-#    $.each data, (key, val) ->
-#      items.push '<li id=\'' + key + '\'>' + val + '</li>'
-#    alert 't'
-#    $('<ul/>',
-#      'class': 'my-new-list'
-#      html: items.join('')).appendTo 'body'
-
 #===========================================================
 # callback handler for contact form submit
 #===========================================================
@@ -435,13 +410,18 @@ $(document).ready ->
         type: "POST"
         data: DataToSend
         before: ->
-            alert 'before'
         success: (msg) ->
-
-  #          loadPartials()
-          alert 'succes'
+          console.log "products ordered"
+          $.ajax
+            url: $this.attr('data-action')
+            dataType: "json"
+            type: "DELETE"
+            before: ->
+            success: (msg) ->
+              $('#ordered-products').foundation('reveal', 'open');
+            error: (err) ->
         error: (err) ->
-          alert "Error"
+
     else
       if go_to == 'cart-confirmation'
         $confirm_form =$this.closest('.cart-tab').find('form')
@@ -461,6 +441,10 @@ $(document).ready ->
           $('.bc-ci-value.bcv-email p').text(email)
           $('.bc-ci-value.bcv-message p').text(message)
           $('.bc-ci-value.bcv-shipping p').text(shipping)
+
+          $.get( $this.attr('data-action'), ->
+#            alert 'success'
+          )
       else
         $('.cart-tab').removeClass('active')
         $(".cart-tab.#{go_to}").addClass('active')

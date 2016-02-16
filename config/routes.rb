@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post 'call_order' => 'main#call_order'
   post 'order_product' => 'main#order_product'
 
+  get 'finish_step_basket/:id' => 'main#finish_step_basket', as: :basket_items_list
+
   get 'terms-of-use' => 'main#terms'
   get 'warranty' => 'main#warranty'
 

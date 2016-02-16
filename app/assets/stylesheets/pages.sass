@@ -224,6 +224,17 @@
         border: 5px solid #eceff1
         height: 0
         padding-bottom: 100%
+        position: relative
+        overflow: inherit
+        &:after
+          display: block
+          content: ''
+          position: absolute
+          border-bottom: 1px solid#fff
+          bottom: -6px
+          left: -5px
+          right: -5px
+
       .title
         color: #1c282e
         margin-top: 16px
@@ -268,7 +279,9 @@
         top: -25px
         sup
           font-size: 50%
-
+      &:last-child
+        .image
+          overflow: hidden
       &:hover
         a.delete-item
           svg

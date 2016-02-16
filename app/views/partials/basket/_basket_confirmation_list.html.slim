@@ -1,0 +1,27 @@
+h5 Перелік Товарів:
+.bc-basket-list
+  .bc-basket-list-body
+    - cart.line_items.each do |item|
+      - if item.class_name == 'Windowsill'
+        / WINDOWSILL
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{item.windowsill.windowsill_photos.first.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=one_windowsill_path(item.windowsill.slug)
+              = item.windowsill.title
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price
+              sup грн.
+
+
+  .bc-basket-list-footer
+    .bc-bl-total-price
+      p
+        sub Σ:
+        b
+          = cart.total_price
+        sup &nbsp;грн.
