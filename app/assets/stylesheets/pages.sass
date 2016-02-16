@@ -334,6 +334,23 @@
             width: 40px
             height: 40px
             border: 1px solid #eceff1
+          a
+            +default_font_style(#1c282e, 18, 500,  21.6)
+            text-transform: uppercase
+          p
+            margin-bottom: 0
+            position: relative
+            top: -5px
+            +default_font_style(#607d8b, 21, 500, 21)
+            sup
+              font-size: 60%
+              padding-left: 4px
+          span
+            display: block
+            +default_font_style(#607d8b, 12, 400, 14)
+          &:last-child
+            border: none
+
       .bc-basket-list-footer
         margin-top: 25px
         margin-bottom: 30px
@@ -345,15 +362,17 @@
           p
             float: right
             +default_font_style(#1e88e5, 21, 500, 63)
-            sub
+            span
               color: #bcbec0
               font:
                 size: rem-calc(18)
                 weight: 500
+              margin-right: 8px
             b
 
             sup
-              font-size: 50%
+              font-size: 60%
+              padding-left: 2px
 
   .basket-footer
     padding-left: 0.9375rem
