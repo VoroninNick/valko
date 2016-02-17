@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'warranty' => 'main#warranty'
 
   get 'search' => 'main#search'
+  get 'sitemap' => 'main#sitemap'
 
   get 'dev' => 'main#dev'
 

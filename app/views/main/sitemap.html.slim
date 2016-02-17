@@ -1,0 +1,43 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Карта сайту
+
+.sitemap-page.terms-and-delivery-page
+  .row
+    .columns
+      .td-header.text-center
+        .title Карта сайту
+      .td-body
+
+        ul
+          li
+            a href=root_path Головна сторінка
+            ul
+              li
+                a href=windowsill_path Підвіконня
+              li
+                a href=about_path Про нас
+              li
+                a href=promotions_path Акції
+                - promotions = Promotion.with_date
+                - if promotions.any?
+                  ul
+                    - promotions.each do |promotion|
+                      li
+                        a href=one_promotions_path(promotion.slug) = promotion.title
+              li
+                a href=information_path Інформація
+                - publications = Information.with_public
+                - if publications.any?
+                  ul
+                    - publications.each do |publication|
+                      li
+                        a href=one_publication_path(publication.slug) = publication.title
+              li
+                = link_to 'Контакти', contacts_path
+              li
+                = link_to 'Доставка та гарантія', warranty_path
+              li
+                a href=terms_of_use_path Правила користування

@@ -485,3 +485,18 @@
           right: 0
           bottom: 0
           height: 100px
+
+.sitemap-page
+  ul
+    list-style: none
+    li
+      a
+        +default_font_style(#1976d2, 14, 500, 36)
+        text-transform: uppercase
+      ul
+        li
+        ul
+          li
+            a
+              +default_font_style(#1976d2, 14, 400, 21)
+              text-transform: inherit

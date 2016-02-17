@@ -226,4 +226,8 @@ class MainController < ApplicationController
       return redirect_to request.referrer
     end
   end
+
+  def sitemap
+    
+  end
 end
