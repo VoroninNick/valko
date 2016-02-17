@@ -22,6 +22,16 @@
   .columns
     = request.original_url
 
+
+.row
+  .columns
+    form action=search_path accept-charset="UTF-8" method="get"
+      .input
+        input type="text" name="search" placeholder="Я шукаю..."
+      .submit
+        button
+          = inline_svg "Valko-icon-search.svg"
+
 /.row
   .columns
     |test 1

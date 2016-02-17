@@ -1,0 +1,36 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Пошук
+
+.search-result-page
+  .row
+    .columns
+      .td-header.text-center
+        .title Пошук по сайту
+  .row
+    .columns
+      form action=search_path accept-charset="UTF-8" method="get"
+        .input
+          input type="text" name="search" placeholder="Я шукаю..."
+        .submit
+          button
+            = inline_svg "Valko-icon-search.svg"
+  .row.about-searching-result
+    .columns
+      p Результати пошуку по слову "#{params[:search]}"
+      p
+        span Знайдено #{@items.size} співпадіння
+  /.row
+    .columns
+      = @items.inspect
+  .row
+    .columns
+      .result-list
+        - @items.each do |item|
+          .one-result
+            a = item.title
+            =  raw item.description
+
+        /a href=one_windowsill_path(item.slug) = item.windowsill.title

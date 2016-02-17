@@ -30,9 +30,9 @@ header
         =image_tag "valko-logo-v2.png", class: 'show-for-small-only'
 
     .medium-4.columns.header-main.header-main-hide-for-mobile
-      form
+      form action=search_path accept-charset="UTF-8" method="get"
         .input
-          input type="text" placeholder="Я шукаю..."
+          input type="text" name="search" placeholder="Я шукаю..."
         .submit
           button
             = inline_svg "Valko-icon-search.svg"

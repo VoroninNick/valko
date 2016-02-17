@@ -234,6 +234,12 @@ class Windowsill < ActiveRecord::Base
 
   paginates_per 12
 
+
+  searchable do
+    text :title, :description
+  end
+
+
   filterrific(
       default_filter_params: { sorted_by: 'created_at_desc' },
       available_filters: [
@@ -310,6 +316,8 @@ class Windowsill < ActiveRecord::Base
   scope :with_color, lambda { |value|
                           where(color: [ *value])
                         }
+
+
   private
   def ensure_not_referenced_by_any_line_item
       if line_items.empty?

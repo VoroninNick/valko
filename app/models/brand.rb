@@ -56,4 +56,5 @@ class Brand < ActiveRecord::Base
   def self.brands_list
     order('LOWER(title)').pluck_to_hash(:title, :id, :slug).uniq
   end
+
 end
