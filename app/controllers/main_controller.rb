@@ -28,20 +28,6 @@ class MainController < ApplicationController
     @publications = Information.with_main.limit(5)
     @windowsill_new = Windowsill.with_public
 
-    # @query = Windowsill.search do
-    #   fulltext params[:search]
-    # end
-    # @items = @query.results
-    # @search = Sunspot.search [Windowsill] do
-    #   fulltext params[:search]
-    # end
-    #
-    # if @search.results.any?
-    #   @items = @search.results
-    # else
-    #   return redirect_to request_path
-    # end
-
     response_nbu = HTTParty.get('http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
     response_private = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
     @data_nbu = JSON.parse(response_nbu.body)
@@ -230,7 +216,7 @@ class MainController < ApplicationController
   end
 
   def search
-    @search = Sunspot.search [Windowsill] do
+    @search = Sunspot.search [Windowsill, Promotion, Information] do
       fulltext params[:search]
     end
 

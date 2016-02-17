@@ -22,15 +22,19 @@ ul.breadcrumbs
       p Результати пошуку по слову "#{params[:search]}"
       p
         span Знайдено #{@items.size} співпадіння
-  /.row
-    .columns
-      = @items.inspect
   .row
     .columns
       .result-list
-        - @items.each do |item|
+        - @search.each_hit_with_result do |hit, item|
           .one-result
-            a = item.title
-            =  raw item.description
+            a href=one_windowsill_path(item.slug) = item.title
+            = truncate_html(item.description, :length => 220)
 
-        /a href=one_windowsill_path(item.slug) = item.windowsill.title
+  /.row
+    .columns
+      - @search.hits.each do |hit|
+        p Windowsill ##{hit.primary_key}"
+        = hit.inspect
+        - hit.highlights(:description).each do |highlight|
+          = highlight.inspect
+          = "  " + highlight.format { |word| "*#{word}*" }
