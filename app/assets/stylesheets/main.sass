@@ -14,13 +14,14 @@ a
 body
   background: #eceff1
   &.opened-mobile-menu
-    overflow: hidden
-    .mobile-menu-panel, .mobile-menu-background-cover
-      display: block
-    .mobile-main-menu
-      -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
-      -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
-      box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+    @media screen and ( max-width: 950px)
+      overflow: hidden
+      .mobile-menu-panel, .mobile-menu-background-cover
+        display: block
+      .mobile-main-menu
+        -webkit-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+        -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
+        box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
 
 .mobile-menu-panel
   background: #263238
