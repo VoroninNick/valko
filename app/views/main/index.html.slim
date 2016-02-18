@@ -14,9 +14,14 @@
                         .promotion-banner-countdown-timer.button-box-shadow
                           .valko-countdown-promo data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
 
-                .promo-banner-body
-                  =promotion.title
-                  =promotion.date_of
+                .mobile-promo-banner-body.show-for-small-only
+                  .valko-arrow.va-right
+                    div
+                  .title = promotion.title
+                  p = truncate_html(promotion.short_description, length: 69, omission: '...')
+                  - if promotion.date_of.present?
+                    .promotion-banner-dates #{promotion.start_date.strftime("%d.%m.%y")} &#8212; #{promotion.date_of.strftime("%d.%m.%y")}
+
           .promotion-banner-pager
             - promotions.each_with_index do |promo_pager, index|
               a data-slide-index=index href=""

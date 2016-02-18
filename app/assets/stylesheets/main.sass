@@ -1379,6 +1379,42 @@ ul.voronin-block-wrap
 .promotion-banner-wrapper
   position: relative
   margin-top: 30px
+  .mobile-promo-banner-body
+    background: #eceff1
+    height: 135px
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    a
+      display: block
+      height: 135px
+      border-bottom: 1px solid #fff
+      padding: 0 28px
+      position: relative
+      .title
+        display: inline-block
+        color: #939598
+        font:
+          size: rem-calc(24)
+          family: 'Roboto', sans-serif
+          weight: 400
+        line-height: 24px
+        margin-top: 10px
+      p
+        color: #939598
+        font:
+          size: rem-calc(13)
+          weight: 400
+        line-height: 18px
+        margin-bottom: 0
+      .promotion-banner-dates
+        color: #939598
+        display: inline-block
+        font:
+          size: rem-calc(12)
+          weight: 400
+          family: 'Roboto', sans-serif
   .promotion-banner-pager
     position: absolute
     left: 0
@@ -1391,7 +1427,7 @@ ul.voronin-block-wrap
       width: 50%
     @media screen and ( max-width: 700px)
       width: 60%
-    @media #{$small-only}
+    //@media #{$small-only}
       display: none
     a
       display: block
@@ -1441,6 +1477,31 @@ ul.voronin-block-wrap
           left: 0
           top: 15px
           background: #1976d2
+    @media #{$small-only}
+      background: transparent
+      bottom: 15px
+      top: inherit
+      right: 0
+      left: inherit
+      float: right
+      width: auto
+      a
+        width: 12px
+        height: 12px
+        background: #93989c
+        padding: 0
+        border: none !important
+        display: inline-block
+        float: left
+        margin: 0 20px
+        &.active
+          background: #8ec3f2
+          padding: 0
+      .title, p, .promotion-banner-dates, .valko-arrow
+        display: none !important
+
+
+
 
 ul#promotion-banner
   height: 405px
