@@ -192,14 +192,14 @@
                       div
                     = publication.title
               - else
-                .small-10.medium-4.columns.pb-sub-publications-block.publication-default.publication-default-mobile.no-pad-right-small class=("end" if @publications.last == publication)
+                .medium-4.columns.pb-sub-publications-block.publication-default.publication-default-mobile class=("end" if @publications.last == publication)
                   a href=one_publication_path(publication.slug)
                     .valko-arrow.va-bottom
                       div
                     = publication.title
-                .small-2.columns.pb-publications-more.show-for-small-only
-                  = link_to information_path do
-                    .div
+                  .pb-publications-more.show-for-small-only
+                    = link_to information_path do
+                      .div
       .medium-1.columns.pb-publications-more.hide-for-small
         = link_to information_path do
           .div

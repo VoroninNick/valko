@@ -542,6 +542,13 @@ main
           margin-bottom: 4px
         @media #{$small-only}
           height: 120px
+          width: 53px
+          position: absolute
+          top: 0
+          right: 0.9375rem
+          a
+            margin: 0
+            padding: 0
         a
           background: #263238
           display: block
@@ -948,6 +955,11 @@ main
         margin-bottom: 3px
       &:hover
         color: #fff !important
+    &:last-child
+      @media #{$small-only}
+        a
+          margin-right: 59px
+
 
 .custom-checkbox
   input[type=checkbox]
