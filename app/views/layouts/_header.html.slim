@@ -48,11 +48,13 @@ header
     .medium-3.columns.header-main.header-main-show-for-mobile
       - if static_data && static_data.tel1.present?
         p
-          |тел.:
+          span
+            |тел.:
           /a href="tel:+380322941012" +38 (032) 294 10 12
           a href="tel:#{static_data.tel1.gsub(/[+( )-]/, '')}" = static_data.tel1
       - if static_data && static_data.tel2.present?
         p
-          |моб.:
+          span
+            |моб.:
           /a href="tel:+380673107027" +38 (067) 310 70 27
           a href="tel:#{static_data.tel2.gsub(/[+( )-]/, '')}" = static_data.tel2

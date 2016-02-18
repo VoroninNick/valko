@@ -46,7 +46,6 @@ ul.breadcrumbs
               |Підвіконня
 
             span
-              |Сортувати по:
               = f.select(:sorted_by, @filterrific.select_options[:sorted_by])
               - if session["main#windowsill"]["sorted_by"] == "created_at_desc"
                 .sorted-control.sby-date.sc-desc
@@ -68,6 +67,8 @@ ul.breadcrumbs
               - else
                 .sorted-control.sby-name
                   = inline_svg"Valko-icon-sort-alphabet.svg"
+              span.hide-for-small-only
+                |Сортувати по:
 
       .row
         .medium-3.columns

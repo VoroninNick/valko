@@ -127,8 +127,15 @@ header
       opacity: .5
   .header-logo
     padding-top: 10px
-    width: 187px
+    width: 208px
     overflow: hidden
+    @media screen and ( max-width: 970px)
+      width: 16.66667%
+      img
+        &.hide-for-small-only
+          display: none !important
+        &.show-for-small-only
+          display: block !important
     @media screen and ( max-width: 480px)
       width: 80px
   .header-main
@@ -149,6 +156,9 @@ header
         weight: 400
         size: rem-calc(12)
       margin-bottom: 0
+      span
+        @media screen and ( max-width: 355px)
+          display: none
       a
         font:
           size: rem-calc(18)
@@ -448,6 +458,13 @@ main
           &.active
             span
               background: #42a5f5
+      @media #{$small-only}
+        span
+          font:
+            size: rem-calc(19.2)
+        .owl-dots
+          .owl-dot
+            margin: 0
 
     &.publications-block
       .pb-sub-publications-block
@@ -1394,6 +1411,8 @@ ul.voronin-block-wrap
     p
       +default_font_style(#607d8b, 13, 400, 18)
       margin-bottom: 0
+      max-height: 36px
+      overflow: hidden
     .promotion-banner-dates
       display: inline-block
       +default_font_style(#1e88e5, 12, 400, 20)
