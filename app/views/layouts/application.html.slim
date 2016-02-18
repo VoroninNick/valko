@@ -5,22 +5,23 @@ html lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     /title = content_for?(:title) ? yield(:title) : "Valko"
 
-    /link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"
-    /link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"
-    /link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"
-    /link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196"
-    /link rel="icon" type="image/png" href="/favicon-228x228.png" sizes="228x228"
-    /
-    /link rel="apple-touch-icon-precomposed" sizes="76x76" href="touch-icon-ipad.png"
-    /link rel="apple-touch-icon-precomposed" sizes="180x180" href="touch-icon-iphone-6plus.png"
-    = favicon_link_tag 'favicon-16x16.png'
-    = favicon_link_tag 'favicon-32x32.png'
-    = favicon_link_tag 'favicon-96x96.png'
-    = favicon_link_tag 'favicon-196x196.png'
-    = favicon_link_tag 'favicon-228x228.png'
+    link rel="icon" type="image/png" href=asset_path("favicon-16x16.png") sizes="16x16"
+    link rel="icon" type="image/png" href=asset_path("favicon-32x32.png") sizes="32x32"
+    link rel="icon" type="image/png" href=asset_path("favicon-96x96.png") sizes="96x96"
+    link rel="icon" type="image/png" href=asset_path("favicon-196x196.png") sizes="196x196"
+    link rel="icon" type="image/png" href=asset_path("favicon-228x228.png") sizes="228x228"
 
-    = favicon_link_tag 'touch-icon-ipad.png'
-    = favicon_link_tag 'touch-icon-iphone-6plus.png'
+    link rel="apple-touch-icon-precomposed" sizes="76x76" href=asset_path("touch-icon-ipad.png")
+    link rel="apple-touch-icon-precomposed" sizes="180x180" href=asset_path("touch-icon-iphone-6plus.png")
+
+    /= favicon_link_tag 'favicon-16x16.png'
+    /= favicon_link_tag 'favicon-32x32.png'
+    /= favicon_link_tag 'favicon-96x96.png'
+    /= favicon_link_tag 'favicon-196x196.png'
+    /= favicon_link_tag 'favicon-228x228.png'
+    /
+    /= favicon_link_tag 'touch-icon-ipad.png'
+    /= favicon_link_tag 'touch-icon-iphone-6plus.png'
 
     = display_meta_tags
 
