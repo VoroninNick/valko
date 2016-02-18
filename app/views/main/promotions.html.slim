@@ -11,29 +11,30 @@ ul.breadcrumbs
       -if @promotions.any?
         - @promotions.each do |item|
           .one-promotions
-            a
-              .image.grayscale style="background: url('#{item.cover.url(:large)}')no-repeat center center;"
-              - if item.date_of.present?
-                .one-promotions-countdown-wrap
-                  .row
-                    .medium-10.medium-centered.columns
-                      .one-promotions-countdown-timer
-                        .valko-countdown-promo data-year=item.date_of.strftime("%Y") data-month=item.date_of.strftime("%m") data-day=item.date_of.strftime("%d")
-
-              .one-promotions-body
-                .valko-arrow
+            /a
+            .image.grayscale style="background: url('#{item.cover.url(:large)}')no-repeat center center;"
+            - if item.date_of.present?
+              .one-promotions-countdown-wrap
                 .row
-                  .columns
-                    a href=one_promotions_path(item.slug)
-                      = item.title
-                    p
-                      = item.short_description
-                    - if item.date_of.present?
-                      .promotion-banner-dates
-                        = inline_svg"ic_date_range_black_48px.svg"
-                        |#{item.start_date.strftime("%d.%m.%y")} &#8212; #{item.date_of.strftime("%d.%m.%y")}
+                  .medium-10.medium-centered.columns
+                    .one-promotions-countdown-timer.button-box-shadow
+                      .valko-countdown-promo data-year=item.date_of.strftime("%Y") data-month=item.date_of.strftime("%m") data-day=item.date_of.strftime("%d")
 
-                .one-promotion-body-read-more
-                  .columns
-                    .material-component.ripple.right.read-more
-                      a href=one_promotions_path(item.slug) Детальніше
+            .one-promotions-body
+              .valko-arrow.va-right
+                div
+              .row
+                .columns
+                  a href=one_promotions_path(item.slug)
+                    = item.title
+                  p
+                    = item.short_description
+                  - if item.date_of.present?
+                    .promotion-banner-dates
+                      = inline_svg"ic_date_range_black_48px.svg"
+                      |#{item.start_date.strftime("%d.%m.%y")} &#8212; #{item.date_of.strftime("%d.%m.%y")}
+
+              .one-promotion-body-read-more
+                .columns
+                  .material-component.ripple.right.read-more
+                    a href=one_promotions_path(item.slug) Детальніше
