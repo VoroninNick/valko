@@ -28,7 +28,7 @@ ul.breadcrumbs
                   a href=one_promotions_path(item.slug)
                     = item.title
                   p
-                    = item.short_description
+                    = truncate_html(item.short_description, :length => 220)
                   - if item.date_of.present?
                     .promotion-banner-dates
                       = inline_svg"ic_date_range_black_48px.svg"
@@ -36,5 +36,5 @@ ul.breadcrumbs
 
               .one-promotion-body-read-more
                 .columns
-                  .material-component.ripple.right.read-more
+                  .material-component.ripple.right.read-more.button-box-shadow
                     a href=one_promotions_path(item.slug) Детальніше
