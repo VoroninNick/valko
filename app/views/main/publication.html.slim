@@ -15,11 +15,7 @@ ul.breadcrumbs
       .image style="background: url('#{@publication.cover.url(:large)}')no-repeat center center;"
 
   .row.one-publication-page-body
-    .medium-8.columns
-      .one-publication-page-body-inner
-        .title = @publication.title
-        = raw @publication.description
-    .medium-4.columns
+    .medium-4.columns.right.style-for-small
       .row
         .small-6.columns.no-pad-right
           .default-field-date
@@ -32,7 +28,7 @@ ul.breadcrumbs
             = inline_svg"Valko-icon-share.svg"
             |Поділитися
 
-      .other-items
+      .other-items.hide-for-small-only
         .other-items-head
           div Читайте також
         .other-items-body
@@ -43,5 +39,25 @@ ul.breadcrumbs
                   .title = item.title
                   .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
           .clearfix
+
+    .medium-8.columns
+      .one-publication-page-body-inner.article
+        .title = @publication.title
+        = raw @publication.description
+
+  .row
+    .columns
+      .other-items.show-for-small-only
+        .other-items-head
+          div Читайте також
+        .other-items-body
+          - if @other_publications.any?
+            - @other_publications.each do |item|
+              .other-item
+                a href=one_publication_path(item.slug)
+                  .valko-arrow.va-right
+                    div
+                  = item.title
+
 
 = render "partials/modals/share", title: @publication.title
