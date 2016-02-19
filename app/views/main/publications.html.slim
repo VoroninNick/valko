@@ -29,15 +29,15 @@ ul.breadcrumbs
                   = link_to 'Читати', one_publication_path(@main_publication.slug)
                 .clearfix
 
-  .row
-    .columns
-      .publication-documents
-        .row
-          .medium-2.columns.text-center.hide-for-small-only
-            = inline_svg "ic_local_library_black_48px.svg"
-            p Завантажуйте нашу поліграфічну продукцію
-          .medium-10.columns
-            - if @documents.any?
+  - if @documents.any?
+    .row
+      .columns
+        .publication-documents
+          .row
+            .medium-2.columns.text-center.hide-for-small-only
+              = inline_svg "ic_local_library_black_48px.svg"
+              p Завантажуйте нашу поліграфічну продукцію
+            .medium-10.columns
               .row
                 - @documents.each do |document|
                   .small-6.medium-3.columns class=("end" if document == @documents.last)
