@@ -824,6 +824,11 @@ main
       height: 100px
       background: #ebeef0
   .one-promotions-page-body
+    @media #{$small-only}
+      margin-bottom: 70px
+    .style-for-small
+      @media #{$small-only}
+        margin-bottom: 35px
     .title
       color: #1c282e
       font:
@@ -860,6 +865,8 @@ main
       size: rem-calc(14)
       weight: 400
     line-height: 20px
+    @media #{$small-only}
+      text-align: center
     svg
       path
         fill: #939598
@@ -910,6 +917,21 @@ main
       &.end
         a
           border-bottom: none
+  &.show-for-small-only
+    .other-items-body
+      .other-item
+        position: relative
+        a
+          border: none
+          +default_font_style(#1e88e5, 15, 400, 18)
+          padding-left: 53px
+          .valko-arrow
+            +my_vertical_align()
+              position: absolute
+            left: 0
+          &:hover
+            .valko-arrow
+              background: #f50057
 
 .publication-default
   @media #{$small-only}

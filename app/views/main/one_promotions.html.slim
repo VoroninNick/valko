@@ -21,17 +21,7 @@ ul.breadcrumbs
             .valko-countdown-promo data-year=@one_promotion.date_of.strftime("%Y") data-month=@one_promotion.date_of.strftime("%m") data-day=@one_promotion.date_of.strftime("%d")
 
   .row.one-promotions-page-body
-    .medium-8.columns
-      .title = @one_promotion.title
-      = raw @one_promotion.description
-      .row
-        .columns
-          .material-component.ripple.link-to-catalog
-            a Каталог
-          .ltc-prompt Переглянути акційні позиціі в каталозі
-
-
-    .medium-4.columns
+    .medium-4.columns.style-for-small.right
       .row
         .small-6.columns.no-pad-right
           .default-field-date
@@ -43,7 +33,7 @@ ul.breadcrumbs
             = inline_svg "Valko-icon-share.svg"
             |Поділитися
 
-      .other-items
+      .other-items.hide-for-small-only
         .other-items-head
           div Інші акції
         .other-items-body
@@ -55,13 +45,24 @@ ul.breadcrumbs
                   .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
           .clearfix
 
+    .medium-8.columns
+      .title = @one_promotion.title
+      = raw @one_promotion.description
+      .row
+        .columns
+          .material-component.ripple.link-to-catalog.button-box-shadow
+            a Каталог
+          .ltc-prompt Переглянути акційні позиціі в каталозі
+
+
   -if @one_promotion.windowsills && @one_promotion.windowsills.any?
     .page-block.new-windowsill-block
       .page-block-title
         .row
           .columns
-            = link_to ">> Переглянути всі", windowsill_path
-            span Товари які беруть участь в акції:
+            = link_to ">> Переглянути всі", windowsill_path, class: 'hide-for-small-only'
+            span.hide-for-small-only Товари які беруть участь в акції:
+            span.show-for-small-only Акційні товари:
             #promotion-windowsill-dots.owl-dots
 
       .carousel-product-list#promotion-windowsill
@@ -71,4 +72,19 @@ ul.breadcrumbs
               .large-3.medium-6.columns class=("end" if @one_promotion.windowsills.last == windowsill)
                 = render "partials/windowsill", windowsill: windowsill
 
+  .row
+    .columns
+      .other-items.show-for-small-only
+        .other-items-head
+          div Інші акції
+        .other-items-body
+          - if @other_promotions.any?
+            - @other_promotions.each do |item|
+              .other-item
+                a href=one_promotions_path(item.slug)
+                  .valko-arrow.va-right
+                    div
+                  = item.title
+
+          .clearfix
 = render "partials/modals/share", title: @one_promotion.title
