@@ -14,7 +14,8 @@ ul.breadcrumbs
         .main_publication
           .image.grayscale style="background: url('#{@main_publication.cover.url(:large)}')no-repeat center center;"
           .publication-body
-            .valko-arrow
+            .valko-arrow.va-right
+              div
             = link_to @main_publication.title, one_publication_path(@main_publication.slug)
             p = truncate(@main_publication.short_description, length: 320, omission: '...' )
 
@@ -44,7 +45,7 @@ ul.breadcrumbs
                       a href=document.document.url()
                         = inline_svg "ic_file_download_black_48px.svg"
                         = document.title
-                        p #{number_to_human_size(document.document_file_size)} #{File.extname(document.document_file_name)}
+                        p #{number_to_human_size(document.document_file_size)} (#{File.extname(document.document_file_name)})
 
   - if @publications.any?
     .row
@@ -55,4 +56,5 @@ ul.breadcrumbs
             .pb-publication-body
               .title = publication.title
               p = truncate_html(publication.short_description, length: 120, omission: '...')
-              .valko-arrow
+              .valko-arrow.va-right
+                div
