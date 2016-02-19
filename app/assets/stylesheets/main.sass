@@ -1107,6 +1107,26 @@ main
         filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
         -webkit-filter: grayscale(0)
         filter: grayscale(0)
+    @media screen and ( max-width: 435px)
+      height: auto
+      .image
+        height: 0
+        padding-bottom: 80%
+      .publication-body
+        top: inherit
+        height: 110px
+        padding-left: 30px !important
+        padding-right: 18px
+        padding-top: 15px
+        a
+          font-size: 1.25rem
+        p, .default-field-date, .publication-body-read-more
+          display: none
+        &:hover
+          .valko-arrow
+            background: #f50057
+          a
+            color: #fff
 
   .publication-documents
     border: 1px solid #eceff1
@@ -1161,6 +1181,17 @@ main
     &:nth-of-type(2n)
       @media #{$medium-up}
         padding-left: 2px
+    @media screen and ( max-width: 435px)
+      a
+        .image
+          padding-bottom: 80%
+      .pb-publication-body
+        height: 110px
+        .title
+          font:
+            size: 1.25rem
+        p
+          display: none
 
 .main-footer
   .mf-inner
