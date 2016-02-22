@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
   attr_accessible :seo_attributes
 
   rails_admin do
-    navigation_label 'Інші'
+    navigation_label 'Інше'
 
     label 'Статична сторінка'
     label_plural 'Статичні сторінки'
