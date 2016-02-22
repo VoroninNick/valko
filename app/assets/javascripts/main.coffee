@@ -163,6 +163,16 @@ $(document).ready ->
 #  $("#windowsill-images-carousel").lightSlider()
   $('.lightGallery').lightGallery ->
     thumbnail:true
+#===================================================================
+#  mobile list
+#===================================================================
+  $('.control-filters-mobile-button').click ->
+    if $(@).closest('.control-filters').hasClass('cf-expanded')
+      $(@).closest('.control-filters').removeClass('cf-expanded')
+    else
+      $(@).closest('.control-filters').addClass('cf-expanded')
+
+
 
 #===================================================================
 #  photo - video gallery

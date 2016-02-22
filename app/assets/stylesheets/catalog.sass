@@ -398,6 +398,25 @@
           top: 4px
 
   .control-filters
+    @media #{$small-only}
+      overflow: hidden
+      height: 40px
+      &.cf-expanded
+        height: auto
+    .control-filters-mobile-button
+      height: 40px
+      background: #1e88e5
+      cursor: pointer
+      svg
+        height: 40px
+        padding: 6px
+        float: left
+        margin: 0 3px
+        path
+          fill: #263238
+      span
+        display: inline-block
+        +default_font_style(#263238, 16, 400, 40)
     .cf-head
       background: #e6e7e8
       ul
