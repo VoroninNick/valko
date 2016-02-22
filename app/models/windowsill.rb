@@ -100,6 +100,10 @@ class Windowsill < ActiveRecord::Base
     label 'Підвіконня'
     label_plural 'Підвіконня'
 
+    object_label_method do
+      :slug
+    end
+
     list do
       field :id do
 

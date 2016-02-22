@@ -46,6 +46,7 @@ class MainController < ApplicationController
     @about_banner = AboutBanner.with_public
     @brands = AboutBrand.order(created_at: :asc)
 
+    @content_page = PageAbout.first
     set_seo('pro-nas')
   end
 
