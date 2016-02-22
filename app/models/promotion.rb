@@ -51,7 +51,8 @@ class Promotion < ActiveRecord::Base
   attr_accessible :seo_attributes
 
   rails_admin do
-    # navigation_label 'Акційні прайси'
+    navigation_label 'Інше'
+
     label 'Акційна пропозиція'
     label_plural 'Акційні пропозиції'
 

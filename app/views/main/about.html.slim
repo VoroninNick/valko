@@ -47,7 +47,7 @@ ul.breadcrumbs
                               = inline_svg"Valko-icon-social-facebook.svg"
 
               .medium-8.columns
-                - if @content_page.top_block.present?
+                - if @content_page && @content_page.top_block.present?
                   = raw @content_page.top_block
                 /h3 5 причин обрати «ВАЛЬКО»
                 /
@@ -101,7 +101,7 @@ ul.breadcrumbs
       .about-company.article
         .row
           .medium-7.columns
-            - if @content_page.bottom_block.present?
+            - if @content_page && @content_page.bottom_block.present?
               = raw @content_page.bottom_block
             /h4 Компанія «Валько»
             /p Ми же понад 10 років є надійним постачальником якісних підвіконь, ролетів, москітних сіток, огорож і покрівель.
