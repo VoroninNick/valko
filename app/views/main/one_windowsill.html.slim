@@ -157,13 +157,13 @@ ul.breadcrumbs
                     .wt-column
                       p Матеріал:
                     .wt-column
-                      - @windowsill.material.present?
+                      - if @windowsill.material.present?
                         p = t("enumerize.material.#{@windowsill.material}")
                   .wt-row
                     .wt-column
                       p Колір:
                     .wt-column
-                      - @windowsill.color.present?
+                      - if @windowsill.color.present?
                         p = t("enumerize.color.#{@windowsill.color}")
                   .wt-row
                     .wt-column
@@ -174,7 +174,7 @@ ul.breadcrumbs
                     .wt-column
                       p Капінос:
                     .wt-column
-                      - @windowsill.kapinos.present?
+                      - if @windowsill.kapinos.present?
                         p = t("enumerize.kapinos.#{@windowsill.kapinos}")
 
         #photo_and_video.content
