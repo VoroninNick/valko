@@ -1,4 +1,4 @@
-
+map = undefined
 initialize = ->
   $map = $('#map_canvas')
   lat = $map.attr 'data-lat'
@@ -52,3 +52,8 @@ initialize = ->
 
 google.maps.event.addDomListener window, 'load', initialize
 
+# on resize map will allways centered
+google.maps.event.addDomListener window, 'resize', ->
+  center = map.getCenter()
+  google.maps.event.trigger map, 'resize'
+  map.setCenter center
