@@ -94,7 +94,7 @@ ul.breadcrumbs
 
               .cf-body
                 /.control-filter class=("#{'expanded' if session["main#windowsill"].has_key?("with_brand")}#{'internal external' if session["main#windowsill"]["with_type"] == "internal" || session["main#windowsill"]["with_type"] == "external"}")
-                .control-filter.internal.external class=('expanded' if session["main#windowsill"].has_key?("with_brand"))
+                .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_brand")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
                   .filter-head
                     .title Торгові марки
                   .filter-body
