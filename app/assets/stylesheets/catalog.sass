@@ -572,9 +572,8 @@
         opacity: .6
   .ow-body
     background: #eceff1
-    //padding-top: 8px
-    //padding-bottom: 20px
     height: 84px
+    position: relative
     .ow-body-information
       padding-top: 8px
       padding-bottom: 20px
@@ -582,8 +581,12 @@
         padding-left: 4px
         padding-right: 4px
     .ow-body-order-form
-      display: none
-      height: inherit
+      height: 78px
+      position: absolute
+      left: 0
+      right: 0
+      top: 84px
+      +transition(top, 0.4s, ease-in-out)
       form
         height: inherit
       button, a, input[type=submit]
@@ -629,9 +632,9 @@
 
   &:hover
     .ow-body-information
-      display: none
+      //display: none
     .ow-body-order-form
-      display: block
+      top: 0
     .show-large-image
       display: block
 
