@@ -34,7 +34,7 @@ windowsillCalculator = () ->
 #    alert '2'
   console.log gag_price
   total_price = (long_element* weight_element)*count_element+gag_price
-  $total_price.text(total_price.toFixed())
+  $total_price.text(Math.round(total_price))
 #    alert 'this value ='+count_element * weight_element
 
 #===================================================================
