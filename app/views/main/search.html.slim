@@ -13,15 +13,19 @@ ul.breadcrumbs
     .columns
       form action=search_path accept-charset="UTF-8" method="get"
         .input
-          input type="text" name="search" placeholder="Я шукаю..."
+          input type="text" name="search" placeholder="Я шукаю..." value=params[:search]
         .submit
           button
             = inline_svg "Valko-icon-search.svg"
+
   .row.about-searching-result
     .columns
       p Результати пошуку по слову "#{params[:search]}"
+      - if @items && @items.any?
+        p
+          span Знайдено #{@items.size} співпадіння
       p
-        span Знайдено #{@items.size} співпадіння
+        span По даному слову нічого не знайдено
   .row
     .columns
       .result-list

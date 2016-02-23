@@ -68,6 +68,10 @@ class Gag < ActiveRecord::Base
     end
   end
 
+  searchable do
+    text :title, :description
+  end
+
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
       return true

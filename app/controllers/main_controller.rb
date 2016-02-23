@@ -217,15 +217,19 @@ class MainController < ApplicationController
   end
 
   def search
-    @search = Sunspot.search [Windowsill, Promotion, Information] do
+    @search = Sunspot.search [Windowsill, Promotion, Information, Gag] do
       fulltext params[:search]
     end
 
     if @search.results.any?
       @items = @search.results
     else
-      return redirect_to request.referrer
+      # return redirect_to request.referrer
     end
+    set_meta_tags site: 'Пошук',
+                  title: 'Сторінка пошуку'
+                  # description: @static_page.seo.try(:seo_description),
+                  # keywords: @static_page.seo.try(:keywords)
   end
 
   def sitemap
