@@ -159,6 +159,14 @@
   -ms-filter: blur($var)
   filter: blur($var)
 
+= custom_transition($property, $time, $method: null, $duration: null)
+  -webkit-transition: #{unquote($property)} $time $method $duration
+  -moz-transition: $property $time $method $duration
+  -ms-transition: $property $time $method $duration
+  -o-transition: $property $time $method $duration
+  transition: $property $time $method $duration
+  @content
+
 = transition($transition-property, $transition-time, $method: null)
   -webkit-transition: #{unquote($transition-property)} $transition-time $method
   -moz-transition: $transition-property $transition-time $method

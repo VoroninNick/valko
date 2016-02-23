@@ -554,22 +554,20 @@
   .ow-image
     border-bottom: 4px solid #eceff1
     position: relative
+    overflow: hidden
   .image
     height: 0
     padding-bottom: 100%
   .show-large-image
-    display: block
     position: absolute
     left: 0
-    top: 0
+    top: -50px
     width: 50px
     height: 50px
     padding: 14px
-    display: none
-    //svg
-      path
-        fill: #fff
-        opacity: .6
+    opacity: 0
+    //+custom_transition(top, 0.4s, ease-in-out, 0.3s)
+    +custom_transition(top, 0.3s, cubic-bezier(0, 0, 0.42, 0.99), 0.3s)
   .ow-body
     background: #eceff1
     height: 84px
@@ -587,7 +585,8 @@
       left: 0
       right: 0
       top: 84px
-      +transition(top, 0.4s, ease-in-out)
+      //+transition(top, 0.4s, ease-in-out)
+      +transition(all, 0.3s, cubic-bezier(0, 0, 0.42, 0.99))
       form
         height: inherit
       button, a, input[type=submit]
@@ -637,7 +636,9 @@
     .ow-body-order-form
       top: 0
     .show-large-image
-      display: block
+      opacity: 1
+      top: 0
+      //display: block
 
 .ow-status
   height: 62px
