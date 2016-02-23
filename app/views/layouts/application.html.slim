@@ -43,7 +43,7 @@ html lang="en"
   body
     = render "layouts/header"
 
-    .cart-link class=("cart-not-empty" if current_cart.total_quantity >0)
+    .cart-link class=("cart-not-empty" if current_cart && current_cart.total_quantity >0)
       - if current_page?(basket_path)
         a href=URI(request.referer).path class=cp(basket_path)
           = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
@@ -57,7 +57,7 @@ html lang="en"
           = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
           .cl-count-items
             .cl-ci-number
-              = current_cart.total_quantity
+              = current_cart.try(:total_quantity)
     main
       = render "layouts/main_menu"
       .main-body
@@ -66,7 +66,7 @@ html lang="en"
 
         = yield
 
-        .cart-link.cart-link-m  class=("cart-not-empty" if current_cart.total_quantity >0)
+        .cart-link.cart-link-m  class=("cart-not-empty" if current_cart && current_cart.total_quantity >0)
           - if current_page?(basket_path)
             a href=URI(request.referer).path class=cp(basket_path)
               = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
@@ -80,7 +80,7 @@ html lang="en"
               = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
               .cl-count-items
                 .cl-ci-number
-                  = current_cart.total_quantity
+                  = current_cart.try(:total_quantity)
 
       .main-footer
         .row
