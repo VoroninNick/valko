@@ -230,6 +230,11 @@ header
   position: absolute
   top: 240px
   right: 50px
+  .cl-count-items
+    display: none
+  &.cart-not-empty
+    .cl-count-items
+      display: block
   &.fixed-cart
     position: fixed
     top: 35px
@@ -240,6 +245,19 @@ header
   a
     display: block
     position: relative
+  .cl-count-items
+    position: absolute
+    background: #f50057
+    left: 15px
+    top: 15px
+    width: 45px
+    height: 45px
+    .cl-ci-number
+      +default_font_style(#eceff1, 20, 500, 45)
+      text-align: center
+      font-family: 'Roboto', sans-serif
+
+
   .cart-link-background
   svg
     padding: 20px

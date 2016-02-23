@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include CurrentCart
 
   def cp(path)
     "current" if current_page?(path)
@@ -17,5 +18,9 @@ module ApplicationHelper
     end
 
     @recently_viewed
+  end
+
+  def current_cart
+    set_cart
   end
 end

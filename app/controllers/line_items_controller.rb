@@ -71,11 +71,11 @@ class LineItemsController < ApplicationController
       end
     end
 
-
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-        format.json { render :show, status: :created, location: @line_item }
+        # format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        count_li = @line_item.cart.total_quantity
+        format.json { render json: count_li , status: :created, location: @line_item }
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }

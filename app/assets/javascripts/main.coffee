@@ -269,21 +269,23 @@ $(document).ready ->
       data: postData
       beforeSend: ->
         console.log('перед відсиланням')
-        $('.cart-link').addClass('animated swing')
-      success: ->
+        $('.cart-link').addClass('animated bounceIn')
+      success: (data) ->
         form.reset()
         if $this.closest('.call-order-wrap')
           $this.closest('.call-order-wrap').removeClass('opened')
 
-        console.log('успішно')
+#        console.log('успішно')
+        if parseInt(data) > 0
+          $('.cart-link').addClass('cart-not-empty')
+          $('.cl-count-items .cl-ci-number').text(data)
 
-        #        $this.closest('form').find('.animate-input').each ->
-        #          if !$(@).hasClass('is-locked-for-clear')
-        #            $(@).removeClass('is-completed')
-        #
         $('#SuccessModal').foundation 'reveal', 'open'
       complete: ->
-        $('.cart-link').removeClass('animated swing')
+        setTimeout (->
+          $('.cart-link').removeClass('animated bounceIn')
+        ), 600
+
       error: ->
 
     e.preventDefault()

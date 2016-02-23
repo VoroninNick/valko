@@ -43,18 +43,21 @@ html lang="en"
   body
     = render "layouts/header"
 
-    .cart-link
+    .cart-link class=("cart-not-empty" if current_cart.total_quantity >0)
       - if current_page?(basket_path)
         a href=URI(request.referer).path class=cp(basket_path)
           = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
           = inline_svg "Valko-icon-korzuna.svg"
           = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+
       - else
         a href=basket_path class=cp(basket_path)
           = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
           = inline_svg "Valko-icon-korzuna.svg"
           = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
-
+          .cl-count-items
+            .cl-ci-number
+              = current_cart.total_quantity
     main
       = render "layouts/main_menu"
       .main-body
@@ -62,17 +65,23 @@ html lang="en"
           p#notice = notice
 
         = yield
-        .cart-link.cart-link-m
+
+        .cart-link.cart-link-m  class=("cart-not-empty" if current_cart.total_quantity >0)
           - if current_page?(basket_path)
             a href=URI(request.referer).path class=cp(basket_path)
               = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
               = inline_svg "Valko-icon-korzuna.svg"
               = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+
           - else
             a href=basket_path class=cp(basket_path)
               = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
               = inline_svg "Valko-icon-korzuna.svg"
               = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+              .cl-count-items
+                .cl-ci-number
+                  = current_cart.total_quantity
+
       .main-footer
         .row
           .columns.mf-inner

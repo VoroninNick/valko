@@ -232,6 +232,7 @@ class MainController < ApplicationController
                   # keywords: @static_page.seo.try(:keywords)
   end
 
+
   def sitemap
     
   end
