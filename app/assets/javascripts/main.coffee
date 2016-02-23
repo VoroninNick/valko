@@ -304,10 +304,9 @@ $(document).ready ->
 
     token = $(this).data('token')
 
-#    console.log 'item price:', $item_price.text()
-#    console.log 'total price:', parseInt($total_price.text()
     rez = parseInt($total_price.text()) - parseInt($item_price.text())
-    console.log 'rez:', rez
+#    console.log 'rez:', rez
+
     $.ajax
       url: action_path
       type: 'post'
@@ -315,7 +314,10 @@ $(document).ready ->
       data: {_method: 'delete'}
       success: ->
         $total_price.text(rez)
-        $item.remove()
+        $item.addClass('deleting-line-item')
+        setTimeout (->
+            $item.remove()
+          ), 600
 
     e.preventDefault()
 

@@ -206,6 +206,22 @@
     margin-bottom: 18px
     .basket-list-one
       border-top: 1px solid #eceff1
+      overflow: hidden
+      position: relative
+      max-height: 150px
+      +custom_transition(max-height, 0.3s, cubic-bezier(0, 0, 0.42, 0.99), 0.3s)
+      &:before, &:after
+        content: ''
+        position: absolute
+        width: 100%
+        background: #fff
+        z-index: 1
+        height: 70px
+        +transition(all, 0.3s, cubic-bezier(0, 0, 0.42, 0.99))
+      &:before
+        top: -70px
+      &:after
+        bottom: -70px
       .basket-delete-item-wrap
         height: 0
         padding-bottom: 275%
@@ -287,6 +303,14 @@
           svg
             path
               fill: #607d8b
+      &.deleting-line-item
+        max-height: 10px
+        &:before
+          top: 0
+
+        &:after
+          bottom: 0
+
   .basket-body
     hr
       margin-top: 0
