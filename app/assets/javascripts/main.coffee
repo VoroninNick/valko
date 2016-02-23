@@ -597,5 +597,12 @@ $(document).ready ->
   clipboard.on 'success', (e) ->
     console.log e
 
-
-
+$(window).scroll ->
+  console.log 'scroll top:', $(document).scrollTop()
+  if $(document).scrollTop() >= 215
+    $('.cart-link').addClass('fixed-cart')
+#    cart_ot = $('.cart-link').offset().top
+#  console.log 'test', cart_ot
+  else
+    if $('.cart-link').hasClass('fixed-cart')
+      $('.cart-link').removeClass('fixed-cart')
