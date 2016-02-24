@@ -24,8 +24,10 @@ ul.breadcrumbs
       - if @items && @items.any?
         p
           span Знайдено #{@items.size} співпадіння
-      p
-        span По даному слову нічого не знайдено
+      - else
+        p
+          span По даному слову нічого не знайдено
+
   .row
     .columns
       .result-list
