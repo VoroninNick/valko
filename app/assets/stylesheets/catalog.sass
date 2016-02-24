@@ -493,7 +493,10 @@
         border: 1px solid #eceff1
         border-top: none
         overflow: hidden
-        height: 43px
+        //height: 43px
+        &:not(.expanded)
+          .filter-body
+            max-height: 0!important
         .filter-head
           height: 43px
           position: relative
@@ -514,21 +517,42 @@
         .filter-body
           padding-left: 10px
           padding-right: 10px
+          overflow: hidden
+          +custom_transition(max-height, 500ms, ease)
           .custom-checkbox
             padding-top: 11px
             padding-bottom: 11px
+            height: 43px
             &:last-child
               padding-bottom: 31px
-        &.expanded
-          height: auto
-          .filter-head
-            .title
-              &:after
-                +css-triangle(5px, #d1d3d4, bottom)
+            &:hover
+              label
+                &.cch-icon
+                  border-color: #f50057
+                &.cch-text
+                  color: #f50057
         &:hover
           background: #eceff1
           .title
             color: #f50057
+        &.expanded
+          //height: auto
+          .filter-head
+            background: #eceff1
+            .title
+              &:after
+                +css-triangle(5px, #d1d3d4, bottom)
+            &:hover
+              .title
+                color: #f50057
+          .filter-body
+            //max-height: 750px
+          &:hover
+            background: #fff
+            .title
+              color: #263238
+              //color: #f50057
+
 .gallery-item
   position: relative
   margin-top: 14px
