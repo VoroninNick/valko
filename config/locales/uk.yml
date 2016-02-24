@@ -5,6 +5,7 @@ uk:
       previous: "<"
       next: ">"
       last: ">>"
+      truncate: "..."
   date:
     formats:
       default: "%Y-%m-%d"
