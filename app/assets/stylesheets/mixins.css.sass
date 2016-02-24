@@ -197,6 +197,13 @@
   -webkit-transform: translateX($value)
   transform: translateX($value)
   @content
+= translateY($value)
+  -moz-transform: translateY($value)
+  -o-transform: translateY($value)
+  -ms-transform: translateY($value)
+  -webkit-transform: translateY($value)
+  transform: translateY($value)
+  @content
 
 = font_mixin($size: rem-calc(18), $family: "'Fira Sans', sans-serif", $height: rem-calc(24))
   font:
@@ -215,14 +222,12 @@
     @content
   @keyframes #{$name}
     @content
-// use of keyframes mixin
-+keyframes(my_opacity)
-  0%
-    opacity: 0
-  50%
-    opacity: .5
-  100%
-    opacity: 1
+
+=custom_animation($duration, $name, $fill-mode, $delay: null)
+  -webkit-animation: $delay $duration $name $fill-mode /* Safari 4+ */
+  -moz-animation:    $delay $duration $name $fill-mode /* Fx 5+ */
+  -o-animation:      $delay $duration $name $fill-mode /* Opera 12+ */
+  animation:         $delay $duration $name $fill-mode
 
 
 

@@ -393,7 +393,7 @@
         svg
           width: 22px
           height: 22px
-          margin-right: 10px
+          margin-right: 8px
           position: relative
           top: 4px
 
@@ -545,6 +545,33 @@
       +my_center_align()
         position: absolute
 
+#windowsill-list
+  .one-windowsill
+    +keyframes(FADE-WINDOWSILL)
+      0%
+        opacity: 0
+        +transform(scale(.1))
+        //+translateY(-50px)
+      100%
+        opacity: 1
+        +transform(scale(1))
+        //+translateY(0px)
+
+    +custom_animation(.5s, FADE-WINDOWSILL, cubic-bezier(0.26, 0.96, 0.48, 1.24))
+    .ows-one
+      .ow-status
+      //opacity: 0
+      //+keyframes(PROMO-LABEL)
+        0%
+          opacity: 0
+          +transform(scale(.1))
+        //+translateY(-50px)
+        100%
+          opacity: 1
+          +transform(scale(1))
+      //+translateY(0px)
+
+      +custom_animation(1s, PROMO-LABEL, ease, 1s)
 
 .one-windowsill
   margin-top: 26px
