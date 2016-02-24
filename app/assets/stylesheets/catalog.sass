@@ -558,20 +558,17 @@
         //+translateY(0px)
 
     +custom_animation(.5s, FADE-WINDOWSILL, cubic-bezier(0.26, 0.96, 0.48, 1.24))
-    .ows-one
-      .ow-status
-      //opacity: 0
-      //+keyframes(PROMO-LABEL)
-        0%
-          opacity: 0
-          +transform(scale(.1))
-        //+translateY(-50px)
-        100%
-          opacity: 1
-          +transform(scale(1))
-      //+translateY(0px)
+    .ow-status
+      .ows-one
+        +keyframes(PROMO-LABEL)
+          0%
+            opacity: 0
+          90%
+            opacity: 0
+          100%
+            opacity: 1
 
-      +custom_animation(1s, PROMO-LABEL, ease, 1s)
+        +custom_animation(.9s, PROMO-LABEL)
 
 .one-windowsill
   margin-top: 26px
