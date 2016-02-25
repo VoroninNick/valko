@@ -361,21 +361,22 @@ $(document).ready ->
       class_name: $type_product
       with_gag: $gag
 
-    #Call jQuery ajax
-    $.ajax
-      type: "PUT"
-      contentType: "application/json; charset=utf-8"
-      url: action_path
-      data: JSON.stringify(DataToSend)
-      dataType: "json"
-      before: ->
-#          alert 'before'
-      success: (msg) ->
+    if parseInt($this.val()) > 0
+      #Call jQuery ajax
+      $.ajax
+        type: "PUT"
+        contentType: "application/json; charset=utf-8"
+        url: action_path
+        data: JSON.stringify(DataToSend)
+        dataType: "json"
+        before: ->
+  #          alert 'before'
+        success: (msg) ->
 
-#          loadPartials()
-#          alert 'succes'
-      error: (err) ->
-        alert "Error"
+  #          loadPartials()
+  #          alert 'succes'
+        error: (err) ->
+          alert "Error"
 
 
 #===========================================================
