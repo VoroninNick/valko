@@ -153,29 +153,55 @@ ul.breadcrumbs
                       p Тип:
                     .wt-column
                       p = t("enumerize.wind_type.#{@windowsill.wind_type}")
-                  .wt-row
-                    .wt-column
-                      p Матеріал:
-                    .wt-column
-                      - if @windowsill.material.present?
-                        p = t("enumerize.material.#{@windowsill.material}")
-                  .wt-row
-                    .wt-column
-                      p Колір:
-                    .wt-column
-                      - if @windowsill.color.present?
-                        p = t("enumerize.color.#{@windowsill.color}")
-                  .wt-row
-                    .wt-column
-                      p Бренд:
-                    .wt-column
-                      p = @windowsill.brand.title
-                  .wt-row
-                    .wt-column
-                      p Капінос:
-                    .wt-column
-                      - if @windowsill.kapinos.present?
-                        p = t("enumerize.kapinos.#{@windowsill.kapinos}")
+
+                  / external
+                  - if @windowsill.wind_type == "external"
+                    .wt-row
+                      .wt-column
+                        p Матеріал:
+                      .wt-column
+                        - if @windowsill.material.present?
+                          p = t("enumerize.material.#{@windowsill.material}")
+                    .wt-row
+                      .wt-column
+                        p Колір:
+                      .wt-column
+                        - if @windowsill.color.present?
+                          p = t("enumerize.color.#{@windowsill.color}")
+
+                  / internal
+                  - if @windowsill.wind_type == "internal"
+                    /brand
+                    .wt-row
+                      .wt-column
+                        p Бренд:
+                      .wt-column
+                        p = @windowsill.brand.title
+                    /decor
+                    .wt-row
+                      .wt-column
+                        p Декор:
+                      .wt-column
+                        - if @windowsill.decor.present?
+                          p = t("enumerize.kapinos.#{@windowsill.decor}")
+                        - else
+                          = @windowsill.decor.inspect
+                    /with_surface
+                    .wt-row
+                      .wt-column
+                        p Вид поверхні:
+                      .wt-column
+                        - if @windowsill.type_of_surface.present?
+                          p = t("enumerize.type_of_surface.#{@windowsill.type_of_surface}")
+                        - else
+                          = @windowsill.type_of_surface.inspect
+                    /kapinos
+                    .wt-row
+                      .wt-column
+                        p Капінос:
+                      .wt-column
+                        - if @windowsill.kapinos.present?
+                          p = t("enumerize.kapinos.#{@windowsill.kapinos}")
 
         #photo_and_video.content
           .row.item-galleries.lightGallery
