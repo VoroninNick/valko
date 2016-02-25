@@ -156,12 +156,21 @@ ul.breadcrumbs
 
                   / external
                   - if @windowsill.wind_type == "external"
+                    /material
                     .wt-row
                       .wt-column
                         p Матеріал:
                       .wt-column
                         - if @windowsill.material.present?
                           p = t("enumerize.material.#{@windowsill.material}")
+                    /color type
+                    .wt-row
+                      .wt-column
+                        p Вид кольору:
+                      .wt-column
+                        - if @windowsill.color_type.present?
+                          p = t("enumerize.color_type.#{@windowsill.color_type}")
+                    /color
                     .wt-row
                       .wt-column
                         p Колір:
@@ -184,7 +193,7 @@ ul.breadcrumbs
                       .wt-column
                         - if @windowsill.decor.present?
                           p = t("enumerize.decor.#{@windowsill.decor}")
-                        - else
+                        /- else
                           = @windowsill.decor.inspect
                     /with_surface
                     .wt-row
@@ -193,7 +202,7 @@ ul.breadcrumbs
                       .wt-column
                         - if @windowsill.type_of_surface.present?
                           p = t("enumerize.type_of_surface.#{@windowsill.type_of_surface}")
-                        - else
+                        /- else
                           = @windowsill.type_of_surface.inspect
                     /kapinos
                     .wt-row
