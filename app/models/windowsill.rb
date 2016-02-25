@@ -263,14 +263,10 @@ class Windowsill < ActiveRecord::Base
   scope :sorted_by, lambda { |sort_key|
                     direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
                     case sort_key.to_s
-                      when /^created_at_/
-                        order("windowsills.created_at #{ direction }")
-                      # when /^street_/
-                      #   joins(:building_complex).order("LOWER(sigma_building_complexes.street) #{ direction }")
                       when /^title_/
                         order("windowsills.title #{ direction }")
-                        # order("LOWER(sigma_building_complexes.name) #{ direction }").includes(:building_complex)
-                        # joins(:building_complex).order("LOWER(sigma_building_complexes.name) #{ direction }")
+                      when /^created_at_/
+                        order("windowsills.created_at #{ direction }")
                       else
                         raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
                     end
