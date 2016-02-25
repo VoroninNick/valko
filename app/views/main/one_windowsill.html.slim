@@ -182,6 +182,7 @@ ul.breadcrumbs
                       .wt-column
                         p Декор:
                       .wt-column
+                        = @windowsill.decor
                         - if @windowsill.decor.present?
                           p = t("enumerize.kapinos.#{@windowsill.decor}")
                         - else
