@@ -122,7 +122,8 @@ class MainController < ApplicationController
         params[:filterrific],
         select_options: {
             sorted_by: Windowsill.options_for_sorted_by
-        }
+        },
+        default_filter_params: {}
     ) or return
 
     @windowsill_list = @filterrific.find.page(params[:page])
