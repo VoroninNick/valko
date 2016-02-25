@@ -25,6 +25,8 @@
 
 # t.string :color_type
 # t.string :color
+
+# t.integer :edge_price
 class Windowsill < ActiveRecord::Base
 
   has_many :line_items
@@ -189,9 +191,13 @@ class Windowsill < ActiveRecord::Base
         field :without_cap do
           label 'Без заглушки:'
         end
-        field :on_the_edge do
+        field :edge_price do
           label 'З кромкою:'
+          help 'ціна кромки'
         end
+        # field :on_the_edge do
+        #   label 'З кромкою:'
+        # end
       end
       group :custom_filed do
         label 'Нестандартні'

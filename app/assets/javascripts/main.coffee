@@ -29,6 +29,9 @@ windowsillCalculator = () ->
     gag_price = parseInt($('input#with_flap').attr('data-status'))
     console.log('gag val', $('input#with_flap').attr('data-status'))
 #    alert '1'
+  else if $('input#on_the_edge').is(':checked')
+    console.log 'edge'
+    gag_price = parseInt($('input#on_the_edge').attr('data-status'))
   else if $('input#without_cap').is(':checked')
     gag_price = 0
 #    alert '2'

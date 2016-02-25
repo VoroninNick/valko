@@ -27,6 +27,12 @@ class LineItem < ActiveRecord::Base
         else
           return nil
         end
+      elsif with_edge?
+        if o
+          return (o*self.long/1000) + windowsill.edge_price
+        else
+          return nil
+        end
       else
         if o
           return o

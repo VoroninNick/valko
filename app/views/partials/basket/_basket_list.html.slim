@@ -39,6 +39,8 @@
                     = item.windowsill.brand.title
                     - if item.with_gag.present?
                       |&nbsp;з заглушкою
+                    - elsif item.with_edge.present?
+                      |&nbsp;з кромкою
                   p
                     span Ширина:
                     = item.weight
@@ -51,6 +53,8 @@
                   .input.basket-count-product
                     - if item.with_gag.present?
                       input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="true"
+                    /- elsif item.with_edge.present?
+
                     - else
                       input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.windowsill.id data-weight=item.weight data-long=item.long data-gag="false"
 

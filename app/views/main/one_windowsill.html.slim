@@ -36,10 +36,12 @@ ul.breadcrumbs
               .windowsill-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .windowsill-price
-                  - if @windowsill.brand.gag && @windowsill.brand.gag.price.present?
-                    .wp-price = @windowsill.prices.first.value * 1 + (@windowsill.brand.gag.try(:price))
+                  - if @windowsill.with_flap.present? && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
+                    .wp-price data-status="gag" = @windowsill.prices.first.value * 1 + (@windowsill.brand.gag.try(:price))
+                  - elsif !@windowsill.with_flap.present? && @windowsill.edge_price.present?
+                    .wp-price data-status="edge" = @windowsill.prices.first.value * 1 + @windowsill.edge_price
                   - else
-                    .wp-price = @windowsill.prices.first.value * 1
+                    .wp-price data-status="only wind" = @windowsill.prices.first.value * 1
 
                   .wp-currency грн
               .material-component.ripple.button-box-shadow
@@ -59,37 +61,44 @@ ul.breadcrumbs
               = inline_svg "Valko-pidvikonnya-v1.svg"
               .row
                 .small-6.columns
-                  - if @windowsill.with_flap.present?
-                    .cr-wrap
-                      - if @windowsill.brand && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
-                        - gag_price = @windowsill.brand.gag.price
-                      - else
-                        - gag_price = 0
-                      input.custom-radiobutton#with_flap type="radio" value="with_gag" data-status=gag_price name="windowsill_option" checked="checked"
-                      label.custom-radiobutton-icon for="with_flap"
-                      label.custom-radiobutton-label for="with_flap"
-                        |З заглушкою
+                  .row
+                    .columns
+                      - if @windowsill.with_flap.present?
+                        .cr-wrap
+                          - if @windowsill.brand && @windowsill.brand.gag && @windowsill.brand.gag.price.present?
+                            - gag_price = @windowsill.brand.gag.price
+                          - else
+                            - gag_price = 0
+                          input.custom-radiobutton#with_flap type="radio" value="with_gag" data-status=gag_price name="windowsill_option" checked="checked"
+                          label.custom-radiobutton-icon for="with_flap"
+                          label.custom-radiobutton-label for="with_flap"
+                            |З заглушкою
+                  .row
+                    .columns
+                      - if @windowsill.edge_price.present?
+                        .cr-wrap
+                          input.custom-radiobutton#on_the_edge type="radio" value="with_edge" data-status=@windowsill.edge_price name="windowsill_option" checked=("checked" if !@windowsill.with_flap.present? && @windowsill.edge_price.present?)
+                          label.custom-radiobutton-icon for="on_the_edge"
+                          label.custom-radiobutton-label for="on_the_edge"
+                            |З кромкою
+
                 .small-6.columns
-                  - if @windowsill.without_cap.present?
-                    .cr-wrap
-                      input.custom-radiobutton#without_cap type="radio" value="pretty" data-status="0" name="windowsill_option"
-                      label.custom-radiobutton-icon for="without_cap"
-                      label.custom-radiobutton-label for="without_cap"
-                        |Без заглушки:
-                .small-6.columns
-                  - if @windowsill.on_the_edge.present?
-                    .cr-wrap
-                      input.custom-radiobutton#on_the_edge type="radio" value="pretty" data-status="0" name="windowsill_option"
-                      label.custom-radiobutton-icon for="on_the_edge"
-                      label.custom-radiobutton-label for="on_the_edge"
-                        |З кромкою:
-                .small-6.columns
-                  - if @windowsill.customised.present?
-                    .cr-wrap
-                      input.custom-radiobutton#customised type="radio" value="customized" data-status="0" name="windowsill_option"
-                      label.custom-radiobutton-icon for="customised"
-                      label.custom-radiobutton-label for="customised"
-                        |Нестандарт:
+                  .row
+                    .columns
+                      - if @windowsill.without_cap.present?
+                        .cr-wrap
+                          input.custom-radiobutton#without_cap type="radio" value="pretty" data-status="0" name="windowsill_option"
+                          label.custom-radiobutton-icon for="without_cap"
+                          label.custom-radiobutton-label for="without_cap"
+                            |Без загл./кромки
+                  .row
+                    .columns
+                      - if @windowsill.customised.present?
+                        .cr-wrap
+                          input.custom-radiobutton#customised type="radio" value="customized" data-status="0" name="windowsill_option"
+                          label.custom-radiobutton-icon for="customised"
+                          label.custom-radiobutton-label for="customised"
+                            |Нестандарт
 
             .medium-5.columns
               i * Не всім брендам доступні всі можливі ширини. Деталі уточнюйте у менеджера.
