@@ -151,7 +151,7 @@ $(document).ready ->
 #  about us banner
 #===================================================================
   $("ul#about-us-banner").bxSlider
-    auto: false,
+    auto: true,
     pause: 5000,
     controls: false
 

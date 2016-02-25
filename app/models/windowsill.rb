@@ -245,7 +245,7 @@ class Windowsill < ActiveRecord::Base
 
 
   filterrific(
-      default_filter_params: { sorted_by: 'created_at_desc' },
+      default_filter_params: { sorted_by: 'title_asc' },
       available_filters: [
           :sorted_by,
           :with_brand,
