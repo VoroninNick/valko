@@ -5,7 +5,7 @@ footer.push-footer
         .columns
           nav
             li class=cp(windowsill_path)
-              = link_to 'Підвіконня', windowsill_path
+              = link_to 'Підвіконня', windowsill_path, :title => 'Каталог підвіконня'
             li
               a Ролети
             li
@@ -33,9 +33,9 @@ footer.push-footer
 
           ul.site-map-nav.right
             li
-              a href=sitemap_path Карта сайту
+              a href=sitemap_path title="Карта сайту" Карта сайту
             li
-              a href=terms_of_use_path Правила користування
+              a href=terms_of_use_path title="Правила користування" Правила користування
 
     .medium-5.columns
       p.copyright © 2009-2015 ТзОВ «ВАЛЬКО»

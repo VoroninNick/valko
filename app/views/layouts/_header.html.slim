@@ -5,19 +5,19 @@ header
         p.hide-for-small-only Компанія «Валько»  — гуртовий та роздрібний продаж підвіконь, ролет, москітних сіток, покрівель та огорож
         ul
           li class=cp(about_path)
-            = link_to 'Про нас', about_path
+            = link_to 'Про нас', about_path, title: 'Про компанію'
 
           li class=cp(promotions_path)
-            = link_to 'Акції', promotions_path
+            = link_to 'Акції', promotions_path, title: 'Всі акції'
 
           li class=cp(information_path)
-            = link_to 'Інформація', information_path
+            = link_to 'Інформація', information_path, title: 'Публікації'
 
           li class=cp(contacts_path)
-            = link_to 'Контакти', contacts_path
+            = link_to 'Контакти', contacts_path, title: 'Наша контактна інформація'
 
           li class=cp(warranty_path)
-            = link_to 'Доставка та гарантія', warranty_path
+            = link_to 'Доставка та гарантія', warranty_path, title: 'Умови доставки та гарантії'
 
   .row
     .medium-3.columns.header-logo
@@ -40,10 +40,10 @@ header
     .medium-2.columns.header-main.header-main-hide-for-mobile
       ul
         li
-          a data-reveal-id="CallOrder"
+          a data-reveal-id="CallOrder" title="Замовити дзвінок"
             = inline_svg "Valko-icon-phone.svg"
         li
-          a data-reveal-id="ContactForm"
+          a data-reveal-id="ContactForm" title="Написати нам"
             = inline_svg "Valko-icon-mail.svg"
     .medium-3.columns.header-main.header-main-show-for-mobile
       - if static_data && static_data.tel1.present?

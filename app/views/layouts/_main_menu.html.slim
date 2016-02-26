@@ -3,13 +3,13 @@
     ul
       li.material-component.ripple
         -if !current_page?(root_url)
-          a href=root_path
+          a href=root_path title="На головну"
             = inline_svg "Valko-icon-home.svg"
         - else
           a
             = inline_svg "Valko-icon-home.svg"
       li.material-component.ripple class=cp(windowsill_path)
-        a href=windowsill_path
+        a href=windowsill_path title="Каталог підвіконня"
           = inline_svg "Valko-icon-pidvikonnya.svg"
           |Підвіконня
       li.material-component.ripple
@@ -40,19 +40,19 @@
       .right-controls
         a
           = inline_svg "Valko-icon-search.svg"
-        a data-reveal-id="CallOrder"
+        a data-reveal-id="CallOrder" title="Замовити дзвінок"
           = inline_svg "Valko-icon-phone.svg"
-        a data-reveal-id="ContactForm"
+        a data-reveal-id="ContactForm" title="Написати нам"
           = inline_svg "Valko-icon-mail.svg"
 
 .mobile-menu-panel
   ul
     li class=cp(root_path)
-      a href=root_path
+      a href=root_path title="На головну"
         =inline_svg "Valko-icon-home.svg"
         |Головна
     li class=cp(windowsill_path)
-      a href=windowsill_path
+      a href=windowsill_path title="Підвіконня"
         =inline_svg "Valko-icon-pidvikonnya.svg"
         |Підвіконня
     li
@@ -72,7 +72,7 @@
         =inline_svg "Valko-icon-ogorozha.svg"
         |Огорожі
     li class=cp(promotions_path)
-      a href=promotions_path
+      a href=promotions_path title="Всі акції"
         =inline_svg "ic_redeem_24px.svg"
         |Акції
 
