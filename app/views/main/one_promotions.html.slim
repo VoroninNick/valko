@@ -45,8 +45,8 @@ ul.breadcrumbs
                   .image.grayscale style="background: url('#{item.cover.url(:medium)}')no-repeat center center;"
           .clearfix
 
-    .medium-8.columns
-      .title = @one_promotion.title
+    .medium-8.columns.article
+      h3 = @one_promotion.title
       = raw @one_promotion.description
       .row
         .columns

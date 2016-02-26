@@ -248,8 +248,8 @@ ul.breadcrumbs
                           .pb-publication-body
                             .title = publication.title
                             p = truncate_html(publication.short_description, length: 120, omission: '...')
-                            .valko-arrow
-
+                            .valko-arrow.va-right
+                              div
         #reviews.content
           = disqus_init
           - disqus_thread

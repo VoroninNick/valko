@@ -41,7 +41,7 @@ class Brand < ActiveRecord::Base
       end
       field :description, :ck_editor do
         label 'Опис:'
-        help 'Використовувати теги h3, h4, h5, h6, p, blockquote, (ul, ol) li span'
+        help 'Використовувати теги h3, h4, h5, h6, p, blockquote, <ul or ol> <li> <span>text</span></li></ul or /ol>'
       end
       field :brand_icons do
         label 'Характеристики:'
