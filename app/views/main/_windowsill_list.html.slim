@@ -5,7 +5,7 @@
         = render "partials/windowsill", windowsill: windowsill
     - if gags.any?
       - gags.each do |gag|
-        .medium-6.large-4.columns class=("end" if gag == gags.last)
+        .medium-6.large-4.columns.card-is-gag data-brand-id=gag.id class=("end" if gag == gags.last)
           = render "partials/gag", gag: gag
 
   .row

@@ -176,4 +176,21 @@ ul.breadcrumbs
             = render partial: "main/windowsill_list",
                      locals: { windowsill_list: @windowsill_list, gags: @gags }
 
+              /- if @gags.any?
+                .control-filter.gag-filter
+                  = link_to 'Заглушки та зєднювачі', reset_filterrific_url
+
+
+        /.medium-9.columns
+          #gag-list
+            .row
+              - if @gags.any?
+                - @gags.each do |gag|
+                  .medium-6.large-4.columns class=("end" if gag == @gags.last)
+                    = render "partials/gag", gag: gag
+
+          #windowsill-list
+            = render partial: "main/windowsill_list",
+                     locals: { windowsill_list: @windowsill_list }
+
 

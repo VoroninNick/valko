@@ -298,6 +298,22 @@ $(document).ready ->
 #===========================================================
   $('.promotion-banner-pager .title').click ->
     location.href = $(@).closest('a').attr('href')
+
+#===========================================================
+# windowsill gag
+#===========================================================
+  $('.control-filter').click ->
+    gag_list = $('#gag-list')
+    windowsill_list = $('#windowsill-list')
+
+    if $(@).hasClass('gag-filter')
+      if gag_list.hasClass('hide')
+        gag_list.removeClass('hide')
+        windowsill_list.addClass('hide')
+      else
+        gag_list.addClass('hide')
+        windowsill_list.removeClass('hide')
+
 #===========================================================
 # delete line item from cart
 #===========================================================
