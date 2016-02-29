@@ -294,6 +294,11 @@ $(document).ready ->
     e.preventDefault()
 
 #===========================================================
+# promotion banner title click
+#===========================================================
+  $('.promotion-banner-pager .title').click ->
+    location.href = $(@).closest('a').attr('href')
+#===========================================================
 # delete line item from cart
 #===========================================================
   $('a.delete-item').click (e)->

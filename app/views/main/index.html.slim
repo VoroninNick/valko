@@ -6,28 +6,33 @@
           ul#promotion-banner
             - promotions.each do |promotion|
               li
-                .image style="background: url('#{promotion.cover.url(:large)}')no-repeat center center;"
-                - if promotion.date_of.present?
-                  .promotion-banner-countdown-wrap
-                    .row
-                      .medium-10.medium-centered.columns
-                        .promotion-banner-countdown-timer.button-box-shadow
-                          .valko-countdown-promo data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
+                a href=one_promotions_path(promotion.slug)
+                  .image style="background: url('#{promotion.cover.url(:large)}')no-repeat center center;"
+                  - if promotion.date_of.present?
+                    .promotion-banner-countdown-wrap
+                      .row
+                        .medium-10.medium-centered.columns
+                          .promotion-banner-countdown-timer.button-box-shadow
+                            .valko-countdown-promo data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
 
                 .mobile-promo-banner-body.show-for-small-only
                   .valko-arrow.va-right
                     div
-                  .title = promotion.title
+                  .title
+                    a href=one_promotions_path(promotion.slug)
+                      = promotion.title
+
                   p = truncate_html(promotion.short_description, length: 69, omission: '...')
                   - if promotion.date_of.present?
                     .promotion-banner-dates #{promotion.start_date.strftime("%d.%m.%y")} &#8212; #{promotion.date_of.strftime("%d.%m.%y")}
 
           .promotion-banner-pager
             - promotions.each_with_index do |promo_pager, index|
-              a data-slide-index=index href=""
+              a data-slide-index=index href=one_promotions_path(promo_pager.slug)
                 .valko-arrow.va-right
                   div
-                .title = promo_pager.title
+                .title
+                  = promo_pager.title
                 p = truncate_html(promo_pager.short_description, length: 69, omission: '...')
                 - if promo_pager.date_of.present?
                   .promotion-banner-dates #{promo_pager.start_date.strftime("%d.%m.%y")} &#8212; #{promo_pager.date_of.strftime("%d.%m.%y")}
