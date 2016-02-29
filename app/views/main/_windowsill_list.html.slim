@@ -5,8 +5,16 @@
         = render "partials/windowsill", windowsill: windowsill
     - if gags.any?
       - gags.each do |gag|
-        .medium-6.large-4.columns.card-is-gag data-brand-id=gag.id class=("end" if gag == gags.last)
-          = render "partials/gag", gag: gag
+        - if session["main#windowsill"].has_key?("with_brand")
+          - if session["main#windowsill"]["with_brand"].include? gag.id
+            .medium-6.large-4.columns.card-is-gag data-brand-id=gag.id class=("end" if gag == gags.last)
+              = render "partials/gag", gag: gag
+          - else
+            .medium-6.large-4.columns.card-is-gag.hide data-brand-id=gag.id class=("end" if gag == gags.last)
+              = render "partials/gag", gag: gag
+        - else
+          .medium-6.large-4.columns.card-is-gag data-brand-id=gag.id class=("end" if gag == gags.last)
+            = render "partials/gag", gag: gag
 
   .row
     .columns
