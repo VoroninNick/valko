@@ -11,8 +11,8 @@ ul.breadcrumbs
       -if @promotions.any?
         - @promotions.each do |item|
           .one-promotions
-            /a
-            .image.grayscale style="background: url('#{item.cover.url(:large)}')no-repeat center center;"
+            a href=one_promotions_path(item.slug)
+              .image.grayscale style="background: url('#{item.cover.url(:large)}')no-repeat center center;"
             - if item.date_of.present?
               .one-promotions-countdown-wrap
                 .row
