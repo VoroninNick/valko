@@ -17,28 +17,33 @@ windowsillCalculator = () ->
   $total_price = $wrap.find('.wp-price')
 
   count_element = $wrap.find('#count-windowsills').val()
+
   weight_element = $wrap.find(':selected').attr('data-value')
+
   long_element = $wrap.find('#windowsill-long').val()/1000
 
-#  console.log count_element
-  console.log 'weight',weight_element
-#  console.log long_element
+#  console.log 'weight',weight_element
+
   gag_price = 0
   if $('input#with_flap').is(':checked')
     console.log 'data-value', $('input#with_flap').attr('data-status')
     gag_price = parseInt($('input#with_flap').attr('data-status'))
     console.log('gag val', $('input#with_flap').attr('data-status'))
-#    alert '1'
+
   else if $('input#on_the_edge').is(':checked')
     console.log 'edge'
     gag_price = parseInt($('input#on_the_edge').attr('data-status'))
   else if $('input#without_cap').is(':checked')
     gag_price = 0
-#    alert '2'
-  console.log gag_price
-  total_price = (long_element* weight_element)*count_element+gag_price
-  $total_price.text(Math.round(total_price))
-#    alert 'this value ='+count_element * weight_element
+
+  if $(@).hasClass('item-is-gag')
+    total_price = count_element*parseInt($this.attr 'data-price')
+    $total_price.text(Math.round(total_price))
+    console.log 'item is gag' , $total_price
+  else
+    total_price = (long_element* weight_element)*count_element+gag_price
+    $total_price.text(Math.round(total_price))
+
 
 #===================================================================
 # countdown timer
