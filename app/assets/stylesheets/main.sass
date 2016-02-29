@@ -385,6 +385,7 @@ main
           float: left
           position: relative
           +transition(background, 200ms, cubic-bezier(0.250, 0.250, 0.750, 0.750))
+          width: 18%
           &:after
             display: block
             content: ''
@@ -394,6 +395,8 @@ main
             right: 0
             top: 0
             bottom: 0
+          &:first-child
+            width: 7%
           span
             background: #fff
             opacity: .2
@@ -402,15 +405,21 @@ main
             height: inherit
             color: #eceff1
             font:
-              size: rem-calc(20)
+              size: rem-calc(18)
               weight: 500
-            line-height: 60px
+            line-height: 20px
             text-transform: uppercase
             padding-left: 15px
             padding-right: 20px
             padding-top: 0
             padding-bottom: 0
             +custom_transition(background, 100ms, cubic-bezier(0.250, 0.250, 0.750, 0.750), 200ms)
+            span
+              background: transparent
+              color: #eceff1
+              opacity: 1
+              display: inline-block
+              margin-top: 9px
             svg
               height: 100%
               width: auto
@@ -418,6 +427,8 @@ main
               padding-bottom: 21px
               float: left
               margin-right: 10px
+              path
+                fill: #656d72
           &:first-child
             svg
               margin-left: 10px
@@ -426,7 +437,7 @@ main
             display: none
           &:hover
             background: #1c282e
-            a
+            a, span
               color: #1976d2
             path
               fill: #1976d2
@@ -1436,9 +1447,9 @@ ul.voronin-block-wrap
         color: #1c282e
         font:
           family: 'Roboto', sans-serif
-          size: rem-calc(24)
-          weight: 400
-        line-height: 25px
+          size: rem-calc(18)
+          weight: 500
+        line-height: 21.6px
         text-transform: uppercase
         display: inline-block
         a
