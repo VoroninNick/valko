@@ -49,6 +49,9 @@
         size: rem-calc(14)
         weight: 500
       line-height: 20px
+      @media #{$small-only}
+        margin-top: 30px
+        display: inline-block
     p
       color: #607d8b
     i
@@ -60,6 +63,8 @@
       line-height: 18px
       margin-top: 60px
       display: block
+      @media #{$small-only}
+        margin-top: 0
     svg
       display: block
       margin-bottom: 25px

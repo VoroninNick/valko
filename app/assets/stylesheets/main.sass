@@ -838,6 +838,9 @@ main
           weight: 400
         line-height: 20px
         margin-bottom: 0
+        @media screen and ( max-width: 835px)
+          display: none
+
       .one-promotion-body-read-more
         position: absolute
         left: 0
@@ -866,8 +869,11 @@ main
           weight: 400
           family: 'Roboto', sans-serif
         line-height: 20px
+        margin-top: 5px
         svg
           width: 20px
+          position: relative
+          top: 3px
 
       @media #{$medium-up}
         +grid-column(4)
