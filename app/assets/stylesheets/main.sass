@@ -708,6 +708,48 @@ main
         margin-bottom: 7px
         span
           color: #607d8b
+    table
+      width: 100%
+      border-color: #ebeef0
+      border-collapse: collapse
+      margin-top: 0.9375rem
+      tr
+        th
+          font-family: 'Roboto', sans-serif
+        &:nth-of-type(even)
+          background: transparent !important
+
+      thead
+        background: transparent !important
+        border-bottom: 1px solid #ebeef0
+        tr
+          th
+            padding-top: 0
+            padding-bottom: 0
+            text-align: center
+          &:first-child
+            background: #1e87e4
+            th
+              +default_font_style(#ffffff, 16, 500, 40)
+              &:first-child
+                border-right: 1px solid #ebeef0
+          &:last-child
+            th
+              +default_font_style(#1976d1, 18, 500, 45)
+              &:first-child
+                border-right: 1px solid #ebeef0
+
+      tbody
+        tr
+          td
+            padding-top: 0
+            padding-bottom: 0
+            text-align: center
+            +default_font_style(#263238, 16, 500, 50)
+            &:first-child
+              color: #1e87e4
+              text-align: left
+              border-right: 1px solid #ebeef0
 
 //@media only screen and (min-width: 90.063em)
   .row-wide

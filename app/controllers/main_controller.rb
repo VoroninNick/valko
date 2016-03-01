@@ -170,10 +170,10 @@ class MainController < ApplicationController
   end
 
   def dev
-    @query = Windowsill.search do
-      fulltext params[:search]
-    end
-    @items = @query.results
+    # @query = Windowsill.search do
+    #   fulltext params[:search]
+    # end
+    # @items = @query.results
     # render inline: session["main#windowsill"].keys.inspect
 
     # response = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')

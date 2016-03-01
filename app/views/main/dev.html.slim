@@ -1,4 +1,4 @@
-.row
+/.row
   .columns
     a href="#" data-reveal-id="myModal" Click Me For A Modal
 
@@ -9,21 +9,21 @@
       a class="close-reveal-modal" aria-label="Close" &#215;
 
 
-.row
+/.row
   .columns
     - promotion = Promotion.first
     .promotion-banner-countdown-timer
       #defaultCountdown data-year=promotion.date_of.strftime("%Y") data-month=promotion.date_of.strftime("%m") data-day=promotion.date_of.strftime("%d")
 
-.row
+/.row
   .columns
     = root_url
-.row
+/.row
   .columns
     = request.original_url
 
 
-.row
+/.row
   .columns
     form action=search_path accept-charset="UTF-8" method="get"
       .input
@@ -47,7 +47,7 @@
 /.row
   .columns
     = @usd[0]["rate"]
-.row
+/.row
   .columns
     = @data.inspect
 /.row
@@ -57,7 +57,7 @@
       - @data.each do |data|
         li = data.inspect
 
-.row
+/.row
   .columns
     - str = "123.4056"
     = str
@@ -70,8 +70,44 @@
     br
     = Integer(str.to_f * 100) / Float(100)
 
-.row
+/.row
   .columns
     .columns
       div style="min-height: 450; background: red"
     .clearfix
+
+.row.article
+  .columns
+    table
+      thead
+        tr
+          th width="150" Торгова марка
+          th colspan="3" Довжини (м2) та бонусні бали
+        tr
+          th width="150"
+          th width="200" ≥ 5м2
+          th width="200" ≥ 7м2
+          th width="200" ≥ 10м2
+
+      tbody
+        tr
+          td Crystalit
+          td 50
+          td 70
+          td 100
+        tr
+          td Alber
+          td 25
+          td 35
+          td 50
+        tr
+          td Ganz
+          td 25
+          td 35
+          td 50
+        tr
+          td Plastolit
+          td 25
+          td 35
+          td 50
+
