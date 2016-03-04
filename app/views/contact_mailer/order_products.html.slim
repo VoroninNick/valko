@@ -1,11 +1,11 @@
-h3 #{@data[:first_name]} #{@data[:last_name]}, замовив товарів на суму #{@current_cart.total_price} грн.
+h3 #{@data[:first_name]} #{@data[:last_name]}, замовив(ла) товарів на суму #{@current_cart.total_price} грн.
 /= @current_cart.inspect
-h4 Список товарів
+h4 Перелік товарів
 ol
   - @current_cart.line_items.each do |item|
     - if item.class_name == 'Windowsill'
       li
-        p #{item.windowsill.title} фірми #{item.windowsill.brand.title} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price} грн.
+        p #{item.windowsill.title} #{item.weight} x #{item.long} #{item.windowsill.brand.title} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price} грн.
     - elsif item.class_name == 'Gag'
       li
         p #{item.gag.title} виробника #{item.gag.brand.title} вартістю #{item.total_price} грн.
