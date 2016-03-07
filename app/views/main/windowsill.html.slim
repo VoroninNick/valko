@@ -93,8 +93,10 @@ ul.breadcrumbs
                   .clearfix
 
               .cf-body
+
+
                 /.control-filter class=("#{'expanded' if session["main#windowsill"].has_key?("with_brand")}#{'internal external' if session["main#windowsill"]["with_type"] == "internal" || session["main#windowsill"]["with_type"] == "external"}")
-                .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_brand")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
+                .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_brand")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                   .filter-head
                     .title Торгові марки
                   .filter-body style="max-height: #{Brand.brands_list.count * 43+31}px"
@@ -106,7 +108,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
                 - if Windowsill.decor.values.any?
-                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_decor")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_decor")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Декор
                     .filter-body style="max-height: #{Windowsill.decor.values.count * 43+31}px"
@@ -117,7 +119,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_decor_#{decor}" = t("enumerize.decor.#{decor}")
 
                 - if Windowsill.type_of_surface.values.any?
-                  .control-filter.internal  class=('expanded' if session["main#windowsill"].has_key?("with_surface")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.internal  class=('expanded' if session["main#windowsill"].has_key?("with_surface")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Вид поверхні
                     .filter-body style="max-height: #{Windowsill.type_of_surface.values.count * 43+31}px"
@@ -128,7 +130,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_surface_#{surface}" = t("enumerize.type_of_surface.#{surface}")
 
                 - if Windowsill.kapinos.values.any?
-                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_kapinos")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_kapinos")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Капінос
                     .filter-body style="max-height: #{Windowsill.kapinos.values.count * 43+31}px"
@@ -139,7 +141,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_kapinos_#{kapinos}" = t("enumerize.kapinos.#{kapinos}")
 
                 - if Windowsill.material.values.any?
-                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_material")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_material")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Матеріал
                     .filter-body style="max-height: #{Windowsill.material.values.count * 43+31}px"
@@ -150,7 +152,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_material_#{material}" = t("enumerize.material.#{material}")
 
                 - if Windowsill.color_type.values.any?
-                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color_type")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color_type")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Вид кольору
                     .filter-body style="max-height: #{Windowsill.color_type.values.count * 43+31}px"
@@ -161,7 +163,7 @@ ul.breadcrumbs
                           label.cch-text for="filterrific_with_color_type_#{obj}" = t("enumerize.color_type.#{obj}")
 
                 - if Windowsill.color.values.any?
-                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}")
+                  .control-filter.external class=('expanded' if session["main#windowsill"].has_key?("with_color")) style=("#{'display: none;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: block;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
                     .filter-head
                       .title Колір
                     .filter-body style="max-height: #{Windowsill.color.values.count * 43+31}px"

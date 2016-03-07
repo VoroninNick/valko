@@ -1,11 +1,11 @@
-- if session["main#windowsill"].size > 1
+- if session["main#windowsill"].size > 2
   .selected-filters
     .sf-head
       .title Вибрані фільтри
     .sf-body
 
       / type
-      - if session["main#windowsill"].has_key?("with_type")
+      /- if session["main#windowsill"].has_key?("with_type")
         .sf-group
           .title Тип
           .sf-filter
