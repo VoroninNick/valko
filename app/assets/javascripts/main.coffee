@@ -626,6 +626,8 @@ $(document).ready ->
     else if $this.val() == 'external'
       $wrap.find('.control-filter').hide()
       $wrap.find('.control-filter').filter('.external').show()
+    else if $this.val() == 'gag'
+      $wrap.find('.control-filter').hide()
 
 #===========================================================
 # copy to clipboard
