@@ -33,8 +33,17 @@ ul.breadcrumbs
       .result-list
         - @search.each_hit_with_result do |hit, item|
           .one-result
-            a href=one_windowsill_path(item.slug) = item.title
-            = truncate_html(item.description, :length => 220)
+            /= item.class.name
+            - if item.class.name == 'Gag'
+              a href=one_gag_path(item.slug) = item.title
+            - elsif item.class.name == 'Windowsill'
+              a href=one_windowsill_path(item.slug) = item.title
+            - elsif item.class.name == 'Promotion'
+              a href=one_promotions_path(item.slug) = item.title
+            - elsif item.class.name == 'Information'
+              a href=one_publication_path(item.slug) = item.title
+
+            p = truncate_html(item.description, :length => 220)
 
   /.row
     .columns
