@@ -1,9 +1,13 @@
 - if windowsill_list.any?
   .row
-    - windowsill_list.each_with_index do |windowsill, i|
-      .medium-6.large-4.columns class=("end" if windowsill == windowsill_list.last)
-        = render "partials/windowsill", windowsill: windowsill
-    - if gags.any?
+    - windowsill_list.each_with_index do |item, i|
+      - if item.is_a?(Windowsill)
+        .medium-6.large-4.columns class=("end" if item == windowsill_list.last)
+          = render "partials/windowsill", windowsill: item
+      - elsif item.is_a?(Gag)
+        .medium-6.large-4.columns class=("end" if item == windowsill_list.last)
+          = render "partials/gag", gag: item
+    /- if gags.any?
       - gags.each do |gag|
         - if session["main#windowsill"].has_key?("with_brand")
           - if session["main#windowsill"]["with_brand"].include? gag.brand.id

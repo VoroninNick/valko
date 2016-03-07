@@ -614,9 +614,12 @@ $(document).ready ->
 #===========================================================
 # catalog filters switcher
 #===========================================================
-  $(".cf-head input[type='radio']").change ->
+  $(".windowsill-cf-radio input[type='radio']").change ->
     $this = $(@)
     $wrap = $this.closest('.control-filters')
+    $('.control-filter').removeClass('expanded')
+    $(".control-filter input[type='checkbox']").attr('checked', false)
+
     if $this.val() == 'internal'
       $wrap.find('.control-filter').hide()
       $wrap.find('.control-filter').filter('.internal').show()

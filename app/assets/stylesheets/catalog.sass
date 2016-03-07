@@ -577,6 +577,60 @@
             font-family: "Roboto", sans-serif
             text-transform: uppercase
             cursor: pointer
+    .cf-footer
+      background: #e6e7e8
+      border-right: 1px solid rgba(35, 31, 32, .05)
+      input[type=radio]
+        position: absolute
+        z-index: -1000
+        left: -1000px
+        overflow: hidden
+        clip: rect(0 0 0 0)
+        height: 1px
+        width: 1px
+        margin: -1px
+        padding: 0
+        border: 0
+
+        & + label
+          cursor: pointer
+          display: block
+          vertical-align: middle
+
+          color: #939598
+          font:
+            size: rem-calc(12)
+            weight: 500
+          line-height: 48px
+          text-transform: uppercase
+          position: relative
+          margin: 0
+          padding-left: 10px
+          padding-right: 10px
+          //text-align: center
+        &:checked
+          & + label
+            color: #1e88e5
+            &:before
+              content: ''
+              height: 3px
+              background: #1e88e5
+              position: absolute
+              left: 0
+              right: 0
+              bottom: 0
+      &:hover
+        label
+          color: #f50057 !important
+          &:before
+            content: ''
+            height: 3px
+            background: #f50057 !important
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 0
+
 
 .gallery-item
   position: relative

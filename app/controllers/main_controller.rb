@@ -114,20 +114,44 @@ class MainController < ApplicationController
   end
 
   def windowsill
-    @gags = Gag.all
     set_seo('pidvikonnia')
+
+    # session["main#windowsill"]
+    type = params[:filterrific].try{|x| x[:with_type]}
+    filterrific_session = session["main#windowsill"]
+    filterrific_params = params[:filterrific]
+
+    # session["main#windowsill"] = {}
+    if type.present? && type != filterrific_session['with_type']
+      filterrific_params = {
+          :sorted_by => filterrific_params[:sorted_by],
+          :with_type => type
+      }
+      # return render inline: "s: #{filterrific_session['with_type']}, p: #{type}"
+      session["main#windowsill"] = {}
+    end
+
 
     @filterrific = initialize_filterrific(
         Windowsill,
-        params[:filterrific],
+        filterrific_params,
         select_options: {
             sorted_by: Windowsill.options_for_sorted_by
         },
         default_filter_params: {}
     ) or return
 
-    @windowsill_list = @filterrific.find.page(params[:page])
+    # return render inline: session["main#windowsill"].inspect
 
+    @windowsill_list = @filterrific.find
+
+    #type = params[:filterrific].try{|x| x[:with_type]}
+    # if type.present?
+    #   session["main#windowsill"]['with_type'] = type
+    # end
+    # @windowsill_list = Windowsill.with_type(type, @windowsill_list)
+    # return render inline: @windowsill_list.inspect
+    @windowsill_list = @windowsill_list.page(params[:page])
 
     respond_to do |format|
       format.html

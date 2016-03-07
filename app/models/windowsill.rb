@@ -295,9 +295,9 @@ class Windowsill < ActiveRecord::Base
                                      joins(:brand).where(brands: { id: brand_id })
                                    }
   # with brand
-  scope :with_type, lambda { |wind_type|
-                     where(wind_type:  wind_type )
-                   }
+  # scope :with_type, lambda { |wind_type|
+
+                   # }
   # with material
   scope :with_material, lambda { |material|
                      where(material: [ *material])
@@ -323,6 +323,22 @@ class Windowsill < ActiveRecord::Base
                           where(color: [ *value])
                         }
 
+  scope :with_type, ->(type) {
+    Windowsill.self_with_type(type, self)
+  }
+
+  def self.self_with_type(type, relation)
+
+    if type.blank?
+      return relation.where(wind_type: [:'internal', :'external'])
+    end
+
+    if type == "gag"
+      return Gag.all
+    else
+      return relation.where(wind_type:  type )
+    end
+  end
 
   private
   def ensure_not_referenced_by_any_line_item

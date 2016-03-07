@@ -82,7 +82,7 @@ ul.breadcrumbs
                 span Фільтр товарів
                 .valko-arrow.va-bottom
                   div
-              .cf-head
+              .cf-head.windowsill-cf-radio
                 ul
                   li
                     input#wbf-internal type="radio" value="internal" name="filterrific[with_type]" checked=("checked" if session["main#windowsill"]["with_type"] == "internal")
@@ -170,6 +170,10 @@ ul.breadcrumbs
                           = f.check_box(:with_color, {multiple: true}, obj, nil)
                           label.cch-icon for="filterrific_with_color_#{obj}"
                           label.cch-text for="filterrific_with_color_#{obj}" = t("enumerize.color.#{obj}")
+              .cf-footer.windowsill-cf-radio
+                input#wbf-gag type="radio" value="gag" name="filterrific[with_type]" checked=("checked" if session["main#windowsill"]["with_type"] == "gag")
+                label for="wbf-gag" Заглушки
+
 
         .medium-9.columns
           #windowsill-list

@@ -17,6 +17,10 @@
               |Зовнішні
               label for="wbf-outdoor"
                 = inline_svg"ic_close_black_24px.svg"
+            - elsif session["main#windowsill"]["with_type"] == "gag"
+              |Заглушки
+              label for="wbf-outdoor"
+                = inline_svg"ic_close_black_24px.svg"
 
       / trademarks
       - if session["main#windowsill"].has_key?("with_brand")
