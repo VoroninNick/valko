@@ -122,7 +122,10 @@
                       |готівковий
 
                 .small-6.columns
-                  b = @usd_nbu[0]["rate"].to_f.round(2)
+                  - if @usd_nbu[0].try{|x| ["rate"]}
+                    b = @usd_nbu[0]["rate"].to_f.round(2)
+                  - else
+                    b відсутній
                   p
                     |Курс долара
                     br
@@ -144,7 +147,10 @@
                       |готівковий
 
                 .small-6.columns
-                  b = @eur_nbu[0]["rate"].to_f.round(2)
+                  - if @eur_nbu[0].try{|x| ["rate"]}
+                    b = @eur_nbu[0]["rate"].to_f.round(2)
+                  - else
+                    b відсутній
                   p
                     |Курс євро
                     br
