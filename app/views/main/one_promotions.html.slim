@@ -1,5 +1,5 @@
-/-content_for :title do @one_promotion.title end
-/-content_for :f_image do @one_promotion.cover.url(:large) end
+-content_for :title do @one_promotion.title end
+-content_for :f_image do @one_promotion.cover.url(:large) end
 
 ul.breadcrumbs
   li
@@ -51,7 +51,7 @@ ul.breadcrumbs
       .row
         .columns
           .material-component.ripple.link-to-catalog.button-box-shadow
-            - if one_promotion.windowsills && @one_promotion.windowsills.any?
+            - if @one_promotion.windowsills && @one_promotion.windowsills.any?
               a Каталог
             .ltc-prompt Переглянути акційні позиціі в каталозі
 
