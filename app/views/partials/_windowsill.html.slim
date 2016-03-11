@@ -29,6 +29,15 @@
             - if windowsill.kapinos.present?
               |,&nbsp
               = t("enumerize.kapinos.#{windowsill.kapinos}").mb_chars.downcase.to_s
+
+          - elsif windowsill.wind_type == 'external'
+            = windowsill.brand.title
+            - if windowsill.material.present?
+              |,&nbsp;
+              = t("enumerize.material.#{windowsill.material}").mb_chars.downcase.to_s
+            - if windowsill.color_type.present?
+              |,&nbsp;
+              = t("enumerize.color_type.#{windowsill.color_type}").mb_chars.downcase.to_s
       .clearfix
 
     .ow-body-order-form
