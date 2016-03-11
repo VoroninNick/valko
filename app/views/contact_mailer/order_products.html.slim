@@ -5,10 +5,11 @@ ol
   - @current_cart.line_items.each do |item|
     - if item.class_name == 'Windowsill'
       li
-        p #{item.windowsill.title} #{item.weight} x #{item.long} #{item.windowsill.brand.title} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price} грн.
+        p #{item.windowsill.brand.title}   #{item.windowsill.title}   #{item.weight} x #{item.long}   (#{item.quantity} шт.)#{ ",   з заглушкою" if item.with_gag}#{ ",   з кромкою" if item.with_edge}   вартістю #{item.total_price} грн.
+
     - elsif item.class_name == 'Gag'
       li
-        p #{item.gag.title} виробника #{item.gag.brand.title} вартістю #{item.total_price} грн.
+        p #{item.gag.title}   виробника   #{item.gag.brand.title} вартістю #{item.total_price} грн.
 
 h4 Контактна інформація
 p
