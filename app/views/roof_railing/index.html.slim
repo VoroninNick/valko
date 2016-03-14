@@ -48,31 +48,47 @@ ul.breadcrumbs
           .title
             = inline_svg "Valko-icon-pokrivlya.svg"
             |покрівля огорожі
+          span
+            .sort-button.sort data-sort="value:asc"
+              = inline_svg "Valko-icon-sort-time.svg"
+            .sort-button.sort
+              = inline_svg"Valko-icon-sort-alphabet.svg"
+
+            span.hide-for-small-only
+              |Сортувати по:
+
     .row
       .medium-3.columns
         .rr-filters.group
-          .rr-filter.filter data-filter='.metal-tiling' металочерепиця
-          .rr-filter.filter.active data-filter='.decking' профнастил
-          .rr-filter.filter data-filter='' рівний лист
-          .rr-filter.filter data-filter='' добірні елементи
-          .rr-filter.filter data-filter='' Кріплення і герметики
-          .rr-filter.filter data-filter='' Плівки
-          .rr-filter.filter data-filter='' водосточні системи
+          .rr-filter.filter data-filter='.metal-tiling'
+            span металочерепиця
+          .rr-filter.filter.active data-filter='.decking'
+            span профнастил
+          .rr-filter.filter data-filter=''
+            span рівний лист
+          .rr-filter.filter data-filter=''
+            span добірні елементи
+          .rr-filter.filter data-filter=''
+            span Кріплення і герметики
+          .rr-filter.filter data-filter=''
+            span Плівки
+          .rr-filter.filter data-filter=''
+            span водосточні системи
 
       .medium-9.columns.sandbox
-        .medium-6.large-4.columns.end.mix.metal-tiling
+        .medium-6.large-4.columns.end.mix.metal-tiling data-value="1"
           = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('МЧ.jpg')
-        .medium-4.columns.end.mix.decking
+        .medium-4.columns.end.mix.decking data-value="2"
           = render "partials/one_item_card", title: 'профнастил', image: asset_path('otsinkovannyj-profnastil-STK-Vasha-krisha-e1428323117233.jpg')
-        .medium-4.columns.end.mix.decking
+        .medium-4.columns.end.mix.decking data-value="3"
           = render "partials/one_item_card", title: 'профнастил', image: asset_path('20.jpg')
-        .medium-4.columns.end.mix.metal-tiling
+        .medium-4.columns.end.mix.metal-tiling data-value="4"
           = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metal1.jpg')
-        .medium-4.columns.end.mix.metal-tiling
+        .medium-4.columns.end.mix.metal-tiling data-value="5"
           = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metallocherepitca-i-profnastil-ot-proizvoditelya-120428b.jpg')
-        .medium-4.columns.end.mix.decking
+        .medium-4.columns.end.mix.decking data-value="6"
           = render "partials/one_item_card", title: 'профнастил', image: asset_path('t20_01.jpg')
-        .medium-4.columns.end.mix.decking
+        .medium-4.columns.end.mix.decking data-value="7"
           = render "partials/one_item_card", title: 'профнастил', image: asset_path('prof_40.jpg')
-        .medium-4.columns.end.mix.metal-tiling
+        .medium-4.columns.end.mix.metal-tiling data-value="8"
           = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metalocherepica.jpg')
