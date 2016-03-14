@@ -86,3 +86,5 @@ gem 'sunspot_solr'
 gem 'sunspot_rails'
 
 gem 'progress_bar'
+
+gem 'mixitup_rails'
