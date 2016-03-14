@@ -1,0 +1,62 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Покрівля огорожі
+
+  .hide-catalog-header
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
+.roof-rail-catalog-list-page
+  .row
+    .columns
+      = session['catalog-header-status']
+
+  .roof-rail-catalog-list-header
+    .row
+      .columns
+        ul#roof-rail-banner
+          li
+            .image style="background: url('#{asset_path("roof-banner-1.jpg")}')no-repeat center center;"
+          li
+            .image style="background: url('#{asset_path("roof-banner-2.jpg")}')no-repeat center center;"
+
+        .wcl-body
+          .columns
+            .title Покрівля огорожі
+          .clearfix
+          .medium-6.columns
+            p
+              |Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції.
+            p
+              |Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає.
+                Тут ви неодмінно знайдете оптимальний варіант!
+          .medium-6.columns
+            p
+              |Міцність та надійність конструкції підвіконь не менш важливі, ніж естетика. Тому клієнтам ми пропонуємо товар найвищого ґатунку від кращих європейських виробників: Crystalit, Ganz, Alber, Kraft та ін.
+            p
+              |Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
+          .clearfix
+
+  .roof-rail-catalog-list-body
+    .wclb-header
+      .row
+        .columns
+          .title
+            = inline_svg "Valko-icon-pokrivlya.svg"
+            |покрівля огорожі
+    .row
+      .medium-3.columns
+        .rr-filters.group
+          .rr-filter.filter data-filter='' металочерепиця
+          .rr-filter.filter.active data-filter='' профнастил
+          .rr-filter.filter data-filter='' рівний лист
+          .rr-filter.filter data-filter='' добірні елементи
+          .rr-filter.filter data-filter='' Кріплення і герметики
+          .rr-filter.filter data-filter='' Плівки
+          .rr-filter.filter data-filter='' водосточні системи
+
+      .medium-9.columns

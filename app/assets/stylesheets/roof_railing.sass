@@ -1,0 +1,101 @@
+// Place all the styles related to the roof_railing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.roof-rail-catalog-list-page
+  .roof-rail-catalog-list-header
+    margin-bottom: 27px
+    .bx-wrapper
+      height: 305px
+      margin: 0
+      .bx-viewport, ul, li
+        height: inherit !important
+      .bx-controls
+        .bx-pager
+          bottom: 20px
+          padding-top: 0
+          .bx-pager-item
+            .bx-pager-link
+              width: 12px
+              height: 12px
+              background: #93989c
+              padding: 0
+              border: none !important
+              display: inline-block
+              float: left
+              margin: 0 20px
+
+              -moz-border-radius: 0
+              -webkit-border-radius: 0
+              border-radius: 0
+              &.active
+                background: #42a5f5
+    ul#roof-rail-banner
+      margin: 0
+    .wcl-body
+      background: #eceff1
+      padding: 30px 0
+      .title
+        color: #263238
+        font-size: 1.5rem
+        font-weight: 500
+        line-height: 30px
+        text-transform: uppercase
+        margin-bottom: 15px
+      p
+        color: #263238
+        font-size: 0.875rem
+        font-weight: 400
+        line-height: 21px
+
+  .roof-rail-catalog-list-body
+    .wclb-header
+      height: 40px
+      background: #eceff1
+      .title
+        color: #1e88e5
+        font-size: 1.25rem
+        font-weight: 500
+        text-transform: uppercase
+        line-height: 40px
+        display: inline-block
+        svg
+          height: 100%
+          width: 18px
+          margin-right: 5px
+          position: relative
+          top: 2px
+
+    .rr-filters
+      margin-top: 28px
+      .rr-filter
+        background: #e6e7e8
+        min-height: 50px
+        padding: 0 14px
+        margin-bottom: 5px
+        position: relative
+        +default_font_style(#939598, 14, 500, 24)
+        font-family: 'Roboto', sans-serif
+        text:
+          transform: uppercase
+          //align: center
+        cursor: pointer
+        &.active
+          color: #1e88e5
+          &:after
+            content: ''
+            position: absolute
+            border-bottom: 3px solid #1e88e5
+            width: 100%
+            bottom: 0
+            left: 0
+        &:hover
+          color: #f50057
+          &:after
+            content: ''
+            position: absolute
+            border-bottom: 3px solid #f50057
+            width: 100%
+            bottom: 0
+            left: 0

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
   get 'gag/:title' => 'main#gag', as: :one_gag
 
+  get 'roof-rail' => 'roof_railing#index'
+
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'
 
