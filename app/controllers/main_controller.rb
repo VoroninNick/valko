@@ -13,13 +13,7 @@ class MainController < ApplicationController
     session[:recently_viewed].delete_at 0 if session[:recently_viewed].size == 12
   end
 
-  def set_seo(key)
-    @static_page = Page.find_by_slug(key)
-    set_meta_tags site: 'Валько',
-                  title: @static_page.seo.try(:seo_title),
-                  description: @static_page.seo.try(:seo_description),
-                  keywords: @static_page.seo.try(:keywords)
-  end
+
 
 
 

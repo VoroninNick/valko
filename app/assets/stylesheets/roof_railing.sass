@@ -122,3 +122,87 @@
       overflow: hidden
       .mix
         display: none
+
+.catalog-one-item-page
+  .coi-photo
+    .image
+      height: 0
+      padding-bottom: 100%
+      border: 7px solid #eceff1
+  .title
+    +default_font_style(#1c282e, 24, 500, 28)
+  p
+    +default_font_style(#263238, 14, 400, 20)
+
+  .catalog-rr-color-system
+    .catalog-rr-color-system-header
+      span
+        +default_font_style(#263238, 16, 500, 20)
+        font-family: 'Roboto', sans-serif
+        text-transform: uppercase
+      hr
+        border-color: #bcbec0
+        margin: 10px 0
+
+    .catalog-rr-color-system-group
+      span
+        +default_font_style(#607d8b, 14, 500, 20)
+      .catalog-rr-one-color
+        width: 43px
+        margin: 11px
+        display: inline-block
+        input[type=radio]
+          position: absolute
+          z-index: -1000
+          left: -1000px
+          overflow: hidden
+          clip: rect(0 0 0 0)
+          height: 1px
+          width: 1px
+          margin: -1px
+          padding: 0
+          border: 0
+
+          & + label
+            margin: 0
+            &.icon
+              cursor: pointer
+              display: block
+              width: 43px
+              height: 43px
+            &.text
+              text-align: center
+
+
+          &#cro-color-6005
+            & + label
+              &.icon
+                background: #114232
+          &#cro-color-3005
+            & + label
+              &.icon
+                background: #59191f
+          &#cro-color-9003
+            & + label
+              &.icon
+                background: #ecece7
+          &#cro-color-1003
+            & + label
+              &.icon
+                background: #f9a800
+          &#cro-color-8017
+            & + label
+              &.icon
+                background: #442f29
+          &#cro-color-8004
+            & + label
+              &.icon
+                background: #8d4931
+          &:checked
+            & + label
+              &.icon
+                background: #f50057 !important
+              &.text
+                color: #f50057 !important
+
+
