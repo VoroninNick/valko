@@ -3,7 +3,7 @@ class RoofRailingController < ApplicationController
   def index
 
   end
-  def item
+  def decking
 
   end
 end

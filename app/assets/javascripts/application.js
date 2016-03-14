@@ -29,6 +29,8 @@
 
 //= require clipboard/dist/clipboard.min
 
+//= require mixitup
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

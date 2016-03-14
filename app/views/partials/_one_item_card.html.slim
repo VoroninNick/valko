@@ -1,0 +1,25 @@
+.one-windowsill
+  .ow-image
+    a
+      .image style="background: url('#{image}')no-repeat center center;"
+    .show-large-image.lightGallery
+      a
+        = inline_svg"Valko-icon-search.svg"
+
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = title
+      .small-6.columns
+        .price
+          /= gag.try(:price)
+          sup &nbsp;грн.
+      .columns
+        /.brand-title = gag.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      - if title == 'профнастил'
+        a href=roof_rail_decking_path Переглянути
+      - else
+        a Переглянути
