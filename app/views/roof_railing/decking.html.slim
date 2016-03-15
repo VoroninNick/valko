@@ -10,6 +10,13 @@ ul.breadcrumbs
   .row
     .medium-4.columns.coi-photo
       .image style="background: url('#{asset_path('20.jpg')}')no-repeat center center;"
+
+      .catalog-rr-drawing
+        span Креслення
+        hr
+        = image_tag "Kreslenya.jpg"
+        hr
+
     .medium-8.columns
       .title Профнастил т10
       p
@@ -138,3 +145,112 @@ ul.breadcrumbs
         .catalog-rr-color-system-group
           .row
             .columns
+              .row
+                .medium-6.columns
+                  .catalog-rr-block-option
+                    .catalog-rr-block-option-header Вирбник
+                    .catalog-rr-block-option-body
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
+                        label.icon for="cro-option-ukr"
+                        label.text for="cro-option-ukr" Модуль Україна
+                        .clearfix
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
+                        label.icon for="cro-option-chi"
+                        label.text for="cro-option-chi" Китай
+                        .clearfix
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
+                        label.icon for="cro-option-svk"
+                        label.text for="cro-option-svk" Словаччина
+                        .clearfix
+
+                .medium-6.columns
+                  .catalog-rr-block-option
+                    .catalog-rr-block-option-header Товщина
+                    .catalog-rr-block-option-body
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
+                        label.icon for="cro-option-ukr"
+                        label.text for="cro-option-ukr" Elite 0.5, мм
+                        .clearfix
+                      .catalog-rr-radio-element
+                        input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
+                        label.icon for="cro-option-chi"
+                        label.text for="cro-option-chi" Premium 0.45, мм
+                        .clearfix
+                      .catalog-rr-radio-element
+                        input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
+                        label.icon for="cro-option-svk"
+                        label.text for="cro-option-svk" Standart 0.4, мм
+                        .clearfix
+
+          .row
+            .columns
+              .row
+                .medium-6.columns
+                  .catalog-rr-block-option
+                    .catalog-rr-block-option-header Покриття
+                    .catalog-rr-block-option-body
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
+                        label.icon for="cro-option-ukr"
+                        label.text for="cro-option-ukr" Цинк
+                        .clearfix
+                      .catalog-rr-radio-element
+                        input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
+                        label.icon for="cro-option-chi"
+                        label.text for="cro-option-chi" Алюцинк
+                        .clearfix
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
+                        label.icon for="cro-option-svk"
+                        label.text for="cro-option-svk" Полістер глянець
+                        .clearfix
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
+                        label.icon for="cro-option-svk"
+                        label.text for="cro-option-svk" Полістер мат
+                        .clearfix
+                      .catalog-rr-radio-element
+                        input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
+                        label.icon for="cro-option-svk"
+                        label.text for="cro-option-svk" Полістер глянець двосторінній
+                        .clearfix
+                .medium-6.columns
+                  .catalog-rr-block-option
+                    .catalog-rr-block-option-header Захисна плівка
+                    .catalog-rr-block-option-body
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
+                        label.icon for="cro-option-ukr"
+                        label.text for="cro-option-ukr" З плівкою
+                        .clearfix
+                      .catalog-rr-radio-element.enable-catalog-element
+                        input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
+                        label.icon for="cro-option-ukr"
+                        label.text for="cro-option-ukr" Без плівки
+                        .clearfix
+
+  .row
+    .columns
+      ul.tabs data-tab=""
+        li.tab-title.active
+          a href="#rrc-specifications" Характеристики
+        li.tab-title
+          a href="#rrc-useful-publications" Корисна інформація
+        li.tab-title
+          a href="#rrc-gallery" Фото та відео
+        li.tab-title
+          a href="#rrc-reviews" Відгуки
+      .tabs-content
+        #rrc-specifications.content.active
+          |Характеристики
+        #rrc-useful-publications.content
+          |Корисна інформація
+        #rrc-gallery.content
+          |Фото та відео
+        #rrc-reviews.content
+          = disqus_init
+          - disqus_thread
