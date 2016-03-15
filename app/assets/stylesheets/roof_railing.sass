@@ -151,6 +151,20 @@
         width: 43px
         margin: 11px
         display: inline-block
+        position: relative
+        float: left
+        &:after
+          content: ''
+          position: absolute
+          left: 0
+          top: 0
+          right: 0
+          bottom: 0
+          background: #fff
+          opacity: .8
+        &.enable-catalog-element
+          &:after
+            display: none
         input[type=radio]
           position: absolute
           z-index: -1000
@@ -163,22 +177,25 @@
           padding: 0
           border: 0
 
-          & + label
+          & ~ label
             margin: 0
             &.icon
               cursor: pointer
               display: block
               width: 43px
               height: 43px
+              margin-bottom: 10px
             &.text
+              +default_font_style(#bcbec0, 14, 300, 14)
               text-align: center
+              height: 28px
 
 
-          &#cro-color-6005
+          &#cro-color-6005, &#cro-color-m6005
             & + label
               &.icon
                 background: #114232
-          &#cro-color-3005
+          &#cro-color-3005, &#cro-color-m3005
             & + label
               &.icon
                 background: #59191f
@@ -190,18 +207,77 @@
             & + label
               &.icon
                 background: #f9a800
-          &#cro-color-8017
+          &#cro-color-8017, &#cro-color-m8017
             & + label
               &.icon
                 background: #442f29
-          &#cro-color-8004
+          &#cro-color-8004, &#cro-color-m8004
             & + label
               &.icon
                 background: #8d4931
-          &:checked
+          &#cro-color-1015
             & + label
               &.icon
+                background: #e6d2b5
+          &#cro-color-9006
+            & + label
+              &.icon
+                background: #a1a1a0
+          &#cro-color-5005
+            & + label
+              &.icon
+                background: #005387
+          &#cro-color-3011
+            & + label
+              &.icon
+                background: #792423
+          &#cro-color-3009
+            & + label
+              &.icon
+                background: #6d342d
+          &#cro-color-m8019
+            & + label
+              &.icon
+                background: #3d3635
+          &#cro-color-m7024
+            & + label
+              &.icon
+                background: #45494e
+          &#cro-color-m6020
+            & + label
+              &.icon
+                background: #37422f
+          &#cro-color-alyutsynk
+            & + label
+              &.icon
+                background: #9DA1AA
+          &#cro-color-tsynk
+            & + label
+              &.icon
+                background: #8A9597
+
+          &#cro-color-horikh
+            & + label
+              &.icon
+                background: asset-url('gorih.png')
+
+          &#cro-color-zolotyy-dub
+            & + label
+              &.icon
+                background: asset-url('zolot_dub.png')
+
+          &:checked
+            & ~ label
+              &.icon
                 background: #f50057 !important
+                position: relative
+                &:after
+                  content: ''
+                  background: asset-url('ic_check_black_24px.svg')
+                  width: 25px
+                  height: 25px
+                  +my_center_align()
+                    position: absolute
               &.text
                 color: #f50057 !important
 
