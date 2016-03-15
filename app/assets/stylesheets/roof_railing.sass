@@ -386,7 +386,10 @@
           background: #1e88e5
         a
           color: #1e88e5
-  .roof-rail-calculator
+  .roof-rail-calculator-wrap
+    .roof-rail-calculator
+      margin-top: 15px
+      margin-bottom: 50px
     .rr-price-wrap
       width: 74px
       height: 64px
@@ -427,3 +430,28 @@
         text-transform: uppercase
         padding: 13px 27px 13px 50px
         margin: 0
+    .input
+      &.long-roof-rail, &.count-roof-rail
+        float: left
+        padding-right: 30px
+        margin-top: 10px
+        input
+          margin-bottom: 0
+          color: #607d8b
+          font-size: 1rem
+          font-weight: 500
+          line-height: 21px
+          border: none
+          border-bottom: 1px solid #d9d9d9
+          outline: none
+          box-shadow: none
+          background: transparent
+        label
+          color: #939598
+          font-size: 0.75rem
+          font-weight: 300
+          line-height: 18px
+      &.long-roof-rail
+        width: 60%
+      &.count-roof-rail
+        width: 40%
