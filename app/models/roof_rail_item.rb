@@ -75,8 +75,8 @@ class RoofRailItem < ActiveRecord::Base
     RoofRailItem.where(title: self.title).pluck(:producer).uniq
   end
 
-  def thickness_by_producers
-    RoofRailItem.where(title: self.title).where(producer: self.producer).pluck(:thickness).uniq
+  def thickness_by_producers(producer)
+    RoofRailItem.where(title: self.title).where(producer: producer).pluck(:thickness).uniq
   end
 
   def coating_by_thickness
@@ -90,6 +90,10 @@ class RoofRailItem < ActiveRecord::Base
   def present_colors
     # deck = RoofRailItem.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).where(protective_lamina: self.protective_lamina)
     self.rr_details.pluck(:title).uniq
+  end
+
+  def scenario
+
   end
 
 end
