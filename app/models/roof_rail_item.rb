@@ -46,6 +46,10 @@ class RoofRailItem < ActiveRecord::Base
         html_attributes rows: 10, cols: 100
         label 'Короткий опис:'
       end
+      field :width do
+        label 'Ширина:'
+        help 'вказується в міліметрах'
+      end
       field :producer do
         label 'Виробник:'
       end
@@ -84,7 +88,8 @@ class RoofRailItem < ActiveRecord::Base
   end
 
   def present_colors
-
+    # deck = RoofRailItem.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).where(protective_lamina: self.protective_lamina)
+    self.rr_details.pluck(:title).uniq
   end
 
 end

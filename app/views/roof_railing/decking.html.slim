@@ -12,7 +12,7 @@ ul.breadcrumbs
       /.image style="background: url('#{asset_path('20.jpg')}')no-repeat center center;"
       - if @decking.rr_details && @decking.rr_details.first.image.exists?
         .image style="background: url('#{@decking.rr_details.first.image.url(:thumb)}')no-repeat center center;"
-      .catalog-rr-drawing
+      /.catalog-rr-drawing
         span Креслення
         hr
         = image_tag "Kreslenya.jpg"
@@ -27,6 +27,9 @@ ul.breadcrumbs
         /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
         .row.roof-rail-calculator
           .medium-7.columns
+            .input.width-roof-rail
+              p = @decking.try(&:width)
+              label Довжина листа, мм
             .input.long-roof-rail
               input#long-roof-rail type="number" name="long"
               label for="long-roof-rail" Довжина листа, мм
@@ -60,16 +63,18 @@ ul.breadcrumbs
                 .columns
                   - @decking.rr_details.title.values.each do |color|
                     - if color[0] == 'g'
+
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-                        .catalog-rr-one-color.enable-catalog-element
+                        .catalog-rr-one-color class=("enable-catalog-element" if color.in?(@decking.present_colors))
                           input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1...5]}"
                           label.text for="cro-color-#{color[1...5]}" = color[1...5]
                       - else
-                        .catalog-rr-one-color.enable-catalog-element
+                        .catalog-rr-one-color class=("enable-catalog-element" if color.in?(@decking.present_colors))
                           input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+
             .catalog-rr-color-system-group
               .row
                 .columns
@@ -79,7 +84,7 @@ ul.breadcrumbs
                   - @decking.rr_details.title.values.each do |color|
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-                        .catalog-rr-one-color.enable-catalog-element
+                        .catalog-rr-one-color  class=("enable-catalog-element" if color.in?(@decking.present_colors))
                           input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
@@ -89,7 +94,7 @@ ul.breadcrumbs
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                       - else
-                        .catalog-rr-one-color.enable-catalog-element
+                        .catalog-rr-one-color  class=("enable-catalog-element" if color.in?(@decking.present_colors))
                           input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")

@@ -158,6 +158,7 @@
         margin-bottom: 0
         &:after
           content: ''
+          width: 60px
           position: absolute
           left: 0
           top: 0
@@ -431,11 +432,11 @@
         padding: 13px 27px 13px 50px
         margin: 0
     .input
-      &.long-roof-rail, &.count-roof-rail
+      &.long-roof-rail, &.count-roof-rail, &.width-roof-rail
         float: left
         padding-right: 30px
         margin-top: 10px
-        input
+        input, p
           margin-bottom: 0
           color: #607d8b
           font-size: 1rem
@@ -446,12 +447,18 @@
           outline: none
           box-shadow: none
           background: transparent
+        p
+          height: 2.3125rem
+          margin: 0 0 1rem 0
+          padding: 0.5rem
         label
           color: #939598
           font-size: 0.75rem
           font-weight: 300
           line-height: 18px
       &.long-roof-rail
-        width: 60%
+        width: 37%
+      &.width-roof-rail
+        width: 37%
       &.count-roof-rail
-        width: 40%
+        width: 26%
