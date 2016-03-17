@@ -24,7 +24,7 @@ class RoofRailItem < ActiveRecord::Base
   before_save { save_slug(title, slug) }
 
   extend Enumerize
-  enumerize :producer, in: [:'ukraine', :'china', :'slovakia']
+  enumerize :producer, in: [:'arcelor', :'ukraine', :'china', :'slovakia']
   enumerize :thickness, in: [:'elite_0_5', :'premium_0_45', :'standart_0_4']
   enumerize :coating, in: [:'zinc', :'aluzinc', :'glossy_polyester', :'polyester_mat', :'polyester_gloss_bilateral']
   enumerize :protective_lamina, in: [:'with_lamina', :'without_lamina']

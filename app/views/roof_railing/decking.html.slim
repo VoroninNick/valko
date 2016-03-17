@@ -9,8 +9,9 @@ ul.breadcrumbs
 .catalog-one-item-page
   .row
     .medium-4.columns.coi-photo
-      .image style="background: url('#{asset_path('20.jpg')}')no-repeat center center;"
-
+      /.image style="background: url('#{asset_path('20.jpg')}')no-repeat center center;"
+      - if @decking.rr_details && @decking.rr_details.first.image.exists?
+        .image style="background: url('#{@decking.rr_details.first.image.url(:thumb)}')no-repeat center center;"
       .catalog-rr-drawing
         span Креслення
         hr
@@ -61,12 +62,12 @@ ul.breadcrumbs
                     - if color[0] == 'g'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                         .catalog-rr-one-color.enable-catalog-element
-                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color"
+                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1...5]}"
                           label.text for="cro-color-#{color[1...5]}" = color[1...5]
                       - else
                         .catalog-rr-one-color.enable-catalog-element
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color"
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
             .catalog-rr-color-system-group
@@ -79,7 +80,7 @@ ul.breadcrumbs
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                         .catalog-rr-one-color.enable-catalog-element
-                          input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color"
+                          input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
               .row
@@ -89,7 +90,7 @@ ul.breadcrumbs
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                       - else
                         .catalog-rr-one-color.enable-catalog-element
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color"
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
 
@@ -107,24 +108,55 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Вирбник
                       .catalog-rr-block-option-body
+                        /- a = 0
                         - RoofRailItem.producer.values.each do |producer|
-                          .catalog-rr-radio-element class=("enable-catalog-element" if producer.in?(@decking.producers_by_item)) data="{id: 1, thickness:[1,2,3], coating: [1,2]}"
-                            input id="cro-option-#{producer}" type="radio" value="cro-option-#{producer}" name="catalog-rr-producer"
-                            label.icon for="cro-option-#{producer}"
-                            label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                            .clearfix
+                          - if producer.in?(@decking.producers_by_item)
+                            - if @decking.producer == producer
+                              /- a+=1
+                              .catalog-rr-radio-element.enable-catalog-element data="{id: 1, thickness:[1,2,3], coating: [1,2]}"
+                                input id="cro-option-#{producer}" type="radio" value="cro-option-#{producer}" name="catalog-rr-producer" checked="checked"
+                                label.icon for="cro-option-#{producer}"
+                                label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                                .clearfix
+                            - else
+                              .catalog-rr-radio-element.enable-catalog-element data="{id: 1, thickness:[1,2,3], coating: [1,2]}"
+                                input id="cro-option-#{producer}" type="radio" value="cro-option-#{producer}" name="catalog-rr-producer"
+                                label.icon for="cro-option-#{producer}"
+                                label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                                .clearfix
+                          - else
+                            .catalog-rr-radio-element data="{id: 1, thickness:[1,2,3], coating: [1,2]}"
+                              input id="cro-option-#{producer}" type="radio" value="cro-option-#{producer}" name="catalog-rr-producer"
+                              label.icon for="cro-option-#{producer}"
+                              label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                              .clearfix
 
                   .medium-6.columns
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Товщина
                       .catalog-rr-block-option-body
+                        /- a = 0
                         - RoofRailItem.thickness.values.each do |thickness|
-                          .catalog-rr-radio-element  class=("enable-catalog-element" if thickness.in?(@decking.thickness_by_producers))
-                            input id="cro-option-#{thickness}" type="radio" value="cro-option-#{thickness}" name="catalog-rr-thickness"
-                            label.icon for="cro-option-#{thickness}"
-                            label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
-                            .clearfix
-
+                          - if thickness.in?(@decking.thickness_by_producers)
+                            - if @decking.thickness == thickness
+                              /- a+=1
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{thickness}" type="radio" value="cro-option-#{thickness}" name="catalog-rr-thickness" checked="checked"
+                                label.icon for="cro-option-#{thickness}"
+                                label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                                .clearfix
+                            - else
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{thickness}" type="radio" value="cro-option-#{thickness}" name="catalog-rr-thickness"
+                                label.icon for="cro-option-#{thickness}"
+                                label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                                .clearfix
+                          - else
+                            .catalog-rr-radio-element
+                              input id="cro-option-#{thickness}" type="radio" value="cro-option-#{thickness}" name="catalog-rr-thickness"
+                              label.icon for="cro-option-#{thickness}"
+                              label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                              .clearfix
             .row
               .columns
                 .row
@@ -132,24 +164,56 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Покриття
                       .catalog-rr-block-option-body
+                        /- a = 0
                         - RoofRailItem.coating.values.each do |coating|
-                          .catalog-rr-radio-element  class=("enable-catalog-element" if coating.in?(@decking.coating_by_thickness))
-                            input id="cro-option-#{coating}" type="radio" value="cro-option-#{coating}" name="catalog-rr-coating"
-                            label.icon for="cro-option-#{coating}"
-                            label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
-                            .clearfix
+                          - if coating.in?(@decking.coating_by_thickness)
+                            - if @decking.coating == coating
+                              /- a+=1
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{coating}" type="radio" value="cro-option-#{coating}" name="catalog-rr-coating" checked="checked"
+                                label.icon for="cro-option-#{coating}"
+                                label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                                .clearfix
+                            - else
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{coating}" type="radio" value="cro-option-#{coating}" name="catalog-rr-coating"
+                                label.icon for="cro-option-#{coating}"
+                                label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                                .clearfix
+                          - else
+                            .catalog-rr-radio-element
+                              input id="cro-option-#{coating}" type="radio" value="cro-option-#{coating}" name="catalog-rr-coating"
+                              label.icon for="cro-option-#{coating}"
+                              label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                              .clearfix
+
 
                   .medium-6.columns
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Захисна плівка
                       .catalog-rr-block-option-body
+                        /- a = 0
                         - RoofRailItem.protective_lamina.values.each do |protective_lamina|
-                          .catalog-rr-radio-element  class=("enable-catalog-element" if protective_lamina.in?(@decking.protective_lamina_by_coating))
-                            input id="cro-option-#{protective_lamina}" type="radio" value="cro-option-#{protective_lamina}" name="catalog-rr-protective_lamina"
-                            label.icon for="cro-option-#{protective_lamina}"
-                            label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
-                            .clearfix
-
+                          - if protective_lamina.in?(@decking.protective_lamina_by_coating)
+                            - if @decking.protective_lamina == protective_lamina
+                              /- a+=1
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{protective_lamina}" type="radio" value="cro-option-#{protective_lamina}" name="catalog-rr-protective_lamina" checked="checked"
+                                label.icon for="cro-option-#{protective_lamina}"
+                                label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                                .clearfix
+                            - else
+                              .catalog-rr-radio-element.enable-catalog-element
+                                input id="cro-option-#{protective_lamina}" type="radio" value="cro-option-#{protective_lamina}" name="catalog-rr-protective_lamina"
+                                label.icon for="cro-option-#{protective_lamina}"
+                                label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                                .clearfix
+                          - else
+                            .catalog-rr-radio-element
+                              input id="cro-option-#{protective_lamina}" type="radio" value="cro-option-#{protective_lamina}" name="catalog-rr-protective_lamina"
+                              label.icon for="cro-option-#{protective_lamina}"
+                              label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                              .clearfix
 
   .row
     .columns
