@@ -76,19 +76,23 @@ ul.breadcrumbs
             span водосточні системи
 
       .medium-9.columns.sandbox
-        .medium-6.large-4.columns.end.mix.metal-tiling data-value="1"
-          = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('МЧ.jpg')
-        .medium-4.columns.end.mix.decking data-value="2"
-          = render "partials/one_item_card", title: 'профнастил', image: asset_path('otsinkovannyj-profnastil-STK-Vasha-krisha-e1428323117233.jpg')
-        .medium-4.columns.end.mix.decking data-value="3"
-          = render "partials/one_item_card", title: 'профнастил', image: asset_path('20.jpg')
-        .medium-4.columns.end.mix.metal-tiling data-value="4"
-          = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metal1.jpg')
-        .medium-4.columns.end.mix.metal-tiling data-value="5"
-          = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metallocherepitca-i-profnastil-ot-proizvoditelya-120428b.jpg')
-        .medium-4.columns.end.mix.decking data-value="6"
-          = render "partials/one_item_card", title: 'профнастил', image: asset_path('t20_01.jpg')
-        .medium-4.columns.end.mix.decking data-value="7"
-          = render "partials/one_item_card", title: 'профнастил', image: asset_path('prof_40.jpg')
-        .medium-4.columns.end.mix.metal-tiling data-value="8"
-          = render "partials/one_item_card", title: 'металочерепиця', image: asset_path('metalocherepica.jpg')
+        /.medium-6.large-4.columns.end.mix.metal-tiling data-value="1"
+        /  = render "partials/one_item_card2", title: 'металочерепиця', image: asset_path('МЧ.jpg')
+        /.medium-4.columns.end.mix.decking data-value="2"
+        /  = render "partials/one_item_card2", title: 'профнастил', image: asset_path('otsinkovannyj-profnastil-STK-Vasha-krisha-e1428323117233.jpg')
+        /.medium-4.columns.end.mix.decking data-value="3"
+        /  = render "partials/one_item_card2", title: 'профнастил', image: asset_path('20.jpg')
+        /.medium-4.columns.end.mix.metal-tiling data-value="4"
+        /  = render "partials/one_item_card2", title: 'металочерепиця', image: asset_path('metal1.jpg')
+        /.medium-4.columns.end.mix.metal-tiling data-value="5"
+        /  = render "partials/one_item_card2", title: 'металочерепиця', image: asset_path('metallocherepitca-i-profnastil-ot-proizvoditelya-120428b.jpg')
+        /.medium-4.columns.end.mix.decking data-value="6"
+        /  = render "partials/one_item_card2", title: 'профнастил', image: asset_path('t20_01.jpg')
+        /.medium-4.columns.end.mix.decking data-value="7"
+        /  = render "partials/one_item_card2", title: 'профнастил', image: asset_path('prof_40.jpg')
+        /.medium-4.columns.end.mix.metal-tiling data-value="8"
+        /  = render "partials/one_item_card2", title: 'металочерепиця', image: asset_path('metalocherepica.jpg')
+        - if @items.any?
+          - @items.each do |item|
+            .medium-4.columns.end.mix.decking
+              = render "partials/one_item_card", item: item

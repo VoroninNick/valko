@@ -18,11 +18,9 @@ ul.breadcrumbs
         hr
 
     .medium-8.columns
-      .title Профнастил т10
-      p
-        |Монтерей – елегантна класика, незмінно актуальна для створення затишку і легкості в інтер'єрі.
-          Лаконічна вишуканість білого у поєднанні з теплими відтінками натурального дерева зачаровує і додає приміщенню нотку самодостатнього комфорту.
-          Ці підвіконня відмінно пасуватимуть до будь-яких вікон.
+      .title = @decking.title
+      p = @decking.short_description
+      /p = @decking.producers_by_item.size
 
       .roof-rail-calculator-wrap
         /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
@@ -45,118 +43,55 @@ ul.breadcrumbs
             .material-component.ripple.button-box-shadow
               button type="submit" В кошик
 
-        .catalog-rr-color-system
-          .catalog-rr-color-system-header
-            .row
-              .columns
-                span Кольори RAL
-                hr
-          .catalog-rr-color-system-group
-            .row
-              .columns
-                span Глянцеві
-            .row
-              .columns
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-6005 type="radio" value="6005" name="catalog-rr-color"
-                  label.icon for="cro-color-6005"
-                  label.text for="cro-color-6005" 6005
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-3005 type="radio" value="3005" name="catalog-rr-color"
-                  label.icon for="cro-color-3005"
-                  label.text for="cro-color-3005" 3005
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-9003 type="radio" value="9003" name="catalog-rr-color"
-                  label.icon for="cro-color-9003"
-                  label.text for="cro-color-9003" 9003
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-1003 type="radio" value="1003" name="catalog-rr-color"
-                  label.icon for="cro-color-1003"
-                  label.text for="cro-color-1003" 1003
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-8017 type="radio" value="8017" name="catalog-rr-color"
-                  label.icon for="cro-color-8017"
-                  label.text for="cro-color-8017" 8017
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-8004 type="radio" value="8004" name="catalog-rr-color"
-                  label.icon for="cro-color-8004"
-                  label.text for="cro-color-8004" 8004
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-1015 type="radio" value="1015" name="catalog-rr-color"
-                  label.icon for="cro-color-1015"
-                  label.text for="cro-color-1015" 1015
-                .catalog-rr-one-color
-                  input#cro-color-9006 type="radio" value="9006" name="catalog-rr-color"
-                  label.icon for="cro-color-9006"
-                  label.text for="cro-color-9006" 9006
+        - if @decking.rr_details
+          .catalog-rr-color-system
+            .catalog-rr-color-system-header
+              .row
+                .columns
+                  span Кольори RAL
+                  hr
 
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-5005 type="radio" value="5005" name="catalog-rr-color"
-                  label.icon for="cro-color-5005"
-                  label.text for="cro-color-5005" 5005
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-3011 type="radio" value="3011" name="catalog-rr-color"
-                  label.icon for="cro-color-3011"
-                  label.text for="cro-color-3011" 3011
-
-                .catalog-rr-one-color
-                  input#cro-color-3009 type="radio" value="3009" name="catalog-rr-color"
-                  label.icon for="cro-color-3009"
-                  label.text for="cro-color-3009" 3009
-
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-horikh type="radio" value="horikh" name="catalog-rr-color"
-                  label.icon for="cro-color-horikh"
-                  label.text for="cro-color-horikh" Горіх
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-zolotyy-dub type="radio" value="zolotyy_dub" name="catalog-rr-color"
-                  label.icon for="cro-color-zolotyy-dub"
-                  label.text for="cro-color-zolotyy-dub" Золотий дуб
-
-          .catalog-rr-color-system-group
-            .row
-              .columns
-                span Матові
-            .row
-              .columns
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-m6005 type="radio" value="m6005" name="catalog-rr-color"
-                  label.icon for="cro-color-m6005"
-                  label.text for="cro-color-m6005" 6005
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-m8004 type="radio" value="m8004" name="catalog-rr-color"
-                  label.icon for="cro-color-m8004"
-                  label.text for="cro-color-m8004" 8004
-                .catalog-rr-one-color
-                  input#cro-color-m8017 type="radio" value="m8017" name="catalog-rr-color"
-                  label.icon for="cro-color-m8017"
-                  label.text for="cro-color-m8017" 8017
-                .catalog-rr-one-color
-                  input#cro-color-m8019 type="radio" value="m8019" name="catalog-rr-color"
-                  label.icon for="cro-color-m8019"
-                  label.text for="cro-color-m8019" 8019
-                .catalog-rr-one-color
-                  input#cro-color-m3005 type="radio" value="m3005" name="catalog-rr-color"
-                  label.icon for="cro-color-m3005"
-                  label.text for="cro-color-m3005" 3005
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-m7024 type="radio" value="m7024" name="catalog-rr-color"
-                  label.icon for="cro-color-m7024"
-                  label.text for="cro-color-m7024" 7024
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-m6020 type="radio" value="m6020" name="catalog-rr-color"
-                  label.icon for="cro-color-m6020"
-                  label.text for="cro-color-m6020" 6020
-            .row
-              .columns
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-alyutsynk type="radio" value="alyutsynk" name="catalog-rr-color"
-                  label.icon for="cro-color-alyutsynk"
-                  label.text for="cro-color-alyutsynk" Алюцинк
-                .catalog-rr-one-color.enable-catalog-element
-                  input#cro-color-tsynk type="radio" value="tsynk" name="catalog-rr-color"
-                  label.icon for="cro-color-tsynk"
-                  label.text for="cro-color-tsynk" Цинк
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  span Глянцеві
+              .row
+                .columns
+                  - @decking.rr_details.title.values.each do |color|
+                    - if color[0] == 'g'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+                        .catalog-rr-one-color.enable-catalog-element
+                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color"
+                          label.icon for="cro-color-#{color[1...5]}"
+                          label.text for="cro-color-#{color[1...5]}" = color[1...5]
+                      - else
+                        .catalog-rr-one-color.enable-catalog-element
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color"
+                          label.icon for="cro-color-#{color[1..-1]}"
+                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  span Матові
+              .row
+                .columns
+                  - @decking.rr_details.title.values.each do |color|
+                    - if color[0] == 'm'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+                        .catalog-rr-one-color.enable-catalog-element
+                          input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color"
+                          label.icon for="cro-color-#{color}"
+                          label.text for="cro-color-#{color}" = color[1...5]
+              .row
+                .columns
+                  - @decking.rr_details.title.values.each do |color|
+                    - if color[0] == 'm'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+                      - else
+                        .catalog-rr-one-color.enable-catalog-element
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color"
+                          label.icon for="cro-color-#{color[1..-1]}"
+                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
 
         .catalog-rr-color-system
           .catalog-rr-color-system-header
@@ -172,41 +107,23 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Вирбник
                       .catalog-rr-block-option-body
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
-                          label.icon for="cro-option-ukr"
-                          label.text for="cro-option-ukr" Модуль Україна
-                          .clearfix
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
-                          label.icon for="cro-option-chi"
-                          label.text for="cro-option-chi" Китай
-                          .clearfix
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
-                          label.icon for="cro-option-svk"
-                          label.text for="cro-option-svk" Словаччина
-                          .clearfix
+                        - RoofRailItem.producer.values.each do |producer|
+                          .catalog-rr-radio-element class=("enable-catalog-element" if producer.in?(@decking.producers_by_item)) data="{id: 1, thickness:[1,2,3], coating: [1,2]}"
+                            input id="cro-option-#{producer}" type="radio" value="cro-option-#{producer}" name="catalog-rr-producer"
+                            label.icon for="cro-option-#{producer}"
+                            label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                            .clearfix
 
                   .medium-6.columns
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Товщина
                       .catalog-rr-block-option-body
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
-                          label.icon for="cro-option-ukr"
-                          label.text for="cro-option-ukr" Elite 0.5, мм
-                          .clearfix
-                        .catalog-rr-radio-element
-                          input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
-                          label.icon for="cro-option-chi"
-                          label.text for="cro-option-chi" Premium 0.45, мм
-                          .clearfix
-                        .catalog-rr-radio-element
-                          input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
-                          label.icon for="cro-option-svk"
-                          label.text for="cro-option-svk" Standart 0.4, мм
-                          .clearfix
+                        - RoofRailItem.thickness.values.each do |thickness|
+                          .catalog-rr-radio-element  class=("enable-catalog-element" if thickness.in?(@decking.thickness_by_producers))
+                            input id="cro-option-#{thickness}" type="radio" value="cro-option-#{thickness}" name="catalog-rr-thickness"
+                            label.icon for="cro-option-#{thickness}"
+                            label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                            .clearfix
 
             .row
               .columns
@@ -215,45 +132,24 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Покриття
                       .catalog-rr-block-option-body
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
-                          label.icon for="cro-option-ukr"
-                          label.text for="cro-option-ukr" Цинк
-                          .clearfix
-                        .catalog-rr-radio-element
-                          input#cro-option-chi type="radio" value="cro-option-chi" name="catalog-rr-producer"
-                          label.icon for="cro-option-chi"
-                          label.text for="cro-option-chi" Алюцинк
-                          .clearfix
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
-                          label.icon for="cro-option-svk"
-                          label.text for="cro-option-svk" Полістер глянець
-                          .clearfix
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
-                          label.icon for="cro-option-svk"
-                          label.text for="cro-option-svk" Полістер мат
-                          .clearfix
-                        .catalog-rr-radio-element
-                          input#cro-option-svk type="radio" value="cro-option-svk" name="catalog-rr-producer"
-                          label.icon for="cro-option-svk"
-                          label.text for="cro-option-svk" Полістер глянець двосторінній
-                          .clearfix
+                        - RoofRailItem.coating.values.each do |coating|
+                          .catalog-rr-radio-element  class=("enable-catalog-element" if coating.in?(@decking.coating_by_thickness))
+                            input id="cro-option-#{coating}" type="radio" value="cro-option-#{coating}" name="catalog-rr-coating"
+                            label.icon for="cro-option-#{coating}"
+                            label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                            .clearfix
+
                   .medium-6.columns
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Захисна плівка
                       .catalog-rr-block-option-body
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
-                          label.icon for="cro-option-ukr"
-                          label.text for="cro-option-ukr" З плівкою
-                          .clearfix
-                        .catalog-rr-radio-element.enable-catalog-element
-                          input#cro-option-ukr type="radio" value="cro-option-ukr" name="catalog-rr-producer"
-                          label.icon for="cro-option-ukr"
-                          label.text for="cro-option-ukr" Без плівки
-                          .clearfix
+                        - RoofRailItem.protective_lamina.values.each do |protective_lamina|
+                          .catalog-rr-radio-element  class=("enable-catalog-element" if protective_lamina.in?(@decking.protective_lamina_by_coating))
+                            input id="cro-option-#{protective_lamina}" type="radio" value="cro-option-#{protective_lamina}" name="catalog-rr-protective_lamina"
+                            label.icon for="cro-option-#{protective_lamina}"
+                            label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                            .clearfix
+
 
   .row
     .columns

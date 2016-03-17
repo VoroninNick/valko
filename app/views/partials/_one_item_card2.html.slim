@@ -1,10 +1,7 @@
 .one-windowsill
   .ow-image
     a
-      /.image style="background: url('#{image}')no-repeat center center;"
-      - if item.rr_details && item.rr_details.any?
-        .image style="background: url('#{item.rr_details.first.image.url(:thumb)}')no-repeat center center;"
-
+      .image style="background: url('#{image}')no-repeat center center;"
     .show-large-image.lightGallery
       a
         = inline_svg"Valko-icon-search.svg"
@@ -12,7 +9,7 @@
   .ow-body
     .ow-body-information
       .small-6.columns
-        .title = item.title
+        .title = title
       .small-6.columns
         .price
           /= gag.try(:price)
@@ -22,7 +19,7 @@
       .clearfix
 
     .ow-body-order-form
-      /- if title == 'профнастил'
-      a href=one_decking_path(item.slug) Переглянути
-      /- else
+      - if title == 'профнастил'
+        a href=roof_rail_decking_path Переглянути
+      - else
         a Переглянути
