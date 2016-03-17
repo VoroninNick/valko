@@ -4,7 +4,7 @@ class RoofRailingController < ApplicationController
     set_meta_tags title: 'Покрівлі та огорожі',
                   description: '',
                   keywords: ''
-    @items = RoofRailItem.all
+    @item = RoofRailItem.first
   end
   def decking
     @decking = RoofRailItem.find_by_slug(params[:title])
