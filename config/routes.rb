@@ -45,6 +45,8 @@ Rails.application.routes.draw do
 
   get 'dev' => 'main#dev'
 
+  get 'get_rr_options/:key' =>'roof_railing#get_rr_options', as: :get_rr_option
+
   resources :line_items
   resources :carts
   # get 'windowsill/item' => 'main#one_windowsill', as: :one_windowsill
