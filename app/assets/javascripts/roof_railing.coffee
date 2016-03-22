@@ -19,6 +19,9 @@ deckingCalculator = () ->
   long_el = parseInt($wrap.find('input[name="long"]').val())
   console.log 'long :', long_el
 
+#  total_price = (long_element* weight_element)*count_element+gag_price
+  $total_price.text(Math.round(price))
+
 
 $(document).ready ->
 
@@ -89,14 +92,19 @@ $(document).ready ->
   $('body').on "change",".catalog-rr-one-color.enable-catalog-element input[type='radio']", ->
     $this = $(@)
     $wrap = $this.closest('.catalog-one-item-page')
+    $image = $wrap.find('.coi-photo .image')
+
 
     image_link = $(@).closest('.catalog-rr-one-color').attr "data-image"
+    price = $(@).closest('.catalog-rr-one-color').attr "data-price"
 
-    $image = $wrap.find('.coi-photo .image')
-#    console.log 'image:', image_link
+    $wrap.find('input[name="price"]').val(price)
     $image.css 'background-image', 'url(' + image_link + ')'
 
+
     deckingCalculator.call(this)
+
+
 
 
 
