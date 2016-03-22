@@ -16,12 +16,17 @@
 class RoofRailItem < ActiveRecord::Base
   attr_accessible *attribute_names
 
+  belongs_to :rr_description
+  attr_accessible :rr_description, :rr_description_id
+  validates :rr_description, :presence => {:message => 'Виберіть покрівля огорожі!'}
+
   has_many :rr_details
   attr_accessible :rr_details
   accepts_nested_attributes_for :rr_details, allow_destroy: true
   attr_accessible :rr_details_attributes
 
-  before_save { save_slug(title, slug) }
+
+  before_save { save_slug(rr_description.title, slug) }
 
   extend Enumerize
   enumerize :producer, in: [:'arcelor', :'ukraine', :'china', :'slovakia']
@@ -32,19 +37,19 @@ class RoofRailItem < ActiveRecord::Base
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
-    label 'Покрівля огорожі'
-    label_plural 'Покрівля огорожі'
+    label 'Опції покрівлі ігорожі'
+    label_plural 'Опції покрівлі ігорожі'
 
+    # list do
+    #   field :rr_description
+    #   field :slug
+    # end
     edit do
       field :published do
         label 'Чи публікувати?:'
       end
-      field :title do
-        label 'Назва:'
-      end
-      field :short_description do
-        html_attributes rows: 10, cols: 100
-        label 'Короткий опис:'
+      field :rr_description do
+        label 'Покрівля огорожі:'
       end
       field :width do
         label 'Ширина:'
@@ -61,9 +66,6 @@ class RoofRailItem < ActiveRecord::Base
       end
       field :protective_lamina do
         label 'Захисна плівка:'
-      end
-      field :description, :ck_editor do
-        label 'Повний пис:'
       end
       field :rr_details do
         label 'Одиниця:'

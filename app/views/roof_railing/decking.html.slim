@@ -16,7 +16,7 @@ ul.breadcrumbs
 
     .medium-8.columns
       .title = @decking.title
-      p = @decking.short_description
+      p = @decking.rr_description.short_description
       /p = @decking.producers_by_item.size
 
       .roof-rail-calculator-wrap
@@ -274,7 +274,9 @@ ul.breadcrumbs
           a href="#rrc-reviews" Відгуки
       .tabs-content
         #rrc-specifications.content.active
-          |Характеристики
+          .row
+            .columns
+              = raw @decking.rr_description.description
         #rrc-useful-publications.content
           |Корисна інформація
         #rrc-gallery.content
