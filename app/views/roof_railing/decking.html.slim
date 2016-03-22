@@ -21,6 +21,7 @@ ul.breadcrumbs
         /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
         .row.roof-rail-calculator
           .medium-7.columns
+            input type="hidden" name="price" value=@decking.rr_details.first.price
             .input.width-roof-rail
               p = @decking.try(&:width)
               label Довжина листа, мм
@@ -48,26 +49,36 @@ ul.breadcrumbs
                 .columns
                   span Кольори RAL
                   hr
-
+            - values = @decking.rr_details.title.values
+            - image_src = ''
+            - price = 0
             .catalog-rr-color-system-group
               .row
                 .columns
                   span Глянцеві
               .row
                 .columns
-                  - @decking.rr_details.title.values.each do |color|
-                    - if color[0] == 'g'
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
 
+                    - if color[0] == 'g'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-                        .catalog-rr-one-color class=("enable-catalog-element" if color.in?(@decking.present_colors))
+
+                        - @decking.rr_details.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - price = el.price
+
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
                           input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1...5]}"
                           label.text for="cro-color-#{color[1...5]}" = color[1...5]
                       - else
-                        .catalog-rr-one-color class=("enable-catalog-element" if color.in?(@decking.present_colors))
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition)
                           input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                      - image_src = ''
 
             .catalog-rr-color-system-group
               .row
@@ -75,23 +86,42 @@ ul.breadcrumbs
                   span Матові
               .row
                 .columns
-                  - @decking.rr_details.title.values.each do |color|
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
+
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-                        .catalog-rr-one-color  class=("enable-catalog-element" if color.in?(@decking.present_colors))
+
+                        - @decking.rr_details.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - price = el.price
+
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
                           input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
+                        - image_src = ''
+
               .row
                 .columns
-                  - @decking.rr_details.title.values.each do |color|
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
+
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                       - else
-                        .catalog-rr-one-color  class=("enable-catalog-element" if color.in?(@decking.present_colors))
+
+                        - @decking.rr_details.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - price = el.price
+
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
                           input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                        - image_src = ''
 
         .catalog-rr-color-system
           .catalog-rr-color-system-header

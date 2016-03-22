@@ -7,6 +7,7 @@ class RoofRailingController < ApplicationController
     @item = RoofRailItem.first
   end
   def decking
+    # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
     @decking = RoofRailItem.find_by_slug(params[:title])
   end
   def get_rr_options

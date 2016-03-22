@@ -2,7 +2,26 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+deckingCalculator = () ->
+  $this = $(this)
+  $wrap = $this.closest('.roof-rail-calculator-wrap')
+  $total_price = $wrap.find('.rrp-price')
+
+  price = parseInt($wrap.find('input[name="price"]').val())
+  console.log 'one price :', price
+
+  quantity = parseInt($wrap.find('input[name="quantity"]').val())
+  console.log 'quantity :', quantity
+
+  width_el = parseInt($wrap.find('.width-roof-rail p').text())
+  console.log 'width :', width_el
+
+  long_el = parseInt($wrap.find('input[name="long"]').val())
+  console.log 'long :', long_el
+
+
 $(document).ready ->
+
 #===================================================================
 #  roof and rail banner
 #===================================================================
@@ -19,32 +38,6 @@ $(document).ready ->
 #===================================================================
 #  roof rail filters
 #===================================================================
-#
-#  data = [
-#    {
-#      'Id': 10004
-#      'PageName': 'club'
-#    }
-#    {
-#      'Id': 10040
-#      'PageName': 'qaz'
-#    }
-#    {
-#      'Id': 10059
-#      'PageName': 'jjjjjjj'
-#    }
-#  ]
-#
-#  $.each data, (i, item) ->
-#    console.log 'PageName i:',data[i].PageName
-#
-#  $.each data, (i, item) ->
-#    console.log 'PageName item:',item.PageName
-
-
-
-
-
   $('body').on "change",".catalog-rr-radio-element input[type='radio']", ->
     key_step = $(@).closest('.catalog-rr-radio-element').attr('data-key')
 
@@ -60,42 +53,50 @@ $(document).ready ->
 #      console.log 'data : ',data
       $.each data, (i, value) ->
   #      console.log 'key: ' + i + ',value: ' + value
-        $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
 
-        - unless i == 'producer'
-#          console.log 'current block = '+ i
-#          console.log 'wrap:', $current_item
-
-          $step_item = $current_item.removeClass('enable-catalog-element')
-          if typeof value != 'object'
-            value = [value]
-          checked = false
+        if i == 'colors'
+#          console.log 'color'
+          $color_elemnet = $('.catalog-rr-one-color')
+          $color_elemnet.removeClass('enable-catalog-element')
           $.each value, (i, item)->
-#            console.log 'value:', item
+#            console.log 'color each', item
+            $color_elemnet.find("[value='#{item}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
+#            console.log 'this element:', $color_elemnet.find("[value='#{item}']")
+        else
+#          console.log 'not color'
+          $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
 
-            $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
+          - unless i == 'producer'
+  #          console.log 'current block = '+ i
+  #          console.log 'wrap:', $current_item
 
-#            if !checked
-            $step_item.find("[value='#{item}']").prop('checked', false)
-#            checked = true
+            $step_item = $current_item.removeClass('enable-catalog-element')
+            if typeof value != 'object'
+              value = [value]
+            checked = false
+            $.each value, (i, item)->
+  #            console.log 'value:', item
 
+              $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
 
+  #            if !checked
+              $step_item.find("[value='#{item}']").prop('checked', false)
+  #            checked = true
 
-#    thickness_keys = scenario.thickness.filter(
-#      (v)->
-#        !!v
-#    )
-#
-#    console.log 'keys:', thickness_keys
-#
-##    $.each thickness_keys, (i, item)->
-##      $next_step_inputs = $("input")
-##      $next_step_inputs.closest('.catalog-rr-radio-element').removeClass('enable-catalog-element')
-##      $next_step_inputs.filter("[value='#{item}']").each ()->
-##        $(@).closest('.catalog-rr-radio-element').addClass('enable-catalog-element')
-#    $step_item = $('.catalog-rr-radio-element').removeClass('enable-catalog-element')
-#    $.each thickness_keys, (i, item)->
-#      console.log 'value:', item
-#      $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass('enable-catalog-element')
+#===================================================================
+#  roof rail change color and photo with price
+#===================================================================
+  $('body').on "change",".catalog-rr-one-color.enable-catalog-element input[type='radio']", ->
+    $this = $(@)
+    $wrap = $this.closest('.catalog-one-item-page')
+
+    image_link = $(@).closest('.catalog-rr-one-color').attr "data-image"
+
+    $image = $wrap.find('.coi-photo .image')
+#    console.log 'image:', image_link
+    $image.css 'background-image', 'url(' + image_link + ')'
+
+    deckingCalculator.call(this)
+
 
 
