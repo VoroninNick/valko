@@ -96,13 +96,44 @@ $(document).ready ->
 
 
     image_link = $(@).closest('.catalog-rr-one-color').attr "data-image"
+    image_large_link = $(@).closest('.catalog-rr-one-color').attr "data-img-large"
     price = $(@).closest('.catalog-rr-one-color').attr "data-price"
 
     $wrap.find('input[name="price"]').val(price)
     $image.css 'background-image', 'url(' + image_link + ')'
+    console.log 'large image :', image_large_link
 
+    $image.parent().attr 'href', image_large_link
 
     deckingCalculator.call(this)
+
+
+#===================================================================
+#  roof & rail popup gallery
+#===================================================================
+  $('#roof-rail-gallery').lightGallery()
+
+
+#  $('#dynamic').on 'click', ->
+#    $(this).lightGallery
+#      dynamic: true
+#      dynamicEl: [
+#        {
+#          'src': '../static/img/1.jpg'
+#          'thumb': '../static/img/thumb-1.jpg'
+#          'subHtml': '<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>'
+#        }
+#        {
+#          'src': '../static/img/2.jpg'
+#          'thumb': '../static/img/thumb-2.jpg'
+#          'subHtml': '<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I\'m extremely happy I was passing the right place at the right time....</p>'
+#        }
+#        {
+#          'src': '../static/img/3.jpg'
+#          'thumb': '../static/img/thumb-3.jpg'
+#          'subHtml': '<h4>Coniston Calmness</h4><p>Beautiful morning</p>'
+#        }
+#      ]
 
 
 
