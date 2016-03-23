@@ -97,6 +97,12 @@ $(document).ready ->
               else
                 $step_item.find("[value='#{item}']").prop('checked', true)
 
+#===================================================================
+#  roof rail calculator
+#===================================================================
+  $('#long-roof-rail, #count-roof-rail').change ->
+    deckingCalculator.call(this)
+
 
 #===================================================================
 #  roof rail change color and photo with price
