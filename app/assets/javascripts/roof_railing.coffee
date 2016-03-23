@@ -4,7 +4,7 @@
 
 deckingCalculator = () ->
   $this = $(this)
-  $wrap = $this.closest('.roof-rail-calculator-wrap')
+  $wrap = $this.closest('.catalog-one-item-page')
   $total_price = $wrap.find('.rrp-price')
 
   price = parseInt($wrap.find('input[name="price"]').val())
@@ -19,8 +19,8 @@ deckingCalculator = () ->
   long_el = parseInt($wrap.find('input[name="long"]').val())
   console.log 'long :', long_el
 
-#  total_price = (long_element* weight_element)*count_element+gag_price
-  $total_price.text(Math.round(price))
+  total_price = (((width_el/1000)* (long_el/1000))*quantity)*price
+  $total_price.text(Math.round(total_price))
 
 
 $(document).ready ->
@@ -57,10 +57,16 @@ $(document).ready ->
 
           $color_elemnet = $('.catalog-rr-one-color')
           $color_elemnet.removeClass('enable-catalog-element')
+          console.log 'color :'
+          $.each value, (i, item)->
+            console.log 'i :', item.title, 'item :', item
 
           $.each value, (i, item)->
-            $color_elemnet.find("[value='#{item}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
-
+            $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
+            $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').attr 'data-image', item.image
+            $color_elemnet.find("[value='#{item.title}']").parent().attr 'href', item.image
+            $this.closest('.catalog-one-item-page').find('input[name="price"]').val()
+            deckingCalculator.call(this)
         else
           $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
 

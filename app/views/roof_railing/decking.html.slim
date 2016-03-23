@@ -32,6 +32,7 @@ ul.breadcrumbs
               .columns
                 - values.each do |color|
                   -condition = color.in?(@decking.present_colors)
+                  /-condition = 1
 
                   - if color[0] == 'g'
                     - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
