@@ -11,9 +11,26 @@ class RoofRailingController < ApplicationController
     @decking = RoofRailItem.find_by_slug(params[:title])
   end
   def get_rr_options
-    received_key = params[:key]
-    producer = received_key.partition('-').first
-    product = received_key.partition('-').last
+    # received_key = params[:key]
+    # producer = received_key.partition('-').first
+    # product = received_key.partition('-').last
+
+    product = params[:key]
+    producer = params[:producer]
+    thickness = params[:thickness]
+    coating = params[:coating]
+    lamina = params[:lamina]
+
+    params_type = ''
+    if producer && !thickness
+      params_type = 'producer'
+    elsif thickness && !coating
+      params_type = 'thickness'
+    elsif coating && !lamina
+      params_type = 'coating'
+    elsif lamina
+      params_type = 'lamina'
+    end
 
     decking = RoofRailItem.find_by_slug(product)
 
@@ -40,7 +57,25 @@ class RoofRailingController < ApplicationController
     colors_arr = test_item.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
 
     # json string with data
-    options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+    if params_type == 'producer'
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+    elsif params_type == 'thickness'
+      coating_by_thickness = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).pluck(:coating).uniq
+      coating_arr = coating_by_thickness.map { |coating| coating }
+      options = {coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+
+    elsif params_type == 'coating'
+      protective_lamina_by_coating = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).where(coating: coating).pluck(:protective_lamina).uniq
+      protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
+      options = {protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+
+    elsif params_type == 'lamina'
+      options = {colors: colors_arr }.to_json
+    else
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+    end
+
+
 
     respond_to do |format|
       format.json { render :json => options }

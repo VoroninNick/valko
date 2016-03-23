@@ -6,7 +6,7 @@ ul.breadcrumbs
   li
     span Профнастил
 
-.catalog-one-item-page
+.catalog-one-item-page data-action=get_rr_option_path(@decking.slug)
   .row
     .medium-4.columns.coi-photo
       - if @decking.rr_details && @decking.rr_details.first.image.exists?
@@ -154,13 +154,13 @@ ul.breadcrumbs
                             - h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
 
                             - if @decking.producer == producer
-                              .catalog-rr-radio-element.enable-catalog-element data-key="producer" data-action=get_rr_option_path("#{producer}-#{@decking.slug}")
+                              .catalog-rr-radio-element.enable-catalog-element data-key="producer"
                                 input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
                                 label.icon for="cro-option-#{producer}"
                                 label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
                                 .clearfix
                             - else
-                              .catalog-rr-radio-element.enable-catalog-element data-key="producer"  data-action=get_rr_option_path("#{producer}-#{@decking.slug}")
+                              .catalog-rr-radio-element.enable-catalog-element data-key="producer"
                                 input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
                                 label.icon for="cro-option-#{producer}"
                                 label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
@@ -187,13 +187,13 @@ ul.breadcrumbs
                             - h = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr}.to_json
 
                             - if @decking.thickness == thickness
-                              .catalog-rr-radio-element.enable-catalog-element data-key="thickness" data-action=get_rr_option_path(:thickness)
+                              .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
                                 input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness" checked="checked"
                                 label.icon for="cro-option-#{thickness}"
                                 label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
                                 .clearfix
                             - else
-                              .catalog-rr-radio-element.enable-catalog-element data-key="thickness" data-action=get_rr_option_path(:thickness)
+                              .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
                                 input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
                                 label.icon for="cro-option-#{thickness}"
                                 label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
