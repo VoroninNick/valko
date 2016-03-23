@@ -132,11 +132,11 @@ ul.breadcrumbs
                 .rrp-currency грн
             .material-component.ripple.button-box-shadow
               button type="submit" В кошик
-
-        .rr-catalog-drawing
-          span Креслення
-          hr
-          = image_tag @decking.rr_description.drawing.url(:large)
+        - if @decking.rr_description && @decking.rr_description.drawing.exists?
+          .rr-catalog-drawing
+            span Креслення
+            hr
+            = image_tag @decking.rr_description.drawing.url(:large)
 
         .catalog-rr-color-system
           .catalog-rr-color-system-header
@@ -283,7 +283,17 @@ ul.breadcrumbs
         li.tab-title
           a href="#rrc-reviews" Відгуки
       .tabs-content
-        #rrc-specifications.content.active
+        #rrc-specifications.content.active.article
+          - if @decking.rr_description && @decking.rr_description.drawing.exists?
+            .row
+              .columns
+                .title Креслення
+            .row
+              .columns
+                = image_tag @decking.rr_description.drawing.url(:large)
+          .row
+            .columns
+              .title Профнастил
           .row
             .columns
               = raw @decking.rr_description.description
