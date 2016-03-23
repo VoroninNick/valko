@@ -48,9 +48,9 @@ class RoofRailItem < ActiveRecord::Base
     #   field :slug
     # end
     edit do
-      field :published do
-        label 'Чи публікувати?:'
-      end
+      # field :published do
+      #   label 'Чи публікувати?:'
+      # end
       field :rr_description do
         label 'Покрівля огорожі:'
       end
