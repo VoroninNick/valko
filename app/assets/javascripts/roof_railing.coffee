@@ -43,48 +43,46 @@ $(document).ready ->
 #===================================================================
   $('body').on "change",".catalog-rr-radio-element input[type='radio']", ->
     key_step = $(@).closest('.catalog-rr-radio-element').attr('data-key')
-
-#    console.log 'is key step : ', key_step
     $this = $(@)
     $parent = $this.closest('.catalog-rr-radio-element')
-#    scenario = JSON.parse($parent.attr('data-scenario'))
-
-#   variant ajax json
     action_link = $parent.attr('data-action')
-#    console.log 'action link :'+ action_link
+
     $.getJSON action_link, (data) ->
-#      console.log 'data : ',data
+
       $.each data, (i, value) ->
-  #      console.log 'key: ' + i + ',value: ' + value
+        console.log 'key :', i
 
         if i == 'colors'
-#          console.log 'color'
+          console.log 'value :', value
+
           $color_elemnet = $('.catalog-rr-one-color')
           $color_elemnet.removeClass('enable-catalog-element')
+
           $.each value, (i, item)->
-#            console.log 'color each', item
             $color_elemnet.find("[value='#{item}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
-#            console.log 'this element:', $color_elemnet.find("[value='#{item}']")
+
         else
-#          console.log 'not color'
           $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
 
           - unless i == 'producer'
-  #          console.log 'current block = '+ i
-  #          console.log 'wrap:', $current_item
-
             $step_item = $current_item.removeClass('enable-catalog-element')
+
             if typeof value != 'object'
               value = [value]
+
             checked = false
+            $current_item.find('input[type="radio"]').prop('checked', false)
+
             $.each value, (i, item)->
-  #            console.log 'value:', item
+
+              console.log 'value:', item
 
               $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
 
-  #            if !checked
-              $step_item.find("[value='#{item}']").prop('checked', false)
-  #            checked = true
+              if $step_item.find("[value='#{item}']").closest('.catalog-rr-block-option').find('input:radio:checked').length > 0
+              else
+                $step_item.find("[value='#{item}']").prop('checked', true)
+
 
 #===================================================================
 #  roof rail change color and photo with price
