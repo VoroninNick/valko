@@ -62,6 +62,7 @@ $(document).ready ->
           $.each value, (i, item)->
             console.log 'i :', item.title, 'item :', item
 
+          $wrap.find('.catalog-rr-one-color input[type="radio"]').prop('checked', false)
           $.each value, (i, item)->
             $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
             $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').attr 'data-image', item.image
@@ -73,6 +74,10 @@ $(document).ready ->
             $current_color.attr 'data-image', item.image
             $current_color.attr 'data-img-large', item.image_large
             $current_color.attr 'data-price', item.price
+
+            if $current_color.find("input[value='#{item.title}']").closest('.coi-photo').find('input:radio:checked').length > 0
+            else
+              $current_color.find("input[value='#{item.title}']").prop('checked', true)
 
 
         else
