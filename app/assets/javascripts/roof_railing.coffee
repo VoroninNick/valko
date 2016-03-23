@@ -78,6 +78,11 @@ $(document).ready ->
             if $current_color.find("input[value='#{item.title}']").closest('.coi-photo').find('input:radio:checked').length > 0
             else
               $current_color.find("input[value='#{item.title}']").prop('checked', true)
+              $current_color_image = $wrap.find('.coi-photo .image')
+
+              $current_color_image.css 'background-image', 'url(' + item.image + ')'
+              $current_color_image.parent().attr 'href', item.image_large
+
 
 
         else
