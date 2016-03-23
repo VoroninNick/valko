@@ -32,16 +32,16 @@ class RoofRailItem < ActiveRecord::Base
   before_save { save_slug(title, slug) }
 
   extend Enumerize
-  enumerize :producer, in: [:'arcelor', :'ukraine', :'china', :'slovakia']
-  enumerize :thickness, in: [:'elite_0_5', :'premium_0_45', :'standart_0_4']
-  enumerize :coating, in: [:'zinc', :'aluzinc', :'glossy_polyester', :'polyester_mat', :'polyester_gloss_bilateral']
+  enumerize :producer, in: [:'arcelor', :'ukraine', :'slovakia', :'china']
+  enumerize :thickness, in: [:'elite_0_5', :'premium_0_45', :'standart_0_4', :'econom_0_3']
+  enumerize :coating, in: [:'glossy_polyester', :'polyester_mat', :'polyester_gloss_bilateral', :'aluzinc', :'zinc']
   enumerize :protective_lamina, in: [:'with_lamina', :'without_lamina']
 
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
-    label 'Опції покрівлі ігорожі'
-    label_plural 'Опції покрівлі ігорожі'
+    label 'Параметр (покрівля огорожі)'
+    label_plural 'Параметри (покрівля огорожі)'
 
     # list do
     #   field :rr_description

@@ -77,7 +77,10 @@ ul.breadcrumbs
                         label.icon for="cro-color-#{color}"
                         label.text for="cro-color-#{color}" = color[1...5]
                       - image_src, image_src_large = ''
-
+          .catalog-rr-color-system-group
+            .row
+              .columns
+                span Цинк / Алюцинк
             .row
               .columns
                 - values.each do |color|
@@ -104,6 +107,7 @@ ul.breadcrumbs
     .medium-8.columns
       .title = @decking.title
       p = @decking.rr_description.short_description
+
       .roof-rail-calculator-wrap
         /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
         .row.roof-rail-calculator
@@ -128,6 +132,11 @@ ul.breadcrumbs
                 .rrp-currency грн
             .material-component.ripple.button-box-shadow
               button type="submit" В кошик
+
+        .rr-catalog-drawing
+          span Креслення
+          hr
+          = image_tag @decking.rr_description.drawing.url(:large)
 
         .catalog-rr-color-system
           .catalog-rr-color-system-header

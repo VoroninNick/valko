@@ -70,7 +70,10 @@ class RoofRailingController < ApplicationController
       options = {protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
 
     elsif params_type == 'lamina'
+      test_item = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).where(coating: coating).first
+      colors_arr = test_item.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
       options = {colors: colors_arr }.to_json
+
     else
       options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
     end
