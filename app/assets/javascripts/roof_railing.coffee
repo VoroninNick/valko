@@ -44,6 +44,7 @@ $(document).ready ->
   $('body').on "change",".catalog-rr-radio-element input[type='radio']", ->
     key_step = $(@).closest('.catalog-rr-radio-element').attr('data-key')
     $this = $(@)
+    $wrap = $this.closest('.catalog-one-item-page')
     $parent = $this.closest('.catalog-rr-radio-element')
     action_link = $parent.attr('data-action')
 
@@ -65,8 +66,15 @@ $(document).ready ->
             $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
             $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').attr 'data-image', item.image
             $color_elemnet.find("[value='#{item.title}']").parent().attr 'href', item.image
-            $this.closest('.catalog-one-item-page').find('input[name="price"]').val()
+            $wrap.find('input[name="price"]').val()
             deckingCalculator.call(this)
+
+            $current_color = $wrap.find("input[value='#{item.title}']").closest('.catalog-rr-one-color')
+            $current_color.attr 'data-image', item.image
+            $current_color.attr 'data-img-large', item.image_large
+            $current_color.attr 'data-price', item.price
+
+
         else
           $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
 
