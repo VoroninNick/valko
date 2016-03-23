@@ -25,8 +25,11 @@ class RoofRailItem < ActiveRecord::Base
   accepts_nested_attributes_for :rr_details, allow_destroy: true
   attr_accessible :rr_details_attributes
 
-
-  before_save { save_slug(rr_description.title, slug) }
+  def initialize_title
+    self.title = self.rr_description.title
+  end
+  before_save :initialize_title
+  before_save { save_slug(title, slug) }
 
   extend Enumerize
   enumerize :producer, in: [:'arcelor', :'ukraine', :'china', :'slovakia']
