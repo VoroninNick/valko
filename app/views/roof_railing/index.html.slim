@@ -4,14 +4,14 @@ ul.breadcrumbs
   li
     span Покрівля огорожі
 
-  .hide-catalog-header.is-rr-catalog
+  /.hide-catalog-header.is-rr-catalog
     .title
       |Згорнути
     .hch-arrow.valko-arrow.va-top
       div
 
 .roof-rail-catalog-list-page
-  .row
+  /.row
     .columns
       = session['catalog-header-status']
 
@@ -41,7 +41,143 @@ ul.breadcrumbs
               |Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
           .clearfix
 
-  .roof-rail-catalog-list-body#roof-rail-container
+
+  .page-block
+    .page-block-title
+      .row
+        .columns
+          span Ми пропонуємо:
+
+    .row
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr1.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a Металочерепиця
+
+          .columns
+            /ul
+              li
+                a href=windowsill_path(filterrific: {with_type: "internal"})
+                  |Внутішні
+                  span |
+              li
+                a href=windowsill_path(filterrific: {with_type: "external"}) Зовнішні
+
+              .clearfix
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a href=roof_rail_decking_path
+            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right href=roof_rail_decking_path
+              div
+            a href=roof_rail_decking_path Профнастил
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr3.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a Рівний лист
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr4.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a Добірні елементи
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+      /==================
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr5.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a кріплення і герметики
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr6.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a плівки
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr7.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a Дахове вікно
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        .sc-oi-avatar
+          a
+            .image.grayscale style="background: url('#{asset_path("rr8.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            a.valko-arrow.va-right
+              div
+            a сходи на горище
+
+          .columns
+            p Внутішні, Зовнішні. Широкий асортимент, відомі бренди.
+
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2 Покрівля огорожі (h2)
+        .clearfix
+
+        .medium-6.columns
+          p Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції. Міцність та надійність конструкції підвіконь не менш важ-
+          p Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає. Тут ви неодмінно знайдете оптимальний варіант!
+          p Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром.
+
+        .medium-6.columns
+          p Важливі, ніж естетика. Тому клієнтам ми пропонуємо товар найвищого ґатунку від кращих європейських виробників: Crystalit, Ganz, Alber, Kraft та ін.
+          .title-h3 Встановлення(h3)
+          p Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
+        .clearfix
+
+  /.roof-rail-catalog-list-body#roof-rail-container
     .wclb-header
       .row
         .columns

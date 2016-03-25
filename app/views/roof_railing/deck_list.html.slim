@@ -1,0 +1,78 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    = link_to 'Покрівля огорожі', roof_rail_path
+  li
+    span Профнастил
+
+.roof-rail-catalog-list-page
+  .roof-rail-catalog-list-header
+    .row
+      .columns
+        ul#roof-rail-banner
+          li
+            .image style="background: url('#{asset_path("decking-banner1.png")}')no-repeat center center;"
+          li
+            .image style="background: url('#{asset_path("decking-banner2.jpg")}')no-repeat center center;"
+          li
+            .image style="background: url('#{asset_path("decking-banner3.jpg")}')no-repeat center center;"
+
+        .wcl-body
+          .columns
+            .title Профнастил
+          .clearfix
+          .medium-6.columns
+            p
+              |Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції.
+            p
+              |Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає.
+                Тут ви неодмінно знайдете оптимальний варіант!
+          .medium-6.columns
+            p
+              |Міцність та надійність конструкції підвіконь не менш важливі, ніж естетика. Тому клієнтам ми пропонуємо товар найвищого ґатунку від кращих європейських виробників: Crystalit, Ganz, Alber, Kraft та ін.
+            p
+              |Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
+          .clearfix
+
+  .roof-rail-catalog-list-body#roof-rail-container
+    .wclb-header
+      .row
+        .columns
+          .title
+            = inline_svg "Valko-icon-pokrivlya.svg"
+            |покрівля огорожі
+          span
+            .sort-button.sort data-sort="value:asc"
+              = inline_svg "Valko-icon-sort-time.svg"
+            .sort-button.sort
+              = inline_svg"Valko-icon-sort-alphabet.svg"
+
+            span.hide-for-small-only
+              |Сортувати по:
+
+    .row
+      .columns.sandbox
+        - if @items.any?
+          .row
+            - @items.each do |item|
+              .medium-3.columns.end.mix.decking
+                = render "partials/one_item_card", item: item
+
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2 Покрівля огорожі (h2)
+        .clearfix
+
+        .medium-6.columns
+          p Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції. Міцність та надійність конструкції підвіконь не менш важ-
+          p Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає. Тут ви неодмінно знайдете оптимальний варіант!
+          p Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром.
+
+        .medium-6.columns
+          p Важливі, ніж естетика. Тому клієнтам ми пропонуємо товар найвищого ґатунку від кращих європейських виробників: Crystalit, Ganz, Alber, Kraft та ін.
+          .title-h3 Встановлення(h3)
+          p Завдяки різноманіттю кольорів, матеріалів і форм вам буде нескладно підібрати підвіконня за смаком та інтер’єром. А їхня якість та екологічність стануть гарантією тривалої служби!
+        .clearfix

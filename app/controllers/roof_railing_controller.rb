@@ -20,6 +20,25 @@ class RoofRailingController < ApplicationController
 
     # @item = RrDescription
   end
+  def deck_list
+    set_meta_tags title: 'Профнастил',
+                  description: '',
+                  keywords: ''
+
+    # @item = RoofRailItem.select(:rr_description).map(&:rr_description).uniq
+    keys = []
+    all_rr = RoofRailItem.all
+    #keys = @items.map(&:slug)
+    @items = all_rr.select { |el|
+      if !keys.include?(el.slug)
+        keys << el.slug
+        next true
+      end
+
+      false
+    }
+
+  end
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
     @decking = RoofRailItem.find_by_slug(params[:title])

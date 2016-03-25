@@ -5,7 +5,7 @@
 @import "mixins"
 
 
-span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4, h5, h6, q
+span, a, p, strong, .title, .brand-title, i, b, button, label, input, textarea, h1, h2, h3, h4, h5, h6, q, .title-h2, .title-h3
   font-family: 'Roboto', sans-serif
 a
   &:focus
@@ -475,6 +475,18 @@ main
       background: #eceff1
       height: 40px
       margin-bottom: 30px
+      .title
+        +default_font_style(#1e88e5, 20, 500, 40)
+        text-transform: uppercase
+        display: inline-block
+        svg
+          height: 100%
+          width: 18px
+          margin-right: 5px
+          position: relative
+          top: 2px
+          path
+            fill: #1e88e5
       a
         color: #607d8b
         font:

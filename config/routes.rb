@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   get 'gag/:title' => 'main#gag', as: :one_gag
 
   get 'roof-rail' => 'roof_railing#index'
-  get 'roof-rail/:title' => 'roof_railing#decking', as: :one_decking
+  get 'roof-rail/decking' => 'roof_railing#deck_list'
+  get 'roof-rail/decking/:title' => 'roof_railing#decking', as: :one_decking
 
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'
