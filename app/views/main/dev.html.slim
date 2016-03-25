@@ -115,24 +115,24 @@
   .columns
     - decking = RrDescription.all
     ul
-    - decking.each do |deck|
-      li
-        = deck.title
-        ul
-          - by_type = RoofRailItem.where(rr_description_id: deck.id)
-          - by_type.each do |bt|
-            li
-              = bt.producer
-              ul
-                - by_producer = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer)
-                - by_producer.each do |bp|
-                  li
-                    = bp.thickness
-                    ul
-                      - by_thickness = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer).where(thickness: bp.thickness)
-                      - by_thickness.each do |bth|
-                        li
-                          = bth.coating
+      - decking.each do |deck|
+        li
+          = deck.title
+          ul
+            - by_type = RoofRailItem.where(rr_description_id: deck.id)
+            - by_type.each do |bt|
+              li
+                = bt.producer
+                ul
+                  - by_producer = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer)
+                  - by_producer.each do |bp|
+                    li
+                      = bp.thickness
+                      ul
+                        - by_thickness = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer).where(thickness: bp.thickness)
+                        - by_thickness.each do |bth|
+                          li
+                            = bth.coating
 
 
 
