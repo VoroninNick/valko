@@ -92,6 +92,7 @@ ul.breadcrumbs
         /  = render "partials/one_item_card2", title: 'профнастил', image: asset_path('prof_40.jpg')
         /.medium-4.columns.end.mix.metal-tiling data-value="8"
         /  = render "partials/one_item_card2", title: 'металочерепиця', image: asset_path('metalocherepica.jpg')
-        - if @item
-          .medium-4.columns.end.mix.decking
-            = render "partials/one_item_card", item: @item
+        - if @items.any?
+          - @items.each do |item|
+            .medium-4.columns.end.mix.decking
+              = render "partials/one_item_card", item: item

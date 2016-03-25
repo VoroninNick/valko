@@ -57,4 +57,20 @@ class Brand < ActiveRecord::Base
     order('LOWER(title)').pluck_to_hash(:title, :id, :slug).uniq
   end
 
+  # def self.a
+  #
+  # end
+  #
+  #
+  # def self.get_eigen_class
+  #   class << self
+  #     return self
+  #   end
+  # end
+  #
+  # class << self
+  #   def b
+  #
+  #   end
+  # end
 end

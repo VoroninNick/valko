@@ -4,7 +4,21 @@ class RoofRailingController < ApplicationController
     set_meta_tags title: 'Покрівлі та огорожі',
                   description: '',
                   keywords: ''
-    @item = RoofRailItem.first
+
+    # @item = RoofRailItem.select(:rr_description).map(&:rr_description).uniq
+    keys = []
+    all_rr = RoofRailItem.all
+    #keys = @items.map(&:slug)
+    @items = all_rr.select { |el|
+      if !keys.include?(el.slug)
+        keys << el.slug
+        next true
+      end
+
+      false
+    }
+
+    # @item = RrDescription
   end
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
@@ -70,7 +84,7 @@ class RoofRailingController < ApplicationController
       options = {protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
 
     elsif params_type == 'lamina'
-      test_item = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).where(coating: coating).first
+      test_item = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).where(coating: coating).where(protective_lamina: lamina).first
       colors_arr = test_item.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
       options = {colors: colors_arr }.to_json
 

@@ -220,22 +220,26 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Покриття
                       .catalog-rr-block-option-body
-                        /- a = 0
+
                         - RoofRailItem.coating.values.each do |coating|
+
                           - if coating.in?(@decking.coating_by_thickness)
+
                             - if @decking.coating == coating
-                              /- a+=1
+
                               .catalog-rr-radio-element.enable-catalog-element data-key="coating"
                                 input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating" checked="checked"
                                 label.icon for="cro-option-#{coating}"
                                 label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
                                 .clearfix
+
                             - else
                               .catalog-rr-radio-element.enable-catalog-element data-key="coating"
                                 input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
                                 label.icon for="cro-option-#{coating}"
                                 label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
                                 .clearfix
+
                           - else
                             .catalog-rr-radio-element data-key="coating"
                               input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
@@ -248,22 +252,25 @@ ul.breadcrumbs
                     .catalog-rr-block-option
                       .catalog-rr-block-option-header Захисна плівка
                       .catalog-rr-block-option-body
-                        /- a = 0
+
                         - RoofRailItem.protective_lamina.values.each do |protective_lamina|
+
                           - if protective_lamina.in?(@decking.protective_lamina_by_coating)
+
                             - if @decking.protective_lamina == protective_lamina
-                              /- a+=1
                               .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
                                 input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina" checked="checked"
                                 label.icon for="cro-option-#{protective_lamina}"
                                 label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
                                 .clearfix
+
                             - else
                               .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
                                 input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
                                 label.icon for="cro-option-#{protective_lamina}"
                                 label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
                                 .clearfix
+
                           - else
                             .catalog-rr-radio-element data-key="protective_lamina"
                               input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
