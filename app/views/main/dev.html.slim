@@ -133,6 +133,14 @@
                         - by_thickness.each do |bth|
                           li
                             = bth.coating
+                            ul
+                              - by_coating = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer).where(thickness: bp.thickness).where(coating: bth.coating)
+                              - by_coating.each do |bc|
+                                li
+                                  = bc.protective_lamina
+                                  ul
+                                    - bc.rr_details.each do |bd|
+                                      li  #{bd.title} / #{bd.price}
 
 
 
