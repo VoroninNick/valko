@@ -205,6 +205,13 @@ $(document).ready ->
 #      ]
 
 
+#============================================================
+# similar decking
+#============================================================
+$('#similar-decking').owlCarousel
+  items: 1
+  dotsContainer: '#similar-decking-dots'
+
 
 
 

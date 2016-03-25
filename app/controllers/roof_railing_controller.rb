@@ -23,6 +23,7 @@ class RoofRailingController < ApplicationController
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
     @decking = RoofRailItem.find_by_slug(params[:title])
+    @similar = RrDescription.where.not(id: @decking.rr_description.id)
   end
   def get_rr_options
     # received_key = params[:key]

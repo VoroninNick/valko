@@ -128,7 +128,7 @@ ul.breadcrumbs
             .rr-price-wrap
               = image_tag "Valko-basket-button-passive-horisontal.png"
               .rr-price
-                .rrp-price = ((@decking.try(&:width) * 1000)/1000000)*@decking.rr_details.first.price
+                .rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
                 .rrp-currency грн
             .material-component.ripple.button-box-shadow
               button type="submit" В кошик
@@ -307,7 +307,36 @@ ul.breadcrumbs
         #rrc-useful-publications.content
           |Корисна інформація
         #rrc-gallery.content
-          |Фото та відео
+          /Фото та відео
+          .row.item-galleries.lightGallery
+            -if @decking.rr_description && @decking.rr_description.video_url.present?
+              a.gallery-item.video_gallery href=@decking.rr_description.video_url data-poster=@decking.rr_description.video_poster.url(:large)
+                .image style="background: url('#{@decking.rr_description.video_poster.url(:large)}')no-repeat center center;"
+                .vg-play-button
+                  = image_tag "valko-play-button.png"
+
+            - if @decking.rr_description && @decking.rr_description.photo_galleries && @decking.rr_description.photo_galleries.any?
+              - @decking.rr_description.photo_galleries.each do |photo|
+                a.gallery-item href=photo.image.url(:large) class=("end" if @decking.rr_description.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+                  = image_tag photo.image.url(:thumb), class: 'hide'
+                  .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
+
         #rrc-reviews.content
           = disqus_init
           - disqus_thread
+
+
+  - if @similar.any? && @similar.first.try(:roof_rail_item)
+    .page-block
+      .page-block-title
+        .row
+          .columns
+            span.left Схожі товари:
+            #similar-decking-dots.owl-dots.left
+
+      .carousel-product-list#similar-decking
+        - @similar.in_groups_of(4, false).each do |decking_sublist|
+          .row
+            - decking_sublist.each do |decking|
+              .large-3.medium-6.columns class=("end" if @similar.last == decking)
+                = render "partials/one_item_card", item: decking.roof_rail_item

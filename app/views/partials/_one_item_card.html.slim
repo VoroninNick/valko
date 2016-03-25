@@ -6,8 +6,9 @@
         .image style="background: url('#{item.rr_details.first.image.url(:thumb)}')no-repeat center center;"
 
     .show-large-image.lightGallery
-      a href=item.rr_details.first.image.url(:large)
-        = inline_svg"Valko-icon-search.svg"
+      - if item.rr_details.first && item.rr_details.first.image.exists?
+        a href=item.rr_details.first.image.url(:large)
+          = inline_svg"Valko-icon-search.svg"
 
   .ow-body
     .ow-body-information
@@ -15,7 +16,7 @@
         .title = item.title
       .small-6.columns
         .price
-          = ((item.try(&:width) * 1000)/1000000)*item.rr_details.first.price
+          = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).ceil
           sup &nbsp;грн.
       .columns
         /.brand-title = gag.brand.title
