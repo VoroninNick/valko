@@ -102,7 +102,10 @@ $(document).ready ->
               $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').attr 'data-image', item.image
               $color_elemnet.find("[value='#{item.title}']").parent().attr 'href', item.image
               $wrap.find('input[name="price"]').val(item.price)
-              deckingCalculator.call(this)
+
+              console.log 'begin'
+              deckingCalculator.call($this)
+              console.log 'after'
 
               $current_color = $wrap.find("input[value='#{item.title}']").closest('.catalog-rr-one-color')
               $current_color.attr 'data-image', item.image
