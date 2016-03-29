@@ -117,12 +117,12 @@
     ul
       - decking.each do |deck|
         li
-          |id: #{deck.id}, title: #{deck.title}
+          |#{deck.title} (id: #{deck.id})
           ul
             - by_type = RoofRailItem.where(rr_description_id: deck.id)
             - by_type.each do |bt|
               li
-                = bt.producer
+                |#{bt.producer} (parent_id: #{bt.rr_description.id})
                 ul
                   - by_producer = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer)
                   - by_producer.each do |bp|
