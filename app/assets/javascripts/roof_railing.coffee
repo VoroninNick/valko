@@ -101,7 +101,7 @@ $(document).ready ->
               $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').addClass("enable-catalog-element")
               $color_elemnet.find("[value='#{item.title}']").closest('.catalog-rr-one-color').attr 'data-image', item.image
               $color_elemnet.find("[value='#{item.title}']").parent().attr 'href', item.image
-              $wrap.find('input[name="price"]').val()
+              $wrap.find('input[name="price"]').val(item.price)
               deckingCalculator.call(this)
 
               $current_color = $wrap.find("input[value='#{item.title}']").closest('.catalog-rr-one-color')
