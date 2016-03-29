@@ -117,7 +117,7 @@
     ul
       - decking.each do |deck|
         li
-          = deck.title
+          |id: #{deck.id}, title: #{deck.title}
           ul
             - by_type = RoofRailItem.where(rr_description_id: deck.id)
             - by_type.each do |bt|
