@@ -172,7 +172,6 @@ $(document).ready ->
     price = $(@).closest('.catalog-rr-one-color').attr "data-price"
 
     console.log 'this price!!!!!!!!!!!!!!!!!!!!!!!', price
-
     $wrap.find('input[name="price"]').val(price)
     $image.css 'background-image', 'url(' + image_link + ')'
     console.log 'large image :', image_large_link
