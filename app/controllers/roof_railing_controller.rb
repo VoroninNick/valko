@@ -69,7 +69,7 @@ class RoofRailingController < ApplicationController
     decking = RoofRailItem.find_by_slug(product)
 
     # all producers by product
-    producer_by_item = RoofRailItem.where(rr_description_id: decking.id).pluck(:producer).uniq
+    producer_by_item = RoofRailItem.where(slug: decking.slug).pluck(:producer).uniq
 
     # all thickness by producer
     thickness_by_producer = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer).pluck(:thickness).uniq
@@ -82,12 +82,12 @@ class RoofRailingController < ApplicationController
     # coating_arr = RoofRailItem.coating.values.map { |coating| coating if coating.in?(coating_by_thickness) }
 
     # all lamina by first coating
-    protective_lamina_by_coating = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer).where(thickness: thickness_arr[0]).where(coating: coating_arr[0]).pluck(:protective_lamina).uniq
+    protective_lamina_by_coating = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer).where(thickness: thickness_arr.select{|i| !i.nil? }[0]).where(coating: coating_arr.select{|i| !i.nil? }[0]).pluck(:protective_lamina).uniq
     protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
     # protective_lamina_arr = RoofRailItem.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(protective_lamina_by_coating) }
 
     # all colors by selected options
-    test_item = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer).where(thickness: thickness_arr[0]).where(coating: coating_arr[0]).first
+    test_item = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer).where(thickness: thickness_arr.select{|i| !i.nil? }[0]).where(coating: coating_arr.select{|i| !i.nil? }[0]).first
     colors_arr = test_item.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
 
 
@@ -96,9 +96,6 @@ class RoofRailingController < ApplicationController
     if params_type == 'producer'
       product = RoofRailItem.find_by_producer(producer_by_item[0])
       current_producer = RoofRailItem.where(rr_description_id: decking.id).where(producer: producer)
-
-      # protective_lamina_by_coating = current_producer.where(thickness: thickness_arr[0]).where(coating: coating_arr[0]).pluck(:protective_lamina).uniq
-      # protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
 
       # options to send
       options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: current_producer.first.id}.to_json
