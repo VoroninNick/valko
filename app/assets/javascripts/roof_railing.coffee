@@ -122,7 +122,9 @@ $(document).ready ->
 
 
           else if i == 'product_id'
-            console.log 'product_id'
+#            console.log 'product_id'
+            cart_action = $wrap.find('form.ajax-popup-form').attr('action', "/line_items?id=#{value}")
+#            console.log 'cart action', cart_action
 
           else
             $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
