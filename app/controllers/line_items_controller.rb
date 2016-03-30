@@ -77,7 +77,7 @@ class LineItemsController < ApplicationController
       end
 
     elsif type == 'Decking'
-
+      test = 1
     end
 
     respond_to do |format|

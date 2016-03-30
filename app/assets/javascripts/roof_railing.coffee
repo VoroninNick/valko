@@ -121,9 +121,12 @@ $(document).ready ->
                 $current_color_image.parent().attr 'href', item.image_large
 
 
+          else if i == 'product_id'
+            console.log 'product_id'
 
           else
             $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
+
             console.log 'what is i :', i
             - unless i == 'producer'
               $step_item = $current_item.removeClass('enable-catalog-element')
