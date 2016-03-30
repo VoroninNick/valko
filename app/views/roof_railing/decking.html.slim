@@ -45,12 +45,12 @@ ul.breadcrumbs
                             - price = el.price
 
                         .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
+                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1...5]}"
                           label.text for="cro-color-#{color[1...5]}" = color[1...5]
                       - else
                         .catalog-rr-one-color class=("enable-catalog-element" if condition)
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
                       - image_src, image_src_large = ''
@@ -74,7 +74,7 @@ ul.breadcrumbs
                             - price = el.price
 
                         .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
-                          input id="cro-color-#{color}" type="radio" value=color name="catalog-rr-color" checked=("checked" if color == @decking.rr_details.first.title)
+                          input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
                         - image_src, image_src_large = ''

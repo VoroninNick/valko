@@ -77,7 +77,7 @@ class LineItemsController < ApplicationController
       end
 
     elsif type == 'Decking'
-      test = 1
+      color = params[:catalog_rr_color]
     end
 
     respond_to do |format|
