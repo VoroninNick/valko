@@ -43,10 +43,14 @@ class RoofRailItem < ActiveRecord::Base
     label 'Параметр (покрівля огорожі)'
     label_plural 'Параметри (покрівля огорожі)'
 
-    # list do
-    #   field :rr_description
-    #   field :slug
-    # end
+    list do
+      field :title
+      field :slug
+      field :producer
+      field :thickness
+      field :coating
+      field :protective_lamina
+    end
     edit do
       # field :published do
       #   label 'Чи публікувати?:'
