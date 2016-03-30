@@ -92,7 +92,9 @@ class RoofRailingController < ApplicationController
 
     # json string with data
     if params_type == 'producer'
-      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+      product = RoofRailItem.find_by_producer(producer_by_item[0])
+
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: product.id}.to_json
     elsif params_type == 'thickness'
       coating_by_thickness = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).pluck(:coating).uniq
       coating_arr = coating_by_thickness.map { |coating| coating }
@@ -102,15 +104,9 @@ class RoofRailingController < ApplicationController
       current_el = RoofRailItem.where(slug: product).where(producer: producer).where(thickness: thickness).where(coating: coating)
       protective_lamina_by_coating = current_el.pluck(:protective_lamina).uniq
       protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
+
       with_first_lamina = current_el.where(protective_lamina: protective_lamina_arr.first)
-
-      test = -1
-
       colors_arr = with_first_lamina.first.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
-
-      test = 0
-      test = 1
-
 
       options = {protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
 

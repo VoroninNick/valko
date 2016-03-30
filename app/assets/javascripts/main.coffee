@@ -279,6 +279,9 @@ $(document).ready ->
         console.log('перед відсиланням')
         $('.cart-link').addClass('animated bounceIn')
       success: (data) ->
+
+        console.log 'test'
+
         form.reset()
         if $this.closest('.call-order-wrap')
           $this.closest('.call-order-wrap').removeClass('opened')
@@ -289,6 +292,7 @@ $(document).ready ->
           $('.cl-count-items .cl-ci-number').text(data)
 
         $('#SuccessModal').foundation 'reveal', 'open'
+        
       complete: ->
         setTimeout (->
           $('.cart-link').removeClass('animated bounceIn')

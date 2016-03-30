@@ -122,7 +122,7 @@
             - by_type = RoofRailItem.where(rr_description_id: deck.id)
             - by_type.each do |bt|
               li
-                |#{bt.producer} (parent_id: #{bt.rr_description.id})
+                |#{bt.producer} current_id: #{bt.id} (parent_id: #{bt.rr_description.id})
                 ul
                   - by_producer = RoofRailItem.where(rr_description_id: deck.id).where(producer: bt.producer)
                   - by_producer.each do |bp|
@@ -141,6 +141,7 @@
                                   ul
                                     - bc.rr_details.each do |bd|
                                       li  #{bd.title} / #{bd.price}
+        hr
 
 
 

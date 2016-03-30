@@ -75,6 +75,9 @@ class LineItemsController < ApplicationController
       else
         @line_item = @cart.line_items.build(gag: gag, quantity: quantity, class_name: type)
       end
+
+    elsif type == 'Decking'
+
     end
 
     respond_to do |format|

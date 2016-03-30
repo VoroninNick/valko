@@ -110,28 +110,32 @@ ul.breadcrumbs
 
       .roof-rail-calculator-wrap
         /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
-        .row.roof-rail-calculator
-          .medium-7.columns
-            input type="hidden" name="price" value=@decking.rr_details.first.price
-            .input.width-roof-rail
-              p = @decking.try(&:width)
-              label Довжина листа, мм
-            .input.long-roof-rail
-              input#long-roof-rail type="number" name="long" value="1000"
-              label for="long-roof-rail" Довжина листа, мм
-            .input.count-roof-rail
-              input#count-roof-rail type="number" value="1" name="quantity" min="1"
-              label for="count-roof-rail" Кількість листів
-            .clearfix
+        form.ajax-popup-form action=""
+          .row.roof-rail-calculator
+            .medium-7.columns
+              input type="hidden" name="type" value="Decking"
+              input type="hidden" name="price" value=@decking.rr_details.first.price
 
-          .medium-5.columns
-            .rr-price-wrap
-              = image_tag "Valko-basket-button-passive-horisontal.png"
-              .rr-price
-                .rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
-                .rrp-currency грн
-            .material-component.ripple.button-box-shadow
-              button type="submit" В кошик
+              .input.width-roof-rail
+                p = @decking.try(&:width)
+                label Довжина листа, мм
+              .input.long-roof-rail
+                input#long-roof-rail type="number" name="long" value="1000"
+                label for="long-roof-rail" Довжина листа, мм
+              .input.count-roof-rail
+                input#count-roof-rail type="number" value="1" name="quantity" min="1"
+                label for="count-roof-rail" Кількість листів
+              .clearfix
+
+            .medium-5.columns
+              .rr-price-wrap
+                = image_tag "Valko-basket-button-passive-horisontal.png"
+                .rr-price
+                  .rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
+                  .rrp-currency грн
+              .material-component.ripple.button-box-shadow
+                button type="submit" В кошик
+
         - if @decking.rr_description && @decking.rr_description.drawing.exists?
           .rr-catalog-drawing
             span Креслення
