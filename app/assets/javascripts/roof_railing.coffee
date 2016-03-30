@@ -171,7 +171,7 @@ $(document).ready ->
     image_large_link = $(@).closest('.catalog-rr-one-color').attr "data-img-large"
     price = $(@).closest('.catalog-rr-one-color').attr "data-price"
 
-    console.log 'this!!!!!!!!!!!!!!!!!!!!!!!'
+    console.log 'this price!!!!!!!!!!!!!!!!!!!!!!!', price
 
     $wrap.find('input[name="price"]').val(price)
     $image.css 'background-image', 'url(' + image_link + ')'
