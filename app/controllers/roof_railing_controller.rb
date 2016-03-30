@@ -96,6 +96,8 @@ class RoofRailingController < ApplicationController
     if params_type == 'producer'
       product = RoofRailItem.find_by_producer(producer_by_item[0])
       current_producer = RoofRailItem.where(slug: decking.slug).where(producer: producer)
+      protective_lamina_by_thickness = current_producer.where(thickness: thickness).pluck(:protective_lamina).uniq
+      protective_lamina_arr = protective_lamina_by_thickness.map { |protective_lamina| protective_lamina }
 
       # options to send
       options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: current_producer.first.id}.to_json
