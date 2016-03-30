@@ -106,7 +106,7 @@ class RoofRailingController < ApplicationController
       coating_by_thickness = current_thickness.pluck(:coating).uniq
       coating_arr = coating_by_thickness.map { |coating| coating }
 
-      protective_lamina_by_thickness = coating_by_thickness.pluck(:protective_lamina).uniq
+      protective_lamina_by_thickness = current_thickness.where(coating: coating_by_thickness[0]).pluck(:protective_lamina).uniq
       protective_lamina_arr = protective_lamina_by_thickness.map { |protective_lamina| protective_lamina }
 
       colors_arr = current_thickness.first.rr_details.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
