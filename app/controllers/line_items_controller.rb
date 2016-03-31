@@ -88,10 +88,8 @@ class LineItemsController < ApplicationController
         end
         @line_item.increase_quantity(quantity)
       else
-        test = 0
         @line_item = @cart.line_items.build(roof_rail_item_id: params[:id], long: long, quantity: quantity, class_name: type, color: color)
       end
-      test = 1
     end
 
     respond_to do |format|
