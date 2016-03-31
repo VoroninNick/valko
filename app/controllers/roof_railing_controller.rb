@@ -1,10 +1,6 @@
 class RoofRailingController < ApplicationController
 
   def index
-    set_meta_tags title: 'Покрівлі та огорожі',
-                  description: '',
-                  keywords: ''
-
     # @item = RoofRailItem.select(:rr_description).map(&:rr_description).uniq
     keys = []
     all_rr = RoofRailItem.all
@@ -17,14 +13,14 @@ class RoofRailingController < ApplicationController
 
       false
     }
+    @roof_rail = RoofRailPage.find_by_page_name('pokrivlia-ohorozhi')
 
-    # @item = RrDescription
+    set_meta_tags title: @roof_rail.seo.try(:seo_title),
+                  description: @roof_rail.seo.try(:seo_description),
+                  keywords: @roof_rail.seo.try(:keywords)
   end
-  def deck_list
-    set_meta_tags title: 'Профнастил',
-                  description: '',
-                  keywords: ''
 
+  def deck_list
     # @item = RoofRailItem.select(:rr_description).map(&:rr_description).uniq
     keys = []
     all_rr = RoofRailItem.all
@@ -37,7 +33,11 @@ class RoofRailingController < ApplicationController
 
       false
     }
+    @decking_list = RoofRailPage.find_by_page_name('profnastyl')
 
+    set_meta_tags title: @decking_list.seo.try(:seo_title),
+                  description: @decking_list.seo.try(:seo_description),
+                  keywords: @decking_list.seo.try(:keywords)
   end
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first

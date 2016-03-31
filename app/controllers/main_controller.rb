@@ -163,6 +163,7 @@ class MainController < ApplicationController
                   description: @windowsill.seo.try(:seo_description),
                   keywords: @windowsill.seo.try(:keywords)
   end
+
   def gag
     @gag = Gag.find_by_slug(params[:title])
     @similar_gags = Gag.where.not(id: @gag)
@@ -172,6 +173,7 @@ class MainController < ApplicationController
                   description: @gag.seo.try(:seo_description),
                   keywords: @gag.seo.try(:keywords)
   end
+
   def basket
     set_seo('korzyna')
   end
