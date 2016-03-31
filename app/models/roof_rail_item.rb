@@ -25,6 +25,9 @@ class RoofRailItem < ActiveRecord::Base
   accepts_nested_attributes_for :rr_details, allow_destroy: true
   attr_accessible :rr_details_attributes
 
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   def initialize_title
     self.title = self.rr_description.title
   end
@@ -106,4 +109,13 @@ class RoofRailItem < ActiveRecord::Base
 
   end
 
+  private
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
 end

@@ -11,6 +11,8 @@ class LineItem < ActiveRecord::Base
   belongs_to :windowsill
   belongs_to :gag
   belongs_to :cart
+  belongs_to :roof_rail_item
+
   attr_accessible *attribute_names
   attr_accessible :windowsill, :cart, :gag
 
@@ -45,6 +47,8 @@ class LineItem < ActiveRecord::Base
       o = gag.price || 0
       return o
 
+    elsif self.class_name == 'Decking'
+      return 5
     end
 
   end

@@ -80,7 +80,7 @@ class LineItemsController < ApplicationController
       color = params[:catalog_rr_color]
       decking = RoofRailItem.find(params[:id])
 
-      existed_item = @cart.line_items.where(:roof_rail_item_id => params[:id], :long => long)
+      existed_item = @cart.line_items.where(roof_rail_item_id: params[:id], long: long, quantity: quantity, class_name: type, color: color)
       if existed_item.count > 0
         @line_item = existed_item.first
         if @line_item && !@line_item.quantity
@@ -88,8 +88,10 @@ class LineItemsController < ApplicationController
         end
         @line_item.increase_quantity(quantity)
       else
-        @line_item = @cart.line_items.build(roof_rail_item: decking, quantity: quantity, class_name: type)
+        test = 0
+        @line_item = @cart.line_items.build(roof_rail_item_id: params[:id], long: long, quantity: quantity, class_name: type, color: color)
       end
+      test = 1
     end
 
     respond_to do |format|
@@ -136,6 +138,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long)
+      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long, :roof_rail_item_id, :color)
     end
 end
