@@ -122,16 +122,16 @@
                     sup &nbsp;мм
                 .small-2.medium-1.columns
                   .input.basket-count-product
-                    /input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type=Windowsill.name data-product-id=item.gag.id
+                    input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
 
                 .small-3.medium-2.columns
                   .one-total-price
                     b
-                      /= item.total_price
+                      = item.total_price
                     sup &nbsp;грн.
                   .one-price
                     b
-                      /= item.price
+                      = item.price
                     sup &nbsp;грн./шт.
 
       .clearfix

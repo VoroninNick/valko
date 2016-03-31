@@ -48,7 +48,8 @@ class LineItem < ActiveRecord::Base
       return o
 
     elsif self.class_name == 'Decking'
-      return 5
+      o = roof_rail_item.rr_details.find_by_title(self.color).price || 0
+      return o
     end
 
   end
