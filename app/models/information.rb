@@ -27,6 +27,9 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_informations
   attr_accessible :windowsill_ids
 
+  has_and_belongs_to_many :rr_descriptions, join_table: :decking_informations
+  attr_accessible :rr_descriptions, :rr_description_ids
+
   has_one :seo, as: :seo_poly
   attr_accessible :seo
   accepts_nested_attributes_for :seo, allow_destroy: true
@@ -61,9 +64,21 @@ class Information < ActiveRecord::Base
       field :position do
         label 'Позиція:'
       end
-      field :windowsills do
-        label 'Підвіконня:'
+
+      group :windowsill_options do
+        label 'Підвіконня'
+        field :windowsills do
+          label 'Підвіконня:'
+        end
       end
+
+      group :decking_options do
+        label 'Покрівля'
+        field :rr_descriptions do
+          label 'Покрівля:'
+        end
+      end
+
       field :seo do
         label 'SEO'
       end

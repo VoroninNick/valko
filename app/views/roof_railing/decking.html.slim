@@ -309,7 +309,21 @@ ul.breadcrumbs
             .columns
               = raw @decking.rr_description.description
         #rrc-useful-publications.content
-          |Корисна інформація
+          /Корисна інформація
+          - if @decking.rr_description && @decking.rr_description.informations && @decking.rr_description.informations.any?
+            .row
+              .columns
+                .row.collapse
+                  - @decking.rr_description.informations.each do |decking|
+                    .medium-6.columns.publication-default class=("end" if @decking.rr_description.informations.last == decking)
+                      a href=one_publication_path(decking.slug)
+                        .image.grayscale style="background: url('#{decking.cover.url(:large)}')no-repeat center center;"
+                        .pb-publication-body
+                          .title = decking.title
+                          p = truncate_html(decking.short_description, length: 120, omission: '...')
+                          .valko-arrow.va-right
+                            div
+
         #rrc-gallery.content
           /Фото та відео
           .row.item-galleries.lightGallery
