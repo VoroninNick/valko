@@ -120,7 +120,7 @@
                     p
                       |Курс долара
                       br
-                      |готівковий
+                      |ПриватБанк
 
                 .small-6.columns
                   - if @usd_nbu[0].try{|x| ["rate"]}
@@ -130,7 +130,7 @@
                   p
                     |Курс долара
                     br
-                    |на міжбанку
+                    |по НБУ
                 .clearfix
             .row
               .columns
@@ -145,7 +145,7 @@
                     p
                       |Курс євро
                       br
-                      |готівковий
+                      |ПриватБанк
 
                 .small-6.columns
                   - if @eur_nbu[0].try{|x| ["rate"]}
@@ -155,7 +155,7 @@
                   p
                     |Курс євро
                     br
-                    |на міжбанку
+                    |по НБУ
 
 - if @windowsill_new.any?
   .page-block.new-windowsill-block
