@@ -8,20 +8,20 @@ ol
       /Internal
       - if item.windowsill.wind_type == 'internal'
         li
-          p #{item.windowsill.brand.title} #{t("enumerize.decor.#{item.windowsill.decor}").mb_chars.downcase.to_s if item.windowsill.decor.present?} #{t("enumerize.kapinos.#{item.windowsill.kapinos}").mb_chars.downcase.to_s if item.windowsill.kapinos.present?} #{item.windowsill.title}  #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price} грн.
+          p #{item.windowsill.brand.title} #{t("enumerize.type_of_surface.#{item.windowsill.type_of_surface}").mb_chars.downcase.to_s if item.windowsill.type_of_surface.present?} #{t("enumerize.decor.#{item.windowsill.decor}").mb_chars.downcase.to_s if item.windowsill.decor.present?} #{t("enumerize.kapinos.#{item.windowsill.kapinos}").mb_chars.downcase.to_s if item.windowsill.kapinos.present?} #{item.windowsill.title}  #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price(item.long)} грн.
 
       /External
       - elsif item.windowsill.wind_type == 'external'
         li
-          p #{item.windowsill.brand.title} #{t("enumerize.material.#{item.windowsill.material}").mb_chars.downcase.to_s if item.windowsill.material.present?} #{t("enumerize.color_type.#{item.windowsill.color_type}").mb_chars.downcase.to_s if item.windowsill.color_type.present?} #{item.windowsill.title} #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price} грн.
+          p #{item.windowsill.brand.title} #{t("enumerize.material.#{item.windowsill.material}").mb_chars.downcase.to_s if item.windowsill.material.present?} #{t("enumerize.color_type.#{item.windowsill.color_type}").mb_chars.downcase.to_s if item.windowsill.color_type.present?} #{item.windowsill.title} #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price(item.long)} грн.
     /Gag
     - elsif item.class_name == 'Gag'
       li
-        p #{item.gag.title}   виробника   #{item.gag.brand.title} вартістю #{item.total_price} грн.
+        p #{item.gag.title}   виробника   #{item.gag.brand.title} (#{item.quantity} шт.) вартістю #{item.total_price} грн.
     /Decking
     - elsif item.class_name == 'Decking'
       li
-        p #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")})   #{item.roof_rail_item.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{item.total_price} грн.
+        p #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")})   #{item.roof_rail_item.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{item.total_price} грн.
 
 h4 Контактна інформація
 p

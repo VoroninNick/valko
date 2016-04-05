@@ -53,7 +53,8 @@ class LineItem < ActiveRecord::Base
     end
 
   end
-  def total_price
-    price * quantity
+  def total_price(long = 1000)
+    current_price = price
+    (current_price *(long.to_f/1000))* quantity
   end
 end

@@ -61,12 +61,15 @@
                 .small-3.medium-2.columns
                   .one-total-price
                     b
-                      = item.total_price
+                      = item.total_price(item.long).round()
                     sup &nbsp;грн.
                   .one-price
                     b
                       = item.price
-                    sup &nbsp;грн./шт.
+                    sup
+                      |&nbsp;грн./м
+                      sup 2
+
           - elsif item.class_name == 'Gag'
 
             / GAG
