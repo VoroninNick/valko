@@ -102,10 +102,11 @@ ul.breadcrumbs
                   .filter-body style="max-height: #{Brand.brands_list.count * 43+31}px"
                     - if Brand.brands_list.any?
                       -  Brand.brands_list.each do |item|
-                        .custom-checkbox
-                          = f.check_box(:with_brand, {multiple: true}, item[:id], nil)
-                          label.cch-icon for="filterrific_with_brand_#{item[:id]}"
-                          label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
+                        - unless item[:title] == 'Відливи'
+                          .custom-checkbox
+                            = f.check_box(:with_brand, {multiple: true}, item[:id], nil)
+                            label.cch-icon for="filterrific_with_brand_#{item[:id]}"
+                            label.cch-text for="filterrific_with_brand_#{item[:id]}" = item[:title]
 
                 - if Windowsill.decor.values.any?
                   .control-filter.internal class=('expanded' if session["main#windowsill"].has_key?("with_decor")) style=("#{'display: block;' if session["main#windowsill"]["with_type"] == "internal"}#{'display: none;' if session["main#windowsill"]["with_type"] == "external"}#{'display: none;' if session["main#windowsill"]["with_type"] == "gag"}")
