@@ -36,7 +36,7 @@ class RoofRailItem < ActiveRecord::Base
 
   extend Enumerize
   enumerize :producer, in: [:'arcelor', :'ukraine', :'slovakia', :'china']
-  enumerize :thickness, in: [:'elite_0_5', :'premium_0_45', :'standart_0_4', :'econom_0_3']
+  enumerize :thickness, in: [:'super_elite_0_7', :'elite_0_5', :'premium_0_45', :'standart_0_4', :'econom_0_3']
   enumerize :coating, in: [:'glossy_polyester', :'polyester_mat', :'polyester_gloss_bilateral', :'aluzinc', :'zinc']
   enumerize :protective_lamina, in: [:'with_lamina', :'without_lamina']
 
