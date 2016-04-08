@@ -71,8 +71,7 @@ class LineItem < ActiveRecord::Base
     gag_edge_price
     current_price = price
 
-    temp_rez = ((current_price *(long.to_f/1000))* quantity)
+    ((current_price *(long.to_f/1000))+gag_edge_price)* quantity
 
-    temp_rez + gag_edge_price
   end
 end
