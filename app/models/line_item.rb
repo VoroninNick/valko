@@ -23,25 +23,26 @@ class LineItem < ActiveRecord::Base
   def price
     if self.class_name == 'Windowsill'
       o = windowsill.prices.where(key: self.weight).first.value
-      if with_gag? && windowsill.brand.gag
-        if o
-          return (o*self.long/1000) + windowsill.brand.gag.price
-        else
-          return nil
-        end
-      elsif with_edge?
-        if o
-          return (o*self.long/1000) + windowsill.edge_price
-        else
-          return nil
-        end
-      else
-        if o
-          return o
-        else
-          return nil
-        end
-      end
+      # if with_gag? && windowsill.brand.gag
+      #   if o
+      #     return (o*self.long/1000) + windowsill.brand.gag.price
+      #   else
+      #     return nil
+      #   end
+      # elsif with_edge?
+      #   if o
+      #     return (o*self.long/1000) + windowsill.edge_price
+      #   else
+      #     return nil
+      #   end
+      # else
+      #   if o
+      #     return o
+      #   else
+      #     return nil
+      #   end
+      # end
+      return o
 
     elsif self.class_name == 'Gag'
       o = gag.price || 0
