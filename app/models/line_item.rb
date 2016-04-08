@@ -58,17 +58,21 @@ class LineItem < ActiveRecord::Base
 
   def total_price(long = 1000)
     gag_edge_price = 0
-    if with_gag? && windowsill.brand.gag
-      gag_edge_price = windowsill.brand.gag
-    elsif with_edge?
+
+    if !long.is_a?(Numeric)
+      raise TypeError, "please provide long <numeric>"
+    end
+
+    if with_gag && windowsill.brand.gag
+      gag_edge_price = windowsill.brand.gag.price
+    elsif with_edge
       gag_edge_price =  windowsill.edge_price
     end
+    gag_edge_price
     current_price = price
-    if windowsill.brand.gag && windowsill.edge_price
-      without_gag_edge = (current_price *(long.to_f/1000))* quantity
-      total = without_gag_edge + gag_edge_price
-    else
-      without_gag_edge = (current_price *(long.to_f/1000))* quantity
-    end
+
+    temp_rez = ((current_price *(long.to_f/1000))* quantity)
+
+    temp_rez + gag_edge_price
   end
 end
