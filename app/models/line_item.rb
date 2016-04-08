@@ -64,6 +64,11 @@ class LineItem < ActiveRecord::Base
       gag_edge_price =  windowsill.edge_price
     end
     current_price = price
-    ((current_price *(long.to_f/1000))* quantity)+gag_edge_price
+    if windowsill.brand.gag && windowsill.edge_price
+      without_gag_edge = (current_price *(long.to_f/1000))* quantity
+      total = without_gag_edge + gag_edge_price
+    else
+      without_gag_edge = (current_price *(long.to_f/1000))* quantity
+    end
   end
 end
