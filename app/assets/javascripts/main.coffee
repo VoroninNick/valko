@@ -372,8 +372,11 @@ $(document).ready ->
 
 #    console.log 'total price old:', total_price
 #    console.log 'total price new:', total_price + parseInt(@value*item_price)
-    $item_total_price.text(parseInt(@value*item_price))
-    $total_price.text(total_price + parseInt(@value*item_price))
+
+    gag_edge = $item.attr('data-gag-edge')
+
+    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
+    $total_price.text(total_price + parseInt(@value*item_price)+gag_edge*$this.val())
 
 #    console.log 'quantity:', @value
 

@@ -24,7 +24,12 @@
           - if item.class_name == 'Windowsill'
 
             / WINDOWSILL
-            .basket-list-one
+            -gag_edge_price = 0
+            - if item.with_gag && item.windowsill.brand.gag
+              - gag_edge_price = item.windowsill.brand.gag.price
+            - elsif item.with_edge
+              - gag_edge_price = item.windowsill.edge_price
+            .basket-list-one data-gag-edge=gag_edge_price
               .row
                 .small-1.medium-1.columns
                   .basket-delete-item-wrap
@@ -63,6 +68,7 @@
                     b
                       = item.total_price(item.long).round()
                     sup &nbsp;грн.
+
                   .one-price
                     b
                       = item.price
@@ -146,7 +152,7 @@
         p
           sub Σ:
           b
-            = @cart.total_price
+            = @cart.total_price.round()
           sup &nbsp;грн.
   .row
     .columns
