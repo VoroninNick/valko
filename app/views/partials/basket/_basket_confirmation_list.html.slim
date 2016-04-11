@@ -16,6 +16,20 @@ h5 Перелік Товарів:
             p
               = (item.total_price(item.long)).round()
               sup грн.
+      - if item.class_name == 'Gag'
+        / GAG
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{item.gag.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=one_gag_path(item.gag.slug)
+              = item.gag.title
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price.round()
+              sup грн.
 
       - elsif item.class_name == 'Decking'
         / DECKING
