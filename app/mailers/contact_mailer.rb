@@ -18,6 +18,6 @@ class ContactMailer < ApplicationMailer
   def order_products(data)
     @data = data
     @current_cart = Cart.find(@data[:cart_id])
-    mail(:template_path => 'contact_mailer', :layout => false, :subject => "#{@data[:first_name]} #{@data[:last_name]}, замовили товарів на суму #{@current_cart.total_price} грн.", :to => SupportEmail.first.cart.split(','))
+    mail(:template_path => 'contact_mailer', :layout => false, :subject => "#{@data[:first_name]} #{@data[:last_name]}, замовили товарів на суму #{@current_cart.total_price.round()} грн.", :to => SupportEmail.first.cart.split(','))
   end
 end

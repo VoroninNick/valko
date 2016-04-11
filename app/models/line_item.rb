@@ -75,6 +75,8 @@ class LineItem < ActiveRecord::Base
       ((current_price *(long.to_f/1000))+gag_edge_price)* quantity
     elsif self.class_name == 'Gag'
       current_price * quantity
+    elsif self.class_name == 'Decking'
+      current_price * quantity
     end
   end
 end
