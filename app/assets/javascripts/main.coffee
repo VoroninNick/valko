@@ -22,7 +22,6 @@ windowsillCalculator = () ->
 
   long_element = $wrap.find('#windowsill-long').val()/1000
 
-  console.log 'довжина', long_element
 #  console.log 'weight',weight_element
 
   gag_price = 0
@@ -42,7 +41,7 @@ windowsillCalculator = () ->
     $total_price.text(Math.round(total_price))
     console.log 'item is gag' , $total_price
   else
-    total_price = (long_element* weight_element)*count_element+gag_price
+    total_price = ((long_element* weight_element)+gag_price)*count_element
     $total_price.text(Math.round(total_price))
 
 
