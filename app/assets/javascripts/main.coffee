@@ -371,6 +371,7 @@ $(document).ready ->
 
     total_price = default_total_price - start_quantity * item_price
 
+    console.log 'total price after update', total_price
 #    console.log 'total price old:', total_price
 #    console.log 'total price new:', total_price + parseInt(@value*item_price)
 
@@ -409,7 +410,7 @@ $(document).ready ->
         before: ->
   #          alert 'before'
         success: (msg) ->
-          alert 'test'
+          console.log 'test'
   #          loadPartials()
   #          alert 'succes'
         error: (err) ->
