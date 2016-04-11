@@ -363,11 +363,17 @@ $(document).ready ->
     $wrap = $this.closest('.basket-wrap')
     $total_price = $wrap.find('.basket-total-price b')
     $item = $this.closest('.basket-list-one')
+
+#    one item total price
     $item_total_price = $item.find('.one-total-price b')
+    console.log 'one item total price'
 
     default_total_price = parseInt($this.attr 'data-total-price')
     start_quantity = parseInt($this.attr 'data-old-value')
+
+#   one item price
     item_price = parseInt($item.find('.one-price b').text())
+    console.log 'one item price', item_price
 
     console.log 'default_total_price total price', default_total_price
     total_price = default_total_price - start_quantity * item_price
