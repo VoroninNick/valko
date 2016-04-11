@@ -409,7 +409,7 @@ $(document).ready ->
         before: ->
   #          alert 'before'
         success: (msg) ->
-
+          alert 'test'
   #          loadPartials()
   #          alert 'succes'
         error: (err) ->
