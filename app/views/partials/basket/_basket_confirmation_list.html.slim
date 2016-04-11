@@ -14,7 +14,7 @@ h5 Перелік Товарів:
               span #{item.quantity} шт.
           .small-3.columns
             p
-              = item.total_price
+              = item.total_price(item.long)
               sup грн.
 
       - elsif item.class_name == 'Decking'
@@ -29,7 +29,7 @@ h5 Перелік Товарів:
               span #{item.quantity} шт.
           .small-3.columns
             p
-              = item.total_price
+              = item.total_price(item.long)
               sup грн.
 
 

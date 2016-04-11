@@ -1,4 +1,4 @@
-h3 #{@data[:first_name]} #{@data[:last_name]}, замовив(ла) товарів на суму #{@current_cart.total_price} грн.
+h3 #{@data[:first_name]} #{@data[:last_name]}, замовив(ла) товарів на суму #{@current_cart.total_price.round()} грн.
 /= @current_cart.inspect
 h4 Перелік товарів
 ol
