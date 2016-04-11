@@ -29,7 +29,7 @@
               - gag_edge_price = item.windowsill.brand.gag.price
             - elsif item.with_edge
               - gag_edge_price = item.windowsill.edge_price
-            .basket-list-one data-gag-edge=gag_edge_price
+            .basket-list-one data-gag-edge=gag_edge_price data-long=long
               .row
                 .small-1.medium-1.columns
                   .basket-delete-item-wrap
@@ -70,8 +70,8 @@
                     sup &nbsp;грн.
 
                   .one-price
-                    b data-long=long
-                      = (item.price * long).round()
+                    b
+                      = item.price
                     sup
                       |&nbsp;грн./м
                       sup 2
