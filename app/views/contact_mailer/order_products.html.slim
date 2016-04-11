@@ -8,7 +8,7 @@ ol
       /Internal
       - if item.windowsill.wind_type == 'internal'
         li
-          p #{item.windowsill.brand.title} #{t("enumerize.type_of_surface.#{item.windowsill.type_of_surface}").mb_chars.downcase.to_s if item.windowsill.type_of_surface.present?} #{t("enumerize.decor.#{item.windowsill.decor}").mb_chars.downcase.to_s if item.windowsill.decor.present?} #{t("enumerize.kapinos.#{item.windowsill.kapinos}").mb_chars.downcase.to_s if item.windowsill.kapinos.present?} #{item.windowsill.title}  #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{item.total_price(item.long)} грн.
+          p #{item.windowsill.brand.title} #{t("enumerize.type_of_surface.#{item.windowsill.type_of_surface}").mb_chars.downcase.to_s if item.windowsill.type_of_surface.present?} #{t("enumerize.decor.#{item.windowsill.decor}").mb_chars.downcase.to_s if item.windowsill.decor.present?} #{t("enumerize.kapinos.#{item.windowsill.kapinos}").mb_chars.downcase.to_s if item.windowsill.kapinos.present?} #{item.windowsill.title}  #{item.weight} x #{item.long} (#{item.quantity} шт.)#{ ", з заглушкою" if item.with_gag}#{ ", з кромкою" if item.with_edge} вартістю #{(item.total_price(item.long)).round()} грн.
 
       /External
       - elsif item.windowsill.wind_type == 'external'
