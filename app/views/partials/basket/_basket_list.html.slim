@@ -22,7 +22,7 @@
       .basket-list
         - @cart.line_items.each do |item|
           - if item.class_name == 'Windowsill'
-
+            - long = item.long.to_f/1000
             / WINDOWSILL
             -gag_edge_price = 0
             - if item.with_gag && item.windowsill.brand.gag
@@ -70,8 +70,8 @@
                     sup &nbsp;грн.
 
                   .one-price
-                    b data-long=item.long.to_f/1000
-                      = item.price
+                    b data-long=long
+                      = (item.price * long).round()
                     sup
                       |&nbsp;грн./м
                       sup 2
