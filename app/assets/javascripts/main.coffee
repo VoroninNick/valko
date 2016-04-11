@@ -383,10 +383,11 @@ $(document).ready ->
 
     $item_total_price.text(new_item_total_price)
 #    >
+    temp = 0
     $('.basket-list-one').each (i, obj) ->
-      console.log 'what is:', i
-      console.log 'what is:', obj
-    $total_price.text(total_price + new_item_total_price)
+      temp += parseFloat(obj.attr 'data-item-price')
+      console.log 'temp', temp
+    $total_price.text(temp)
 
 
     $product_id = $this.attr 'data-product-id'
