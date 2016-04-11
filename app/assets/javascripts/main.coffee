@@ -366,7 +366,6 @@ $(document).ready ->
 
 #    one item total price
     $item_total_price = $item.find('.one-total-price b')
-    console.log 'one item total price'
 
     default_total_price = parseInt($this.attr 'data-total-price')
     start_quantity = parseInt($this.attr 'data-old-value')
@@ -374,29 +373,18 @@ $(document).ready ->
 #   one item price
     item_price = parseInt($item.find('.one-price b').text())
     new_item_price = $item.attr('data-item-price')
-    console.log 'one item price', new_item_price
 
     console.log 'default_total_price total price', default_total_price
     total_price = default_total_price - start_quantity * new_item_price
 
-    console.log 'total price after update', total_price
-#    console.log 'total price old:', total_price
-#    console.log 'total price new:', total_price + parseInt(@value*item_price)
-
     gag_edge = $item.attr('data-gag-edge')
-    console.log 'gag edge price', gag_edge
-
-#    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
-    console.log 'item price', @value*item_price
 
     new_item_total_price = Math.round((parseFloat(new_item_price)+parseInt(gag_edge))*$this.val())
 
     $item_total_price.text(new_item_total_price)
-    console.log 'new version price', new_item_total_price
 #    >
     $total_price.text(total_price + new_item_total_price)
 
-#    console.log 'quantity:', @value
 
     $product_id = $this.attr 'data-product-id'
     $weight = $this.attr 'data-weight'
