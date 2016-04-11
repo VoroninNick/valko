@@ -385,7 +385,9 @@ $(document).ready ->
 #    >
     temp = 0
     $('.basket-list-one').each (i, obj) ->
-      temp += parseFloat(obj.attr 'data-item-price')
+      temp_ittem_price = obj.attr('data-item-price')
+      console.log 'temp_ittem_price', temp_ittem_price
+      temp += parseFloat(temp_ittem_price)
       console.log 'temp', temp
     $total_price.text(temp)
 
