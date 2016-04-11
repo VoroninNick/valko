@@ -369,6 +369,7 @@ $(document).ready ->
     start_quantity = parseInt($this.attr 'data-old-value')
     item_price = parseInt($item.find('.one-price b').text())
 
+    console.log 'default_total_price total price', default_total_price
     total_price = default_total_price - start_quantity * item_price
 
     console.log 'total price after update', total_price
@@ -378,6 +379,7 @@ $(document).ready ->
     gag_edge = $item.attr('data-gag-edge')
 
     $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
+#    >
     $total_price.text(total_price + parseInt(@value*item_price)+gag_edge*$this.val())
 
 #    console.log 'quantity:', @value
