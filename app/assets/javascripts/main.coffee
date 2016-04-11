@@ -388,7 +388,7 @@ $(document).ready ->
 #    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
     console.log 'item price', @value*item_price
     $item_total_price.text((parseInt(@value*item_price)+gag_edge)*$this.val())
-    console.log 'new version price', (parseInt(@value*item_price)+gag_edge)*$this.val()
+    console.log 'new version price', (item_price+gag_edge)*$this.val()
 #    >
     $total_price.text(total_price + parseInt(@value*item_price)+gag_edge*$this.val())
 
