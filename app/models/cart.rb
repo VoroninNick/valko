@@ -2,7 +2,8 @@ class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
   def total_price
-    line_items.to_a.sum { |item| item.total_price(item.long) }
+
+    line_items.to_a.sum { |item| v = item.long; v = 0 if v.blank?;  item.total_price(v) }
   end
 
   def self.destroy_cart
