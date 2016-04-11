@@ -374,8 +374,7 @@ $(document).ready ->
     item_price = parseInt($item.find('.one-price b').text())
     new_item_price = $item.attr('data-item-price')
 
-    console.log 'default_total_price total price', default_total_price
-    total_price = default_total_price - start_quantity * new_item_price
+
 
     gag_edge = $item.attr('data-gag-edge')
 
@@ -383,14 +382,21 @@ $(document).ready ->
 
     $item_total_price.text(new_item_total_price)
 #    >
-    temp = 0
-    $('.basket-list-one').each (i, obj) ->
-      temp_ittem_price = obj.attr('data-item-price')
-      console.log 'temp_ittem_price', temp_ittem_price
-      temp += parseFloat(temp_ittem_price)
-      console.log 'temp', temp
-    $total_price.text(temp)
+    new_total_price = 0
+    $('.basket-list-one').find('.one-total-price b').each (i, obj) ->
+      $obj = $(obj)
+#      each_price = parseInt($obj.find('b'))
+      console.log 'what is:', i
+      console.log 'what is:', $obj.text()
+#      each_price = $obj.attr('data-item-price')
+#      console.log 'attr', each_price
+      new_total_price += parseInt($obj.text())
+      console.log 'temp price', new_total_price
 
+#    $total_price.text(total_price + new_item_total_price)
+    $total_price.text(new_total_price)
+#    console.log 'default_total_price total price', default_total_price
+#    total_price = default_total_price - start_quantity * new_item_price
 
     $product_id = $this.attr 'data-product-id'
     $weight = $this.attr 'data-weight'
