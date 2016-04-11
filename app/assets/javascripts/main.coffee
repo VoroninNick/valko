@@ -377,7 +377,7 @@ $(document).ready ->
     console.log 'one item price', new_item_price
 
     console.log 'default_total_price total price', default_total_price
-    total_price = default_total_price - start_quantity * item_price
+    total_price = default_total_price - start_quantity * new_item_price
 
     console.log 'total price after update', total_price
 #    console.log 'total price old:', total_price
@@ -394,7 +394,7 @@ $(document).ready ->
     $item_total_price.text(new_item_total_price)
     console.log 'new version price', new_item_total_price
 #    >
-    $total_price.text(total_price + parseInt(@value*item_price)+gag_edge*$this.val())
+    $total_price.text(total_price + new_item_total_price)
 
 #    console.log 'quantity:', @value
 
