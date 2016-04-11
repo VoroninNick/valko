@@ -373,7 +373,8 @@ $(document).ready ->
 
 #   one item price
     item_price = parseInt($item.find('.one-price b').text())
-    console.log 'one item price', item_price
+    new_item_price = $item.attr('data-item-price')
+    console.log 'one item price', new_item_price
 
     console.log 'default_total_price total price', default_total_price
     total_price = default_total_price - start_quantity * item_price
@@ -388,7 +389,7 @@ $(document).ready ->
 #    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
     console.log 'item price', @value*item_price
 
-    new_item_total_price = (parseInt(item_price)+parseInt(gag_edge))*$this.val()
+    new_item_total_price = (parseInt(new_item_price)+parseInt(gag_edge))*$this.val()
 
     $item_total_price.text(new_item_total_price)
     console.log 'new version price', new_item_total_price
