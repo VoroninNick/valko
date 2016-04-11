@@ -385,7 +385,10 @@ $(document).ready ->
     gag_edge = $item.attr('data-gag-edge')
     console.log 'gag edge price', gag_edge
 
-    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
+#    $item_total_price.text(parseInt(@value*item_price)+gag_edge*$this.val())
+    console.log 'item price', @value*item_price
+    $item_total_price.text((parseInt(@value*item_price)+gag_edge)*$this.val())
+    console.log 'new version price', (parseInt(@value*item_price)+gag_edge)*$this.val()
 #    >
     $total_price.text(total_price + parseInt(@value*item_price)+gag_edge*$this.val())
 
