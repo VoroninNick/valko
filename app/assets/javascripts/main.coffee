@@ -22,6 +22,7 @@ windowsillCalculator = () ->
 
   long_element = $wrap.find('#windowsill-long').val()/1000
 
+  console.log 'довжина', long_element
 #  console.log 'weight',weight_element
 
   gag_price = 0
