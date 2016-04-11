@@ -367,7 +367,7 @@ $(document).ready ->
 #    one item total price
     $item_total_price = $item.find('.one-total-price b')
 
-    default_total_price = parseInt($this.attr 'data-total-price')
+    default_total_price = parseFloat($this.attr 'data-total-price')
     start_quantity = parseInt($this.attr 'data-old-value')
 
 #   one item price
@@ -383,6 +383,9 @@ $(document).ready ->
 
     $item_total_price.text(new_item_total_price)
 #    >
+    $('.basket-list-one').each (i, obj) ->
+      console.log 'what is:', i
+      console.log 'what is:', obj
     $total_price.text(total_price + new_item_total_price)
 
 
@@ -392,7 +395,7 @@ $(document).ready ->
     $type_product = $this.attr 'data-type'
     $gag = $this.attr 'data-gag'
 
-    console.log 'product id:', $product_id, 'weight:', $weight, 'long:', $long, 'type:', $type_product, 'gag:', $gag, 'value:', parseInt($this.val())
+#    console.log 'product id:', $product_id, 'weight:', $weight, 'long:', $long, 'type:', $type_product, 'gag:', $gag, 'value:', parseInt($this.val())
     action_path = $this.attr('data-href')+'/'+$this.attr('data-line-item-id')
 
     DataToSend =
