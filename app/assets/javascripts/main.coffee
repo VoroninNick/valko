@@ -410,7 +410,7 @@ $(document).ready ->
         before: ->
   #          alert 'before'
         success: (msg) ->
-          console.log 'test'
+          console.log 'updated'
   #          loadPartials()
   #          alert 'succes'
         error: (err) ->
