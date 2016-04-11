@@ -29,7 +29,7 @@
               - gag_edge_price = item.windowsill.brand.gag.price
             - elsif item.with_edge
               - gag_edge_price = item.windowsill.edge_price
-            .basket-list-one data-gag-edge=gag_edge_price data-item-price=item.price * long
+            .basket-list-one data-gag-edge=gag_edge_price data-item-price=(item.price * long)
               .row
                 .small-1.medium-1.columns
                   .basket-delete-item-wrap
