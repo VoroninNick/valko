@@ -59,9 +59,9 @@ class LineItem < ActiveRecord::Base
   def total_price(long = 1000)
     gag_edge_price = 0
 
-    if !long.is_a?(Numeric)
-      raise TypeError, "please provide long <numeric>"
-    end
+    # if !long.is_a?(Numeric)
+    #   raise TypeError, "please provide long <numeric>"
+    # end
 
     if with_gag && windowsill.brand.gag
       gag_edge_price = windowsill.brand.gag.price

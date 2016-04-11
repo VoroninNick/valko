@@ -372,7 +372,7 @@ $(document).ready ->
 #   one item price
     item_price = parseInt($item.find('.one-price b').text())
     new_item_price = $item.attr('data-item-price')
-
+    console.log 'data item price ', new_item_price
 
 
     gag_edge = $item.attr('data-gag-edge')
