@@ -49,8 +49,10 @@ class LineItem < ActiveRecord::Base
       return o
 
     elsif self.class_name == 'Decking'
-      o = roof_rail_item.rr_details.find_by_title(self.color).price || 0
-      return o
+      # o = roof_rail_item.rr_details.find_by_title(self.color).price || 0
+      current_el = RoofRailItem.where(slug: roof_rail_item.slug).where(producer: roof_rail_item.producer).where(thickness: roof_rail_item.thickness).where(coating: roof_rail_item.coating).where(protective_lamina: roof_rail_item.protective_lamina)
+      o = current_el.first.rr_details.where(title: color)
+      return o.first.price
     end
 
   end
@@ -76,7 +78,7 @@ class LineItem < ActiveRecord::Base
     elsif self.class_name == 'Gag'
       current_price * quantity
     elsif self.class_name == 'Decking'
-      current_price * quantity
+      ((current_price *(long.to_f/1000))*(roof_rail_item.width.to_f/1000))* quantity
     end
   end
 end

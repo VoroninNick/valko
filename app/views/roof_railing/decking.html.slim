@@ -131,7 +131,8 @@ ul.breadcrumbs
               .rr-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
-                  .rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
+                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
+                  .rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).round()
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик

@@ -109,7 +109,7 @@
 
             /DECKING
             - el = item.roof_rail_item.rr_details.find_by_title(item.color)
-            .basket-list-one data-gag-edge='0' data-item-price=item.price
+            .basket-list-one data-gag-edge='0' data-item-price=item.total_price(item.long).round()
               .row
                 .small-1.medium-1.columns
                   .basket-delete-item-wrap
@@ -120,7 +120,7 @@
                 .small-6.medium-6.columns
                   a href=one_decking_path(item.roof_rail_item.slug)
                     .title #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")})
-                  .brand-title #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")}
+                  .brand-title #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")}
                   p
                     span Ширина:
                     = item.roof_rail_item.width
@@ -136,12 +136,14 @@
                 .small-3.medium-2.columns
                   .one-total-price
                     b
-                      = item.total_price(item.long)
+                      = item.total_price(item.long).round()
                     sup &nbsp;грн.
                   .one-price
                     b
                       = item.price
-                    sup &nbsp;грн./шт.
+                    sup
+                      |&nbsp;грн./м
+                      sup 2
 
       .clearfix
 
