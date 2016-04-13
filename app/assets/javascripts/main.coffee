@@ -282,7 +282,7 @@ $(document).ready ->
 
         console.log 'test'
 
-        form.reset()
+#        form.reset()
         if $this.closest('.call-order-wrap')
           $this.closest('.call-order-wrap').removeClass('opened')
 
