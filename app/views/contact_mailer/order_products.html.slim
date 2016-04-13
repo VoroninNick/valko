@@ -21,7 +21,7 @@ ol
     /Decking
     - elsif item.class_name == 'Decking'
       li
-        p #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")})   #{item.roof_rail_item.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{(item.total_price).round()} грн.
+        p #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")})   #{item.roof_rail_item.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
 
 h4 Контактна інформація
 p
