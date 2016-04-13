@@ -6,7 +6,7 @@
           p
             = item.inspect
             - unless item.color
-              |xxxxxxxxxxxxxxxx
+              span.red xxxxxxxxxxxxxxxx
 
           - if item.roof_rail_item
             p = item.roof_rail_item.inspect
