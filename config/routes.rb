@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'sitemap' => 'main#sitemap'
 
   get 'dev' => 'main#dev'
+  get 'dev2' => 'main#dev2'
 
   post 'get_rr_options/:key' =>'roof_railing#get_rr_options', as: :get_rr_option
 

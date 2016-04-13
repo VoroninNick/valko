@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_action :set_cart, only: [:basket]
+  before_action :set_cart, only: [:basket, :dev2]
   after_action :recently_viewed, only: :one_windowsill
 
   require 'json'
@@ -201,7 +201,9 @@ class MainController < ApplicationController
     #
     # @usd = @data.select {|key| key["r030"] == 840 }
   end
+  def dev2
 
+  end
 
 #   mailer methods
   def offers_and_comments

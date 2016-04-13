@@ -50,9 +50,10 @@ class LineItem < ActiveRecord::Base
 
     elsif self.class_name == 'Decking'
       # o = roof_rail_item.rr_details.find_by_title(self.color).price || 0
-      current_el = RoofRailItem.where(slug: roof_rail_item.slug).where(producer: roof_rail_item.producer).where(thickness: roof_rail_item.thickness).where(coating: roof_rail_item.coating).where(protective_lamina: roof_rail_item.protective_lamina)
-      o = current_el.first.rr_details.where(title: color)
-      return o.first.price
+      # current_el = RoofRailItem.where(slug: roof_rail_item.slug).where(producer: roof_rail_item.producer).where(thickness: roof_rail_item.thickness).where(coating: roof_rail_item.coating).where(protective_lamina: roof_rail_item.protective_lamina)
+      # o = current_el.first.rr_details.where(title: color)
+      o = self.roof_rail_item.rr_details.find_by_title(self.color).price || 0
+      return o
     end
 
   end

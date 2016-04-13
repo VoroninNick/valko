@@ -1,0 +1,13 @@
+.row
+  .columns
+    ul
+      - @cart.line_items.each do |item|
+        li
+          p = item.inspect
+          - if item.roof_rail_item
+            p = item.roof_rail_item.inspect
+            - if item.roof_rail_item.rr_details
+              p = item.roof_rail_item.rr_details.inspect
+            - else
+              p
+                |=========================================
