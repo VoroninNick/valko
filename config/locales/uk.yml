@@ -66,9 +66,9 @@ uk:
     coating:
       zinc: Цинк
       aluzinc: Алюцинк
-      glossy_polyester: Полістер глянець
-      polyester_mat: Полістер мат
-      polyester_gloss_bilateral: Полістер глянець двосторінній
+      glossy_polyester: Поліестер глянець
+      polyester_mat: Поліестер мат
+      polyester_gloss_bilateral: Поліестер глянець двосторінній
     protective_lamina:
       with_lamina: З плівкою
       without_lamina: Без плівки
