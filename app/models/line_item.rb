@@ -7,6 +7,8 @@
 # t.integer :long
 
 # t.references :gag
+# t.boolean :nonstandard
+
 class LineItem < ActiveRecord::Base
   belongs_to :windowsill
   belongs_to :gag

@@ -46,6 +46,8 @@
                       |&nbsp;з заглушкою
                     - elsif item.with_edge.present?
                       |&nbsp;з кромкою
+                    - elsif item.nonstandard.present?
+                      |&nbsp;нестандарт
                   p
                     span Ширина:
                     = item.weight

@@ -35,16 +35,19 @@ class LineItemsController < ApplicationController
     options = params[:windowsill_option]
     option_return = false
     option_edge = false
+    option_nonstandard = false
     if options == 'with_gag'
       option_return = true
     elsif options == 'with_edge'
       option_edge = true
+    elsif options == 'nonstandard'
+      option_nonstandard = true
     end
 
     if type == 'Windowsill'
       windowsill = Windowsill.find(windowsill_id)
       #
-      existed_item = @cart.line_items.where(:windowsill_id => windowsill_id, :weight => weight, :long => long, :with_gag => option_return, :with_edge => option_edge)
+      existed_item = @cart.line_items.where(:windowsill_id => windowsill_id, :weight => weight, :long => long, :with_gag => option_return, :with_edge => option_edge, :nonstandard => option_nonstandard )
 
       if existed_item.count > 0
         @line_item = existed_item.first
@@ -54,11 +57,13 @@ class LineItemsController < ApplicationController
         @line_item.increase_quantity(quantity)
       else
         if options == 'with_gag'
-          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: true, with_edge: false)
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: true, with_edge: false, nonstandard: false)
         elsif options == 'with_edge'
-          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false, with_edge: true)
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false, with_edge: true, nonstandard: false)
+        elsif options == 'nonstandard'
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false, with_edge: false, nonstandard: true)
         else
-          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false, with_edge: false)
+          @line_item = @cart.line_items.build(windowsill: windowsill, quantity: quantity, weight: weight, long: long, class_name: type, with_gag: false, with_edge: false, nonstandard: false)
           test = 'e'
         end
       end
@@ -136,6 +141,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long, :roof_rail_item_id, :color)
+      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long, :roof_rail_item_id, :color, :nonstandard)
     end
 end
