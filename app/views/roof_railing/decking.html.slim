@@ -73,7 +73,7 @@ ul.breadcrumbs
                             - image_src_large = el.image.url(:large)
                             - price = el.price
 
-                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
                           input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
@@ -97,7 +97,7 @@ ul.breadcrumbs
                             - image_src_large = el.image.url(:large)
                             - price = el.price
 
-                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-price=price
+                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
                           input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
                           label.icon for="cro-color-#{color[1..-1]}"
                           label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
