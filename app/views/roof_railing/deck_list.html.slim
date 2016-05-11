@@ -47,6 +47,15 @@ ul.breadcrumbs
               .medium-3.columns.end.mix.decking
                 = render "partials/one_item_card", item: item
 
+    hr
+    .title testing
+    .row
+      .columns
+        - if @roofs.any?
+          - @roofs.each do |item|
+            .medium-3.columns.end.mix.decking
+              = render "partials/one_item_card", item: item.roof_rail_item
+    hr
   .row
     .columns
       .rr-catalog-description
