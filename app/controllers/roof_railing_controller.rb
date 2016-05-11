@@ -23,9 +23,9 @@ class RoofRailingController < ApplicationController
   def deck_list
     # @item = RoofRailItem.select(:rr_description).map(&:rr_description).uniq
     keys = []
-    all_rr = RoofRailItem.all
+    @all_rr = RoofRailItem.all
     #keys = @items.map(&:slug)
-    @items = all_rr.select { |el|
+    @items = @all_rr.select { |el|
       if !keys.include?(el.slug)
         keys << el.slug
         next true
@@ -39,6 +39,7 @@ class RoofRailingController < ApplicationController
                   description: @decking_list.seo.try(:seo_description),
                   keywords: @decking_list.seo.try(:keywords)
   end
+
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
     @decking = RoofRailItem.find_by_slug(params[:title])
