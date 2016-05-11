@@ -39,7 +39,7 @@ ul.breadcrumbs
             span.hide-for-small-only
               |Сортувати по:
 
-    .row data-items-size=@all_rr.size
+    .row data-items-size=@all_rr.size data-roof-items=@roofs.size
       .columns.sandbox
         - if @items.any?
           .row

@@ -33,6 +33,9 @@ class RoofRailingController < ApplicationController
 
       false
     }
+
+    @roofs = RrDescription.all
+
     @decking_list = RoofRailPage.find_by_page_name('profnastyl')
 
     set_meta_tags title: @decking_list.seo.try(:seo_title),
