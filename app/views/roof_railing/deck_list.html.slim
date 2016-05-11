@@ -39,7 +39,7 @@ ul.breadcrumbs
             span.hide-for-small-only
               |Сортувати по:
 
-    .row data-items-size=@all_rr.size data-roof-items=@roofs.size
+    /.row data-items-size=@all_rr.size data-roof-items=@roofs.size
       .columns.sandbox
         - if @items.any?
           .row
@@ -47,15 +47,15 @@ ul.breadcrumbs
               .medium-3.columns.end.mix.decking
                 = render "partials/one_item_card", item: item
 
-    hr
-    .title testing
+    /hr
+    /.title testing
     .row
       .columns
         - if @roofs.any?
           - @roofs.each do |item|
             .medium-3.columns.end.mix.decking
               = render "partials/one_item_card", item: item.roof_rail_item
-    hr
+    /hr
   .row
     .columns
       .rr-catalog-description

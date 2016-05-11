@@ -37,7 +37,7 @@ class Brand < ActiveRecord::Base
       end
       field :avatar, :paperclip do
         label 'Аватарка:'
-        help 'в форматі SVG'
+        # help 'в форматі SVG'
       end
       field :description, :ck_editor do
         label 'Опис:'
