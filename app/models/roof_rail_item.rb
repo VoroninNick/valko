@@ -81,6 +81,11 @@ class RoofRailItem < ActiveRecord::Base
       field :rr_details do
         label 'Одиниця:'
       end
+
+      field :slug do
+        label 'slug:'
+        help 'не для редагування'
+      end
     end
   end
 
