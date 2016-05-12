@@ -32,7 +32,15 @@ class RoofRailItem < ActiveRecord::Base
     self.title = self.rr_description.title
   end
   before_save :initialize_title
-  before_save { save_slug(title, slug) }
+  # before_save { save_slug(title, slug) }
+  def to_slug
+    title.parameterize
+  end
+  def save_slug
+    self.slug = to_slug
+  end
+  before_save :save_slug
+
 
   extend Enumerize
   enumerize :producer, in: [:'arcelor', :'ukraine', :'slovakia', :'china']
