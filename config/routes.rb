@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get 'roof-rail/decking/:title' => 'roof_railing#decking', as: :one_decking
 
   get 'mosquito-grid' => 'mosquito#index'
+  get 'mosquito-grid/window' => 'mosquito#window'
+  get 'mosquito-grid/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
+
 
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'
