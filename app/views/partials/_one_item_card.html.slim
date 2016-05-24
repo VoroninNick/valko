@@ -15,8 +15,8 @@
       .small-6.columns
         .title = item.title
       .small-6.columns
-        .price
-          = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).ceil
+        .price data-product-price=(((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price)
+          = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
           sup &nbsp;грн.
       .columns
         /.brand-title = gag.brand.title
