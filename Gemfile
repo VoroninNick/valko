@@ -88,3 +88,5 @@ gem 'sunspot_rails'
 gem 'progress_bar'
 
 gem 'mixitup_rails'
+
+gem 'yaml_db'
