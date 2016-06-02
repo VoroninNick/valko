@@ -113,12 +113,12 @@ class MainController < ApplicationController
     # session["main#windowsill"]
     type = params[:filterrific].try{|x| x[:with_type]}
     filterrific_session = session["main#windowsill"]
-    filterrific_params = params[:filterrific]
+    filterrific_params = params[:filterrific] || {}
 
     # session["main#windowsill"] = {}
-    if type.present? && type != filterrific_session['with_type']
+    if filterrific_session.nil? || (type.present? && type != filterrific_session['with_type'])
       filterrific_params = {
-          :sorted_by => filterrific_params[:sorted_by],
+          :sorted_by => filterrific_params[:sorted_by] || :title_asc,
           :with_type => type
       }
       # return render inline: "s: #{filterrific_session['with_type']}, p: #{type}"
