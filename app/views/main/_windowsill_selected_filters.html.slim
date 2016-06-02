@@ -1,113 +1,113 @@
 - if session["main#windowsill"].size > 2
-  .selected-filters
-    .sf-head
-      .title Вибрані фільтри
-    .sf-body
+.selected-filters
+  .sf-head
+    .title Вибрані фільтри
+  .sf-body
 
-      / type
-      /- if session["main#windowsill"].has_key?("with_type")
-        .sf-group
-          .title Тип
-          .sf-filter
-            - if session["main#windowsill"]["with_type"] == "internal"
-              |Внутрішні
-              label for="wbf-internal"
-                = inline_svg"ic_close_black_24px.svg"
-            - elsif session["main#windowsill"]["with_type"] == "external"
-              |Зовнішні
-              label for="wbf-outdoor"
-                = inline_svg"ic_close_black_24px.svg"
-            - elsif session["main#windowsill"]["with_type"] == "gag"
-              |Заглушки
-              label for="wbf-outdoor"
-                = inline_svg"ic_close_black_24px.svg"
+    / type
+    /- if session["main#windowsill"].has_key?("with_type")
+      .sf-group
+        .title Тип
+        .sf-filter
+          - if session["main#windowsill"]["with_type"] == "internal"
+            |Внутрішні
+            label for="wbf-internal"
+              = inline_svg"ic_close_black_24px.svg"
+          - elsif session["main#windowsill"]["with_type"] == "external"
+            |Зовнішні
+            label for="wbf-outdoor"
+              = inline_svg"ic_close_black_24px.svg"
+          - elsif session["main#windowsill"]["with_type"] == "gag"
+            |Заглушки
+            label for="wbf-outdoor"
+              = inline_svg"ic_close_black_24px.svg"
 
-      / trademarks
-      - if session["main#windowsill"].has_key?("with_brand")
-        .sf-group
-          .title Торгові марки
-          - if Brand.brands_list.any?
-            -  Brand.brands_list.each do |item|
-              - if session["main#windowsill"]["with_brand"].include? item[:id]
-                .sf-filter
-                  = item[:title]
-                  label.cch-text for="filterrific_with_brand_#{item[:id]}"
-                    = inline_svg"ic_close_black_24px.svg"
-      / decors
-      - if session["main#windowsill"].has_key?("with_decor")
-        .sf-group
-          .title Декор
-          - if Windowsill.decor.values.any?
-            - Windowsill.decor.values.each do |decor|
-              - if session["main#windowsill"]["with_decor"].include? decor
-                .sf-filter
-                  = t("enumerize.decor.#{decor}")
-                  label.cch-text for="filterrific_with_decor_#{decor}"
-                    = inline_svg"ic_close_black_24px.svg"
-      / kapinos
-      - if session["main#windowsill"].has_key?("with_kapinos")
-        .sf-group
-          .title Капінос
-          - if Windowsill.kapinos.values.any?
-            - Windowsill.kapinos.values.each do |kapinos|
-              - if session["main#windowsill"]["with_kapinos"].include? kapinos
-                .sf-filter
-                  = t("enumerize.kapinos.#{kapinos}")
-                  label.cch-text for="filterrific_with_kapinos_#{kapinos}"
-                    = inline_svg"ic_close_black_24px.svg"
+    / trademarks
+    - if session["main#windowsill"].has_key?("with_brand")
+      .sf-group
+        .title Торгові марки
+        - if Brand.brands_list.any?
+          -  Brand.brands_list.each do |item|
+            - if session["main#windowsill"]["with_brand"].include? item[:id]
+              .sf-filter
+                = item[:title]
+                label.cch-text for="filterrific_with_brand_#{item[:id]}"
+                  = inline_svg"ic_close_black_24px.svg"
+    / decors
+    - if session["main#windowsill"].has_key?("with_decor")
+      .sf-group
+        .title Декор
+        - if Windowsill.decor.values.any?
+          - Windowsill.decor.values.each do |decor|
+            - if session["main#windowsill"]["with_decor"].include? decor
+              .sf-filter
+                = t("enumerize.decor.#{decor}")
+                label.cch-text for="filterrific_with_decor_#{decor}"
+                  = inline_svg"ic_close_black_24px.svg"
+    / kapinos
+    - if session["main#windowsill"].has_key?("with_kapinos")
+      .sf-group
+        .title Капінос
+        - if Windowsill.kapinos.values.any?
+          - Windowsill.kapinos.values.each do |kapinos|
+            - if session["main#windowsill"]["with_kapinos"].include? kapinos
+              .sf-filter
+                = t("enumerize.kapinos.#{kapinos}")
+                label.cch-text for="filterrific_with_kapinos_#{kapinos}"
+                  = inline_svg"ic_close_black_24px.svg"
 
 
-      / with_material
-      - if session["main#windowsill"].has_key?("with_material")
-        .sf-group
-          .title Матеріал
-          - if Windowsill.material.values.any?
-            - Windowsill.material.values.each do |material|
-              - if session["main#windowsill"]["with_material"].include? material
-                .sf-filter
-                  = t("enumerize.material.#{material}")
-                  label.cch-text for="filterrific_with_material_#{material}"
-                    = inline_svg"ic_close_black_24px.svg"
+    / with_material
+    - if session["main#windowsill"].has_key?("with_material")
+      .sf-group
+        .title Матеріал
+        - if Windowsill.material.values.any?
+          - Windowsill.material.values.each do |material|
+            - if session["main#windowsill"]["with_material"].include? material
+              .sf-filter
+                = t("enumerize.material.#{material}")
+                label.cch-text for="filterrific_with_material_#{material}"
+                  = inline_svg"ic_close_black_24px.svg"
 
-      / with_surface
-      - if session["main#windowsill"].has_key?("with_surface")
-        .sf-group
-          .title Вид поверхні
-          - if Windowsill.type_of_surface.values.any?
-            - Windowsill.type_of_surface.values.each do |opt|
-              - if session["main#windowsill"]["with_surface"].include? opt
-                .sf-filter
-                  = t("enumerize.type_of_surface.#{opt}")
-                  label.cch-text for="filterrific_with_surface_#{opt}"
-                    = inline_svg"ic_close_black_24px.svg"
+    / with_surface
+    - if session["main#windowsill"].has_key?("with_surface")
+      .sf-group
+        .title Вид поверхні
+        - if Windowsill.type_of_surface.values.any?
+          - Windowsill.type_of_surface.values.each do |opt|
+            - if session["main#windowsill"]["with_surface"].include? opt
+              .sf-filter
+                = t("enumerize.type_of_surface.#{opt}")
+                label.cch-text for="filterrific_with_surface_#{opt}"
+                  = inline_svg"ic_close_black_24px.svg"
 
-      / with_color_type
-      - if session["main#windowsill"].has_key?("with_color_type")
-        .sf-group
-          .title Вид кольору
-          - if Windowsill.color_type.values.any?
-            - Windowsill.color_type.values.each do |opt|
-              - if session["main#windowsill"]["with_color_type"].include? opt
-                .sf-filter
-                  = t("enumerize.color_type.#{opt}")
-                  label.cch-text for="filterrific_with_color_type_#{opt}"
-                    = inline_svg"ic_close_black_24px.svg"
+    / with_color_type
+    - if session["main#windowsill"].has_key?("with_color_type")
+      .sf-group
+        .title Вид кольору
+        - if Windowsill.color_type.values.any?
+          - Windowsill.color_type.values.each do |opt|
+            - if session["main#windowsill"]["with_color_type"].include? opt
+              .sf-filter
+                = t("enumerize.color_type.#{opt}")
+                label.cch-text for="filterrific_with_color_type_#{opt}"
+                  = inline_svg"ic_close_black_24px.svg"
 
-      / with_color
-      - if session["main#windowsill"].has_key?("with_color")
-        .sf-group
-          .title Колір
-          - if Windowsill.color.values.any?
-            - Windowsill.color.values.each do |opt|
-              - if session["main#windowsill"]["with_color"].include? opt
-                .sf-filter
-                  = t("enumerize.color.#{opt}")
-                  label.cch-text for="filterrific_with_color_#{opt}"
-                    = inline_svg"ic_close_black_24px.svg"
+    / with_color
+    - if session["main#windowsill"].has_key?("with_color")
+      .sf-group
+        .title Колір
+        - if Windowsill.color.values.any?
+          - Windowsill.color.values.each do |opt|
+            - if session["main#windowsill"]["with_color"].include? opt
+              .sf-filter
+                = t("enumerize.color.#{opt}")
+                label.cch-text for="filterrific_with_color_#{opt}"
+                  = inline_svg"ic_close_black_24px.svg"
 
-    .sf-footer
-      = link_to reset_filterrific_url do
-        = inline_svg"Valko-icon-sort-renew.svg"
-        |Скинути всі фільтри
+  .sf-footer
+    = link_to reset_filterrific_url do
+      = inline_svg"Valko-icon-sort-renew.svg"
+      |Скинути всі фільтри
 
-  /= session["main#windowsill"]
+/= session["main#windowsill"]
