@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery-2.1.4.min
+//= require icons
 //= require jquery_ujs
 //= require foundation
 

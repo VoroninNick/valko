@@ -45,8 +45,8 @@ initialize = ->
   marker = new (google.maps.Marker)(
     position: myLatlng
     map: map
-    title: 'Budapest'
-    icon: '/assets/Valko-icon-location.svg')
+    title: 'Valko'
+    icon: icons.marker)
   google.maps.event.addListener marker, 'click', ->
     infowindow.open map, marker
 
