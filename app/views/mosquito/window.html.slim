@@ -5,3 +5,39 @@ ul.breadcrumbs
     = link_to 'Москітні сітки', mosquito_grid_path
   li
     span Віконні москітні сітки
+
+.roof-rail-catalog-list-page
+  .roof-rail-catalog-list-header
+    .row
+      .columns
+        - if @catalog_sub_page.catalog_banners && @catalog_sub_page.catalog_banners.any?
+          ul#roof-rail-banner
+            - @catalog_sub_page.catalog_banners.with_public.each do |slide|
+              li
+                .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+
+        .wcl-body
+          .columns
+            .title = @catalog_sub_page.title
+          .clearfix
+          = raw @catalog_sub_page.header_description
+          .clearfix
+
+  .roof-rail-catalog-list-body
+    .wclb-header
+      .row
+        .columns
+          .title
+            = inline_svg "Valko-icon-moskitny-sitku.svg"
+            |Віконні москітні сітки
+    .row
+      .columns.sandbox
+
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2 = @catalog_sub_page.try(:subtitle)
+        .clearfix
+        = raw @catalog_sub_page.footer_description
+        .clearfix

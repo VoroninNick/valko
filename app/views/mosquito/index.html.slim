@@ -9,24 +9,17 @@ ul.breadcrumbs
   .roof-rail-catalog-list-header
     .row
       .columns
-        ul#mosquito-grid-banner
-          li
-            .image style="background: url('#{asset_path("moskitnaja-setka-dlja-plastikovogo-okna.jpg")}')no-repeat center center;"
-          li
-            .image style="background: url('#{asset_path("08850738.jpg")}')no-repeat center center;"
-          li
-            .image style="background: url('#{asset_path("15062011315.jpg")}')no-repeat center center;"
+        - if @catalog_page.catalog_banners && @catalog_page.catalog_banners.any?
+          ul#roof-rail-banner
+            - @catalog_page.catalog_banners.with_public.each do |slide|
+              li
+                .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
 
         .wcl-body
           .columns
-            .title Москітні сітки
+            .title = @catalog_page.try(:title)
           .clearfix
-          .medium-6.columns
-            p Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції.
-            p Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає. Тут ви неодмінно знайдете оптимальний варіант!
-          .medium-6.columns
-            p Важко уявити кімнату без підвіконь, чи не так? Цей невід’ємний додаток кожного вікна поєднує у собі практичну та естетичну функції.
-            p Широкі, що забезпечать вас місцем для улюблених квітів, класичні або ж підвіконня, що продовжуються та утворюють барну стійку — вибір моделей у компанії «ВАЛЬКО» вражає. Тут ви неодмінно знайдете оптимальний варіант!
+          = raw @catalog_page.header_description
           .clearfix
 
 
@@ -40,7 +33,7 @@ ul.breadcrumbs
       .medium-6.columns.pb-sub-block.sub-catalog-one-item
         .sc-oi-avatar
           a href=mosquito_grid_window_path
-            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+            .image.grayscale style="background: url('#{asset_path("mosquito_grid_window.jpg")}')no-repeat center center;"
         .sc-oi-body
           .sc-oi-title
             a.valko-arrow.va-right href=mosquito_grid_window_path
@@ -53,12 +46,12 @@ ul.breadcrumbs
       .medium-6.columns.pb-sub-block.sub-catalog-one-item
         .sc-oi-avatar
           a
-            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+            .image.grayscale style="background: url('#{asset_path("mosquito_grid_dor.jpg")}')no-repeat center center;"
         .sc-oi-body
           .sc-oi-title
             a.valko-arrow.va-right
               div
-            a
+            a Дверні
 
           .columns
             p текст відсутній
@@ -66,12 +59,12 @@ ul.breadcrumbs
       .medium-6.columns.pb-sub-block.sub-catalog-one-item
         .sc-oi-avatar
           a
-            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+            .image.grayscale style="background: url('#{asset_path("mosquito_grid_rolets.jpg")}')no-repeat center center;"
         .sc-oi-body
           .sc-oi-title
             a.valko-arrow.va-right
               div
-            a
+            a Ролетні
 
           .columns
             p текст відсутній
@@ -79,12 +72,21 @@ ul.breadcrumbs
       .medium-6.columns.pb-sub-block.sub-catalog-one-item
         .sc-oi-avatar
           a
-            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+            .image.grayscale style="background: url('#{asset_path("mosquito_grid_rozs.jpg")}')no-repeat center center;"
         .sc-oi-body
           .sc-oi-title
             a.valko-arrow.va-right
               div
-            a
+            a Розсувні
 
           .columns
             p текст відсутній
+
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2 = @catalog_page.subtitle
+        .clearfix
+        = raw @catalog_page.footer_description
+        .clearfix
