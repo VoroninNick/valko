@@ -96,4 +96,12 @@ uk:
       m3009: 3009 - Цеглово-червоний (матовий)
       mtsynk: Цинк
       malyutsynk: Алюцинк
+    mosquito_grid_type:
+      window: Віконна
+      door: Дверна
+      rolling: Ролетна
+      sliding: Розсувна
+    mosquito_grid_option:
+      pockets: Кишеньки
+      curtain: Завіси
 

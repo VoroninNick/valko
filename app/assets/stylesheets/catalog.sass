@@ -162,39 +162,6 @@
       float: right
       width: 70px
 
-  .attention-message
-    margin-top: 10px
-    background: #42a5f5
-    padding: 10px
-    padding-bottom: 20px
-    display: none
-    .icon
-      width: 15%
-      float: left
-      svg
-        width: 50%
-        display: block
-        margin: 0 auto
-        path
-          fill: #fff
-    .description
-      float: left
-      width: 85%
-    .title, .body
-      color: #fff
-      font:
-        family: 'Roboto', sans-serif
-    .title
-      font:
-        size: rem-calc(14)
-        weight: 500
-      text-transform: uppercase
-    .body
-      font:
-        size: rem-calc(12)
-        weight: 300
-        style: italic
-      line-height: 18px
   ul.tabs
     border-bottom: 1px solid rgba(0, 0, 0, .3)
     li.tab-title
@@ -254,6 +221,52 @@
           content: ""
           display: block
           clear: both
+
+.attention-message
+  margin-top: 10px
+  background: #42a5f5
+  padding: 10px
+  padding-bottom: 20px
+  display: none
+  .icon
+    width: 15%
+    float: left
+    svg
+      width: 50%
+      display: block
+      margin: 0 auto
+      path
+        fill: #fff
+  .description
+    float: left
+    width: 85%
+  .title, .body
+    color: #fff
+    font:
+      family: 'Roboto', sans-serif
+  .title
+    font:
+      size: rem-calc(14)
+      weight: 500
+    text-transform: uppercase
+  .body
+    font:
+      size: rem-calc(12)
+      weight: 300
+      style: italic
+    line-height: 18px
+
+  &.blue
+    display: inline-block
+    background: #eceff1
+    padding-bottom: 10px
+    margin-top: 0
+    .icon
+      svg
+        path
+          fill: #1976d2
+    .body
+      +default_font_style(#607d8b, 13, 300, 25.4)
 
 .tabs-content
   .content
