@@ -38,14 +38,15 @@ ul.breadcrumbs
                   = values.count
               .row
                 .columns
-                  - values.each do |color|
+                  - values.each_with_index do |color, i|
                     /-condition = color.in?(@decking.present_colors)
                     -condition = 1
 
                     .catalog-rr-one-color class=("enable-catalog-element" if condition)
-                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @product.mosquito_item_options.first.title)
+                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if i == 2)
                       label.icon for="cro-color-#{color}"
                       label.text for="cro-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
+
                     /- if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
 
                       - @decking.rr_details.each do |el|

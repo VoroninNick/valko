@@ -366,7 +366,7 @@
           &:checked
             & ~ label
               &.icon
-                background: #f50057 !important
+
                 position: relative
                 &:after
                   content: ''
@@ -385,6 +385,16 @@
               &.text
                 color: #fff
                 display: inline-block
+                z-index: 1
+                &:before
+                  content: ''
+                  background: #f50057 !important
+                  height: 100%
+                  position: absolute
+                  left: 0
+                  right: 3px
+                  bottom: -2px
+                  z-index: -1
 
           &:hover
             & ~ label
@@ -478,10 +488,10 @@
                     +my_center_align()
                       position: absolute
     &.catalog-mg-color-system
-    .catalog-rr-color-system-group
-      .catalog-rr-one-color
-        width: 25%
-        padding: 0 3px 3px 0
+      .catalog-rr-color-system-group
+        .catalog-rr-one-color
+          width: 25%
+          padding: 0 3px 3px 0
 
   .catalog-rr-drawing
     margin-top: 40px
