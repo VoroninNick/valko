@@ -329,6 +329,40 @@
               &.icon
                 background: asset-url('zolot_dub.png')
 
+          //mosquito grid
+          &#mg-color-white
+            & + label
+              &.icon
+                background: asset-url('mg_white.jpg')
+          &#mg-color-brown
+            & + label
+              &.icon
+                background: asset-url('mg_brown.jpg')
+          &#mg-color-dark_brown
+            & + label
+              &.icon
+                background: asset-url('mg_dark_brown.jpg')
+          &#mg-color-anthracite
+            & + label
+              &.icon
+                background: asset-url('mg_anthracite.jpg')
+          &#mg-color-nut
+            & + label
+              &.icon
+                background: asset-url('mg_nut.jpg')
+          &#mg-color-winchester
+            & + label
+              &.icon
+                background: asset-url('mg_winchester.jpg')
+          &#mg-color-mahoney
+            & + label
+              &.icon
+                background: asset-url('mg_mahoney.jpg')
+          &#mg-color-golden_oak
+            & + label
+              &.icon
+                background: asset-url('mg_golden_oak.jpg')
+          //mosquito grid end
           &:checked
             & ~ label
               &.icon
@@ -443,6 +477,12 @@
                     border-radius: 50%
                     +my_center_align()
                       position: absolute
+    &.catalog-mg-color-system
+    .catalog-rr-color-system-group
+      .catalog-rr-one-color
+        width: 25%
+        padding: 0 3px 3px 0
+
   .catalog-rr-drawing
     margin-top: 40px
     span

@@ -150,7 +150,7 @@ $(document).ready ->
                   $step_item.find("[value='#{item}']").prop('checked', true)
 
       error: (err) ->
-        alert "Error"
+#        alert "Error"
 
 #    $.getJSON action_link, (data) ->
 

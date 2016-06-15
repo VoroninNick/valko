@@ -101,9 +101,13 @@ uk:
       door: Дверна
       rolling: Ролетна
       sliding: Розсувна
-    mosquito_grid_option:
+    mosquito_item:
       pockets: Кишеньки
       curtain: Завіси
+      holders: Тримачі
+      screws: Шурупи
+      guides: Направляючі
+
     mosquito_item_option:
       title:
         white: білий

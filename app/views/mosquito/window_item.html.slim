@@ -13,61 +13,67 @@ ul.breadcrumbs
   .row
     form.ajax-popup-form action=""
       .medium-4.columns.coi-photo
-        - if 1 == 1
+        - if @product.mosquito_item_options && @product.mosquito_item_options.first.image.exists?
+          #roof-rail-gallery
+            a href=@product.mosquito_item_options.first.image.url(:large)
+              .image style="background: url('#{@product.mosquito_item_options.first.image.url(:thumb)}')no-repeat center center;"
+        /- if 1 == 1
           #roof-rail-gallery
             a href=""
               .image style="background: url('#{asset_path("ramkova-4.jpg")}')no-repeat center center;"
 
         - if 1 == 1
-          .catalog-rr-color-system
+          .catalog-rr-color-system.catalog-mg-color-system
             .catalog-rr-color-system-header
               .row
                 .columns
-                  span Кольори RAL
+                  span Кольори
                   hr
-            /- values = @decking.rr_details.title.values
+            - values = @product.mosquito_item_options.title.values
             /- image_src, image_src_large = ''
             /- price = 0
             .catalog-rr-color-system-group
               /.row
                 .columns
-                  span Глянцеві
+                  = values.count
               .row
                 .columns
-                  /- values.each do |color|
-                    -condition = color.in?(@decking.present_colors)
-                    /-condition = 1
+                  - values.each do |color|
+                    /-condition = color.in?(@decking.present_colors)
+                    -condition = 1
 
-                    - if color[0] == 'g'
-                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+                    .catalog-rr-one-color class=("enable-catalog-element" if condition)
+                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @product.mosquito_item_options.first.title)
+                      label.icon for="cro-color-#{color}"
+                      label.text for="cro-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
+                    /- if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
 
-                        - @decking.rr_details.each do |el|
-                          - if el.title == color
-                            - image_src = el.image.url(:thumb)
-                            - image_src_large = el.image.url(:large)
-                            - price = el.price
+                      - @decking.rr_details.each do |el|
+                        - if el.title == color
+                          - image_src = el.image.url(:thumb)
+                          - image_src_large = el.image.url(:large)
+                          - price = el.price
 
-                        .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
-                          label.icon for="cro-color-#{color[1...5]}"
-                          label.text for="cro-color-#{color[1...5]}" = color[1...5]
-                      - else
-                        .catalog-rr-one-color class=("enable-catalog-element" if condition)
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
-                          label.icon for="cro-color-#{color[1..-1]}"
-                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
-                      - image_src, image_src_large = ''
+                      .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                        input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                        label.icon for="cro-color-#{color[1...5]}"
+                        label.text for="cro-color-#{color[1...5]}" = color[1...5]
+                    /- else
+                    /  .catalog-rr-one-color class=("enable-catalog-element" if condition)
+                    /    input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                    /    label.icon for="cro-color-#{color[1..-1]}"
+                    /    label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                    /- image_src, image_src_large = ''
 
 
       .medium-8.columns
-        .title Віконна ECoNOM
+        .title
+          = @product.title
         p
-          |Econom – елегантна класика, незмінно актуальна для створення затишку і легкості в інтер'єрі.
-            Лаконічна вишуканість білого у поєднанні з теплими відтінками натурального дерева зачаровує і додає приміщенню нотку самодостатнього комфорту.
-            Ці підвіконня відмінно пасуватимуть до будь-яких вікон.
+          = @product.short_description
+
 
         .roof-rail-calculator-wrap
-          /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
           .row.roof-rail-calculator
             .medium-7.columns
               input type="hidden" name="type" value="Decking"
@@ -118,35 +124,17 @@ ul.breadcrumbs
                       .catalog-rr-block-option
                         .catalog-rr-block-option-header Кріплення
                         .catalog-rr-block-option-body
+                          .catalog-rr-radio-element.enable-catalog-element
+                            input id="mg-window-pockets" type="radio" value="pockets" name="catalog-mg-window" checked="checked"
+                            label.icon for="mg-window-pockets"
+                            label.text for="mg-window-pockets" = t("enumerize.mosquito_item.pockets")
+                            .clearfix
 
-                          /- RoofRailItem.producer.values.each do |producer|
-
-                            - if producer.in?(@decking.producers_by_item)
-
-                              - thickness_arr = RoofRailItem.thickness.values.map { |thickness| thickness if thickness.in?(@decking.thickness_by_producers(producer)) }
-                              - coating_arr = RoofRailItem.coating.values.map { |coating| coating if coating.in?(@decking.coating_by_thickness) }
-                              - protective_lamina_arr = RoofRailItem.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(@decking.protective_lamina_by_coating) }
-                              - h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
-
-                              - if @decking.producer == producer
-                                .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                                  input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
-                                  label.icon for="cro-option-#{producer}"
-                                  label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                  .clearfix
-                              - else
-                                .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                                  input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
-                                  label.icon for="cro-option-#{producer}"
-                                  label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                  .clearfix
-                            - else
-                              .catalog-rr-radio-element data-key="producer"
-                                input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
-                                label.icon for="cro-option-#{producer}"
-                                label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                .clearfix
-
+                          .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                            input id="mg-window-curtain" type="radio" value="curtain" name="catalog-mg-window"
+                            label.icon for="mg-window-curtain"
+                            label.text for="mg-window-curtain" = t("enumerize.mosquito_item.curtain")
+                            .clearfix
 
   .row
     .columns
@@ -168,12 +156,13 @@ ul.breadcrumbs
             .row
               .columns
                 = image_tag @decking.rr_description.drawing.url(:large)
-          .row
+          /.row
             .columns
               .title Профнастил
           .row
             .columns
-              /= raw @decking.rr_description.description
+              = raw @product.description
+
         #rrc-useful-publications.content
           /Корисна інформація
           /- if @decking.rr_description && @decking.rr_description.informations && @decking.rr_description.informations.any?

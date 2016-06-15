@@ -33,8 +33,8 @@ ul.breadcrumbs
 
     .row
       .columns.sandbox
-        - if @mg_items.any?
-          - @mg_items.each do |item|
+        - if @mg_products.any?
+          - @mg_products.each do |item|
             .medium-3.columns.end.decking
               = render "partials/one_item_mg_card", item: item
 
