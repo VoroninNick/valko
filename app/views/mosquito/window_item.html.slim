@@ -30,41 +30,26 @@ ul.breadcrumbs
                   span Кольори
                   hr
             - values = @product.mosquito_item_options.title.values
-            /- image_src, image_src_large = ''
-            /- price = 0
+            - image_src, image_src_large = ''
+            - price = 0
             .catalog-rr-color-system-group
-              /.row
-                .columns
-                  = values.count
               .row
                 .columns
                   - values.each_with_index do |color, i|
-                    /-condition = color.in?(@decking.present_colors)
-                    -condition = 1
+                    -condition = color.in?(@product.present_colors)
+                    /-condition = 1
 
-                    .catalog-rr-one-color class=("enable-catalog-element" if condition)
-                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if i == 2)
-                      label.icon for="cro-color-#{color}"
-                      label.text for="cro-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
+                    - @product.mosquito_item_options.each do |el|
+                      - if el.title == color
+                        - image_src = el.image.url(:thumb)
+                        - image_src_large = el.image.url(:large)
+                        - price = el.price
 
-                    /- if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-
-                      - @decking.rr_details.each do |el|
-                        - if el.title == color
-                          - image_src = el.image.url(:thumb)
-                          - image_src_large = el.image.url(:large)
-                          - price = el.price
-
-                      .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                        input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
-                        label.icon for="cro-color-#{color[1...5]}"
-                        label.text for="cro-color-#{color[1...5]}" = color[1...5]
-                    /- else
-                    /  .catalog-rr-one-color class=("enable-catalog-element" if condition)
-                    /    input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
-                    /    label.icon for="cro-color-#{color[1..-1]}"
-                    /    label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
-                    /- image_src, image_src_large = ''
+                    .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @product.mosquito_item_options.first.title)
+                      label.icon for="mg-color-#{color}"
+                      label.text for="mg-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
+                    - image_src, image_src_large = ''
 
 
       .medium-8.columns
@@ -73,7 +58,6 @@ ul.breadcrumbs
         p
           = @product.short_description
 
-
         .roof-rail-calculator-wrap
           .row.roof-rail-calculator
             .medium-7.columns
@@ -81,10 +65,10 @@ ul.breadcrumbs
               input type="hidden" name="price" value=""
 
               .input.width-roof-rail
-                input#mosquito-grid-width type="number" name="width" value="2200"
+                input#mosquito-grid-width type="number" name="width" value="1000"
                 label for="mosquito-grid-width" Ширина, мм
               .input.long-roof-rail
-                input#mosquito-grid-long type="number" name="long" value="3500"
+                input#mosquito-grid-long type="number" name="long" value="1000"
                 label for="mosquito-grid-long" Висота, мм
               .input.count-roof-rail
                 input#mosquito-grid-quantity type="number" value="1" name="quantity" min="1"
@@ -95,8 +79,8 @@ ul.breadcrumbs
               .rr-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
-                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
-                  .rrp-price data-product-price="" data-width="" data-price=""  250
+                  .rrp-price data-product-price="" data-width="" data-price=""
+                    = @product.mosquito_item_options.first.price
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
@@ -125,17 +109,19 @@ ul.breadcrumbs
                       .catalog-rr-block-option
                         .catalog-rr-block-option-header Кріплення
                         .catalog-rr-block-option-body
-                          .catalog-rr-radio-element.enable-catalog-element
-                            input id="mg-window-pockets" type="radio" value="pockets" name="catalog-mg-window" checked="checked"
-                            label.icon for="mg-window-pockets"
-                            label.text for="mg-window-pockets" = t("enumerize.mosquito_item.pockets")
-                            .clearfix
+                          - if @product.pockets
+                            .catalog-rr-radio-element.enable-catalog-element
+                              input id="mg-window-pockets" type="radio" value="pockets" name="catalog-mg-window" checked="checked"
+                              label.icon for="mg-window-pockets"
+                              label.text for="mg-window-pockets" = t("enumerize.mosquito_item.pockets")
+                              .clearfix
 
-                          .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                            input id="mg-window-curtain" type="radio" value="curtain" name="catalog-mg-window"
-                            label.icon for="mg-window-curtain"
-                            label.text for="mg-window-curtain" = t("enumerize.mosquito_item.curtain")
-                            .clearfix
+                          - if @product.curtain
+                            .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                              input id="mg-window-curtain" type="radio" value="curtain" name="catalog-mg-window" checked=("checked" unless @product.pockets )
+                              label.icon for="mg-window-curtain"
+                              label.text for="mg-window-curtain" = t("enumerize.mosquito_item.curtain")
+                              .clearfix
 
   .row
     .columns

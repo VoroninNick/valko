@@ -107,4 +107,10 @@ class MosquitoItem < ActiveRecord::Base
       end
     end
   end
+
+
+  def present_colors
+    self.mosquito_item_options.pluck(:title).uniq
+  end
+
 end
