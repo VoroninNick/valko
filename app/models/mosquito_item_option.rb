@@ -22,6 +22,11 @@ class MosquitoItemOption < ActiveRecord::Base
 
   belongs_to :windowsill
 
+
+  extend Enumerize
+
+  enumerize :title, in: [:white, :brown, :dark_brown, :anthracite, :nut, :winchester, :mahoney, :golden_oak]
+
   rails_admin do
     label 'Одиниця каталогу - опції'
     label_plural 'Одиниця каталогу - опція'

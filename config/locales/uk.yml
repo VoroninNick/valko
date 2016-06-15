@@ -104,4 +104,14 @@ uk:
     mosquito_grid_option:
       pockets: Кишеньки
       curtain: Завіси
+    mosquito_item_option:
+      title:
+        white: білий
+        brown: коричневий
+        dark_brown: темно коричневий
+        anthracite: антрацит
+        nut: горіх
+        winchester: вінчестер
+        mahoney: махонь
+        golden_oak: золотий дуб
 

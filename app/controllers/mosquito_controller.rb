@@ -11,11 +11,12 @@ class MosquitoController < ApplicationController
   def window
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-window')
 
+    @mg_items = MosquitoItem.where(mosquito_grid_type: :window)
+
     set_meta_tags title: @catalog_sub_page.seo.try(:seo_title),
                   description: @catalog_sub_page.seo.try(:seo_description),
                   keywords: @catalog_sub_page.seo.try(:keywords)
   end
   def window_item
-    
   end
 end

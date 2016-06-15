@@ -19,11 +19,9 @@
           = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
           sup &nbsp;грн.
       .columns
-        /.brand-title = gag.brand.title
+      /.brand-title = gag.brand.title
       .clearfix
 
     .ow-body-order-form
       /- if title == 'профнастил'
       a href=one_decking_path(item.slug) Переглянути
-      /- else
-        a Переглянути

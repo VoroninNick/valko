@@ -33,35 +33,10 @@ ul.breadcrumbs
 
     .row
       .columns.sandbox
-        - 3.times do
-          .medium-3.columns.end.decking
-            .one-windowsill
-              .ow-image
-                a href=one_mosquito_window_path
-                  .image style="background: url('#{asset_path("ramkova-4.jpg")}')no-repeat center center;"
-
-                /.show-large-image.lightGallery
-                  - if item.rr_details.first && item.rr_details.first.image.exists?
-                    a href=item.rr_details.first.image.url(:large)
-                      = inline_svg "Valko-icon-search.svg"
-
-              .ow-body
-                .ow-body-information
-                  .small-6.columns
-                    .title Віконна ELITE
-                  .small-6.columns
-                    .price
-                      |499
-                      sup &nbsp;грн.
-                  .columns
-                  /.brand-title = gag.brand.title
-                  .clearfix
-
-                .ow-body-order-form
-                  /- if title == 'профнастил'
-                  a href=one_mosquito_window_path Переглянути
-  /- else
-                    a Переглянути
+        - if @mg_items.any?
+          - @mg_items.each do |item|
+            .medium-3.columns.end.decking
+              = render "partials/one_item_mg_card", item: item
 
   .row
     .columns

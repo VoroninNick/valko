@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
   get 'mosquito-grid' => 'mosquito#index'
   get 'mosquito-grid/window' => 'mosquito#window'
-  # get 'mosquito-grid/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
-  get 'mosquito-grid/window/item' => 'mosquito#window_item', as: :one_mosquito_window
+  get 'mosquito-grid/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
+  # get 'mosquito-grid/window/item' => 'mosquito#window_item', as: :one_mosquito_window
 
 
   get 'basket' => 'main#basket'

@@ -1,0 +1,28 @@
+.one-windowsill
+  .ow-image
+    a href=one_mosquito_window_path(item.slug)
+      /.image style="background: url('#{image}')no-repeat center center;"
+      - if item.mosquito_item_options && item.mosquito_item_options.any?
+        .image style="background: url('#{item.mosquito_item_options.first.image.url(:thumb)}')no-repeat center center;"
+
+    .show-large-image.lightGallery
+      - if item.mosquito_item_options.first && item.mosquito_item_options.first.image.exists?
+        a href=item.mosquito_item_options.first.image.url(:large)
+          = inline_svg"Valko-icon-search.svg"
+
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = item.title
+      .small-6.columns
+        .price data-product-price=""
+          /= (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
+          = item.mosquito_item_options.first.price
+          sup &nbsp;грн.
+      .columns
+        /.brand-title = gag.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      /- if title == 'профнастил'
+      a href=one_mosquito_window_path(item.slug) Переглянути
