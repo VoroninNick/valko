@@ -35,6 +35,9 @@ class MosquitoItem < ActiveRecord::Base
   has_and_belongs_to_many :informations, join_table: :information_mosquito_items
   attr_accessible :informations, :information_ids
 
+  # validators
+  validates :min_square, presence: true
+
   rails_admin do
     navigation_label 'Москітні сітки'
 
@@ -56,6 +59,7 @@ class MosquitoItem < ActiveRecord::Base
         label 'Короткий опис:'
       end
       field :min_square do
+        # required true
         label 'Мінімальна ціна за:'
       end
       group :mg_options do
@@ -96,6 +100,18 @@ class MosquitoItem < ActiveRecord::Base
 
   def present_colors
     self.mosquito_item_options.pluck(:title).uniq
+  end
+
+  def calculate_one_item(width = 1, height = 1)
+    min_square = self.min_square
+    price = self.mosquito_item_options.first.price
+    square = width * height
+
+    if square < min_square
+      price * min_square
+    else
+      price * square
+    end
   end
 
 end

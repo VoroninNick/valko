@@ -59,28 +59,31 @@ ul.breadcrumbs
           = @product.short_description
 
         .roof-rail-calculator-wrap
-          .row.roof-rail-calculator
+          .row.default-calculator-wrap
+            .calculator-instruction.mosquito-calc data-width-value="1000" data-height-value="1000" data-price=@product.mosquito_item_options.first.try(:price) data-condition=@product.try(:min_square)
+
             .medium-7.columns
-              input type="hidden" name="type" value="Decking"
-              input type="hidden" name="price" value=""
+              /input type="hidden" name="type" value="Decking"
+              /input type="hidden" name="price" value=""
 
               .input.width-roof-rail
-                input#mosquito-grid-width type="number" name="width" value="1000"
-                label for="mosquito-grid-width" Ширина, мм
+                input#calculator-width type="number" name="width" value="1000"
+                label for="calculator-width" Ширина, мм
               .input.long-roof-rail
-                input#mosquito-grid-long type="number" name="long" value="1000"
-                label for="mosquito-grid-long" Висота, мм
+                input#calculator-height type="number" name="height" value="1000"
+                label for="calculator-height" Висота, мм
               .input.count-roof-rail
-                input#mosquito-grid-quantity type="number" value="1" name="quantity" min="1"
-                label for="mosquito-grid-quantity" Кількість
+                input#calculator-quantity type="number" value="1" name="quantity" min="1"
+                label for="calculator-quantity" Кількість
               .clearfix
 
             .medium-5.columns
               .rr-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
-                  .rrp-price data-product-price="" data-width="" data-price=""
-                    = @product.mosquito_item_options.first.price
+                  .rrp-price
+                    = @product.calculate_one_item
+
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик

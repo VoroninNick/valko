@@ -38,4 +38,8 @@ class MosquitoController < ApplicationController
   def sliding_item
 
   end
+
+  # def calculate_price
+  #
+  # end
 end
