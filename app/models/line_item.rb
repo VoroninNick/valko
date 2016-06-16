@@ -9,11 +9,18 @@
 # t.references :gag
 # t.boolean :nonstandard
 
+# adding for mosquito grid
+# t.belongs_to :mosquito_item
+# t.belongs_to :mosquito_item_option
+# t.string :product_options
+
 class LineItem < ActiveRecord::Base
   belongs_to :windowsill
   belongs_to :gag
   belongs_to :cart
   belongs_to :roof_rail_item
+  belongs_to :mosquito_item
+  belongs_to :mosquito_item_option
 
   attr_accessible *attribute_names
   attr_accessible :windowsill, :cart, :gag
@@ -56,6 +63,8 @@ class LineItem < ActiveRecord::Base
       # o = current_el.first.rr_details.where(title: color)
       o = self.roof_rail_item.rr_details.find_by_title(self.color).price || 0
       return o
+    elsif self.class_name == 'Mosquito'
+      8
     end
 
   end
@@ -82,6 +91,8 @@ class LineItem < ActiveRecord::Base
       current_price * quantity
     elsif self.class_name == 'Decking'
       ((current_price *(long.to_f/1000))*(roof_rail_item.width.to_f/1000))* quantity
+    elsif self.class_name == 'Mosquito'
+      8
     end
   end
 end

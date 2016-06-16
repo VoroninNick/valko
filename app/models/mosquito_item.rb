@@ -35,6 +35,9 @@ class MosquitoItem < ActiveRecord::Base
   has_and_belongs_to_many :informations, join_table: :information_mosquito_items
   attr_accessible :informations, :information_ids
 
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   # validators
   validates :min_square, presence: true
 
@@ -114,4 +117,14 @@ class MosquitoItem < ActiveRecord::Base
     end
   end
 
+
+  private
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
 end

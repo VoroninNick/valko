@@ -27,6 +27,10 @@ class MosquitoItemOption < ActiveRecord::Base
 
   enumerize :title, in: [:white, :brown, :dark_brown, :anthracite, :nut, :winchester, :mahoney, :golden_oak]
 
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+
   rails_admin do
     label 'Одиниця каталогу - опції'
     label_plural 'Одиниця каталогу - опція'
@@ -43,6 +47,16 @@ class MosquitoItemOption < ActiveRecord::Base
         label 'Зображення:'
         help 'розмір зображення 1400x840'
       end
+    end
+  end
+
+  private
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
     end
   end
 end

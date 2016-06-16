@@ -11,7 +11,7 @@ ul.breadcrumbs
 
 .catalog-one-item-page data-action=""
   .row
-    form.ajax-popup-form action=""
+    form.ajax-popup-form action=line_items_path(id: @product.id)
       .medium-4.columns.coi-photo
         - if @product.mosquito_item_options && @product.mosquito_item_options.first.image.exists?
           #roof-rail-gallery
@@ -32,6 +32,7 @@ ul.breadcrumbs
             - values = @product.mosquito_item_options.title.values
             - image_src, image_src_large = ''
             - price = 0
+            - option_product_id = ''
             .catalog-rr-color-system-group
               .row
                 .columns
@@ -44,9 +45,10 @@ ul.breadcrumbs
                         - image_src = el.image.url(:thumb)
                         - image_src_large = el.image.url(:large)
                         - price = el.price
+                        - option_product_id = el.id
 
                     .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                      input id="mg-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @product.mosquito_item_options.first.title)
+                      input id="mg-color-#{color}" type="radio" value=option_product_id name="option_product_id" checked=("checked" if color == @product.mosquito_item_options.first.title)
                       label.icon for="mg-color-#{color}"
                       label.text for="mg-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
                     - image_src, image_src_large = ''
@@ -63,7 +65,7 @@ ul.breadcrumbs
             .calculator-instruction.mosquito-calc data-width-value="1000" data-height-value="1000" data-price=@product.mosquito_item_options.first.try(:price) data-condition=@product.try(:min_square)
 
             .medium-7.columns
-              /input type="hidden" name="type" value="Decking"
+              input type="hidden" name="type" value="Mosquito"
               /input type="hidden" name="price" value=""
 
               .input.width-roof-rail
@@ -114,14 +116,14 @@ ul.breadcrumbs
                         .catalog-rr-block-option-body
                           - if @product.pockets
                             .catalog-rr-radio-element.enable-catalog-element
-                              input id="mg-window-pockets" type="radio" value="pockets" name="catalog-mg-window" checked="checked"
+                              input id="mg-window-pockets" type="radio" value="pockets" name="product-options" checked="checked"
                               label.icon for="mg-window-pockets"
                               label.text for="mg-window-pockets" = t("enumerize.mosquito_item.pockets")
                               .clearfix
 
                           - if @product.curtain
                             .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                              input id="mg-window-curtain" type="radio" value="curtain" name="catalog-mg-window" checked=("checked" unless @product.pockets )
+                              input id="mg-window-curtain" type="radio" value="curtain" name="product-options" checked=("checked" unless @product.pockets )
                               label.icon for="mg-window-curtain"
                               label.text for="mg-window-curtain" = t("enumerize.mosquito_item.curtain")
                               .clearfix

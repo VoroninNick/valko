@@ -71,6 +71,7 @@ class LineItemsController < ApplicationController
     elsif type == 'Gag'
       gag = Gag.find(params[:id])
       existed_item = @cart.line_items.where(:gag_id => params[:id])
+
       if existed_item.count > 0
         @line_item = existed_item.first
         if @line_item && !@line_item.quantity
@@ -86,6 +87,7 @@ class LineItemsController < ApplicationController
       decking = RoofRailItem.find(params[:id])
 
       existed_item = @cart.line_items.where(roof_rail_item_id: params[:id], long: long, quantity: quantity, class_name: type, color: color)
+
       if existed_item.count > 0
         @line_item = existed_item.first
         if @line_item && !@line_item.quantity
@@ -94,6 +96,19 @@ class LineItemsController < ApplicationController
         @line_item.increase_quantity(quantity)
       else
         @line_item = @cart.line_items.build(roof_rail_item_id: params[:id], long: long, quantity: quantity, class_name: type, color: color)
+      end
+
+    elsif type == 'Mosquito'
+      product = MosquitoItem.find(params[:id])
+      existed_item = @cart.line_items.where(mosquito_item_id: product, weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id])
+      if existed_item.count > 0
+        @line_item = existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(quantity)
+      else
+        @line_item = @cart.line_items.build(mosquito_item_id: product, weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id], class_name: type)
       end
     end
 
@@ -141,6 +156,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long, :roof_rail_item_id, :color, :nonstandard)
+      params.require(:line_item).permit(:windowsill_id, :quantity, :type, :with_gag, :with_edge, :weight, :long, :roof_rail_item_id, :color, :nonstandard, :mosquito_item, )
     end
 end
