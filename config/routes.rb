@@ -8,35 +8,36 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
 
-  get 'about' => 'main#about'
+  get 'vyrobnictvo-prodazh-montazh-pidvikonnykiv' => 'main#about', as: :about
 
-  get 'information' => 'main#publications'
-  get 'information/:title' => 'main#publication', as: :one_publication
+  get 'informaciia' => 'main#publications', as: :information
+  get 'informaciia/:title' => 'main#publication', as: :one_publication
 
-  get 'promotions' => 'main#promotions'
-  get 'promotions/:title' => 'main#one_promotions', as: :one_promotions
+  get 'aktcii' => 'main#promotions', as: :promotions
+  get 'aktcii/:title' => 'main#one_promotions', as: :one_promotions
 
-  get 'contacts' => 'main#contacts'
+  get 'kontakty' => 'main#contacts', as: :contacts
 
-  get 'warranty' => 'main#warranty'
+  get 'dostavka-i-oplata' => 'main#warranty', as: :warranty
 
-  get 'windowsill' => 'main#windowsill'
-  get 'windowsill/:title' => 'main#one_windowsill', as: :one_windowsill
+  get 'pidvikonnja-vidlyvy' => 'main#windowsill', as: :windowsill
+  get 'pidvikonnja-vidlyvy/:title' => 'main#one_windowsill', as: :one_windowsill
   get 'gag/:title' => 'main#gag', as: :one_gag
 
-  get 'roof-rail' => 'roof_railing#index'
-  get 'roof-rail/decking' => 'roof_railing#deck_list'
-  get 'roof-rail/decking/:title' => 'roof_railing#decking', as: :one_decking
+  get 'pokrivlja-ogorozhi' => 'roof_railing#index', as: :roof_rail
+  get 'pokrivlja-ogorozhi/profnastyl-metaloprofil' => 'roof_railing#deck_list', as: :roof_rail_decking
+  get 'pokrivlja-ogorozhi/profnastyl-metaloprofil/:title' => 'roof_railing#decking', as: :one_decking
 
-  get 'mosquito-grid' => 'mosquito#index'
-  get 'mosquito-grid/window' => 'mosquito#window'
-  get 'mosquito-grid/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
-  get 'mosquito-grid/door' => 'mosquito#door'
-  get 'mosquito-grid/door/:title' => 'mosquito#door_item', as: :one_mosquito_door
-  get 'mosquito-grid/rolling' => 'mosquito#rolling'
-  get 'mosquito-grid/rolling/:title' => 'mosquito#rolling_item', as: :one_mosquito_rolling
-  get 'mosquito-grid/sliding' => 'mosquito#sliding'
-  get 'mosquito-grid/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
+  get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
+  get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
+  get 'moskitna-sitka/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
+
+  # get 'mosquito-grid/door' => 'mosquito#door'
+  # get 'mosquito-grid/door/:title' => 'mosquito#door_item', as: :one_mosquito_door
+  # get 'mosquito-grid/rolling' => 'mosquito#rolling'
+  # get 'mosquito-grid/rolling/:title' => 'mosquito#rolling_item', as: :one_mosquito_rolling
+  # get 'mosquito-grid/sliding' => 'mosquito#sliding'
+  # get 'mosquito-grid/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
   # get 'mosquito-grid/window/item' => 'mosquito#window_item', as: :one_mosquito_window
 
 
