@@ -20,4 +20,22 @@ class MosquitoController < ApplicationController
   def window_item
     @product = MosquitoItem.find_by_slug(params[:title])
   end
+  def door
+
+  end
+  def door_item
+
+  end
+  def rolling
+
+  end
+  def rolling_item
+
+  end
+  def sliding
+
+  end
+  def sliding_item
+
+  end
 end

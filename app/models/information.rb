@@ -30,6 +30,9 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :rr_descriptions, join_table: :decking_informations
   attr_accessible :rr_descriptions, :rr_description_ids
 
+  has_and_belongs_to_many :mosquito_items, join_table: :information_mosquito_items
+  attr_accessible :mosquito_items, :mosquito_item_ids
+
   has_one :seo, as: :seo_poly
   attr_accessible :seo
   accepts_nested_attributes_for :seo, allow_destroy: true
@@ -78,6 +81,14 @@ class Information < ActiveRecord::Base
           label 'Покрівля:'
         end
       end
+
+      group :mosquito_options do
+        label 'Москітні сітки'
+        field :mosquito_items do
+          label 'Москітні сітки:'
+        end
+      end
+
 
       field :seo do
         label 'SEO'

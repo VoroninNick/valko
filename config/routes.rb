@@ -31,6 +31,12 @@ Rails.application.routes.draw do
   get 'mosquito-grid' => 'mosquito#index'
   get 'mosquito-grid/window' => 'mosquito#window'
   get 'mosquito-grid/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
+  get 'mosquito-grid/door' => 'mosquito#door'
+  get 'mosquito-grid/door/:title' => 'mosquito#door_item', as: :one_mosquito_door
+  get 'mosquito-grid/rolling' => 'mosquito#rolling'
+  get 'mosquito-grid/rolling/:title' => 'mosquito#rolling_item', as: :one_mosquito_rolling
+  get 'mosquito-grid/sliding' => 'mosquito#sliding'
+  get 'mosquito-grid/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
   # get 'mosquito-grid/window/item' => 'mosquito#window_item', as: :one_mosquito_window
 
 

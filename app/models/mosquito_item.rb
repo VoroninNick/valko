@@ -13,6 +13,9 @@
 class MosquitoItem < ActiveRecord::Base
   attr_accessible *attribute_names
 
+  # include HasGallery
+  extend HasGallery
+
   before_save { save_slug(title, slug) }
 
   has_many :mosquito_item_options
@@ -29,6 +32,8 @@ class MosquitoItem < ActiveRecord::Base
   accepts_nested_attributes_for :seo, allow_destroy: true
   attr_accessible :seo_attributes
 
+  has_and_belongs_to_many :informations, join_table: :information_mosquito_items
+  attr_accessible :informations, :information_ids
 
   rails_admin do
     navigation_label 'Москітні сітки'
@@ -37,6 +42,7 @@ class MosquitoItem < ActiveRecord::Base
     label_plural 'Одиниця каталогу'
 
     edit do
+      extend HasGallery
       # field :published do
       #   label 'Чи публікувати?:'
       # end
@@ -80,34 +86,13 @@ class MosquitoItem < ActiveRecord::Base
         label 'Опції одиниці:'
       end
 
-      # group :gallery do
-      #   label 'Галерея'
-      #   active false
-      #   field :photo_galleries do
-      #     label 'Фотогалерея:'
-      #   end
-      #   field :video_published do
-      #     label 'Чи публікувати відео?:'
-      #   end
-      #   field :video_title do
-      #     label 'Назва відео:'
-      #   end
-      #   field :video_url do
-      #     label 'Лінк на відео:'
-      #   end
-      #   field :video_poster, :paperclip do
-      #     label 'Відео постер:'
-      #     help 'розмір зображення 440x300'
-      #   end
-      #
-      # end
+      rails_admin_gallery_fields
 
       field :seo do
         label 'SEO'
       end
     end
   end
-
 
   def present_colors
     self.mosquito_item_options.pluck(:title).uniq
