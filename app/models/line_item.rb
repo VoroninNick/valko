@@ -92,9 +92,8 @@ class LineItem < ActiveRecord::Base
     elsif self.class_name == 'Decking'
       ((current_price *(long.to_f/1000))*(roof_rail_item.width.to_f/1000))* quantity
     elsif self.class_name == 'Mosquito'
-      # real_price = mosquito_item.calculate_one_item(long, weight)
-      # real_price * quantity
-      18
+      real_price = mosquito_item.calculate_one_item(long, weight)
+      real_price * quantity
     end
   end
 end
