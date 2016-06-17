@@ -146,9 +146,46 @@
                     sup
                       |&nbsp;грн./м
                       sup 2
+
           - elsif item.class_name == 'Mosquito'
 
             /Mosquito
+            - el = item.mosquito_item_option
+            .basket-list-one data-gag-edge='0' data-item-price=""
+              .row
+                .small-1.medium-1.columns
+                  .basket-delete-item-wrap
+                    a.delete-item data-href=line_items_path data-line-item-id=item.id
+                      = inline_svg "ic_delete_black_24px.svg"
+                .hide-for-small-only.medium-2.columns
+                  .image style="background: url('#{el.image.url(:thumb)}')no-repeat center center;"
+                .small-6.medium-6.columns
+                  a href=one_mosquito_window_path(item.mosquito_item.slug)
+                    .title #{item.mosquito_item.title} (#{t("enumerize.mosquito_item_option.title.#{el.title}")})
+                  .brand-title #{t("enumerize.mosquito_item.#{item.product_options}")}
+                  p
+                    span Ширина:
+                    = item.long
+                    sup &nbsp;мм
+                  p
+                    span Довжина:
+                    = item.weight
+                    sup &nbsp;мм
+                .small-2.medium-1.columns
+                  .input.basket-count-product
+                    input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
+
+                .small-3.medium-2.columns
+                  .one-total-price
+                    b
+                      = item.total_price(item.long).round()
+                    sup &nbsp;грн.
+                  .one-price
+                    b
+                      = item.mosquito_item.calculate_one_item(1000, 1000)
+                    sup
+                      |&nbsp;грн./м
+                      sup 2
 
 
       .clearfix

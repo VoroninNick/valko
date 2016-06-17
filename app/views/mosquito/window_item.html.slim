@@ -116,14 +116,14 @@ ul.breadcrumbs
                         .catalog-rr-block-option-body
                           - if @product.pockets
                             .catalog-rr-radio-element.enable-catalog-element
-                              input id="mg-window-pockets" type="radio" value="pockets" name="product-options" checked="checked"
+                              input id="mg-window-pockets" type="radio" value="pockets" name="product_options" checked="checked"
                               label.icon for="mg-window-pockets"
                               label.text for="mg-window-pockets" = t("enumerize.mosquito_item.pockets")
                               .clearfix
 
                           - if @product.curtain
                             .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                              input id="mg-window-curtain" type="radio" value="curtain" name="product-options" checked=("checked" unless @product.pockets )
+                              input id="mg-window-curtain" type="radio" value="curtain" name="product_options" checked=("checked" unless @product.pockets )
                               label.icon for="mg-window-curtain"
                               label.text for="mg-window-curtain" = t("enumerize.mosquito_item.curtain")
                               .clearfix

@@ -105,10 +105,10 @@ class MosquitoItem < ActiveRecord::Base
     self.mosquito_item_options.pluck(:title).uniq
   end
 
-  def calculate_one_item(width = 1, height = 1)
+  def calculate_one_item(width = 1000, height = 1000)
     min_square = self.min_square
     price = self.mosquito_item_options.first.price
-    square = width * height
+    square = (width/ 1000) * (height/1000)
 
     if square < min_square
       price * min_square

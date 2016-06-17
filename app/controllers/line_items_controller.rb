@@ -99,8 +99,8 @@ class LineItemsController < ApplicationController
       end
 
     elsif type == 'Mosquito'
-      product = MosquitoItem.find(params[:id])
-      existed_item = @cart.line_items.where(mosquito_item_id: product, weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id])
+      # product = MosquitoItem.find(params[:id])
+      existed_item = @cart.line_items.where(mosquito_item_id: params[:id], weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id], product_options: params[:product_options])
       if existed_item.count > 0
         @line_item = existed_item.first
         if @line_item && !@line_item.quantity
@@ -108,7 +108,7 @@ class LineItemsController < ApplicationController
         end
         @line_item.increase_quantity(quantity)
       else
-        @line_item = @cart.line_items.build(mosquito_item_id: product, weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id], class_name: type)
+        @line_item = @cart.line_items.build(mosquito_item_id: params[:id], weight: params[:height], long: params[:width], quantity: params[:quantity], mosquito_item_option_id: params[:option_product_id], product_options: params[:product_options], class_name: type)
       end
     end
 
