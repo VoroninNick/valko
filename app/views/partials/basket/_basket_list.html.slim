@@ -151,7 +151,7 @@
 
             /Mosquito
             - el = item.mosquito_item_option
-            .basket-list-one data-gag-edge='0' data-item-price=""
+            .basket-list-one data-gag-edge='0' data-item-price=item.mosquito_item.calculate_one_item(item.long, item.weight)
               .row
                 .small-1.medium-1.columns
                   .basket-delete-item-wrap
