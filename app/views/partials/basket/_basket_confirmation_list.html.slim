@@ -46,6 +46,21 @@ h5 Перелік Товарів:
               = item.total_price(item.long).round()
               sup грн.
 
+      - elsif item.class_name == 'Mosquito'
+        / MOSQUITO
+        - el = item.mosquito_item_option
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{el.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=one_mosquito_window_path(item.mosquito_item.slug) #{item.mosquito_item.title} (#{t("enumerize.mosquito_item_option.title.#{el.title}")})
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
 
   .bc-basket-list-footer
     .bc-bl-total-price
