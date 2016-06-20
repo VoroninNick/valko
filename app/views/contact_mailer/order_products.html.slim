@@ -22,6 +22,11 @@ ol
     - elsif item.class_name == 'Decking'
       li
         p #{item.roof_rail_item.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{item.roof_rail_item.producer}")}, #{t("enumerize.thickness.#{item.roof_rail_item.thickness}")}, #{t("enumerize.coating.#{item.roof_rail_item.coating}")}, #{t("enumerize.protective_lamina.#{item.roof_rail_item.protective_lamina}")})   #{item.roof_rail_item.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
+    /Mosquito grid
+    - elsif item.class_name == 'Mosquito'
+      - el = item.mosquito_item_option
+      li
+        p #{item.mosquito_item.title} (#{t("enumerize.mosquito_item_option.title.#{el.title}")}), (#{item.long} X #{item.weight} #{item.quantity} шт. з кріпленням: #{t("enumerize.mosquito_item.#{item.product_options}")})   вартістю #{item.total_price(item.long).round()} грн.
 
 h4 Контактна інформація
 p

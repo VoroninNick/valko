@@ -2,17 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-DefaultProductCalculator = () ->
+DefaultProductCalculator = (price) ->
   $this = $(this)
   $wrap = $this.closest('.default-calculator-wrap')
-  $total_price = $wrap.find('.rrp-price')
+  $total_price = $('.rrp-price')
   $calculator_instrunction = $('.calculator-instruction')
 
   width_prod = parseFloat($('#calculator-width').val())/1000
   console.log "product width: ", width_prod
   height_prod = parseFloat($('#calculator-height').val())/1000
   console.log "product height: ", height_prod
-  price_prod = parseFloat($calculator_instrunction.attr('data-price'))
+  price_prod = price || parseFloat($calculator_instrunction.attr('data-price'))
   console.log "product price: ", price_prod
   quantity_prod = parseInt($('#calculator-quantity').val())
   console.log "quantity width: ", quantity_prod
@@ -23,12 +23,14 @@ DefaultProductCalculator = () ->
     condition_prod = parseFloat($calculator_instrunction.attr('data-condition'))
     square_prod = width_prod * height_prod
     if square_prod < condition_prod
+      console.log "testtesttest"
       total_price = (price_prod * quantity_prod) * condition_prod
     else
+      console.log "testtesttest222222"
       total_price = (price_prod * quantity_prod) * square_prod
   else
     alert 'product dosnt mosquito grid'
-
+  console.log 'test total price: ', total_price
   $total_price.text(Math.round(total_price))
 
 
@@ -68,5 +70,5 @@ $(document).ready ->
     console.log 'large image :', image_large_link
 
     $image.parent().attr 'href', image_large_link
-
-    DefaultProductCalculator.call(this)
+    $('.calculator-instruction.mosquito-calc').attr('data-price', price)
+    DefaultProductCalculator.call(this, price)
