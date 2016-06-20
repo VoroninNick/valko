@@ -6,15 +6,15 @@ DefaultProductCalculator = () ->
   $this = $(this)
   $wrap = $this.closest('.default-calculator-wrap')
   $total_price = $wrap.find('.rrp-price')
-  $calculator_instrunction = $wrap.find('.calculator-instruction')
+  $calculator_instrunction = $('.calculator-instruction')
 
-  width_prod = parseFloat($wrap.find('#calculator-width').val())/1000
+  width_prod = parseFloat($('#calculator-width').val())/1000
   console.log "product width: ", width_prod
-  height_prod = parseFloat($wrap.find('#calculator-height').val())/1000
+  height_prod = parseFloat($('#calculator-height').val())/1000
   console.log "product height: ", height_prod
   price_prod = parseFloat($calculator_instrunction.attr('data-price'))
   console.log "product price: ", price_prod
-  quantity_prod = parseInt($wrap.find('#calculator-quantity').val())
+  quantity_prod = parseInt($('#calculator-quantity').val())
   console.log "quantity width: ", quantity_prod
 
   total_price = 0
@@ -47,4 +47,26 @@ $(document).ready ->
 #===================================================================
   $('.default-calculator-wrap input[type="number"]').change ->
     console.log 'Calculator woking!'
+    DefaultProductCalculator.call(this)
+
+#===================================================================
+#  mosquito grid change color and photo with price
+#===================================================================
+  $('body').on "change",".catalog-rr-one-color.is-mosquito-grid.enable-catalog-element input[type='radio']", ->
+    $this = $(@)
+    $wrap = $this.closest('.catalog-one-item-page')
+    $image = $wrap.find('.coi-photo .image')
+
+
+    image_link = $(@).closest('.catalog-rr-one-color').attr "data-image"
+    image_large_link = $(@).closest('.catalog-rr-one-color').attr "data-img-large"
+    price = $(@).closest('.catalog-rr-one-color').attr "data-price"
+
+    console.log 'this price!!!!!!!!!!!!!!!!!!!!!!!', price
+    $wrap.find('input[name="price"]').val(price)
+    $image.css 'background-image', 'url(' + image_link + ')'
+    console.log 'large image :', image_large_link
+
+    $image.parent().attr 'href', image_large_link
+
     DefaultProductCalculator.call(this)
