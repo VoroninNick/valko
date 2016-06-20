@@ -32,13 +32,12 @@ Rails.application.routes.draw do
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
   get 'moskitna-sitka/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
 
-  get 'mosquito-grid/door' => 'mosquito#door', as: :mosquito_grid_doors
-  # get 'mosquito-grid/door/:title' => 'mosquito#door_item', as: :one_mosquito_door
-  get 'mosquito-grid/rolling' => 'mosquito#rolling', as: :mosquito_grid_rolling
-  # get 'mosquito-grid/rolling/:title' => 'mosquito#rolling_item', as: :one_mosquito_rolling
-  get 'mosquito-grid/sliding' => 'mosquito#sliding', as: :mosquito_grid_sliding
-  # get 'mosquito-grid/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
-  # get 'mosquito-grid/window/item' => 'mosquito#window_item', as: :one_mosquito_window
+  get 'moskitna-sitka/door' => 'mosquito#door', as: :mosquito_grid_doors
+  get 'moskitna-sitka/door/:title' => 'mosquito#door_item', as: :one_mosquito_door
+  get 'moskitna-sitka/rolling' => 'mosquito#rolling', as: :mosquito_grid_rolling
+  get 'moskitna-sitka/rolling/:title' => 'mosquito#rolling_item', as: :one_mosquito_rolling
+  get 'moskitna-sitka/sliding' => 'mosquito#sliding', as: :mosquito_grid_sliding
+  get 'moskitna-sitka/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
 
 
   get 'basket' => 'main#basket'

@@ -1,13 +1,26 @@
 /ширина помножити на висоту на кількість
 /мінімальна ціна за 0,7 -
   різні кольори мають різну ціну
+
+- if @product.mosquito_grid_type == 'window'
+  - breadcrumbs_item = link_to "Віконні москітні сітки", mosquito_grid_window_path
+- elsif @product.mosquito_grid_type == 'door'
+  - breadcrumbs_item = link_to "Дверні москітні сітки", mosquito_grid_doors_path
+- elsif @product.mosquito_grid_type == 'rolling'
+  - breadcrumbs_item = link_to "Ролонні москітні сітки", mosquito_grid_rolling_path
+- elsif @product.mosquito_grid_type == 'sliding'
+  - breadcrumbs_item = link_to "Розсувні москітні сітки", mosquito_grid_sliding_path
+
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
   li
     a href=mosquito_grid_path Москітні сітки
   li
-    span Віконні москітні сітки
+    = breadcrumbs_item
+  li
+    span
+      = @product.title
 
 .catalog-one-item-page data-action=""
   .row
@@ -17,10 +30,6 @@ ul.breadcrumbs
           #roof-rail-gallery
             a href=@product.mosquito_item_options.first.image.url(:large)
               .image style="background: url('#{@product.mosquito_item_options.first.image.url(:thumb)}')no-repeat center center;"
-        /- if 1 == 1
-          #roof-rail-gallery
-            a href=""
-              .image style="background: url('#{asset_path("ramkova-4.jpg")}')no-repeat center center;"
 
         - if 1 == 1
           .catalog-rr-color-system.catalog-mg-color-system
@@ -38,7 +47,6 @@ ul.breadcrumbs
                 .columns
                   - values.each_with_index do |color, i|
                     -condition = color.in?(@product.present_colors)
-                    /-condition = 1
 
                     - @product.mosquito_item_options.each do |el|
                       - if el.title == color
@@ -66,7 +74,6 @@ ul.breadcrumbs
 
             .medium-7.columns
               input type="hidden" name="type" value="Mosquito"
-              /input type="hidden" name="price" value=""
 
               .input.width-roof-rail
                 input#calculator-width type="number" name="width" value="1000"
@@ -141,22 +148,11 @@ ul.breadcrumbs
           a href="#rrc-reviews" Відгуки
       .tabs-content
         #rrc-specifications.content.active.article
-          /- if @decking.rr_description && @decking.rr_description.drawing.exists?
-            .row
-              .columns
-                .title Креслення
-            .row
-              .columns
-                = image_tag @decking.rr_description.drawing.url(:large)
-          /.row
-            .columns
-              .title Профнастил
           .row
             .columns
               = raw @product.description
 
         #rrc-useful-publications.content
-          /Корисна інформація
           - if @product.informations && @product.informations.any?
             .row
               .columns
@@ -174,17 +170,6 @@ ul.breadcrumbs
         #rrc-gallery.content
           /Фото та відео
           .row.item-galleries.lightGallery
-            /-if @decking.rr_description && @decking.rr_description.video_url.present?
-              a.gallery-item.video_gallery href=@decking.rr_description.video_url data-poster=@decking.rr_description.video_poster.url(:large)
-                .image style="background: url('#{@decking.rr_description.video_poster.url(:large)}')no-repeat center center;"
-                .vg-play-button
-                  = image_tag "valko-play-button.png"
-
-            /- if @decking.rr_description && @decking.rr_description.photo_galleries && @decking.rr_description.photo_galleries.any?
-              - @decking.rr_description.photo_galleries.each do |photo|
-                a.gallery-item href=photo.image.url(:large) class=("end" if @decking.rr_description.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
-                  = image_tag photo.image.url(:thumb), class: 'hide'
-                  .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
 
         #rrc-reviews.content
           = disqus_init

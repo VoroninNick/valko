@@ -1,6 +1,16 @@
 .one-windowsill
   .ow-image
-    a href=one_mosquito_window_path(item.slug)
+    - if item.mosquito_grid_type == 'window'
+      - link_href = one_mosquito_window_path(item.slug)
+    - elsif item.mosquito_grid_type == 'door'
+      - link_href = one_mosquito_door_path(item.slug)
+    - elsif item.mosquito_grid_type == 'rolling'
+      - link_href = one_mosquito_rolling_path(item.slug)
+    - elsif item.mosquito_grid_type == 'sliding'
+      - link_href = one_mosquito_sliding_path(item.slug)
+
+
+    a href=link_href
       /.image style="background: url('#{image}')no-repeat center center;"
       - if item.mosquito_item_options && item.mosquito_item_options.any?
         .image style="background: url('#{item.mosquito_item_options.first.image.url(:thumb)}')no-repeat center center;"
@@ -23,4 +33,4 @@
       .clearfix
 
     .ow-body-order-form
-      a href=one_mosquito_window_path(item.slug) Переглянути
+      a href=link_href Переглянути

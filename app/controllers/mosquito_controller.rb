@@ -10,6 +10,8 @@ class MosquitoController < ApplicationController
                     keywords: @catalog_page.seo.try(:keywords)
     end
   end
+
+
   def window
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-window')
 
@@ -22,9 +24,14 @@ class MosquitoController < ApplicationController
                     keywords: @catalog_sub_page.seo.try(:keywords)
     end
   end
+
   def window_item
     @product = MosquitoItem.find_by_slug(params[:title])
+    @page_title = "Віконні москітні сітки"
+    render "product"
   end
+
+
   def door
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-doors')
 
@@ -37,9 +44,14 @@ class MosquitoController < ApplicationController
                     keywords: @catalog_sub_page.seo.try(:keywords)
     end
   end
-  def door_item
 
+  def door_item
+    @product = MosquitoItem.find_by_slug(params[:title])
+    @page_title = "Дверні москітні сітки"
+    render "product"
   end
+
+
   def rolling
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-rolling')
 
@@ -52,9 +64,12 @@ class MosquitoController < ApplicationController
                     keywords: @catalog_sub_page.seo.try(:keywords)
     end
   end
+
   def rolling_item
 
   end
+
+
   def sliding
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-sliding')
 
