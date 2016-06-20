@@ -4,13 +4,14 @@ ul.breadcrumbs
   li
     = link_to 'Москітні сітки', mosquito_grid_path
   li
-    span Віконні москітні сітки
+    span
+      = @catalog_sub_page.try(:title)
 
 .roof-rail-catalog-list-page
   .roof-rail-catalog-list-header
     .row
       .columns
-        - if @catalog_sub_page.catalog_banners && @catalog_sub_page.catalog_banners.any?
+        - if @catalog_sub_page && @catalog_sub_page.catalog_banners && @catalog_sub_page.catalog_banners.any?
           ul#roof-rail-banner
             - @catalog_sub_page.catalog_banners.with_public.each do |slide|
               li
@@ -18,9 +19,10 @@ ul.breadcrumbs
 
         .wcl-body
           .columns
-            .title = @catalog_sub_page.title
+            .title = @catalog_sub_page.try(:header_title)
           .clearfix
-          = raw @catalog_sub_page.header_description
+          - if @catalog_sub_page
+            = raw @catalog_sub_page.header_description
           .clearfix
 
   .roof-rail-catalog-list-body
@@ -29,11 +31,11 @@ ul.breadcrumbs
         .columns
           .title
             = inline_svg "Valko-icon-moskitny-sitku.svg"
-            |Віконні москітні сітки
+            = @catalog_sub_page.try(:title)
 
     .row
       .columns.sandbox
-        - if @mg_products.any?
+        - if @mg_products && @mg_products.any?
           - @mg_products.each do |item|
             .medium-3.columns.end.decking
               = render "partials/one_item_mg_card", item: item
@@ -44,5 +46,6 @@ ul.breadcrumbs
         .columns
           .title-h2 = @catalog_sub_page.try(:subtitle)
         .clearfix
-        = raw @catalog_sub_page.footer_description
+        - if @catalog_sub_page
+          = raw @catalog_sub_page.footer_description
         .clearfix

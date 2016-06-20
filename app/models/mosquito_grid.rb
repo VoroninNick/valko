@@ -4,6 +4,7 @@
 # t.string :slug
 # t.text :header_description
 # t.text :footer_description
+# t.string :header_title
 class MosquitoGrid < ActiveRecord::Base
   attr_accessible *attribute_names
 
@@ -19,6 +20,8 @@ class MosquitoGrid < ActiveRecord::Base
 
   before_save { save_slug(title, slug) }
 
+  validates :title, presence: true
+
   rails_admin do
     navigation_label 'Москітні сітки'
 
@@ -31,7 +34,10 @@ class MosquitoGrid < ActiveRecord::Base
         help "Назву сторінки вказує програміст!!!! Через прив'язку по назві."
       end
       field :title do
-        label 'Назва:'
+        label 'Назва breadcrumbs:'
+      end
+      field :header_title do
+        label 'Верхній блок назва :'
       end
       field :header_description, :ck_editor do
         label 'Верхній опис:'
