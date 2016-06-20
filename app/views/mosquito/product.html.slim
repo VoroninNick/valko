@@ -170,6 +170,17 @@ ul.breadcrumbs
         #rrc-gallery.content
           /Фото та відео
           .row.item-galleries.lightGallery
+            -if @product.video_url.present?
+              a.gallery-item.video_gallery href=@product.video_url data-poster=@product.video_poster.url(:large)
+                .image style="background: url('#{@product.video_poster.url(:large)}')no-repeat center center;"
+                .vg-play-button
+                  = image_tag "valko-play-button.png"
+
+            - if @product.photo_galleries && @product.photo_galleries.any?
+              - @product.photo_galleries.each do |photo|
+                a.gallery-item href=photo.image.url(:large) class=("end" if @product.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+                  = image_tag photo.image.url(:thumb), class: 'hide'
+                  .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
 
         #rrc-reviews.content
           = disqus_init
