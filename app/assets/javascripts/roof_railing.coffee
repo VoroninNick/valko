@@ -166,7 +166,7 @@ $(document).ready ->
 #===================================================================
 #  roof rail change color and photo with price
 #===================================================================
-  $('body').on "change",".catalog-rr-one-color.enable-catalog-element input[type='radio']", ->
+  $('body').on "change",".catalog-rr-one-color.is-roof-rails.enable-catalog-element input[type='radio']", ->
     $this = $(@)
     $wrap = $this.closest('.catalog-one-item-page')
     $image = $wrap.find('.coi-photo .image')

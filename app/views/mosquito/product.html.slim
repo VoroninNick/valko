@@ -55,7 +55,7 @@ ul.breadcrumbs
                         - price = el.price
                         - option_product_id = el.id
 
-                    .catalog-rr-one-color class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                    .catalog-rr-one-color.is-mosquito-grid class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
                       input id="mg-color-#{color}" type="radio" value=option_product_id name="option_product_id" checked=("checked" if color == @product.mosquito_item_options.first.title)
                       label.icon for="mg-color-#{color}"
                       label.text for="mg-color-#{color}" =t("enumerize.mosquito_item_option.title.#{color}")
