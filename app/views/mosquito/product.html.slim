@@ -137,21 +137,21 @@ ul.breadcrumbs
 
                           - if @product.holders
                             .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                              input id="mg-window-holders" type="radio" value="holders" name="product_options" checked=("checked" unless @product.holders )
+                              input id="mg-window-holders" type="radio" value="holders" name="product_options" checked=("checked" unless @product.pockets && @product.holders )
                               label.icon for="mg-window-holders"
                               label.text for="mg-window-holders" = t("enumerize.mosquito_item.holders")
                               .clearfix
 
                           - if @product.screws
                             .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                              input id="mg-window-screws" type="radio" value="screws" name="product_options" checked=("checked" unless @product.screws )
+                              input id="mg-window-screws" type="radio" value="screws" name="product_options" checked=("checked" unless @product.pockets && @product.holders && @product.screws )
                               label.icon for="mg-window-screws"
                               label.text for="mg-window-screws" = t("enumerize.mosquito_item.screws")
                               .clearfix
 
                           - if @product.guides
                             .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                              input id="mg-window-guides" type="radio" value="guides" name="product_options" checked=("checked" unless @product.guides )
+                              input id="mg-window-guides" type="radio" value="guides" name="product_options" checked=("checked" unless @product.pockets && @product.holders && @product.screws && @product.guides )
                               label.icon for="mg-window-guides"
                               label.text for="mg-window-guides" = t("enumerize.mosquito_item.guides")
                               .clearfix
