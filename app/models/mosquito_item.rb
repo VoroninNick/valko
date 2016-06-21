@@ -16,7 +16,14 @@ class MosquitoItem < ActiveRecord::Base
   # include HasGallery
   extend HasGallery
 
-  before_save { save_slug(title, slug) }
+  # before_save { save_slug(title, slug) }
+  def to_slug
+    "#{id}-#{title.parameterize}"
+  end
+  def save_slug
+    self.slug = to_slug
+  end
+  before_save :save_slug
 
   has_many :mosquito_item_options
   attr_accessible :mosquito_item_options
