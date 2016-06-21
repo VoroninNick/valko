@@ -10,6 +10,7 @@
 # t.text :description
 # t.boolean :published
 # t.float :min_square
+# t.integer :position
 class MosquitoItem < ActiveRecord::Base
   attr_accessible *attribute_names
 
@@ -64,6 +65,10 @@ class MosquitoItem < ActiveRecord::Base
       end
       field :title do
         label 'Назва:'
+      end
+      field :position do
+        label 'Позиція:'
+        help 'індекс для сортування починати з: віконні (101), дверні (201), ролетна (301), розсувна (401)'
       end
       field :short_description do
         label 'Короткий опис:'

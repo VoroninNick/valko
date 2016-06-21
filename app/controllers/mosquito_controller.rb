@@ -15,7 +15,7 @@ class MosquitoController < ApplicationController
   def window
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-window')
 
-    @mg_products = MosquitoItem.where(mosquito_grid_type: :window)
+    @mg_products = MosquitoItem.where(mosquito_grid_type: :window).order(position: :asc)
 
     render "sub_page"
     if @catalog_sub_page
@@ -35,7 +35,7 @@ class MosquitoController < ApplicationController
   def door
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-doors')
 
-    @mg_products = MosquitoItem.where(mosquito_grid_type: :door)
+    @mg_products = MosquitoItem.where(mosquito_grid_type: :door).order(position: :asc)
 
     render "sub_page"
     if @catalog_sub_page
@@ -55,7 +55,7 @@ class MosquitoController < ApplicationController
   def rolling
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-rolling')
 
-    @mg_products = MosquitoItem.where(mosquito_grid_type: :rolling)
+    @mg_products = MosquitoItem.where(mosquito_grid_type: :rolling).order(position: :asc)
 
     render "sub_page"
     if @catalog_sub_page
@@ -73,7 +73,7 @@ class MosquitoController < ApplicationController
   def sliding
     @catalog_sub_page = MosquitoGrid.find_by_page_name('mosquito-grid-sliding')
 
-    @mg_products = MosquitoItem.where(mosquito_grid_type: :sliding)
+    @mg_products = MosquitoItem.where(mosquito_grid_type: :sliding).order(position: :asc)
 
     render "sub_page"
     if @catalog_sub_page
