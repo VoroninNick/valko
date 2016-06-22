@@ -23,8 +23,9 @@ class MosquitoItem < ActiveRecord::Base
   end
   def save_slug
     self.slug = to_slug
+    self.save
   end
-  before_save :save_slug
+  after_create :save_slug
 
   has_many :mosquito_item_options
   attr_accessible :mosquito_item_options
