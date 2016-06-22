@@ -66,7 +66,9 @@ class MosquitoController < ApplicationController
   end
 
   def rolling_item
-
+    @product = MosquitoItem.find_by_slug(params[:title])
+    # @page_title = "Дверні москітні сітки"
+    render "product"
   end
 
 
@@ -83,7 +85,9 @@ class MosquitoController < ApplicationController
     end
   end
   def sliding_item
-
+    @product = MosquitoItem.find_by_slug(params[:title])
+    # @page_title = "Дверні москітні сітки"
+    render "product"
   end
 
   # def calculate_price
