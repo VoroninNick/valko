@@ -91,7 +91,7 @@ ul.breadcrumbs
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
                   .rrp-price
-                    = @product.calculate_one_item(1000, 1000, @product.mosquito_item_options.first.id)
+                    = @product.calculate_one_item(1000, 1000, @product.mosquito_item_options.first.id).round
 
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
