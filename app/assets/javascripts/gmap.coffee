@@ -6,6 +6,8 @@ initialize = ->
 
   address = $map.attr 'data-address'
   city = $map.attr 'data-city'
+  tel1 = $map.attr 'data-tel1'
+  tel2 = $map.attr 'data-tel2'
 
   myLatlng = new (google.maps.LatLng)(lat, lng)
 
@@ -37,7 +39,7 @@ initialize = ->
   map.mapTypes.set "map_style", styledMap
   map.setMapTypeId "map_style"
 
-  contentString = "<div id=\"content\">" + "<div id=\"siteNotice\">" + "</div><div class=\"info-window\"><div class=\"address\"><p>"+address+"</p></div></div>" + "</div>"
+  contentString = "<div id=\"content\">" + "<div id=\"siteNotice\">" + "</div><div class=\"info-window\"><div class=\"address\"><p>"+address+"</p><hr><p style='margin-bottom: 0;'>тел.:"+tel1+"</p><p style='margin-bottom: 0;'>моб.:"+tel2+"</p></div></div>" + "</div>"
   infowindow = new (google.maps.InfoWindow)(
     content: contentString
 

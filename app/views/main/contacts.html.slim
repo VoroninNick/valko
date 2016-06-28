@@ -8,9 +8,9 @@ ul.breadcrumbs
 .contacts-page
   .row
     .columns
-      #map_canvas data-lat="49.866549" data-lng="24.064877"
+      #map_canvas data-lat="49.866549" data-lng="24.064877" data-address="вул. Ковельська, 109 б" data-tel1=static_data.tel1 data-tel2=static_data.tel2
   .row
-    .medium-9.columns
+    .columns
       .contacts-block
         .contacts-block-head.text-center
           .title Контакти
@@ -19,12 +19,21 @@ ul.breadcrumbs
             .row
               .columns.text-center
                 b = static_data.city
-          .medium-6.columns
+          /.row
+            .large-10.medium-centered.columns
+          .medium-4.columns
             - if static_data && static_data.street.present?
               p.medium-up-right
                 = inline_svg "Valko-icon-house.svg"
                 = static_data.street
-          .medium-6.columns
+          .medium-4.large-3.large-offset-1.columns
+            p
+              = inline_svg "ic_access_time_black_48px.svg"
+              |Пн-пт 9:00 - 18:00
+            p
+              |Субота 9:00 - 15:00
+
+          .medium-4.columns
             - if static_data && static_data.tel1.present?
               p
                 = inline_svg "ic_phone_24px.svg"
@@ -34,7 +43,7 @@ ul.breadcrumbs
               p моб.: #{static_data.tel2}
 
           .clearfix
-    .medium-3.columns
+    /.medium-3.columns
       .offers-and-comments
         = inline_svg"Valko-icon-pen.svg"
         p.text-center
