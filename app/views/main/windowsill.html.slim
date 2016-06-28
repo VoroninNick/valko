@@ -77,7 +77,7 @@ ul.breadcrumbs
           .catalog-filters-wrap
             #selected-filters
               = render partial: "main/windowsill_selected_filters"
-
+            /= session["main#windowsill"]
             .control-filters
               .control-filters-mobile-button.show-for-small-only
                 = inline_svg "ic_filter_list_black_36px.svg"

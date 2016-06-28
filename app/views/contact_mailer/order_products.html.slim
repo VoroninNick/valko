@@ -26,7 +26,16 @@ ol
     - elsif item.class_name == 'Mosquito'
       - el = item.mosquito_item_option
       li
-        p #{item.mosquito_item.title} (#{t("enumerize.mosquito_item_option.title.#{el.title}")}), (#{item.long} X #{item.weight} #{item.quantity} шт. з кріпленням: #{t("enumerize.mosquito_item.#{item.product_options}")})   вартістю #{item.total_price(item.long).round()} грн.
+        - if item.mosquito_item.mosquito_grid_type == 'window'
+          - label = "Москітна сітка віконна"
+        - elsif item.mosquito_item.mosquito_grid_type == 'door'
+          - label = "Москітна сітка дверна"
+        - elsif item.mosquito_item.mosquito_grid_type == 'rolling'
+          - label = "Москітна сітка ролетна"
+        - elsif item.mosquito_item.mosquito_grid_type == 'sliding'
+          - label = "Москітна сітка розсувна"
+
+        p #{label} #{item.mosquito_item.title} (#{t("enumerize.mosquito_item_option.title.#{el.title}")}), (#{item.long} X #{item.weight} #{item.quantity} шт. з кріпленням: #{t("enumerize.mosquito_item.#{item.product_options}")})   вартістю #{item.total_price(item.long).round()} грн.
 
 h4 Контактна інформація
 p

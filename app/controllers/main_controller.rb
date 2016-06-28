@@ -111,7 +111,7 @@ class MainController < ApplicationController
     set_seo('pidvikonnia')
 
     # session["main#windowsill"]
-    type = params[:filterrific].try{|x| x[:with_type]}
+    type = params[:filterrific].try{|x| x[:with_type]} || "internal"
     filterrific_session = session["main#windowsill"]
     filterrific_params = params[:filterrific] || {}
 
