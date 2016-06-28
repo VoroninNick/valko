@@ -15,6 +15,7 @@
             |Підвіконня
             br
             |відливи
+
       li.material-component.ripple
         a
           = inline_svg "Valko-icon-rolety.svg"
@@ -22,20 +23,23 @@
             |Ролети
             br
             |жалюзі
-      li.material-component.ripple
+
+      li.material-component.ripple class=cp(mosquito_grid_path)
         a href=mosquito_grid_path
           = inline_svg "Valko-icon-moskitny-sitku.svg"
           span
             |Москітні
             br
             |сітки
-      li.material-component.ripple
+
+      li.material-component.ripple class=cp(roof_rail_path)
         a href=roof_rail_path
           = inline_svg "Valko-icon-pokrivlya.svg"
           span
             |Покрівля
             br
             |огорожі
+
       li.material-component.ripple
         a
           = inline_svg "ic_border_all_24px.svg"
@@ -75,11 +79,13 @@
       a
         =inline_svg "Valko-icon-rolety.svg"
         |Ролети жалюзі
-    li
-      a
+
+    li class=cp(mosquito_grid_path)
+      a href=mosquito_grid_path
         =inline_svg "Valko-icon-moskitny-sitku.svg"
         |Москітні сітки
-    li
+
+    li class=cp(roof_rail_path)
       a href=roof_rail_path
         =inline_svg "Valko-icon-pokrivlya.svg"
         |Покрівля огорожі
