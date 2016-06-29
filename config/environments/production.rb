@@ -77,5 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.assets.compile = false
+  # config.serve_static_assets = true
+  # config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+  # config.assets.compile = false # we don't want compilation fallbacks
 end
