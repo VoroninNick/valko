@@ -154,14 +154,17 @@
                 .small-6.columns
                   = inline_svg "dolar.svg"
                   .ext-rate-body
-                    b #{@usd_private[0]["buy"].to_f.round(2)}/#{@usd_private[0]["sale"].to_f.round(2)}
+                    - if @usd_private
+                      b #{@usd_private[0]["buy"].to_f.round(2)}/#{@usd_private[0]["sale"].to_f.round(2)}
+                    - else
+                      b відсутній
                     p
                       |Курс долара
                       br
                       |ПриватБанк
 
                 .small-6.columns
-                  - if @usd_nbu[0].try{|x| ["rate"]}
+                  - if @usd_nbu && @usd_nbu[0].try{|x| ["rate"]}
                     b = @usd_nbu[0]["rate"].to_f.round(2)
                   - else
                     b відсутній
@@ -179,14 +182,17 @@
                 .small-6.columns
                   = inline_svg "euro.svg"
                   .ext-rate-body
-                    b #{@eur_private[0]["buy"].to_f.round(2)}/#{@eur_private[0]["sale"].to_f.round(2)}
+                    - if @eur_private
+                      b #{@eur_private[0]["buy"].to_f.round(2)}/#{@eur_private[0]["sale"].to_f.round(2)}
+                    - else
+                        b відсутній
                     p
                       |Курс євро
                       br
                       |ПриватБанк
 
                 .small-6.columns
-                  - if @eur_nbu[0].try{|x| ["rate"]}
+                  - if @eur_nbu && @eur_nbu[0].try{|x| ["rate"]}
                     b = @eur_nbu[0]["rate"].to_f.round(2)
                   - else
                     b відсутній
