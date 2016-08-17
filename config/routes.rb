@@ -28,6 +28,15 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/profnastyl-metaloprofil' => 'roof_railing#deck_list', as: :roof_rail_decking
   get 'pokrivlja-ogorozhi/profnastyl-metaloprofil/:title' => 'roof_railing#decking', as: :one_decking
 
+  # 17.08.16
+  get 'pokrivlja-ogorozhi/metalocherepitcja' => 'roof_railing#metal_tile_list', as: :metal_tile
+  get 'pokrivlja-ogorozhi/metalocherepitcja/:title' => 'roof_railing#metal_tile', as: :metal_tile_item
+
+  get 'pokrivlja-ogorozhi/lystovyj-metal' => 'roof_railing#sheet_metal_list', as: :sheet_metal
+  # get 'pokrivlja-ogorozhi/lystovyj-metal/:title' => 'roof_railing#sheet_metal', as: :sheet_metal_item
+  get 'pokrivlja-ogorozhi/lystovyj-metal/item' => 'roof_railing#sheet_metal', as: :sheet_metal_item
+
+
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
   get 'moskitna-sitka/window/:title' => 'mosquito#window_item', as: :one_mosquito_window

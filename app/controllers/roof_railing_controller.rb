@@ -42,12 +42,25 @@ class RoofRailingController < ApplicationController
                   description: @decking_list.seo.try(:seo_description),
                   keywords: @decking_list.seo.try(:keywords)
   end
-
   def decking
     # @decking = RoofRailItem.where(slug: params[:title]).includes(:rr_details).first
     @decking = RoofRailItem.find_by_slug(params[:title])
     @similar = RrDescription.where.not(id: @decking.rr_description.id)
   end
+
+  def metal_tile_list
+    @items
+  end
+  def metal_tile
+  end
+
+  def sheet_metal_list
+  end
+  def sheet_metal
+  end
+
+
+
   def get_rr_options
     # received_key = params[:key]
     # producer = received_key.partition('-').first

@@ -1,27 +1,59 @@
-.one-windowsill
-  .ow-image
-    a href=one_decking_path(item.slug)
-      /.image style="background: url('#{image}')no-repeat center center;"
-      - if item.rr_details && item.rr_details.any?
-        .image style="background: url('#{item.rr_details.first.image.url(:thumb)}')no-repeat center center;"
+- if item
+  .one-windowsill
+    .ow-image
+      a href=one_decking_path(item.slug)
+        /.image style="background: url('#{image}')no-repeat center center;"
+        - if item.rr_details && item.rr_details.any?
+          .image style="background: url('#{item.rr_details.first.image.url(:thumb)}')no-repeat center center;"
 
-    .show-large-image.lightGallery
-      - if item.rr_details.first && item.rr_details.first.image.exists?
-        a href=item.rr_details.first.image.url(:large)
-          = inline_svg"Valko-icon-search.svg"
+      .show-large-image.lightGallery
+        - if item.rr_details.first && item.rr_details.first.image.exists?
+          a href=item.rr_details.first.image.url(:large)
+            = inline_svg"Valko-icon-search.svg"
 
-  .ow-body
-    .ow-body-information
-      .small-6.columns
-        .title = item.title
-      .small-6.columns
-        .price data-product-price=(((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price)
-          = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
-          sup &nbsp;грн.
-      .columns
-      /.brand-title = gag.brand.title
-      .clearfix
+    .ow-body
+      .ow-body-information
+        .small-6.columns
+          .title = item.title
+        .small-6.columns
+          .price data-product-price=(((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price)
+            = (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
+            sup &nbsp;грн.
+        .columns
+        /.brand-title = gag.brand.title
+        .clearfix
 
-    .ow-body-order-form
-      /- if title == 'профнастил'
-      a href=one_decking_path(item.slug) Переглянути
+      .ow-body-order-form
+        /- if title == 'профнастил'
+        a href=one_decking_path(item.slug) Переглянути
+
+
+
+- else
+  .one-windowsill
+    .ow-image
+      a href=sheet_metal_item_path()
+        .image style="background: url('#{asset_path("metalocherepica.jpg")}')no-repeat center center;"
+        /- if item.rr_details && item.rr_details.any?
+          .image style="background: url('#{item.rr_details.first.image.url(:thumb)}')no-repeat center center;"
+
+      .show-large-image.lightGallery
+        a
+          = inline_svg "Valko-icon-search.svg"
+
+    .ow-body
+      .ow-body-information
+        .small-6.columns
+          .title
+            |Тестова металочерепиця
+        .small-6.columns
+          .price data-product-price="299"
+            |299
+            sup &nbsp;грн.
+        .columns
+        /.brand-title = gag.brand.title
+        .clearfix
+
+      .ow-body-order-form
+        /- if title == 'профнастил'
+        a href=sheet_metal_item_path() Переглянути

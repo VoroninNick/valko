@@ -1,0 +1,9 @@
+- if banner && banner.catalog_banners && banner.catalog_banners.any?
+  ul#roof-rail-banner
+    - banner.catalog_banners.with_public.each do |slide|
+      li
+      .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+- elsif type == 'metal_tile'
+    ul#roof-rail-banner
+      li
+        .image style="background: url('#{asset_path("metal_tile_banner.jpg")}')no-repeat center center;"
