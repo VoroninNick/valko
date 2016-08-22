@@ -26,7 +26,7 @@ class Brand < ActiveRecord::Base
   attr_accessible :brand_icons_attributes
 
   rails_admin do
-    navigation_label 'Підвіконня'
+    navigation_label 'Підвіконня відливи'
 
     label 'Бренд'
     label_plural 'Бренд'

@@ -7,6 +7,7 @@ class TermsOfUse < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Інше'
+    weight -1
 
     label 'Правила користування'
     label_plural 'Правила користування'

@@ -37,7 +37,7 @@ class Gag < ActiveRecord::Base
   attr_accessible :seo_attributes
 
   rails_admin do
-    navigation_label 'Підвіконня'
+    navigation_label 'Підвіконня відливи'
 
     label 'Заглушка'
     label_plural 'Заглушка'

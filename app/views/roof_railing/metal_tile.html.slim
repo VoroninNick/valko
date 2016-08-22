@@ -7,3 +7,357 @@ ul.breadcrumbs
     = link_to 'Металочерепиця', metal_tile_path
   li
     span Тестова одиниця
+
+/.catalog-one-item-page data-action=""
+  .row
+    form.ajax-popup-form action=""
+      .medium-4.columns.coi-photo
+        - if @decking.rr_details && @decking.rr_details.first.image.exists?
+          #roof-rail-gallery
+            a href=@decking.rr_details.first.image.url(:large)
+              .image style="background: url('#{@decking.rr_details.first.image.url(:thumb)}')no-repeat center center;"
+
+        - if @decking.rr_details
+          .catalog-rr-color-system
+            .catalog-rr-color-system-header
+              .row
+                .columns
+                  span Кольори RAL
+                  hr
+            - values = @decking.rr_details.title.values
+            - image_src, image_src_large = ''
+            - price = 0
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  span Глянцеві
+              .row
+                .columns
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
+                    /-condition = 1
+
+                    - if color[0] == 'g'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+
+                        - @decking.rr_details.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - image_src_large = el.image.url(:large)
+                            - price = el.price
+
+                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                          label.icon for="cro-color-#{color[1...5]}"
+                          label.text for="cro-color-#{color[1...5]}" = color[1...5]
+                      - else
+                      .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition)
+                        input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                        label.icon for="cro-color-#{color[1..-1]}"
+                        label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                      - image_src, image_src_large = ''
+
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  span Матові
+              .row
+                .columns
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
+
+                    - if color[0] == 'm'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+
+                        - @decking.rr_details.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - image_src_large = el.image.url(:large)
+                            - price = el.price
+
+                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                          input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                          label.icon for="cro-color-#{color}"
+                          label.text for="cro-color-#{color}" = color[1...5]
+                        - image_src, image_src_large = ''
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  span Цинк / Алюцинк
+              .row
+                .columns
+                  - values.each do |color|
+                    -condition = color.in?(@decking.present_colors)
+
+                    - if color[0] == 'm'
+                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
+                      - else
+
+                      - @decking.rr_details.each do |el|
+                        - if el.title == color
+                          - image_src = el.image.url(:thumb)
+                          - image_src_large = el.image.url(:large)
+                          - price = el.price
+
+                      .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                        input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                        label.icon for="cro-color-#{color[1..-1]}"
+                        label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                      - image_src, image_src_large = ''
+
+
+
+      .medium-8.columns
+        .title = @decking.title
+        p = @decking.rr_description.short_description
+
+        .roof-rail-calculator-wrap
+          /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
+          .row.roof-rail-calculator
+            .medium-7.columns
+              input type="hidden" name="type" value="Decking"
+              input type="hidden" name="price" value=@decking.rr_details.first.price
+
+              .input.width-roof-rail
+                p = @decking.try(&:width)
+                label Ширина листа, мм
+              .input.long-roof-rail
+                input#long-roof-rail type="number" name="long" value="1000"
+                label for="long-roof-rail" Довжина листа, мм
+              .input.count-roof-rail
+                input#count-roof-rail type="number" value="1" name="quantity" min="1"
+                label for="count-roof-rail" Кількість листів
+              .clearfix
+
+            .medium-5.columns
+              .rr-price-wrap
+                = image_tag "Valko-basket-button-passive-horisontal.png"
+                .rr-price
+                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
+                  .rrp-price data-product-price=(((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price) data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).round()
+                  .rrp-currency грн
+              .material-component.ripple.button-box-shadow
+                button type="submit" В кошик
+
+          - if @decking.rr_description && @decking.rr_description.drawing.exists?
+            .rr-catalog-drawing
+              span Креслення
+              hr
+              = image_tag @decking.rr_description.drawing.url(:large)
+
+          .catalog-rr-color-system
+            .catalog-rr-color-system-header
+              .row
+                .columns
+                  span Параметри
+                  hr
+            .catalog-rr-color-system-group
+              .row
+                .columns
+                  .row
+                    .medium-6.columns
+                      .catalog-rr-block-option
+                        .catalog-rr-block-option-header Виробник
+                        .catalog-rr-block-option-body
+
+                          - RoofRailItem.producer.values.each do |producer|
+
+                            - if producer.in?(@decking.producers_by_item)
+
+                              - thickness_arr = RoofRailItem.thickness.values.map { |thickness| thickness if thickness.in?(@decking.thickness_by_producers(producer)) }
+                              - coating_arr = RoofRailItem.coating.values.map { |coating| coating if coating.in?(@decking.coating_by_thickness) }
+                              - protective_lamina_arr = RoofRailItem.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(@decking.protective_lamina_by_coating) }
+                              - h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
+
+                              - if @decking.producer == producer
+                                .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                                  input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
+                                  label.icon for="cro-option-#{producer}"
+                                  label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                                  .clearfix
+                              - else
+                              .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                                input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                                label.icon for="cro-option-#{producer}"
+                                label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                                .clearfix
+                            - else
+                            .catalog-rr-radio-element data-key="producer"
+                              input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                              label.icon for="cro-option-#{producer}"
+                              label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                              .clearfix
+
+                    .medium-6.columns
+                      .catalog-rr-block-option
+                        .catalog-rr-block-option-header Товщина
+                        .catalog-rr-block-option-body
+
+                          - RoofRailItem.thickness.values.each do |thickness|
+
+                            - if thickness.in?(@decking.thickness_by_producers(@decking.producer))
+
+                              - thickness_arr = RoofRailItem.thickness.values.map { |thickness| thickness if thickness.in?(@decking.thickness_by_producers(@decking.producer)) }
+                              - coating_arr = RoofRailItem.coating.values.map { |coating| coating if coating.in?(@decking.coating_by_thickness) }
+                              - protective_lamina_arr = RoofRailItem.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(@decking.protective_lamina_by_coating) }
+                              - h = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr}.to_json
+
+                              - if @decking.thickness == thickness
+                                .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
+                                  input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness" checked="checked"
+                                  label.icon for="cro-option-#{thickness}"
+                                  label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                                  .clearfix
+                              - else
+                              .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
+                                input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
+                                label.icon for="cro-option-#{thickness}"
+                                label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                                .clearfix
+                            - else
+                            .catalog-rr-radio-element data-key="thickness"
+                              input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
+                              label.icon for="cro-option-#{thickness}"
+                              label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                              .clearfix
+              .row
+                .columns
+                  .row
+                    .medium-6.columns
+                      .catalog-rr-block-option
+                        .catalog-rr-block-option-header Покриття
+                        .catalog-rr-block-option-body
+
+                          - RoofRailItem.coating.values.each do |coating|
+
+                            - if coating.in?(@decking.coating_by_thickness)
+
+                              - if @decking.coating == coating
+
+                                .catalog-rr-radio-element.enable-catalog-element data-key="coating"
+                                  input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating" checked="checked"
+                                  label.icon for="cro-option-#{coating}"
+                                  label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                                  .clearfix
+
+                              - else
+                              .catalog-rr-radio-element.enable-catalog-element data-key="coating"
+                                input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
+                                label.icon for="cro-option-#{coating}"
+                                label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                                .clearfix
+
+                            - else
+                            .catalog-rr-radio-element data-key="coating"
+                              input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
+                              label.icon for="cro-option-#{coating}"
+                              label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                              .clearfix
+
+
+                    .medium-6.columns
+                      .catalog-rr-block-option
+                        .catalog-rr-block-option-header Захисна плівка
+                        .catalog-rr-block-option-body
+
+                          - RoofRailItem.protective_lamina.values.each do |protective_lamina|
+
+                            - if protective_lamina.in?(@decking.protective_lamina_by_coating)
+
+                              - if @decking.protective_lamina == protective_lamina
+                                .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
+                                  input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina" checked="checked"
+                                  label.icon for="cro-option-#{protective_lamina}"
+                                  label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                                  .clearfix
+
+                              - else
+                              .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
+                                input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
+                                label.icon for="cro-option-#{protective_lamina}"
+                                label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                                .clearfix
+
+                            - else
+                            .catalog-rr-radio-element data-key="protective_lamina"
+                              input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
+                              label.icon for="cro-option-#{protective_lamina}"
+                              label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                              .clearfix
+
+  .row
+    .columns
+      ul.tabs data-tab=""
+        li.tab-title.active
+          a href="#rrc-specifications" Характеристики
+        li.tab-title
+          a href="#rrc-useful-publications" Корисна інформація
+        li.tab-title
+          a href="#rrc-gallery" Фото та відео
+        li.tab-title
+          a href="#rrc-reviews" Відгуки
+      .tabs-content
+        #rrc-specifications.content.active.article
+          - if @decking.rr_description && @decking.rr_description.drawing.exists?
+            .row
+              .columns
+                .title Креслення
+            .row
+              .columns
+                = image_tag @decking.rr_description.drawing.url(:large)
+          .row
+            .columns
+              .title Профнастил
+          .row
+            .columns
+              = raw @decking.rr_description.description
+        #rrc-useful-publications.content
+          /Корисна інформація
+          - if @decking.rr_description && @decking.rr_description.informations && @decking.rr_description.informations.any?
+            .row
+              .columns
+                .row.collapse
+                  - @decking.rr_description.informations.each do |decking|
+                    .medium-6.columns.publication-default class=("end" if @decking.rr_description.informations.last == decking)
+                      a href=one_publication_path(decking.slug)
+                        .image.grayscale style="background: url('#{decking.cover.url(:large)}')no-repeat center center;"
+                        .pb-publication-body
+                          .title = decking.title
+                          p = truncate_html(decking.short_description, length: 120, omission: '...')
+                          .valko-arrow.va-right
+                            div
+
+        #rrc-gallery.content
+          /Фото та відео
+          .row.item-galleries.lightGallery
+            -if @decking.rr_description && @decking.rr_description.video_url.present?
+              a.gallery-item.video_gallery href=@decking.rr_description.video_url data-poster=@decking.rr_description.video_poster.url(:large)
+                .image style="background: url('#{@decking.rr_description.video_poster.url(:large)}')no-repeat center center;"
+                .vg-play-button
+                  = image_tag "valko-play-button.png"
+
+            - if @decking.rr_description && @decking.rr_description.photo_galleries && @decking.rr_description.photo_galleries.any?
+              - @decking.rr_description.photo_galleries.each do |photo|
+                a.gallery-item href=photo.image.url(:large) class=("end" if @decking.rr_description.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+                  = image_tag photo.image.url(:thumb), class: 'hide'
+                  .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
+
+        #rrc-reviews.content
+          = disqus_init
+          - disqus_thread
+
+
+            /- if @similar.any? && @similar.first.try(:roof_rail_item)
+    .page-block
+      .page-block-title
+        .row
+          .columns
+            span.left Схожі товари:
+            #similar-decking-dots.owl-dots.left
+
+      .carousel-product-list#similar-decking
+        - @similar.in_groups_of(4, false).each do |decking_sublist|
+          .row
+            - decking_sublist.each do |decking|
+              .large-3.medium-6.columns class=("end" if @similar.last == decking)
+                = render "partials/one_item_card", item: decking.roof_rail_item

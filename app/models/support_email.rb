@@ -7,6 +7,7 @@ class SupportEmail < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Настройки'
+    weight -1
 
     label 'Електронна скринька'
     label_plural 'Електронні скриньки'

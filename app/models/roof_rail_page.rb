@@ -22,9 +22,10 @@ class RoofRailPage < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Покрівля огорожі'
+    weight -1
 
-    label 'Сторінка каталога'
-    label_plural 'Сторінки каталога'
+    label 'Головна сторінка каталогу'
+    label_plural 'Головні сторінки каталогів'
 
     edit do
       field :page_name do

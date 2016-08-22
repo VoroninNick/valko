@@ -97,7 +97,8 @@ class Windowsill < ActiveRecord::Base
   attr_accessible :seo_attributes
 
   rails_admin do
-    navigation_label 'Підвіконня'
+    navigation_label 'Підвіконня відливи'
+    weight -1
 
     label 'Підвіконня'
     label_plural 'Підвіконня'

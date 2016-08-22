@@ -39,6 +39,8 @@ class Information < ActiveRecord::Base
   attr_accessible :seo_attributes
   rails_admin do
     navigation_label 'Інформація'
+    weight -1
+
     label 'Публікація'
     label_plural 'Публікації (Інформація)'
 

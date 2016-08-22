@@ -30,7 +30,8 @@ Rails.application.routes.draw do
 
   # 17.08.16
   get 'pokrivlja-ogorozhi/metalocherepitcja' => 'roof_railing#metal_tile_list', as: :metal_tile
-  get 'pokrivlja-ogorozhi/metalocherepitcja/:title' => 'roof_railing#metal_tile', as: :metal_tile_item
+  # get 'pokrivlja-ogorozhi/metalocherepitcja/:title' => 'roof_railing#metal_tile', as: :metal_tile_item
+  get 'pokrivlja-ogorozhi/metalocherepitcja/item' => 'roof_railing#metal_tile', as: :metal_tile_item
 
   get 'pokrivlja-ogorozhi/lystovyj-metal' => 'roof_railing#sheet_metal_list', as: :sheet_metal
   # get 'pokrivlja-ogorozhi/lystovyj-metal/:title' => 'roof_railing#sheet_metal', as: :sheet_metal_item

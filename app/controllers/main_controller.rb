@@ -117,6 +117,8 @@ class MainController < ApplicationController
   end
 
   def windowsill
+
+    @page = WindowsillPage.first
     set_seo('pidvikonnia')
 
     # session["main#windowsill"]

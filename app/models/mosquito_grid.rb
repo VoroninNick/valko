@@ -24,6 +24,7 @@ class MosquitoGrid < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Москітні сітки'
+    weight -1
 
     label 'Сторінка каталога'
     label_plural 'Сторінки каталога'

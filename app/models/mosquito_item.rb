@@ -53,8 +53,8 @@ class MosquitoItem < ActiveRecord::Base
   rails_admin do
     navigation_label 'Москітні сітки'
 
-    label 'Одиниця каталогу'
-    label_plural 'Одиниця каталогу'
+    label 'Москітна сітка'
+    label_plural 'Москітні сітки'
 
     edit do
       extend HasGallery

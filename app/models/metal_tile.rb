@@ -7,10 +7,12 @@
 # t.string :video_url
 # t.attachment :video_poster
 # t.boolean :video_published
-class RrDescription < ActiveRecord::Base
+
+class MetalTile < ActiveRecord::Base
   attr_accessible *attribute_names
 
-  has_one :roof_rail_item
+  # has_one :metal_tile_detail
+  has_many :metal_tile_details
   attr_accessible :drawing
   has_attached_file :drawing,
                     styles: { large: "970x180>"},
@@ -32,14 +34,15 @@ class RrDescription < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries, allow_destroy: true
   attr_accessible :photo_galleries_attributes
 
-  has_and_belongs_to_many :informations, join_table: :decking_informations
-  attr_accessible :informations, :information_ids
+  # has_and_belongs_to_many :informations, join_table: :decking_informations
+  # attr_accessible :informations, :information_ids
 
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
-    label 'Профнастил'
-    label_plural 'Профнастили'
+    label 'Металочерепиця'
+    label_plural 'Металочерепиці'
+
 
     edit do
       field :title do

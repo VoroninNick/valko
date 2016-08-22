@@ -19,7 +19,7 @@ class PromoLabel < ActiveRecord::Base
   before_save { save_slug(title, slug) }
 
   rails_admin do
-    navigation_label 'Підвіконня'
+    navigation_label 'Підвіконня відливи'
 
     label 'Акція іконка'
     label_plural 'Акція іконки'

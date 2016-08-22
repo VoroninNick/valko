@@ -49,7 +49,8 @@ class RoofRailingController < ApplicationController
   end
 
   def metal_tile_list
-    @items
+    @page = RoofRailPage.find_by_page_name('metalocherepitcja')
+    @items = MetalTile.all
   end
   def metal_tile
   end

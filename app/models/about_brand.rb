@@ -14,6 +14,7 @@ class AboutBrand < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Про нас'
+    weight -1
 
     label 'Бренд'
     label_plural 'Бренд'

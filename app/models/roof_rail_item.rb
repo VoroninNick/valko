@@ -14,6 +14,7 @@
 # t.integer :width
 # t.string :item_type
 class RoofRailItem < ActiveRecord::Base
+  extend Enumerize
   attr_accessible *attribute_names
 
   belongs_to :rr_description
@@ -41,8 +42,6 @@ class RoofRailItem < ActiveRecord::Base
   # end
   # before_save :save_slug
 
-
-  extend Enumerize
   enumerize :producer, in: [:'arcelor', :'ukraine', :'slovakia', :'china']
   enumerize :thickness, in: [:'super_elite_0_7', :'elite_0_5', :'premium_0_45', :'standart_0_4', :'econom_0_3']
   enumerize :coating, in: [:'glossy_polyester', :'polyester_mat', :'polyester_gloss_bilateral', :'aluzinc', :'zinc']
@@ -51,8 +50,8 @@ class RoofRailItem < ActiveRecord::Base
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
-    label 'Параметр (покрівля огорожі)'
-    label_plural 'Параметри (покрівля огорожі)'
+    label 'Профнастил - опція'
+    label_plural 'Профнастили - опції'
 
     list do
       field :id
