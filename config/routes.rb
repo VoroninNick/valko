@@ -34,8 +34,8 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/metalocherepitcja/item' => 'roof_railing#metal_tile', as: :metal_tile_item
 
   get 'pokrivlja-ogorozhi/lystovyj-metal' => 'roof_railing#sheet_metal_list', as: :sheet_metal
-  # get 'pokrivlja-ogorozhi/lystovyj-metal/:title' => 'roof_railing#sheet_metal', as: :sheet_metal_item
-  get 'pokrivlja-ogorozhi/lystovyj-metal/item' => 'roof_railing#sheet_metal', as: :sheet_metal_item
+  get 'pokrivlja-ogorozhi/lystovyj-metal/:title' => 'roof_railing#sheet_metal', as: :sheet_metal_item
+  # get 'pokrivlja-ogorozhi/lystovyj-metal/item' => 'roof_railing#sheet_metal', as: :sheet_metal_item
 
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid

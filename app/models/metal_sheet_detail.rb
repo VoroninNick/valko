@@ -84,4 +84,9 @@ class MetalSheetDetail < ActiveRecord::Base
       # end
     end
   end
+
+  def counted_price
+    (((width.to_f/1000) * 1) * color_options.first.price).round()
+    # (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
+  end
 end
