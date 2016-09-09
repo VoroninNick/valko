@@ -10,7 +10,7 @@ ul.breadcrumbs
       = @product.title
 
 - variant = @product.color_options
-- metal_tile = @product.metal_tile
+- parent = @product.metal_tile
 
 .catalog-one-item-page data-action=""
   .row
@@ -113,7 +113,7 @@ ul.breadcrumbs
 
       .medium-8.columns
         .title = @product.title
-        p = metal_tile.short_description
+        p = parent.short_description
 
         .roof-rail-calculator-wrap
           /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
@@ -143,11 +143,11 @@ ul.breadcrumbs
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
 
-          - if metal_tile && metal_tile.drawing.exists?
+          - if parent && parent.drawing.exists?
             .rr-catalog-drawing
               span Креслення
               hr
-              = image_tag metal_tile.drawing.url(:large)
+              = image_tag parent.drawing.url(:large)
 
           /.catalog-rr-color-system
             .catalog-rr-color-system-header
@@ -302,28 +302,28 @@ ul.breadcrumbs
           a href="#rrc-reviews" Відгуки
       .tabs-content
         #rrc-specifications.content.active.article
-          - if metal_tile && metal_tile.drawing.exists?
+          - if parent && parent.drawing.exists?
             .row
               .columns
                 .title Креслення
             .row
               .columns
-                = image_tag metal_tile.drawing.url(:large)
+                = image_tag parent.drawing.url(:large)
           .row
             .columns
-              .title Профнастил
+              .title Металочерепиця
           .row
             .columns
-              = raw metal_tile.description
+              = raw parent.description
 
         #rrc-useful-publications.content
           /Корисна інформація
-          /- if metal_tile && metal_tile.informations && metal_tile.informations.any?
+          /- if parent && parent.informations && parent.informations.any?
             .row
               .columns
                 .row.collapse
-                  - metal_tile.informations.each do |decking|
-                    .medium-6.columns.publication-default class=("end" if metal_tile.informations.last == decking)
+                  - parent.informations.each do |decking|
+                    .medium-6.columns.publication-default class=("end" if parent.informations.last == decking)
                       a href=one_publication_path(decking.slug)
                         .image.grayscale style="background: url('#{decking.cover.url(:large)}')no-repeat center center;"
                         .pb-publication-body
@@ -335,15 +335,15 @@ ul.breadcrumbs
         #rrc-gallery.content
           /Фото та відео
           .row.item-galleries.lightGallery
-            -if metal_tile && metal_tile.video_url.present?
-              a.gallery-item.video_gallery href=metal_tile.video_url data-poster=metal_tile.video_poster.url(:large)
-                .image style="background: url('#{metal_tile.video_poster.url(:large)}')no-repeat center center;"
+            -if parent && parent.video_url.present?
+              a.gallery-item.video_gallery href=parent.video_url data-poster=parent.video_poster.url(:large)
+                .image style="background: url('#{parent.video_poster.url(:large)}')no-repeat center center;"
                 .vg-play-button
                   = image_tag "valko-play-button.png"
 
-            - if metal_tile && metal_tile.photo_galleries && metal_tile.photo_galleries.any?
-              - metal_tile.photo_galleries.each do |photo|
-                a.gallery-item href=photo.image.url(:large) class=("end" if metal_tile.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+            - if parent && parent.photo_galleries && parent.photo_galleries.any?
+              - parent.photo_galleries.each do |photo|
+                a.gallery-item href=photo.image.url(:large) class=("end" if parent.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
                   = image_tag photo.image.url(:thumb), class: 'hide'
                   .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
 
