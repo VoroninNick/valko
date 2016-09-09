@@ -56,6 +56,8 @@ class RoofRailingController < ApplicationController
   end
 
   def sheet_metal_list
+    @page = RoofRailPage.find_by_page_name('lystovyj-metal')
+    @items = MetalSheet.all
   end
   def sheet_metal
   end

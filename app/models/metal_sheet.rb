@@ -8,11 +8,11 @@
 # t.attachment :video_poster
 # t.boolean :video_published
 
-class MetalTile < ActiveRecord::Base
+class MetalSheet < ActiveRecord::Base
   attr_accessible *attribute_names
 
   # has_one :metal_tile_detail
-  has_many :metal_tile_details
+  has_many :metal_sheet_details
   attr_accessible :drawing
   has_attached_file :drawing,
                     styles: { large: "970x180>"},
@@ -40,8 +40,8 @@ class MetalTile < ActiveRecord::Base
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
-    label 'Металочерепиця'
-    label_plural 'Металочерепиці'
+    label 'Листовий метал'
+    label_plural 'Листовий метал'
 
 
     edit do
