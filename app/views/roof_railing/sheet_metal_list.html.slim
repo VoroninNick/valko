@@ -37,13 +37,13 @@ ul.breadcrumbs
             .medium-3.columns.end.mix.decking
               = render "partials/one_item_card", item: item.roof_rail_item
         .medium-3.columns.end.mix.decking
-          /- if @items.any?
+          - if @items.any?
             - @items.each do |item|
               /= render partial: "partials/one_item_card", locals: { item: @items }
               /= item.inspect
               .one-windowsill
                 .ow-image
-                  a href=metal_tile_item_path()
+                  a href=sheet_metal_item_path()
                     .image style="background: url('#{asset_path("metalocherepica.jpg")}')no-repeat center center;"
 
 
@@ -69,7 +69,7 @@ ul.breadcrumbs
 
                   .ow-body-order-form
                     /- if title == 'профнастил'
-                    a href=metal_tile_item_path() Переглянути
+                    a href=sheet_metal_item_path() Переглянути
 
 
   .row
