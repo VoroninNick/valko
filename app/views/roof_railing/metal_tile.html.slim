@@ -6,32 +6,36 @@ ul.breadcrumbs
   li
     = link_to 'Металочерепиця', metal_tile_path
   li
-    span Тестова одиниця
+    span
+      = @product.title
 
-/.catalog-one-item-page data-action=""
+- variant = @product.color_options
+- metal_tile = @product.metal_tile
+
+.catalog-one-item-page data-action=""
   .row
     form.ajax-popup-form action=""
       .medium-4.columns.coi-photo
-        - if @decking.rr_details && @decking.rr_details.first.image.exists?
+        - if variant && variant.first.image.exists?
           #roof-rail-gallery
-            a href=@decking.rr_details.first.image.url(:large)
-              .image style="background: url('#{@decking.rr_details.first.image.url(:thumb)}')no-repeat center center;"
+            a href=variant.first.image.url(:large)
+              .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
 
-        - if @decking.rr_details
+        - if variant
           .catalog-rr-color-system
             .catalog-rr-color-system-header
               .row
                 .columns
                   span Кольори RAL
                   hr
-            - values = @decking.rr_details.title.values
+            - values = variant.title.values
             - image_src, image_src_large = ''
             - price = 0
             .catalog-rr-color-system-group
               .row
                 .columns
                   span Глянцеві
-              .row
+              /.row
                 .columns
                   - values.each do |color|
                     -condition = color.in?(@decking.present_colors)
@@ -61,7 +65,7 @@ ul.breadcrumbs
               .row
                 .columns
                   span Матові
-              .row
+              /.row
                 .columns
                   - values.each do |color|
                     -condition = color.in?(@decking.present_colors)
@@ -84,7 +88,7 @@ ul.breadcrumbs
               .row
                 .columns
                   span Цинк / Алюцинк
-              .row
+              /.row
                 .columns
                   - values.each do |color|
                     -condition = color.in?(@decking.present_colors)
@@ -108,18 +112,18 @@ ul.breadcrumbs
 
 
       .medium-8.columns
-        .title = @decking.title
-        p = @decking.rr_description.short_description
+        .title = @product.title
+        p = metal_tile.short_description
 
         .roof-rail-calculator-wrap
           /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
           .row.roof-rail-calculator
             .medium-7.columns
               input type="hidden" name="type" value="Decking"
-              input type="hidden" name="price" value=@decking.rr_details.first.price
+              input type="hidden" name="price" value=variant.first.price
 
               .input.width-roof-rail
-                p = @decking.try(&:width)
+                p = @product.try(&:width)
                 label Ширина листа, мм
               .input.long-roof-rail
                 input#long-roof-rail type="number" name="long" value="1000"
@@ -134,18 +138,18 @@ ul.breadcrumbs
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
                   /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
-                  .rrp-price data-product-price=(((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price) data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).round()
+                  .rrp-price data-product-price=@product.counted_price data-width=@product.try(&:width).to_f/1000 data-price=variant.first.price  = @product.counted_price
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
 
-          - if @decking.rr_description && @decking.rr_description.drawing.exists?
+          - if metal_tile && metal_tile.drawing.exists?
             .rr-catalog-drawing
               span Креслення
               hr
-              = image_tag @decking.rr_description.drawing.url(:large)
+              = image_tag metal_tile.drawing.url(:large)
 
-          .catalog-rr-color-system
+          /.catalog-rr-color-system
             .catalog-rr-color-system-header
               .row
                 .columns
@@ -298,27 +302,28 @@ ul.breadcrumbs
           a href="#rrc-reviews" Відгуки
       .tabs-content
         #rrc-specifications.content.active.article
-          - if @decking.rr_description && @decking.rr_description.drawing.exists?
+          - if metal_tile && metal_tile.drawing.exists?
             .row
               .columns
                 .title Креслення
             .row
               .columns
-                = image_tag @decking.rr_description.drawing.url(:large)
+                = image_tag metal_tile.drawing.url(:large)
           .row
             .columns
               .title Профнастил
           .row
             .columns
-              = raw @decking.rr_description.description
+              = raw metal_tile.description
+
         #rrc-useful-publications.content
           /Корисна інформація
-          - if @decking.rr_description && @decking.rr_description.informations && @decking.rr_description.informations.any?
+          /- if metal_tile && metal_tile.informations && metal_tile.informations.any?
             .row
               .columns
                 .row.collapse
-                  - @decking.rr_description.informations.each do |decking|
-                    .medium-6.columns.publication-default class=("end" if @decking.rr_description.informations.last == decking)
+                  - metal_tile.informations.each do |decking|
+                    .medium-6.columns.publication-default class=("end" if metal_tile.informations.last == decking)
                       a href=one_publication_path(decking.slug)
                         .image.grayscale style="background: url('#{decking.cover.url(:large)}')no-repeat center center;"
                         .pb-publication-body
@@ -330,15 +335,15 @@ ul.breadcrumbs
         #rrc-gallery.content
           /Фото та відео
           .row.item-galleries.lightGallery
-            -if @decking.rr_description && @decking.rr_description.video_url.present?
-              a.gallery-item.video_gallery href=@decking.rr_description.video_url data-poster=@decking.rr_description.video_poster.url(:large)
-                .image style="background: url('#{@decking.rr_description.video_poster.url(:large)}')no-repeat center center;"
+            -if metal_tile && metal_tile.video_url.present?
+              a.gallery-item.video_gallery href=metal_tile.video_url data-poster=metal_tile.video_poster.url(:large)
+                .image style="background: url('#{metal_tile.video_poster.url(:large)}')no-repeat center center;"
                 .vg-play-button
                   = image_tag "valko-play-button.png"
 
-            - if @decking.rr_description && @decking.rr_description.photo_galleries && @decking.rr_description.photo_galleries.any?
-              - @decking.rr_description.photo_galleries.each do |photo|
-                a.gallery-item href=photo.image.url(:large) class=("end" if @decking.rr_description.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+            - if metal_tile && metal_tile.photo_galleries && metal_tile.photo_galleries.any?
+              - metal_tile.photo_galleries.each do |photo|
+                a.gallery-item href=photo.image.url(:large) class=("end" if metal_tile.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
                   = image_tag photo.image.url(:thumb), class: 'hide'
                   .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"
 
@@ -347,8 +352,7 @@ ul.breadcrumbs
           - disqus_thread
 
 
-            /- if @similar.any? && @similar.first.try(:roof_rail_item)
-    .page-block
+    /.page-block
       .page-block-title
         .row
           .columns

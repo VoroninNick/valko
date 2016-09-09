@@ -53,6 +53,7 @@ class RoofRailingController < ApplicationController
     @items = MetalTile.all
   end
   def metal_tile
+    @product = MetalTileDetail.find_by_slug(params[:title])
   end
 
   def sheet_metal_list
@@ -60,6 +61,7 @@ class RoofRailingController < ApplicationController
     @items = MetalSheet.all
   end
   def sheet_metal
+
   end
 
 
