@@ -31,44 +31,38 @@ ul.breadcrumbs
 
     .row
       .columns.sandbox
-        /- if @roofs.any?
-          - @roofs.each do |item|
+        - if @items.any?
+          - @items.each do |item|
             .medium-3.columns.end.mix.decking
-              = render "partials/one_item_card", item: item.roof_rail_item
-        .medium-3.columns.end.mix.decking
-          - if @items.any?
-            - @items.each do |item|
-              /= render partial: "partials/one_item_card", locals: { item: @items }
-              /= item.inspect
+              - item = item.metal_tile_details.first
               .one-windowsill
                 .ow-image
-                  a href=metal_tile_item_path()
-                    .image style="background: url('#{asset_path("metalocherepica.jpg")}')no-repeat center center;"
+                  a href=metal_tile_item_path(item.slug)
+                    /.image style="background: url('#{image}')no-repeat center center;"
 
-
-                    /- if item.color_options && item.color_options.any?
-                      .image style="background: url('#{item.color_options.first.image.url(:thumb)}')no-repeat center center;"
+                    - variant = item.color_options
+                    - if variant && variant.any?
+                      .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
 
                   .show-large-image.lightGallery
-                    a
-                      = inline_svg "Valko-icon-search.svg"
+                    - if variant && variant.first && variant.first.image.exists?
+                      a href=variant.first.image.url(:large)
+                        = inline_svg "Valko-icon-search.svg"
 
                 .ow-body
                   .ow-body-information
                     .small-6.columns
-                      .title
-                        = item.title
+                      .title = item.title
                     .small-6.columns
-                      .price data-product-price="299"
-                        |299
+                      .price data-product-price=item.counted_price
+                        = item.counted_price
                         sup &nbsp;грн.
                     .columns
                     /.brand-title = gag.brand.title
                     .clearfix
 
                   .ow-body-order-form
-                    /- if title == 'профнастил'
-                    a href=metal_tile_item_path() Переглянути
+                    a href=metal_tile_item_path(item.slug) Переглянути
   .row
     .columns
       .rr-catalog-description

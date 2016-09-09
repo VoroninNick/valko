@@ -86,6 +86,11 @@ class MetalSheetDetail < ActiveRecord::Base
   end
 
   def counted_price
+    color_options.first.try(&:price)
+    # gallery.try{|g| g.images.first }
+    if width.nil? || color_options.first.try(:price).blank?
+      return 0
+    end
     (((width.to_f/1000) * 1) * color_options.first.price).round()
     # (((item.try(&:width).to_f/1000) * 1) * item.rr_details.first.price).round()
   end
