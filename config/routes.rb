@@ -70,6 +70,8 @@ Rails.application.routes.draw do
   get 'dev2' => 'main#dev2'
 
   post 'get_rr_options/:key' =>'roof_railing#get_rr_options', as: :get_rr_option
+  post 'get_metal_tile_options/:key' =>'roof_railing#get_metal_tile_options', as: :get_mt_option
+  post 'get_metal_sheet_options/:key' =>'roof_railing#get_metal_sheet_options', as: :get_ms_option
 
   resources :line_items
   resources :carts

@@ -14,9 +14,9 @@ ul.breadcrumbs
     span
       = product.title
 
-.catalog-one-item-page data-action=""
+.catalog-one-item-page data-action=get_mt_option_path(product.slug)
   .row
-    form.ajax-popup-form action=""
+    form.ajax-popup-form action=line_items_path(id: product.id)
       .medium-4.columns.coi-photo
         - if variant && variant.first.image.exists?
           #roof-rail-gallery
