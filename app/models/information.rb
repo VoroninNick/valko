@@ -33,6 +33,14 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :mosquito_items, join_table: :information_mosquito_items
   attr_accessible :mosquito_items, :mosquito_item_ids
 
+  # metal tile
+  has_and_belongs_to_many :metal_tile_details, join_table: :information_metal_tile_details
+  attr_accessible :metal_tile_details, :metal_tile_detail_ids
+
+  # metal sheet
+  has_and_belongs_to_many :metal_sheet_details, join_table: :information_metal_sheet_details
+  attr_accessible :metal_sheet_details, :metal_sheet_detail_ids
+
   has_one :seo, as: :seo_poly
   attr_accessible :seo
   accepts_nested_attributes_for :seo, allow_destroy: true
@@ -80,7 +88,13 @@ class Information < ActiveRecord::Base
       group :decking_options do
         label 'Покрівля'
         field :rr_descriptions do
-          label 'Покрівля:'
+          label 'Профнастил:'
+        end
+        field :metal_tile_details do
+          label 'Металочерепиця:'
+        end
+        field :metal_sheet_details do
+          label 'Листовий метал:'
         end
       end
 

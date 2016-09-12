@@ -1,0 +1,12 @@
+.row
+  .columns
+    .row.collapse
+      - product.informations.each do |publication|
+        .medium-6.columns.publication-default class=("end" if product.informations.last == publication)
+          a href=one_publication_path(publication.slug)
+            .image.grayscale style="background: url('#{publication.cover.url(:large)}')no-repeat center center;"
+            .pb-publication-body
+              .title = publication.title
+              p = truncate_html(publication.short_description, length: 120, omission: '...')
+              .valko-arrow.va-right
+                div

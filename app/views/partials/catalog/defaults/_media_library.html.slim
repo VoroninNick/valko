@@ -1,0 +1,12 @@
+.row.item-galleries.lightGallery
+  -if parent && parent.video_url.present?
+    a.gallery-item.video_gallery href=parent.video_url data-poster=parent.video_poster.url(:large)
+      .image style="background: url('#{parent.video_poster.url(:large)}')no-repeat center center;"
+      .vg-play-button
+        = image_tag "valko-play-button.png"
+
+  - if parent && parent.photo_galleries && parent.photo_galleries.any?
+    - parent.photo_galleries.each do |photo|
+      a.gallery-item href=photo.image.url(:large) class=("end" if parent.photo_galleries.last == photo) data-src=photo.image.url(:thumb)
+        = image_tag photo.image.url(:thumb), class: 'hide'
+        .image style="background: url('#{photo.image.url(:thumb)}')no-repeat center center;"

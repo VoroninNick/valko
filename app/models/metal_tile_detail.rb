@@ -44,6 +44,10 @@ class MetalTileDetail < ActiveRecord::Base
   accepts_nested_attributes_for :color_options, allow_destroy: true
   attr_accessible :color_options_attributes
 
+  # informations
+  has_and_belongs_to_many :informations, join_table: :information_metal_tile_details
+  attr_accessible :informations, :information_ids
+
   rails_admin do
     navigation_label 'Покрівля огорожі'
 
