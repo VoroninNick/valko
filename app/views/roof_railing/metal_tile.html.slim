@@ -1,3 +1,8 @@
+- product = @product
+- parent = product.metal_tile
+- variant = product.color_options
+- values = variant.title.values
+
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
@@ -7,11 +12,7 @@ ul.breadcrumbs
     = link_to 'Металочерепиця', metal_tile_path
   li
     span
-      = @product.title
-
-- product = @product
-- variant = product.color_options
-- parent = product.metal_tile
+      = product.title
 
 .catalog-one-item-page data-action=""
   .row
@@ -22,95 +23,9 @@ ul.breadcrumbs
             a href=variant.first.image.url(:large)
               .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
 
+        /colors block
         - if variant
-          .catalog-rr-color-system
-            .catalog-rr-color-system-header
-              .row
-                .columns
-                  span Кольори RAL
-                  hr
-            - values = variant.title.values
-            - image_src, image_src_large = ''
-            - price = 0
-            .catalog-rr-color-system-group
-              .row
-                .columns
-                  span Глянцеві
-              .row
-                .columns
-                  - values.each do |color|
-                    -condition = color.in?(product.present_colors)
-
-                    - if color[0] == 'g'
-                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-
-                        - variant.each do |el|
-                          - if el.title == color
-                            - image_src = el.image.url(:thumb)
-                            - image_src_large = el.image.url(:large)
-                            - price = el.price
-
-                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color[1...5]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
-                          label.icon for="cro-color-#{color[1...5]}"
-                          label.text for="cro-color-#{color[1...5]}" = color[1...5]
-                      - else
-                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition)
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
-                          label.icon for="cro-color-#{color[1..-1]}"
-                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
-                        - image_src, image_src_large = ''
-
-            .catalog-rr-color-system-group
-              .row
-                .columns
-                  span Матові
-              .row
-                .columns
-                  - values.each do |color|
-                    -condition = color.in?(product.present_colors)
-
-                    - if color[0] == 'm'
-                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-
-                        - variant.each do |el|
-                          - if el.title == color
-                            - image_src = el.image.url(:thumb)
-                            - image_src_large = el.image.url(:large)
-                            - price = el.price
-
-                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
-                          label.icon for="cro-color-#{color}"
-                          label.text for="cro-color-#{color}" = color[1...5]
-                        - image_src, image_src_large = ''
-
-
-            .catalog-rr-color-system-group
-              .row
-                .columns
-                  span Цинк / Алюцинк
-              .row
-                .columns
-                  - values.each do |color|
-                    -condition = color.in?(product.present_colors)
-
-                    - if color[0] == 'm'
-                      - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
-                      - else
-
-                        - variant.each do |el|
-                          - if el.title == color
-                            - image_src = el.image.url(:thumb)
-                            - image_src_large = el.image.url(:large)
-                            - price = el.price
-
-                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
-                          label.icon for="cro-color-#{color[1..-1]}"
-                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
-                        - image_src, image_src_large = ''
-
+          = render partial: "partials/catalog/defaults/color_options", locals: {variant: variant, product: product, values: values}
 
 
       .medium-8.columns
@@ -118,7 +33,6 @@ ul.breadcrumbs
         p = parent.short_description
 
         .roof-rail-calculator-wrap
-          /form.ajax-popup-form action=line_items_path(id: @windowsill.id)
           .row.roof-rail-calculator
             .medium-7.columns
               input type="hidden" name="type" value="Decking"
@@ -127,21 +41,24 @@ ul.breadcrumbs
               .input.width-roof-rail
                 p = product.try(&:width)
                 label Ширина листа, мм
+
               .input.long-roof-rail
                 input#long-roof-rail type="number" name="long" value="1000"
                 label for="long-roof-rail" Довжина листа, мм
+
               .input.count-roof-rail
                 input#count-roof-rail type="number" value="1" name="quantity" min="1"
                 label for="count-roof-rail" Кількість листів
+
               .clearfix
 
             .medium-5.columns
               .rr-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
-                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
                   .rrp-price data-product-price=product.counted_price data-width=product.try(&:width).to_f/1000 data-price=variant.first.price  = product.counted_price
                   .rrp-currency грн
+
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
 
@@ -151,145 +68,9 @@ ul.breadcrumbs
               hr
               = image_tag parent.drawing.url(:large)
 
-          .catalog-rr-color-system
-            .catalog-rr-color-system-header
-              .row
-                .columns
-                  span Параметри
-                  hr
-            .catalog-rr-color-system-group
-              .row
-                .columns
-                  .row
-                    .medium-6.columns
-                      .catalog-rr-block-option
-                        .catalog-rr-block-option-header Виробник
-                        .catalog-rr-block-option-body
+          /product checkbox options
+          = render partial: "partials/catalog/defaults/product_checkbox_options", locals: {product: product}
 
-                          - MetalTileDetail.producer.values.each do |producer|
-
-                            - if producer.in?(product.producers_by_item)
-
-                              - thickness_arr = MetalTileDetail.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(producer)) }
-                              - coating_arr = MetalTileDetail.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
-                              - protective_lamina_arr = MetalTileDetail.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
-                              - h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
-
-                              - if product.producer == producer
-                                .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                                  input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
-                                  label.icon for="cro-option-#{producer}"
-                                  label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                  .clearfix
-                              - else
-                                .catalog-rr-radio-element.enable-catalog-element data-key="producer"
-                                  input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
-                                  label.icon for="cro-option-#{producer}"
-                                  label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                  .clearfix
-                            - else
-                              .catalog-rr-radio-element data-key="producer"
-                                input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
-                                label.icon for="cro-option-#{producer}"
-                                label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
-                                .clearfix
-
-                    .medium-6.columns
-                      .catalog-rr-block-option
-                        .catalog-rr-block-option-header Товщина
-                        .catalog-rr-block-option-body
-
-                          - MetalTileDetail.thickness.values.each do |thickness|
-
-                            - if thickness.in?(product.thickness_by_producers(product.producer))
-
-                              - thickness_arr = MetalTileDetail.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(product.producer)) }
-                              - coating_arr = MetalTileDetail.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
-                              - protective_lamina_arr = MetalTileDetail.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
-                              - h = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr}.to_json
-
-                              - if product.thickness == thickness
-                                .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
-                                  input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness" checked="checked"
-                                  label.icon for="cro-option-#{thickness}"
-                                  label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
-                                  .clearfix
-                              - else
-                                .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
-                                  input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
-                                  label.icon for="cro-option-#{thickness}"
-                                  label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
-                                  .clearfix
-                            - else
-                              .catalog-rr-radio-element data-key="thickness"
-                                input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
-                                label.icon for="cro-option-#{thickness}"
-                                label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
-                                .clearfix
-              .row
-                .columns
-                  .row
-                    .medium-6.columns
-                      .catalog-rr-block-option
-                        .catalog-rr-block-option-header Покриття
-                        .catalog-rr-block-option-body
-
-                          - MetalTileDetail.coating.values.each do |coating|
-
-                            - if coating.in?(product.coating_by_thickness)
-
-                              - if product.coating == coating
-
-                                .catalog-rr-radio-element.enable-catalog-element data-key="coating"
-                                  input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating" checked="checked"
-                                  label.icon for="cro-option-#{coating}"
-                                  label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
-                                  .clearfix
-
-                              - else
-                                .catalog-rr-radio-element.enable-catalog-element data-key="coating"
-                                  input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
-                                  label.icon for="cro-option-#{coating}"
-                                  label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
-                                  .clearfix
-
-                            - else
-                              .catalog-rr-radio-element data-key="coating"
-                                input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
-                                label.icon for="cro-option-#{coating}"
-                                label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
-                                .clearfix
-
-
-                    .medium-6.columns
-                      .catalog-rr-block-option
-                        .catalog-rr-block-option-header Захисна плівка
-                        .catalog-rr-block-option-body
-
-                          - MetalTileDetail.protective_lamina.values.each do |protective_lamina|
-
-                            - if protective_lamina.in?(product.protective_lamina_by_coating)
-
-                              - if product.protective_lamina == protective_lamina
-                                .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
-                                  input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina" checked="checked"
-                                  label.icon for="cro-option-#{protective_lamina}"
-                                  label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
-                                  .clearfix
-
-                              - else
-                                .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
-                                  input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
-                                  label.icon for="cro-option-#{protective_lamina}"
-                                  label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
-                                  .clearfix
-
-                            - else
-                              .catalog-rr-radio-element data-key="protective_lamina"
-                                input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
-                                label.icon for="cro-option-#{protective_lamina}"
-                                label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
-                                .clearfix
 
   .row
     .columns
