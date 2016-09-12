@@ -65,46 +65,48 @@ ul.breadcrumbs
               .row
                 .columns
                   span Матові
-              /.row
+              .row
                 .columns
                   - values.each do |color|
-                    -condition = color.in?(@decking.present_colors)
+                    -condition = color.in?(product.present_colors)
 
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
 
-                        - @decking.rr_details.each do |el|
+                        - variant.each do |el|
                           - if el.title == color
                             - image_src = el.image.url(:thumb)
                             - image_src_large = el.image.url(:large)
                             - price = el.price
 
                         .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                          input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                          input id="cro-color-#{color}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
                           label.icon for="cro-color-#{color}"
                           label.text for="cro-color-#{color}" = color[1...5]
                         - image_src, image_src_large = ''
+
+
             .catalog-rr-color-system-group
               .row
                 .columns
                   span Цинк / Алюцинк
-              /.row
+              .row
                 .columns
                   - values.each do |color|
-                    -condition = color.in?(@decking.present_colors)
+                    -condition = color.in?(product.present_colors)
 
                     - if color[0] == 'm'
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                       - else
 
-                      - @decking.rr_details.each do |el|
+                      - variant.each do |el|
                         - if el.title == color
                           - image_src = el.image.url(:thumb)
                           - image_src_large = el.image.url(:large)
                           - price = el.price
 
                       .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                        input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == @decking.rr_details.first.title)
+                        input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
                         label.icon for="cro-color-#{color[1..-1]}"
                         label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
                       - image_src, image_src_large = ''
