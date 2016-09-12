@@ -99,17 +99,17 @@ ul.breadcrumbs
                       - if color[1...5] =~ /\A[-+]?[0-9]*\.?[0-9]+\Z/
                       - else
 
-                      - variant.each do |el|
-                        - if el.title == color
-                          - image_src = el.image.url(:thumb)
-                          - image_src_large = el.image.url(:large)
-                          - price = el.price
+                        - variant.each do |el|
+                          - if el.title == color
+                            - image_src = el.image.url(:thumb)
+                            - image_src_large = el.image.url(:large)
+                            - price = el.price
 
-                      .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
-                        input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
-                        label.icon for="cro-color-#{color[1..-1]}"
-                        label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
-                      - image_src, image_src_large = ''
+                        .catalog-rr-one-color.is-roof-rails class=("enable-catalog-element" if condition) data-image=image_src data-img-large=image_src_large data-price=price
+                          input id="cro-color-#{color[1..-1]}" type="radio" value=color name="catalog_rr_color" checked=("checked" if color == variant.first.title)
+                          label.icon for="cro-color-#{color[1..-1]}"
+                          label.text for="cro-color-#{color[1..-1]}" =t("enumerize.title.#{color}")
+                        - image_src, image_src_large = ''
 
 
 
