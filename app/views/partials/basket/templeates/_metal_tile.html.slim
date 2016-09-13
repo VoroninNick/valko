@@ -1,0 +1,36 @@
+
+.basket-list-one data-gag-edge='0' data-item-price=item.total_price(item.long).round()
+  .row
+    .small-1.medium-1.columns
+      .basket-delete-item-wrap
+        a.delete-item data-href=line_items_path data-line-item-id=item.id
+          = inline_svg "ic_delete_black_24px.svg"
+    .hide-for-small-only.medium-2.columns
+      .image style="background: url('#{variant.image.url(:thumb)}')no-repeat center center;"
+    .small-6.medium-6.columns
+      a href=metal_tile_item_path(product.slug)
+        .title #{product.title} (#{t("enumerize.title.#{item.color}")})
+      .brand-title #{t("enumerize.producer.#{product.producer}")}, #{t("enumerize.thickness.#{product.thickness}")}, #{t("enumerize.coating.#{product.coating}")}, #{t("enumerize.protective_lamina.#{product.protective_lamina}")}
+      p
+        span Ширина:
+        = product.width
+        sup &nbsp;мм
+      p
+        span Довжина:
+        = item.long
+        sup &nbsp;мм
+    .small-2.medium-1.columns
+      .input.basket-count-product
+        input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
+
+    .small-3.medium-2.columns
+      .one-total-price
+        b
+          = item.total_price(item.long).round()
+        sup &nbsp;грн.
+      .one-price
+        b
+          = item.price
+        sup
+          |&nbsp;грн./м
+          sup 2

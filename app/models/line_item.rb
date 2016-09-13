@@ -14,6 +14,12 @@
 # t.belongs_to :mosquito_item_option
 # t.string :product_options
 
+# metal tile
+# t.belongs_to :metal_tile_detail
+
+# metal sheet
+# t.belongs_to :metal_sheet_detail
+
 class LineItem < ActiveRecord::Base
   belongs_to :windowsill
   belongs_to :gag
@@ -21,6 +27,8 @@ class LineItem < ActiveRecord::Base
   belongs_to :roof_rail_item
   belongs_to :mosquito_item
   belongs_to :mosquito_item_option
+  belongs_to :metal_tile_detail
+  belongs_to :metal_sheet_detail
 
   attr_accessible *attribute_names
   attr_accessible :windowsill, :cart, :gag
@@ -97,6 +105,11 @@ class LineItem < ActiveRecord::Base
       mosquito_item.id
       real_price = mosquito_item.calculate_one_item(long, weight, mosquito_item_option.id)
       real_price * quantity
+
+    elsif self.class_name == 'MetalTile'
+      8
+    elsif self.class_name == 'MetalSheet'
+      8
     end
   end
 end

@@ -187,6 +187,17 @@
                       |&nbsp;грн./м
                       sup 2
 
+          - elsif item.class_name == 'MetalTile'
+            /MetalTile
+            - product = item.metal_tile_detail
+            - variant = product.color_options.find_by_title(item.color)
+            = render partial: "partials/basket/templeates/metal_tile", locals: {item: item, product: product, variant: variant}
+
+          - elsif item.class_name == 'MetalSheet'
+            /MetalSheet
+            - product = item.metal_sheet_detail
+            - variant = product.color_options.find_by_title(item.color)
+            = render partial: "partials/basket/templeates/metal_sheet", locals: {item: item, product: product, variant: variant}
 
       .clearfix
 
