@@ -19,6 +19,8 @@
         .price
           = windowsill.prices.first.try(:value)
           sup &nbsp;грн.
+        p
+          |від
       .columns
         .brand-title
           - if windowsill.wind_type == 'internal'
