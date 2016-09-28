@@ -1,0 +1,101 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span
+      |Вікна та двері
+
+.roof-rail-catalog-list-page
+  .roof-rail-catalog-list-header
+    .row
+      .columns
+        - if @page.catalog_banners && @page.catalog_banners.any?
+          ul#roof-rail-banner
+            - @page.catalog_banners.with_public.each do |slide|
+              li
+                .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+
+        .wcl-body
+          .columns
+            .title = @page.try(:title)
+          .clearfix
+          = raw @page.header_description
+          .clearfix
+
+  .window-and-doors-list
+    - if @products.any?
+      - @products.each do |product|
+        .window-and-door-item
+          .row
+            .medium-4.columns
+              .wd-item-avatar-wrap
+                .wd-item-avatar
+                  .image style="background: url('#{product.avatar.url(:large)}')no-repeat center center;"
+
+            .medium-8.columns
+              .title
+                = product.title
+              p
+                = product.short_description
+
+              .material-component.ripple.blue-button.button-box-shadow
+                a Замовити
+
+              .title-h2
+                |Технічні характеристики:
+              hr
+
+              - if product.side_face.present?
+                .wd-item-one-option
+                  .title
+                    |Профіль:
+                  p
+                    = product.side_face
+
+              - if product.condensation.present?
+                .wd-item-one-option
+                  .title
+                    |Ущільнення:
+                  p
+                    = product.condensation
+
+              - if product.glass.present?
+                .wd-item-one-option
+                  .title
+                    |Склопакет:
+                  p
+                    = product.glass
+
+              - if product.furniture.present?
+                .wd-item-one-option
+                  .title
+                    |Фурнітура:
+                  p
+                    = product.furniture
+
+              - if product.handle.present?
+                .wd-item-one-option
+                  .title
+                    |Ручка:
+                  p
+                    = product.handle
+
+              - if product.present_color.present?
+                .wd-item-one-option
+                  .title
+                    |Кольори:
+                  p
+                    = product.present_color
+
+              .title-h2
+                |Доступні кольори
+              hr
+
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2 = @page.subtitle
+        .clearfix
+        = raw @page.footer_description
+        .clearfix

@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   get 'moskitna-sitka/sliding' => 'mosquito#sliding', as: :mosquito_grid_sliding
   get 'moskitna-sitka/sliding/:title' => 'mosquito#sliding_item', as: :one_mosquito_sliding
 
+  # 28.09.16
+  get 'mataloplastykovi-vikna-i-dveri' => 'window_and_door#index', as: :window_and_door
+
 
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'

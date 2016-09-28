@@ -6,14 +6,18 @@ footer.push-footer
           nav
             li class=cp(windowsill_path)
               = link_to 'Підвіконня', windowsill_path, :title => 'Каталог підвіконня'
+
             li
               a Ролети
-            li
+
+            li class=cp(mosquito_grid_path)
               a href=mosquito_grid_path Москітні сітки
-            li
+
+            li class=cp(roof_rail_path)
               a href=roof_rail_path Покрівля
-            li
-              a Вікна
+
+            li class=cp(window_and_door_path)
+              a href=window_and_door_path Вікна
       .row
         .columns
           - if static_data && static_data.facebook.present? || static_data.youtube.present? || static_data.google.present?

@@ -5,7 +5,7 @@
 # t.text :footer_description
 # t.string :page_name
 
-class RoofRailPage < ActiveRecord::Base
+class WindowAndDoorPage < ActiveRecord::Base
   attr_accessible *attribute_names
 
   has_many :catalog_banners, as: :cat_banner
@@ -21,11 +21,11 @@ class RoofRailPage < ActiveRecord::Base
   before_save { save_slug(title, slug) }
 
   rails_admin do
-    navigation_label 'Покрівля огорожі'
+    navigation_label 'Вікна двері'
     weight -1
 
     label 'Головна сторінка каталогу'
-    label_plural 'Головна сторінка каталога'
+    label_plural 'Головні сторінки каталогів'
 
     edit do
       field :page_name do
