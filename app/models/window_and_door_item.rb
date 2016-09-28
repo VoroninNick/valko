@@ -48,6 +48,9 @@ class WindowAndDoorItem < ActiveRecord::Base
 
 
     edit do
+      field :published do
+        label 'Чи публікувати?'
+      end
       field :title do
         label 'Назва:'
       end
