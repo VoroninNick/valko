@@ -19,4 +19,6 @@ $(document).ready ->
     $wrap = $this.closest('.wd-item-avatar-wrap')
 
     image_src = $this.attr 'data-image'
+    $wrap.find('.wd-item-avatar .image').css('background',"url('#{image_src}')no-repeat center center")
+
     console.log 'file: ', image_src
