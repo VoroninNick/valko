@@ -60,3 +60,24 @@
       li
         border: 1px solid #eceff1
         margin: 0 10px
+      .owl-controls
+        .owl-nav
+          .owl-prev, .owl-next
+            +my_vertical_align()
+              position: absolute
+            width: 32px
+            height: 32px
+            //border: 1px solid
+
+            display: block!important
+            text-indent: -9999px
+            font-size: 0
+            background-position: center !important
+            background-size: 100% !important
+
+          .owl-prev
+            left: 0
+            background: asset-url("ic_keyboard_arrow_left_black_24px.svg")
+          .owl-next
+            right: 0
+            background: asset-url("ic_keyboard_arrow_right_black_24px.svg")
