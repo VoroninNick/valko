@@ -2,6 +2,8 @@
 # t.string :call_order
 # t.string :contact_form
 # t.string :offers_and_comments
+# t.string :wd_order_product
+
 class SupportEmail < ActiveRecord::Base
   attr_accessible *attribute_names
 
@@ -24,6 +26,9 @@ class SupportEmail < ActiveRecord::Base
       end
       field :offers_and_comments do
         label 'Пропозиції та зауваження:'
+      end
+      field :wd_order_product do
+        label 'Вікна двері (замовлення):'
       end
     end
   end

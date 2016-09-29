@@ -20,4 +20,11 @@ class ContactMailer < ApplicationMailer
     @current_cart = Cart.find(@data[:cart_id])
     mail(:template_path => 'contact_mailer', :layout => false, :subject => "#{@data[:first_name]} #{@data[:last_name]}, замовили товарів на суму #{@current_cart.total_price.round()} грн.", :to => SupportEmail.first.cart.split(','))
   end
+
+
+  def wd_order_product(data)
+    @data = data
+    @product = WindowAndDoorItem.find(data[:product])
+    mail(:template_path => 'contact_mailer', :layout => false, :subject => 'Замовлення з розділу "Вікна двері"', :to => SupportEmail.first.wd_order_product.split(','))
+  end
 end

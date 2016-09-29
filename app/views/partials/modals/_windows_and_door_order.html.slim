@@ -1,0 +1,23 @@
+#order-wd-product.reveal-modal.small data-reveal=""
+  .row
+    .columns
+      strong Текст відсутній!
+      p Дякуємо за увагу! Найближчим часом наш менеджер зв’яжеться з вами для уточнення деталей.
+
+      p
+        = product.title
+
+      form.ajax-contact-form.default-animation-form.default-form-with-icons  action=windowsill_and_door_ordering_path method="POST"
+        input type="hidden" name="product" value=product.id
+        .row
+          .columns
+            .input.animate-input
+              .input-ico
+                =inline_svg "ic_phone_24px.svg"
+              label Контактний телефон
+              input name="phone" type="tel" required=""
+
+        .button-wrap.material-component.ripple.right
+          button.right type="submit" Надіслати
+        .material-component.ripple.right
+          a.close-reveal-modal aria-label="Close" Закрити

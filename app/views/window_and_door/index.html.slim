@@ -1,3 +1,5 @@
+- ordering_item = nil
+
 ul.breadcrumbs
   li
     = link_to 'Головна', root_path
@@ -45,8 +47,10 @@ ul.breadcrumbs
               p
                 = product.short_description
 
+              - ordering_item = product
               .material-component.ripple.blue-button.button-box-shadow
-                a Замовити
+                a data-reveal-id="order-wd-product"
+                  |Замовити
 
               .title-h2
                 |Технічні характеристики:
@@ -113,3 +117,5 @@ ul.breadcrumbs
         .clearfix
         = raw @page.footer_description
         .clearfix
+
+= render partial: "partials/modals/windows_and_door_order", locals: {product: ordering_item}

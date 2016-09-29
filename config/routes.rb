@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   # 28.09.16
   get 'mataloplastykovi-vikna-i-dveri' => 'window_and_door#index', as: :window_and_door
-
+  post 'wd_order_product' => 'window_and_door#order_product', as: :windowsill_and_door_ordering
 
   get 'basket' => 'main#basket'
   post 'recently_viewed' => 'main#recently_viewed'
@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   post 'contact_form' => 'main#contact_form'
   post 'call_order' => 'main#call_order'
   post 'order_product' => 'main#order_product'
+
 
   get 'finish_step_basket/:id' => 'main#finish_step_basket', as: :basket_items_list
 

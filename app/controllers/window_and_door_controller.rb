@@ -8,4 +8,11 @@ class WindowAndDoorController < ApplicationController
                   description: @page.seo.try(:seo_description),
                   keywords: @page.seo.try(:keywords)
   end
+
+  def order_product
+    data = params.permit(:product, :phone)
+    ContactMailer.wd_order_product(data).deliver
+    head :ok
+  end
+
 end
