@@ -8,8 +8,22 @@
     .wd-item-avatar-wrap
       .wd-item-avatar
         border: 7px solid #eceff1
+        margin-bottom: 20px
+        margin-bottom: 5px
         .image
           padding-bottom: 100%
+      .title
+        +default_font_style(#607d8b, 14, 500, 20)
+      .wd-other-types
+        .wd-other-type
+          width: 69px
+          border: 2px solid #eceff1
+          margin-right: 8px
+          float: left
+          cursor: pointer
+          .image
+            width: 100%
+            padding-bottom: 100%
 
     .title
       +default_font_style(#1c282e, 24, 500, 28.8)
@@ -35,3 +49,12 @@
         padding-bottom: 0
       p
         +default_font_style(#263238, 14, 400, 21)
+
+    ul.available-colors-carousel
+      margin-left: 0
+      list-style: none
+      padding-left: 40px
+      padding-right: 40px
+      li
+        border: 1px solid #eceff1
+        margin: 0 10px

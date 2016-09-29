@@ -31,6 +31,13 @@ ul.breadcrumbs
               .wd-item-avatar-wrap
                 .wd-item-avatar
                   .image style="background: url('#{product.avatar.url(:large)}')no-repeat center center;"
+                .title
+                  |Типи:
+                .wd-other-types
+                  .wd-other-type data-image=product.avatar.url(:large)
+                    .image style="background: url('#{product.avatar.url(:thumb)}')no-repeat center center;"
+                  .wd-other-type data-image=product.avatar_plus.url(:large)
+                    .image style="background: url('#{product.avatar_plus.url(:thumb)}')no-repeat center center;"
 
             .medium-8.columns
               .title
@@ -87,9 +94,16 @@ ul.breadcrumbs
                   p
                     = product.present_color
 
-              .title-h2
-                |Доступні кольори
-              hr
+              - if product.window_and_door_colors && product.window_and_door_colors.any?
+                .title-h2
+                  |Доступні кольори
+                hr
+
+                ul.available-colors-carousel
+                  - product.window_and_door_colors.each do |color_item|
+                    li
+                      a href=color_item.image.url(:large)
+                        = image_tag color_item.image.url(:thumb)
 
   .row
     .columns
