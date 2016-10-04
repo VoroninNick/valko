@@ -37,7 +37,8 @@ ul.breadcrumbs
               - item = item.metal_tile_details.first
               .one-windowsill
                 .ow-image
-                  a href=metal_tile_item_path(item.slug)
+                  /a href=metal_tile_item_path(item.slug)
+                  a data-href=item.inspect
                     /.image style="background: url('#{image}')no-repeat center center;"
 
                     - variant = item.color_options
@@ -64,7 +65,7 @@ ul.breadcrumbs
                     .clearfix
 
                   .ow-body-order-form
-                    a href=metal_tile_item_path(item.slug) Переглянути
+                    /a href=metal_tile_item_path(item.slug) Переглянути
   .row
     .columns
       .rr-catalog-description

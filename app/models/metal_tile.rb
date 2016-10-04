@@ -44,8 +44,8 @@ class MetalTile < ActiveRecord::Base
     label_plural 'Металочерепиці'
 
     list do
-      filed :title
-      filed :slug
+      # field :title
+      # field :slug
     end
 
     edit do
