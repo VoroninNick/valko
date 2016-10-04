@@ -33,39 +33,40 @@ ul.breadcrumbs
       .columns.sandbox
         - if @items.any?
           - @items.each do |item|
-            .medium-3.columns.end.mix.decking
-              - item = item.metal_tile_details.first
-              .one-windowsill
-                .ow-image
-                  /a href=metal_tile_item_path(item.slug)
-                  a data-href=item.inspect
-                    /.image style="background: url('#{image}')no-repeat center center;"
+            - if item.present?
+              .medium-3.columns.end.mix.decking
+                - item = item.metal_tile_details.first
+                .one-windowsill
+                  .ow-image
+                    a href=metal_tile_item_path(item.slug)
+                      /a data-href=item.inspect
+                      /.image style="background: url('#{image}')no-repeat center center;"
 
-                    - variant = item.color_options
-                    - if variant && variant.any?
-                      .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
+                      - variant = item.color_options
+                      - if variant && variant.any?
+                        .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
 
-                  .show-large-image.lightGallery
-                    - if variant && variant.first && variant.first.image.exists?
-                      a href=variant.first.image.url(:large)
-                        = inline_svg "Valko-icon-search.svg"
+                    .show-large-image.lightGallery
+                      - if variant && variant.first && variant.first.image.exists?
+                        a href=variant.first.image.url(:large)
+                          = inline_svg "Valko-icon-search.svg"
 
-                .ow-body
-                  .ow-body-information
-                    .small-6.columns
-                      .title = item.title
-                    .small-6.columns
-                      .price data-product-price=item.counted_price
-                        = item.counted_price
-                        sup &nbsp;грн.
-                      p
-                        |від
-                    .columns
-                    /.brand-title = gag.brand.title
-                    .clearfix
+                  .ow-body
+                    .ow-body-information
+                      .small-6.columns
+                        .title = item.title
+                      .small-6.columns
+                        .price data-product-price=item.counted_price
+                          = item.counted_price
+                          sup &nbsp;грн.
+                        p
+                          |від
+                      .columns
+                      /.brand-title = gag.brand.title
+                      .clearfix
 
-                  .ow-body-order-form
-                    /a href=metal_tile_item_path(item.slug) Переглянути
+                    .ow-body-order-form
+                      a href=metal_tile_item_path(item.slug) Переглянути
   .row
     .columns
       .rr-catalog-description
