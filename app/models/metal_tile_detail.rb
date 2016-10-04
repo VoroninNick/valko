@@ -60,6 +60,7 @@ class MetalTileDetail < ActiveRecord::Base
     list do
       field :id
       field :slug
+      field :metal_tile
       field :producer
       field :thickness
       field :coating
