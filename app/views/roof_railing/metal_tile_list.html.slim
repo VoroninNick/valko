@@ -33,9 +33,9 @@ ul.breadcrumbs
       .columns.sandbox
         - if @items.any?
           - @items.each do |item|
-            - if item.present?
-              .medium-3.columns.end.mix.decking
-                - item = item.metal_tile_details.first
+            .medium-3.columns.end.mix.decking
+              - item = item.metal_tile_details.first
+              - if item.present?
                 .one-windowsill
                   .ow-image
                     a href=metal_tile_item_path(item.slug)
