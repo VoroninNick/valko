@@ -127,20 +127,21 @@
                   - by_producer = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer)
                   - by_producer.each do |bp|
                     li
-                      = bp.thickness
+                      |Товщина:  #{bp.thickness}
                       ul
                         - by_thickness = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer).where(thickness: bp.thickness)
                         - by_thickness.each do |bth|
                           li
-                            = bth.coating
+                            |Покриття:  #{bth.coating}
                             ul
                               - by_coating = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer).where(thickness: bp.thickness).where(coating: bth.coating)
                               - by_coating.each do |bc|
                                 li
-                                  = bc.protective_lamina
+                                  |Захисна плівка:  #{bc.protective_lamina}
                                   ul
                                     - bc.color_options.each do |bd|
-                                      li  #{bd.title} / #{bd.price}
+                                      li
+                                        |Колір:  #{bd.title} / Ціна:  #{bd.price}
         hr
 
 
