@@ -105,20 +105,24 @@ class MetalSheetDetail < ActiveRecord::Base
     self.color_options.pluck(:title).uniq
   end
 
+  def items_by_parent
+    MetalSheetDetail.where(metal_sheet_id: self.metal_sheet_id)
+  end
+
   def producers_by_item
-    MetalSheetDetail.where(title: self.title).pluck(:producer).uniq
+    items_by_parent.pluck(:producer).uniq
   end
 
   def thickness_by_producers(producer)
-    MetalSheetDetail.where(title: self.title).where(producer: producer).pluck(:thickness).uniq
+    items_by_parent.where(producer: producer).pluck(:thickness).uniq
   end
 
   def coating_by_thickness
-    MetalSheetDetail.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).pluck(:coating).uniq
+    items_by_parent.where(producer: self.producer).where(thickness: self.thickness).pluck(:coating).uniq
   end
 
   def protective_lamina_by_coating
-    MetalSheetDetail.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).pluck(:protective_lamina).uniq
+    items_by_parent.where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).pluck(:protective_lamina).uniq
   end
 
 end
