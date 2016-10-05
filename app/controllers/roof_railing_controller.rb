@@ -200,10 +200,11 @@ class RoofRailingController < ApplicationController
     # producer_by_item = RoofRailItem.where(slug: decking.slug).pluck(:producer).uniq
 
     product = MetalTileDetail.find_by_slug(product_key)
+
     products = MetalTileDetail.where(slug: product.slug)
 
     # all producers by product
-    producer_by_item = products.map(&:producer).uniq
+    producer_by_item = products.pluck(:producer).uniq
 
     # all thickness by producer
     thickness_by_producer = products.where(producer: producer).pluck(:thickness).uniq
