@@ -31,7 +31,7 @@ class MetalTileDetail < ActiveRecord::Base
   def initialize_title
     self.title = self.metal_tile.title
   end
-  before_create :initialize_title
+  before_save :initialize_title
   before_save { save_slug(title, slug) }
 
   enumerize :producer, in: [:'arcelor', :'ukraine', :'slovakia', :'china']
