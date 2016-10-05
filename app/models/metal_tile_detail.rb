@@ -115,20 +115,24 @@ class MetalTileDetail < ActiveRecord::Base
     self.color_options.pluck(:title).uniq
   end
 
+  def items_by_parent
+    MetalTileDetail.where(metal_tile_id: self.metal_tile_id)
+  end
+
   def producers_by_item
-    MetalTileDetail.where(title: self.title).pluck(:producer).uniq
+    items_by_parent.pluck(:producer).uniq
   end
 
   def thickness_by_producers(producer)
-    MetalTileDetail.where(title: self.title).where(producer: producer).pluck(:thickness).uniq
+    items_by_parent.where(producer: producer).pluck(:thickness).uniq
   end
 
   def coating_by_thickness
-    MetalTileDetail.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).pluck(:coating).uniq
+    items_by_parent.where(producer: self.producer).where(thickness: self.thickness).pluck(:coating).uniq
   end
 
   def protective_lamina_by_coating
-    MetalTileDetail.where(title: self.title).where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).pluck(:protective_lamina).uniq
+    items_by_parent.where(producer: self.producer).where(thickness: self.thickness).where(coating: self.coating).pluck(:protective_lamina).uniq
   end
 
 end
