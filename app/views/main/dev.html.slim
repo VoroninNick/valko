@@ -114,6 +114,8 @@
 .row
   .columns
     - items = MetalTile.all
+    h1
+      |Items count: #{items.count}
     ul
       - items.each do |item|
         li
