@@ -124,26 +124,26 @@
             - by_type = MetalTileDetail.where(metal_tile_id: item.id)
             - by_type.each do |bt|
               li
-                |#{bt.producer} current_id: #{bt.id} (parent_id: #{bt.metal_tile.id})
+                |#{bt.producer} (id: #{bt.id}), (parent_id: #{bt.metal_tile.id})
                 ul
-                  - by_producer = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer)
+                  - by_producer = MetalTileDetail.where(id: bt.id).where(producer: bt.producer)
                   - by_producer.each do |bp|
                     li
-                      |Товщина:  #{bp.thickness}
+                      |#{bp.thickness}
                       ul
-                        - by_thickness = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer).where(thickness: bp.thickness)
+                        - by_thickness =  MetalTileDetail.where(id: bp.id).where(producer: bt.producer).where(thickness: bp.thickness)
                         - by_thickness.each do |bth|
                           li
-                            |Покриття:  #{bth.coating}
+                            |#{bth.coating}
                             ul
-                              - by_coating = MetalTileDetail.where(metal_tile_id: item.id).where(producer: bt.producer).where(thickness: bp.thickness).where(coating: bth.coating)
+                              - by_coating = MetalTileDetail.where(id: bth.id).where(producer: bt.producer).where(thickness: bp.thickness).where(coating: bth.coating)
                               - by_coating.each do |bc|
                                 li
-                                  |Захисна плівка:  #{bc.protective_lamina}
+                                  |#{bc.protective_lamina}
                                   ul
                                     - bc.color_options.each do |bd|
                                       li
-                                        |Колір:  #{bd.title} / Ціна:  #{bd.price}
+                                        |#{bd.title}  /  price:  #{bd.price}
         hr
 
 
