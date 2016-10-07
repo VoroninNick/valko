@@ -12,6 +12,7 @@ $(document).ready ->
     navigation: true
 
   gallery = null
+  cii = null
   $('ul.available-colors-carousel .owl-item').click ->
     $wrap =$(@).closest('ul.available-colors-carousel')
     slides = $wrap.find('.image')
