@@ -6,10 +6,34 @@ $(document).ready ->
 #=============================================
 # owl carousel from window and door page
 #=============================================
-  $('ul.available-colors-carousel').owlCarousel
+  owleg = $("ul.available-colors-carousel")
+  owleg.owlCarousel
     items: 5
     navigation: true
 
+  gallery = null
+  $('ul.available-colors-carousel .owl-item').click ->
+    $wrap =$(@).closest('ul.available-colors-carousel')
+    slides = $wrap.find('.image')
+
+    cii = $(@).index()
+    elmenetsListData = $.map($wrap.find('.image'), (el) ->
+      {
+        src: $(el).attr 'data-gallery-src'
+        thumb: $(el).attr 'data-gallery-thumb'
+      }
+    )
+#    console.log("cii", cii)
+    $gallery = $('ul.available-colors-carousel')
+    $gallery.lightGallery
+      dynamic: true
+      dynamicEl: elmenetsListData
+      index: cii
+
+    gallery ?= $gallery.data("lightGallery")
+    gallery.index = cii
+#    console.log("gallery", gallery)
+    window.gallery = gallery
 
 #=============================================
 # windows and door avatar

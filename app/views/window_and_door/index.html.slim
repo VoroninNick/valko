@@ -106,8 +106,10 @@ ul.breadcrumbs
                 ul.available-colors-carousel
                   - product.window_and_door_colors.each do |color_item|
                     li
-                      a href=color_item.image.url(:large)
-                        = image_tag color_item.image.url(:thumb)
+                      a
+                        .image-file
+                          .image style="background: url('#{color_item.image.url(:thumb)}')no-repeat center center;" data-gallery-thumb=color_item.image.url(:thumb) data-gallery-src=color_item.image.url(:large)
+                        /= image_tag color_item.image.url(:thumb)
 
   .row
     .columns
