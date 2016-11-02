@@ -65,6 +65,21 @@ class RoofRailingController < ApplicationController
   end
 
 
+  def choicest_items
+    @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy')
+  end
+  def choicest_roof_items
+    @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-dachu')
+    @items = ChoicestItem.appointment_item "to_roof"
+  end
+  def choicest_fence_items
+    @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-ogorozhi')
+  end
+  def choicest_item
+    @product = ChoicestItemDetail.find_by_slug(params[:title])
+  end
+
+
 
   def get_rr_options
     # received_key = params[:key]
@@ -316,6 +331,99 @@ class RoofRailingController < ApplicationController
     # json string with data
     if params_type == 'producer'
       product_by_producer = MetalSheetDetail.find_by_producer(producer_by_item[0])
+      current_producer = product.where(producer: producer)
+
+      # options to send
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: current_producer.first.id}.to_json
+
+    elsif params_type == 'thickness'
+      current_thickness = product.where(producer: producer).where(thickness: thickness)
+      coating_by_thickness = current_thickness.pluck(:coating).uniq
+      coating_arr = coating_by_thickness.map { |coating| coating }
+
+      protective_lamina_by_thickness = current_thickness.where(coating: coating_by_thickness[0]).pluck(:protective_lamina).uniq
+      protective_lamina_arr = protective_lamina_by_thickness.map { |protective_lamina| protective_lamina }
+
+      colors_arr = current_thickness.first.color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+      # options to send
+      options = {coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: current_thickness.first.id }.to_json
+
+    elsif params_type == 'coating'
+      current_el = product.where(producer: producer).where(thickness: thickness).where(coating: coating)
+      protective_lamina_by_coating = current_el.pluck(:protective_lamina).uniq
+      protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
+
+      with_first_lamina = current_el.where(protective_lamina: protective_lamina_arr.first)
+      colors_arr = with_first_lamina.first.color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+      # options to send
+      options = {protective_lamina: protective_lamina_arr, colors: colors_arr, product_id: current_el.first.id }.to_json
+
+    elsif params_type == 'lamina'
+      current_lamina = product.where(producer: producer).where(thickness: thickness).where(coating: coating).where(protective_lamina: lamina)
+      colors_arr = current_lamina.first.color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+      # options to send
+      options = {colors: colors_arr, product_id: current_lamina.first.id}.to_json
+
+    else
+      # options to send
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+
+    end
+
+    respond_to do |format|
+      format.json { render :json => options }
+    end
+  end
+
+
+  def get_product_options
+
+    product_key = params[:name]
+    product_class = Object.const_get(params[:type]) rescue nil
+    producer = params[:producer]
+    thickness = params[:thickness]
+    coating = params[:coating]
+    lamina = params[:lamina]
+
+    params_type = ''
+    if producer && !thickness
+      params_type = 'producer'
+    elsif thickness && !coating
+      params_type = 'thickness'
+    elsif coating && !lamina
+      params_type = 'coating'
+    elsif lamina
+      params_type = 'lamina'
+    end
+
+    product = product_class.where(slug: product_key)
+
+    # all producers by product
+    producer_by_item = product.pluck(:producer).uniq
+
+    # all thickness by producer
+    thickness_by_producer = product.where(producer: producer).pluck(:thickness).uniq
+    thickness_arr = thickness_by_producer.map { |thickness| thickness}
+
+    # all coating by first thickness
+    coating_by_thickness = product.where(producer: producer).where(thickness: thickness_arr.select{|i| !i.nil? }[0]).pluck(:coating).uniq
+    coating_arr = coating_by_thickness.map { |coating| coating }
+
+    # all lamina by first coating
+    protective_lamina_by_coating = product.where(producer: producer).where(thickness: thickness_arr.select{|i| !i.nil? }[0]).where(coating: coating_arr.select{|i| !i.nil? }[0]).pluck(:protective_lamina).uniq
+    protective_lamina_arr = protective_lamina_by_coating.map { |protective_lamina| protective_lamina }
+
+    # all colors by selected options
+    test_item = product.where(producer: producer).where(thickness: thickness_arr.select{|i| !i.nil? }[0]).where(coating: coating_arr.select{|i| !i.nil? }[0]).first
+    colors_arr = test_item.color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+
+    # json string with data
+    if params_type == 'producer'
+      product_by_producer = product_class.find_by_producer(producer_by_item[0])
       current_producer = product.where(producer: producer)
 
       # options to send

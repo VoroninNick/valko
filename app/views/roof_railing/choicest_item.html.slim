@@ -1,0 +1,133 @@
+- product = @product
+- parent = product.choicest_item
+- variant = product.color_options
+- values = variant.title.values
+
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    = link_to 'Покрівля огорожі', roof_rail_path
+  li
+    = link_to 'Добірні елементи', choicest_items_path
+  li
+    - if parent.appointment == "to_roof"
+      = link_to "До даху", choicest_roof_items_path
+    - elsif parent.appointment == "to_fence"
+      = link_to "До огорожі", choicest_fence_items_path
+  li
+    span
+      = product.title
+
+.catalog-one-item-page data-action=get_product_option_path(product.class, product.slug)
+  .row
+    form.ajax-popup-form action=line_items_path(id: product.id)
+      .medium-4.columns.coi-photo
+        - if variant && variant.first.image.exists?
+          #roof-rail-gallery
+            a href=variant.first.image.url(:large)
+              .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
+
+        /colors block
+        - if variant
+          = render partial: "partials/catalog/defaults/color_options", locals: {variant: variant, product: product, values: values}
+
+
+      .medium-8.columns
+        .title = @product.title
+
+        p = parent.short_description
+
+        .roof-rail-calculator-wrap
+          .row.roof-rail-calculator
+            .medium-5.columns
+              input type="hidden" name="type" value="MetalSheet"
+              input type="hidden" name="price" value=variant.first.price
+
+              /.input.width-roof-rail
+                p = @product.try(&:width)
+                label Ширина листа, мм
+
+              /.input.long-roof-rail
+                input#long-roof-rail type="number" name="long" value="1000"
+                label for="long-roof-rail" Довжина листа, мм
+
+              .input.count-roof-rail
+                input#count-roof-rail type="number" value="1" name="quantity" min="1"
+                label for="count-roof-rail" Кількість
+
+              .clearfix
+
+            .medium-7.columns
+              .rr-price-wrap
+                = image_tag "Valko-basket-button-passive-horisontal.png"
+                .rr-price
+                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
+                  .rrp-price data-product-price=@product.counted_price data-width=@product.try(&:width).to_f/1000 data-price=variant.first.price  = @product.counted_price
+                  .rrp-currency грн
+              .material-component.ripple.button-box-shadow
+                button type="submit" В кошик
+
+          - if parent && parent.drawing.exists?
+            .rr-catalog-drawing
+              span Креслення
+              hr
+              = image_tag parent.drawing.url(:large)
+
+          /product checkbox options
+          = render partial: "partials/catalog/defaults/product_checkbox_options_new", locals: {parent_element: ChoicestItemDetail,product: product}
+
+  .row
+    .columns
+      ul.tabs data-tab=""
+        li.tab-title.active
+          a href="#rrc-specifications" Характеристики
+        li.tab-title
+          a href="#rrc-useful-publications" Корисна інформація
+        li.tab-title
+          a href="#rrc-gallery" Фото та відео
+        li.tab-title
+          a href="#rrc-reviews" Відгуки
+      .tabs-content
+        #rrc-specifications.content.active.article
+          - if parent && parent.drawing.exists?
+            .row
+              .columns
+                .title Креслення
+            .row
+              .columns
+                = image_tag parent.drawing.url(:large)
+          .row
+            .columns
+              .title Листовий метал
+          .row
+            .columns
+              = raw parent.description
+
+        #rrc-useful-publications.content
+          /Корисна інформація
+          /- if product && product.informations && product.informations.any?
+            = render partial: "partials/catalog/defaults/publications", locals: {product: product}
+
+        #rrc-gallery.content
+          /Фото та відео
+          = render partial: "partials/catalog/defaults/media_library", locals: {parent: parent}
+
+        #rrc-reviews.content
+          = disqus_init
+          - disqus_thread
+
+
+            /.page-block
+      /.page-block-title
+        .row
+          .columns
+            span.left Схожі товари:
+            #similar-decking-dots.owl-dots.left
+
+      /.carousel-product-list#similar-decking
+        - @similar.in_groups_of(4, false).each do |decking_sublist|
+          .row
+            - decking_sublist.each do |decking|
+              .large-3.medium-6.columns class=("end" if @similar.last == decking)
+                = render "partials/one_item_card", item: decking.roof_rail_item

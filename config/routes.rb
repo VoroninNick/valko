@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/lystovyj-metal/:title' => 'roof_railing#sheet_metal', as: :sheet_metal_item
   # get 'pokrivlja-ogorozhi/lystovyj-metal/item' => 'roof_railing#sheet_metal', as: :sheet_metal_item
 
+  get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy' => 'roof_railing#choicest_items', as: :choicest_items
+  get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy/the-roof' => 'roof_railing#choicest_roof_items', as: :choicest_roof_items
+  get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy/the-fence' => 'roof_railing#choicest_fence_items', as: :choicest_fence_items
+  get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy/:title' => 'roof_railing#choicest_item', as: :choicest_item
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
@@ -76,6 +80,7 @@ Rails.application.routes.draw do
   post 'get_rr_options/:key' =>'roof_railing#get_rr_options', as: :get_rr_option
   post 'get_metal_tile_options/:key' =>'roof_railing#get_metal_tile_options', as: :get_mt_option
   post 'get_metal_sheet_options/:key' =>'roof_railing#get_metal_sheet_options', as: :get_ms_option
+  post "get_product_options/:type/:name" =>'roof_railing#get_product_options', as: :get_product_option
 
   resources :line_items
   resources :carts

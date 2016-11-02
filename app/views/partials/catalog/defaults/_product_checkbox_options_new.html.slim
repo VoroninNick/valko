@@ -1,0 +1,139 @@
+.catalog-rr-color-system
+  .catalog-rr-color-system-header
+    .row
+      .columns
+        span Параметри 2
+        hr
+  .catalog-rr-color-system-group
+    .row
+      .columns
+        .row
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header Виробник
+              .catalog-rr-block-option-body
+
+                - parent_element.producer.values.each do |producer|
+
+                  - if producer.in?(product.producers_by_item)
+
+                    - thickness_arr = parent_element.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(producer)) }
+                    - coating_arr = parent_element.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
+                    - protective_lamina_arr = parent_element.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
+                    - h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
+
+                    - if product.producer == producer
+                      .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                        input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
+                        label.icon for="cro-option-#{producer}"
+                        label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                        .clearfix
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                        input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                        label.icon for="cro-option-#{producer}"
+                        label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                        .clearfix
+                  - else
+                    .catalog-rr-radio-element data-key="producer"
+                      input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                      label.icon for="cro-option-#{producer}"
+                      label.text for="cro-option-#{producer}" = t("enumerize.producer.#{producer}")
+                      .clearfix
+
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header Товщина
+              .catalog-rr-block-option-body
+
+                - parent_element.thickness.values.each do |thickness|
+
+                  - if thickness.in?(product.thickness_by_producers(product.producer))
+
+                    - thickness_arr = parent_element.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(product.producer)) }
+                    - coating_arr = parent_element.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
+                    - protective_lamina_arr = parent_element.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
+                    - h = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr}.to_json
+
+                    - if product.thickness == thickness
+                      .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
+                        input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness" checked="checked"
+                        label.icon for="cro-option-#{thickness}"
+                        label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                        .clearfix
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="thickness"
+                        input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
+                        label.icon for="cro-option-#{thickness}"
+                        label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                        .clearfix
+                  - else
+                    .catalog-rr-radio-element data-key="thickness"
+                      input id="cro-option-#{thickness}" type="radio" value=thickness name="catalog-rr-thickness"
+                      label.icon for="cro-option-#{thickness}"
+                      label.text for="cro-option-#{thickness}" =t("enumerize.thickness.#{thickness}")
+                      .clearfix
+    .row
+      .columns
+        .row
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header Покриття
+              .catalog-rr-block-option-body
+
+                - parent_element.coating.values.each do |coating|
+
+                  - if coating.in?(product.coating_by_thickness)
+
+                    - if product.coating == coating
+
+                      .catalog-rr-radio-element.enable-catalog-element data-key="coating"
+                        input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating" checked="checked"
+                        label.icon for="cro-option-#{coating}"
+                        label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                        .clearfix
+
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="coating"
+                        input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
+                        label.icon for="cro-option-#{coating}"
+                        label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                        .clearfix
+
+                  - else
+                    .catalog-rr-radio-element data-key="coating"
+                      input id="cro-option-#{coating}" type="radio" value=coating name="catalog-rr-coating"
+                      label.icon for="cro-option-#{coating}"
+                      label.text for="cro-option-#{coating}" =t("enumerize.coating.#{coating}")
+                      .clearfix
+
+
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header Захисна плівка
+              .catalog-rr-block-option-body
+
+                - parent_element.protective_lamina.values.each do |protective_lamina|
+
+                  - if protective_lamina.in?(product.protective_lamina_by_coating)
+
+                    - if product.protective_lamina == protective_lamina
+                      .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
+                        input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina" checked="checked"
+                        label.icon for="cro-option-#{protective_lamina}"
+                        label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                        .clearfix
+
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="protective_lamina"
+                        input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
+                        label.icon for="cro-option-#{protective_lamina}"
+                        label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                        .clearfix
+
+                  - else
+                    .catalog-rr-radio-element data-key="protective_lamina"
+                      input id="cro-option-#{protective_lamina}" type="radio" value=protective_lamina name="catalog-rr-protective_lamina"
+                      label.icon for="cro-option-#{protective_lamina}"
+                      label.text for="cro-option-#{protective_lamina}" =t("enumerize.protective_lamina.#{protective_lamina}")
+                      .clearfix

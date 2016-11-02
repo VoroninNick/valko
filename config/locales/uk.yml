@@ -109,6 +109,10 @@ uk:
       screws: Шурупи
       guides: Направляючі
 
+    appointment:
+      to_roof: До даху
+      to_fence: До огорожі
+
     mosquito_item_option:
       title:
         white: білий
