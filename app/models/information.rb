@@ -41,6 +41,11 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :metal_sheet_details, join_table: :information_metal_sheet_details
   attr_accessible :metal_sheet_details, :metal_sheet_detail_ids
 
+  # choicest item
+  has_and_belongs_to_many :choicest_items, join_table: :choicest_items_information
+  attr_accessible :choicest_items, :choicest_item_ids
+
+
   has_one :seo, as: :seo_poly
   attr_accessible :seo
   accepts_nested_attributes_for :seo, allow_destroy: true
@@ -96,6 +101,9 @@ class Information < ActiveRecord::Base
         field :metal_sheet_details do
           label 'Листовий метал:'
         end
+        field :choicest_items do
+          label 'Добірні елементи:'
+        end
       end
 
       group :mosquito_options do
@@ -111,7 +119,7 @@ class Information < ActiveRecord::Base
       end
     end
   end
-  scope :with_public, -> { where(:published => true).order('position asc')}
+  scope :with_public, -> { where(:published => true).order('position desc')}
   scope :with_main, -> {with_public.where(:main => true)}
 
   # searchable do

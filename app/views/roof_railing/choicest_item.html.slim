@@ -62,8 +62,7 @@ ul.breadcrumbs
               .rr-price-wrap
                 = image_tag "Valko-basket-button-passive-horisontal.png"
                 .rr-price
-                  /.rrp-price data-width=@decking.try(&:width).to_f/1000 data-price=@decking.rr_details.first.price  = (((@decking.try(&:width).to_f/1000) * 1) * @decking.rr_details.first.price).ceil
-                  .rrp-price data-product-price=@product.counted_price data-width=@product.try(&:width).to_f/1000 data-price=variant.first.price  = @product.counted_price
+                  .rrp-price data-product-price=@product.counted_price data-width="1" data-price=variant.first.price  = @product.counted_price
                   .rrp-currency грн
               .material-component.ripple.button-box-shadow
                 button type="submit" В кошик
@@ -106,8 +105,8 @@ ul.breadcrumbs
 
         #rrc-useful-publications.content
           /Корисна інформація
-          /- if product && product.informations && product.informations.any?
-            = render partial: "partials/catalog/defaults/publications", locals: {product: product}
+          - if parent && parent.informations && parent.informations.any?
+            = render partial: "partials/catalog/defaults/publications", locals: {product: parent}
 
         #rrc-gallery.content
           /Фото та відео

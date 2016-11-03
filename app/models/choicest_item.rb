@@ -29,6 +29,10 @@ class ChoicestItem < ActiveRecord::Base
   # has_and_belongs_to_many :informations, join_table: :decking_informations
   # attr_accessible :informations, :information_ids
 
+  # informations
+  has_and_belongs_to_many :informations, join_table: :choicest_items_information
+  attr_accessible :informations, :information_ids
+
   rails_admin do
     navigation_label 'Покрівля огорожі'
 

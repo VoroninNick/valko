@@ -19,7 +19,11 @@ deckingCalculator = () ->
   long_el = parseInt($wrap.find('input[name="long"]').val())
   console.log 'long :', long_el
 
-  total_price = (((width_el/1000)* (long_el/1000))*quantity)*price
+  if width_el || long_el
+    total_price = (((width_el/1000)* (long_el/1000))*quantity)*price
+  else
+    total_price = quantity*price
+
   $total_price.text(Math.round(total_price))
 
 
