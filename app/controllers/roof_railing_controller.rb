@@ -67,6 +67,7 @@ class RoofRailingController < ApplicationController
 
   def choicest_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy')
+    @catalog_header_session = session['choicest-items-header-status']
   end
   def choicest_roof_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-dachu')

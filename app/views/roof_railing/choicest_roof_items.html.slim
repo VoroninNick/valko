@@ -8,20 +8,27 @@ ul.breadcrumbs
   li
     span До даху
 
+  .hide-catalog-header data-catalog-session-variable="choicest-roof-items-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
-    .row
-      .columns
-        = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }
+  .roof-rail-catalog-list-header.catalog-page-header
+    .catalog-page-header-inner
+      .row
+        .columns
+          = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }
 
-        .wcl-body
-          .columns
-            .title
-              = @page.title
-          .clearfix
+          .wcl-body
+            .columns
+              .title
+                = @page.title
+            .clearfix
 
-          = raw @page.header_description
-          .clearfix
+            = raw @page.header_description
+            .clearfix
 
   .roof-rail-catalog-list-body#roof-rail-container
     .wclb-header

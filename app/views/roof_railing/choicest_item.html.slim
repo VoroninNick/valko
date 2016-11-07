@@ -105,7 +105,7 @@ ul.breadcrumbs
 
         #rrc-useful-publications.content
           /Корисна інформація
-          - if parent && parent.informations && parent.informations.any?
+          - if parent && parent.informations.any?
             = render partial: "partials/catalog/defaults/publications", locals: {product: parent}
 
         #rrc-gallery.content

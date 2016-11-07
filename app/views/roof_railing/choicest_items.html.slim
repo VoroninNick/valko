@@ -7,20 +7,29 @@ ul.breadcrumbs
     span
       |Добірні елементи
 
+  .hide-catalog-header data-catalog-session-variable="choicest-items-header-status" data-result=@catalog_header_session
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
+
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
-    .row
-      .columns
-        = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }
 
-        .wcl-body
-          .columns
-            .title
-              = @page.title
-          .clearfix
+  .roof-rail-catalog-list-header.catalog-page-header
+    .catalog-page-header-inner
+      .row
+        .columns
+          = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }
 
-          = raw @page.header_description
-          .clearfix
+          .wcl-body
+            .columns
+              .title
+                = @page.title
+            .clearfix
+
+            = raw @page.header_description
+            .clearfix
 
   .page-block
     .page-block-title

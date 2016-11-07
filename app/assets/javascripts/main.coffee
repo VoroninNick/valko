@@ -702,6 +702,61 @@ $(document).ready ->
   clipboard.on 'success', (e) ->
     console.log e
 
+#===========================================================
+# default hiden catalog header
+#===========================================================
+  session_variable = $(".hide-catalog-header").attr "data-catalog-session-variable"
+
+  console.log "session variable: ", session_variable
+
+  if localStorage.getItem("#{session_variable}") == 'hiden'
+    $('.catalog-page-header').addClass('hiden-catalog-header')
+    if $('.hch-arrow.valko-arrow').hasClass('va-top')
+      $('.hch-arrow.valko-arrow').removeClass('va-top')
+      $('.hch-arrow.valko-arrow').addClass('va-bottom')
+      $('.hide-catalog-header .title').text('Розгорнути')
+    else
+      $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+      $('.hch-arrow.valko-arrow').addClass('va-top')
+      $('.hide-catalog-header .title').text('Згорнути')
+
+  $('.hide-catalog-header').click ->
+    $this = $(@)
+    $wrap = $this.closest('.main-body')
+
+    if $this.hasClass('is-rr-catalog')
+
+    else
+      $obj = $wrap.find('.catalog-page-header')
+      if $obj.hasClass('hiden-catalog-header')
+        $obj.removeClass('hiden-catalog-header')
+        localStorage.setItem("#{session_variable}", "open")
+
+        if $('.hch-arrow.valko-arrow').hasClass('va-top')
+          $('.hch-arrow.valko-arrow').removeClass('va-top')
+          $('.hch-arrow.valko-arrow').addClass('va-bottom')
+          $('.hide-catalog-header .title').text('Розгорнути')
+        else
+          $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+          $('.hch-arrow.valko-arrow').addClass('va-top')
+          $('.hide-catalog-header .title').text('Згорнути')
+
+      else
+        $obj.addClass('hiden-catalog-header')
+
+        localStorage.setItem("#{session_variable}", "hiden")
+        $('.hide-catalog-header .title').text('Розгорнути')
+
+        if $('.hch-arrow.valko-arrow').hasClass('va-top')
+          $('.hch-arrow.valko-arrow').removeClass('va-top')
+          $('.hch-arrow.valko-arrow').addClass('va-bottom')
+          $('.hide-catalog-header .title').text('Розгорнути')
+        else
+          $('.hch-arrow.valko-arrow').removeClass('va-bottom')
+          $('.hch-arrow.valko-arrow').addClass('va-top')
+          $('.hide-catalog-header .title').text('Згорнути')
+
+
 $(window).scroll ->
   console.log 'scroll top:', $(document).scrollTop()
   if $(document).scrollTop() >= 215
