@@ -4,32 +4,29 @@ ul.breadcrumbs
   li
     span Покрівля огорожі
 
-  /.hide-catalog-header.is-rr-catalog
+  .hide-catalog-header data-catalog-session-variable="roof-rails-header-status"
     .title
       |Згорнути
     .hch-arrow.valko-arrow.va-top
       div
 
 .roof-rail-catalog-list-page
-  /.row
-    .columns
-      = session['catalog-header-status']
+  .roof-rail-catalog-list-header.catalog-page-header
+    .catalog-page-header-inner
+      .row
+        .columns
+          - if @roof_rail.catalog_banners && @roof_rail.catalog_banners.any?
+            ul#roof-rail-banner
+              - @roof_rail.catalog_banners.with_public.each do |slide|
+                li
+                  .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
 
-  .roof-rail-catalog-list-header
-    .row
-      .columns
-        - if @roof_rail.catalog_banners && @roof_rail.catalog_banners.any?
-          ul#roof-rail-banner
-            - @roof_rail.catalog_banners.with_public.each do |slide|
-              li
-                .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
-
-        .wcl-body
-          .columns
-            .title = @roof_rail.try(:title)
-          .clearfix
-          = raw @roof_rail.header_description
-          .clearfix
+          .wcl-body
+            .columns
+              .title = @roof_rail.try(:title)
+            .clearfix
+            = raw @roof_rail.header_description
+            .clearfix
 
 
   .page-block
