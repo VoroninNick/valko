@@ -75,6 +75,7 @@ class RoofRailingController < ApplicationController
   end
   def choicest_fence_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-ogorozhi')
+    @items = ChoicestItem.appointment_item "to_fence"
   end
   def choicest_item
     @product = ChoicestItemDetail.find_by_slug(params[:title])
