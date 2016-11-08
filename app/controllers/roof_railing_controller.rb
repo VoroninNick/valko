@@ -67,7 +67,7 @@ class RoofRailingController < ApplicationController
 
   def choicest_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy')
-    @catalog_header_session = session['choicest-items-header-status']
+    # @catalog_header_session = session['choicest-items-header-status']
   end
   def choicest_roof_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-dachu')
@@ -81,7 +81,10 @@ class RoofRailingController < ApplicationController
     @product = ChoicestItemDetail.find_by_slug(params[:title])
   end
 
-
+  # mounting_and_sealants
+  def mounting_and_sealants
+    @page = RoofRailPage.find_by_page_name('kriplennja-germetyka-dlja-pokrivli')
+  end
 
   def get_rr_options
     # received_key = params[:key]

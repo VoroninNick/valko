@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy/the-fence' => 'roof_railing#choicest_fence_items', as: :choicest_fence_items
   get 'pokrivlja-ogorozhi/pokrivelni-dobirni-elementy/:title' => 'roof_railing#choicest_item', as: :choicest_item
 
+  # mounting and sealants
+  get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli' => 'roof_railing#mounting_and_sealants', as: :mounting_and_sealants
+
+
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
   get 'moskitna-sitka/window/:title' => 'mosquito#window_item', as: :one_mosquito_window
