@@ -262,7 +262,7 @@ $(document).ready ->
       $this.addClass('open')
 
 #===========================================================
-# add product to curt
+# add product to cart
 #===========================================================
   $('form.ajax-popup-form').submit (e) ->
     $this = $(@)

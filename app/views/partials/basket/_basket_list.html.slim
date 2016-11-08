@@ -199,6 +199,12 @@
             - variant = product.color_options.find_by_title(item.color)
             = render partial: "partials/basket/templeates/metal_sheet", locals: {item: item, product: product, variant: variant}
 
+          - elsif item.class_name == 'ChoicestItem'
+            /ChoicestItem
+            - product = item.choicest_item_detail
+            - variant = product.color_options.find_by_title(item.color)
+            = render partial: "partials/basket/templeates/metal_sheet", locals: {item: item, product: product, variant: variant}
+
       .clearfix
 
 .basket-footer

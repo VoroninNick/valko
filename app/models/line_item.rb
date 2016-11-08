@@ -29,6 +29,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :mosquito_item_option
   belongs_to :metal_tile_detail
   belongs_to :metal_sheet_detail
+  belongs_to :choicest_item_detail
 
   attr_accessible *attribute_names
   attr_accessible :windowsill, :cart, :gag
@@ -81,7 +82,15 @@ class LineItem < ActiveRecord::Base
     elsif self.class_name == 'MetalSheet'
       o = self.metal_sheet_detail.color_options.find_by_title(self.color).price || 0
       return o
+
+    # ChoicestItem
+    elsif self.class_name == 'ChoicestItem'
+      o = self.choicest_item_detail.color_options.find_by_title(self.color).price || 0
+      return o
+
+
     end
+
 
   end
 
@@ -116,8 +125,13 @@ class LineItem < ActiveRecord::Base
 
     elsif self.class_name == 'MetalTile'
       ((current_price *(long.to_f/1000))*(metal_tile_detail.width.to_f/1000))* quantity
+
     elsif self.class_name == 'MetalSheet'
       ((current_price *(long.to_f/1000))*(metal_sheet_detail.width.to_f/1000))* quantity
+
+    elsif self.class_name == 'ChoicestItem'
+      current_price * quantity
+
     end
   end
 end

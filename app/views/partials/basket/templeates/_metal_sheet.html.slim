@@ -8,16 +8,16 @@
     .hide-for-small-only.medium-2.columns
       .image style="background: url('#{variant.image.url(:thumb)}')no-repeat center center;"
     .small-6.medium-6.columns
-      a href=sheet_metal_item_path(product.slug)
+      a href=choicest_item_path(product.slug)
         .title #{product.title} (#{t("enumerize.title.#{item.color}")})
       .brand-title #{t("enumerize.producer.#{product.producer}")}, #{t("enumerize.thickness.#{product.thickness}")}, #{t("enumerize.coating.#{product.coating}")}, #{t("enumerize.protective_lamina.#{product.protective_lamina}")}
       p
         span Ширина:
-        = product.width
+        /= product.width
         sup &nbsp;мм
       p
         span Довжина:
-        = item.long
+        /= item.long
         sup &nbsp;мм
     .small-2.medium-1.columns
       .input.basket-count-product
