@@ -85,6 +85,12 @@ class RoofRailingController < ApplicationController
   def mounting_and_sealants
     @page = RoofRailPage.find_by_page_name('kriplennja-germetyka-dlja-pokrivli')
   end
+  def mounting
+    @page = RoofRailPage.find_by_page_name('kriplennja-dlja-pokrivli')
+  end
+  def sealants
+    @page = RoofRailPage.find_by_page_name('germetyka-dlja-pokrivli')
+  end
 
   def get_rr_options
     # received_key = params[:key]
