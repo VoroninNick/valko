@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   # mounting and sealants
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli' => 'roof_railing#mounting_and_sealants', as: :mounting_and_sealants
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/hermetyky' => 'roof_railing#sealants', as: :sealants
+  get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/hermetyky/:title' => 'roof_railing#sealant', as: :sealant
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/kriplennya' => 'roof_railing#mounting', as: :fasteners
 
 

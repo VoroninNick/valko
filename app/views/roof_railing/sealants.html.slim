@@ -40,24 +40,18 @@ ul.breadcrumbs
 
     .row
       .columns.sandbox
-        /- if @items.any?
+        - if @items.any?
           - @items.each do |item|
             .medium-3.columns.end.mix.decking
-              - item = item.choicest_item_details.first
               - if item.present?
                 .one-windowsill
                   .ow-image
-                    a href=choicest_item_path(item.slug)
-                      /a data-href=item.inspect
-                      /.image style="background: url('#{image}')no-repeat center center;"
-
-                      - variant = item.color_options
-                      - if variant && variant.any?
-                        .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
+                    a href=sealant_path(item.slug)
+                      .image style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
 
                     .show-large-image.lightGallery
-                      - if variant && variant.first && variant.first.image.exists?
-                        a href=variant.first.image.url(:large)
+                      - if item.image.exists?
+                        a href=item.image.url(:large)
                           = inline_svg "Valko-icon-search.svg"
 
                   .ow-body
@@ -75,7 +69,7 @@ ul.breadcrumbs
                       .clearfix
 
                     .ow-body-order-form
-                      a href=choicest_item_path(item.slug) Переглянути
+                      a href=sealant_path(item.slug) Переглянути
   .row
     .columns
       .rr-catalog-description

@@ -90,6 +90,10 @@ class RoofRailingController < ApplicationController
   end
   def sealants
     @page = RoofRailPage.find_by_page_name('germetyka-dlja-pokrivli')
+    @items = Sealant.all
+  end
+  def sealant
+    @product = Sealant.find_by_slug(params[:title])
   end
 
   def get_rr_options
