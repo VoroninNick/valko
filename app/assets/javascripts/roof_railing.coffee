@@ -141,26 +141,46 @@ $(document).ready ->
 
           else
             $current_item = $('.catalog-rr-color-system-group').find("[data-key='#{i}']")
-
             console.log 'what is i :', i
-            - unless i == 'producer'
-              $step_item = $current_item.removeClass('enable-catalog-element')
+            if $wrap.attr("data_version") == "fastener"
+              - unless i == 'appointment'
+                $step_item = $current_item.removeClass('enable-catalog-element')
+#                alert "TTT - appointment"
+                if typeof value != 'object'
+                  value = [value]
 
-              if typeof value != 'object'
-                value = [value]
+                checked = false
+                $current_item.find('input[type="radio"]').prop('checked', false)
 
-              checked = false
-              $current_item.find('input[type="radio"]').prop('checked', false)
+                $.each value, (i, item)->
 
-              $.each value, (i, item)->
+                  console.log 'value:', item
 
-                console.log 'value:', item
+                  $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
 
-                $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
+                  if $step_item.find("[value='#{item}']").closest('.catalog-rr-block-option').find('input:radio:checked').length > 0
+                  else
+                    $step_item.find("[value='#{item}']").prop('checked', true)
 
-                if $step_item.find("[value='#{item}']").closest('.catalog-rr-block-option').find('input:radio:checked').length > 0
-                else
-                  $step_item.find("[value='#{item}']").prop('checked', true)
+            else
+              - unless i == 'producer'
+                $step_item = $current_item.removeClass('enable-catalog-element')
+#                alert "TTT - producer"
+                if typeof value != 'object'
+                  value = [value]
+
+                checked = false
+                $current_item.find('input[type="radio"]').prop('checked', false)
+
+                $.each value, (i, item)->
+
+                  console.log 'value:', item
+
+                  $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
+
+                  if $step_item.find("[value='#{item}']").closest('.catalog-rr-block-option').find('input:radio:checked').length > 0
+                  else
+                    $step_item.find("[value='#{item}']").prop('checked', true)
 
       error: (err) ->
 #        alert "Error"

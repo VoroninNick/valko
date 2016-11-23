@@ -15,3 +15,17 @@
             - else
               p
                 |=========================================
+
+.row
+  .columns
+    ul
+      /= Fastener.first.fastener_options.count
+      - Fastener.all.each do |item|
+        li
+          /= item.inspect
+          = item.title
+          - if item.fastener_options.any?
+            ul
+              - item.fastener_options.each do |item|
+                li
+                  | "id: #{item.id} -- appointment: #{item.appointment} -- producer: #{item.producer}"
