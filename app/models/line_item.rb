@@ -20,6 +20,10 @@
 # metal sheet
 # t.belongs_to :metal_sheet_detail
 
+# fastener
+# t.belongs_to :fastener_option
+
+
 class LineItem < ActiveRecord::Base
   belongs_to :windowsill
   belongs_to :gag
@@ -30,6 +34,8 @@ class LineItem < ActiveRecord::Base
   belongs_to :metal_tile_detail
   belongs_to :metal_sheet_detail
   belongs_to :choicest_item_detail
+  belongs_to :fastener_option
+
 
   attr_accessible *attribute_names
   attr_accessible :windowsill, :cart, :gag
@@ -88,6 +94,10 @@ class LineItem < ActiveRecord::Base
       o = self.choicest_item_detail.color_options.find_by_title(self.color).price || 0
       return o
 
+    # Fastener
+    elsif self.class_name == 'Fastener'
+      o = self.fastener_option.fastener_color_options.find_by_title(self.color).price || 0
+      return o
 
     end
 
@@ -130,6 +140,9 @@ class LineItem < ActiveRecord::Base
       ((current_price *(long.to_f/1000))*(metal_sheet_detail.width.to_f/1000))* quantity
 
     elsif self.class_name == 'ChoicestItem'
+      current_price * quantity
+
+    elsif self.class_name == 'Fastener'
       current_price * quantity
 
     end

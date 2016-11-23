@@ -165,6 +165,22 @@ class LineItemsController < ApplicationController
         @line_item = @cart.line_items.build(choicest_item_detail_id: params[:id], quantity: quantity, class_name: type, color: color)
       end
 
+    # Fastener
+    elsif type == 'Fastener'
+      color = params[:catalog_rr_color]
+      item = FastenerOption.find(params[:id])
+
+      existed_item = @cart.line_items.where(fastener_option_id: params[:id], quantity: quantity, class_name: type, color: color)
+
+      if existed_item.count > 0
+        @line_item = existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(quantity)
+      else
+        @line_item = @cart.line_items.build(fastener_option_id: params[:id], quantity: quantity, class_name: type, color: color)
+      end
 
     end
 
