@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/hermetyky' => 'roof_railing#sealants', as: :sealants
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/hermetyky/:title' => 'roof_railing#sealant', as: :sealant
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/kriplennya' => 'roof_railing#mounting', as: :fasteners
+  get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/kriplennya/:title' => 'roof_railing#fastener', as: :fastener
 
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
@@ -88,6 +89,7 @@ Rails.application.routes.draw do
   post 'get_metal_tile_options/:key' =>'roof_railing#get_metal_tile_options', as: :get_mt_option
   post 'get_metal_sheet_options/:key' =>'roof_railing#get_metal_sheet_options', as: :get_ms_option
   post "get_product_options/:type/:name" =>'roof_railing#get_product_options', as: :get_product_option
+  post "get_fastener_options/:type/:name" =>'roof_railing#get_fastener_options', as: :get_fastener_option
 
   resources :line_items
   resources :carts

@@ -53,28 +53,37 @@ $(document).ready ->
     action_link = $wrap.attr('data-action')
 
 
+    if $wrap.attr("data_version") == "fastener"
+      if $parent.attr('data-key') == "appointment"
+        DataToSend =
+          appointment: $wrap.find('input[name="catalog-rr-appointment"]:checked').val()
 
-    if $parent.attr('data-key') == "producer"
-      DataToSend =
-        producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
+      else if $parent.attr('data-key') == "producer"
+        DataToSend =
+          appointment: $wrap.find('input[name="catalog-rr-appointment"]:checked').val()
+          producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
+    else
+      if $parent.attr('data-key') == "producer"
+        DataToSend =
+          producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
 
-    else if $parent.attr('data-key') == "thickness"
-      DataToSend =
-        producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
-        thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
+      else if $parent.attr('data-key') == "thickness"
+        DataToSend =
+          producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
+          thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
 
-    else if $parent.attr('data-key') == "coating"
-      DataToSend =
-        producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
-        thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
-        coating: $wrap.find('input[name="catalog-rr-coating"]:checked').val()
+      else if $parent.attr('data-key') == "coating"
+        DataToSend =
+          producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
+          thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
+          coating: $wrap.find('input[name="catalog-rr-coating"]:checked').val()
 
-    else if $parent.attr('data-key') == "protective_lamina"
-      DataToSend =
-        producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
-        thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
-        coating: $wrap.find('input[name="catalog-rr-coating"]:checked').val()
-        lamina: $wrap.find('input[name="catalog-rr-protective_lamina"]:checked').val()
+      else if $parent.attr('data-key') == "protective_lamina"
+        DataToSend =
+          producer: $wrap.find('input[name="catalog-rr-producer"]:checked').val()
+          thickness: $wrap.find('input[name="catalog-rr-thickness"]:checked').val()
+          coating: $wrap.find('input[name="catalog-rr-coating"]:checked').val()
+          lamina: $wrap.find('input[name="catalog-rr-protective_lamina"]:checked').val()
 
     $.ajax
       type: "POST"

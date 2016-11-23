@@ -40,18 +40,18 @@ ul.breadcrumbs
 
     .row
       .columns.sandbox
-        /- if @items.any?
+        - if @items.any?
           - @items.each do |item|
             .medium-3.columns.end.mix.decking
-              - item = item.choicest_item_details.first
+              - item = item.fastener_options.first
               - if item.present?
                 .one-windowsill
                   .ow-image
-                    a href=choicest_item_path(item.slug)
+                    a href=fastener_path(item.slug)
                       /a data-href=item.inspect
                       /.image style="background: url('#{image}')no-repeat center center;"
 
-                      - variant = item.color_options
+                      - variant = item.fastener_color_options
                       - if variant && variant.any?
                         .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
 

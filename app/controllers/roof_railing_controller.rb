@@ -87,6 +87,10 @@ class RoofRailingController < ApplicationController
   end
   def mounting
     @page = RoofRailPage.find_by_page_name('kriplennja-dlja-pokrivli')
+    @items = Fastener.all
+  end
+  def fastener
+    @product = FastenerOption.find_by_slug(params[:title])
   end
   def sealants
     @page = RoofRailPage.find_by_page_name('germetyka-dlja-pokrivli')
@@ -474,6 +478,61 @@ class RoofRailingController < ApplicationController
 
       # options to send
       options = {colors: colors_arr, product_id: current_lamina.first.id}.to_json
+
+    else
+      # options to send
+      options = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr, colors: colors_arr }.to_json
+
+    end
+
+    respond_to do |format|
+      format.json { render :json => options }
+    end
+  end
+
+
+  def get_fastener_options
+
+    product_key = params[:name]
+    product_class = Object.const_get(params[:type]) rescue nil
+    appointment = params[:appointment]
+    producer = params[:producer]
+
+    params_type = ''
+    if appointment && !producer
+      params_type = 'appointment'
+    elsif producer
+      params_type = 'producer'
+    end
+
+    product = product_class.where(slug: product_key)
+
+    # all producers by product
+    appointments_by_item = product.pluck(:appointment).uniq
+
+    # all thickness by producer
+    producers_by_appointment = product.where(appointment: appointment).pluck(:producer).uniq
+    producers_arr = producers_by_appointment.map { |producer| producer}
+
+    # all colors by selected options
+    item = product.where(appointment: appointment).where(producer: producers_arr.select{|i| !i.nil? }[0]).first
+    colors_arr = item.fastener_color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+
+    # json string with data
+    if params_type == 'appointment'
+      product_by_appointment = product_class.find_by_appointment(appointments_by_item[0])
+      current_appointment = product.where(appointment: appointment)
+
+      # options to send
+      options = {producer: producers_arr, colors: colors_arr, product_id: current_appointment.first.id}.to_json
+
+    elsif params_type == 'producer'
+      current_producer = product.where(appointment: appointment).where(producer: producer)
+      colors_arr = current_producer.first.fastener_color_options.map {|color| {title: color.title, price: color.price, image: color.image.url(:thumb), image_large: color.image.url(:large)} }
+
+      # options to send
+      options = {colors: colors_arr, product_id: current_producer.first.id}.to_json
 
     else
       # options to send

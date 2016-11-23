@@ -97,6 +97,25 @@ uk:
       m3009: 3009 - Цеглово-червоний (матовий)
       mtsynk: Цинк
       malyutsynk: Алюцинк
+
+      #fastener
+      f3005: 3005 - Вишневий
+      f6005: 6005- Зелений
+      f6020: 6020 - Хромово-зелений
+      f3011: 3011 - Червоний
+      f3009: 3009 - Цеглово-червоний
+      f5005: 5005 - Синій
+      f1003: 1003 - Жовтий
+      f1015: 1015 - Молочний
+      f8004: 8004 - Цегловий
+      f8003: 8003 -
+      f8017: 8017 - Коричневий
+      f8019: 8019 - Темно-коричневий
+      f7024: 7024 - Антрацит
+      f9006: 9006 - Срібний
+      f9003: 9003 - Білий
+      ftsynk: Цинк
+
     mosquito_grid_type:
       window: Віконна
       door: Дверна
@@ -112,6 +131,14 @@ uk:
     appointment:
       to_roof: До даху
       to_fence: До огорожі
+
+    fastener_option:
+      appointment:
+        to_metal: До металу
+        to_wood: До дерева
+      producer:
+        info_global: Info Global
+        goneba: Goneba
 
     mosquito_item_option:
       title:

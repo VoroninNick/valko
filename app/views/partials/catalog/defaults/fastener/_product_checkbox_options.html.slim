@@ -1,0 +1,86 @@
+.catalog-rr-color-system
+  .catalog-rr-color-system-header
+    .row
+      .columns
+        span
+          |Параметри
+        hr
+  .catalog-rr-color-system-group
+    .row
+      .columns
+        .row
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header
+                |Призначення
+
+              .catalog-rr-block-option-body
+                - parent_element.appointment.values.each do |appointment|
+
+                  - if appointment.in?(product.appointments_by_item)
+
+                    /- thickness_arr = parent_element.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(product.producer)) }
+                    /- coating_arr = parent_element.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
+                    /- protective_lamina_arr = parent_element.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
+                    /- h = {thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr}.to_json
+
+                    - if product.appointment == appointment
+                      .catalog-rr-radio-element.enable-catalog-element data-key="appointment"
+                        input id="cro-option-#{appointment}" type="radio" value=appointment name="catalog-rr-appointment" checked="checked"
+                        label.icon for="cro-option-#{appointment}"
+                        label.text for="cro-option-#{appointment}"
+                          =t("enumerize.fastener_option.appointment.#{appointment}")
+                        .clearfix
+
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="appointment"
+                        input id="cro-option-#{appointment}" type="radio" value=appointment name="catalog-rr-appointment"
+                        label.icon for="cro-option-#{appointment}"
+                        label.text for="cro-option-#{appointment}"
+                          = t("enumerize.fastener_option.appointment.#{appointment}")
+                        .clearfix
+
+                  - else
+                    .catalog-rr-radio-element data-key="appointment"
+                      input id="cro-option-#{appointment}" type="radio" value=appointment name="catalog-rr-appointment"
+                      label.icon for="cro-option-#{appointment}"
+                      label.text for="cro-option-#{appointment}"
+                        = t("enumerize.fastener_option.appointment.#{appointment}")
+                      .clearfix
+
+          .medium-6.columns
+            .catalog-rr-block-option
+              .catalog-rr-block-option-header
+                |Виробник
+
+              .catalog-rr-block-option-body
+                - parent_element.producer.values.each do |producer|
+
+                  - if producer.in?(product.producer_by_appointment(product.appointment))
+
+                    /- thickness_arr = parent_element.thickness.values.map { |thickness| thickness if thickness.in?(product.thickness_by_producers(producer)) }
+                    /- coating_arr = parent_element.coating.values.map { |coating| coating if coating.in?(product.coating_by_thickness) }
+                    /- protective_lamina_arr = parent_element.protective_lamina.values.map { |protective_lamina| protective_lamina if protective_lamina.in?(product.protective_lamina_by_coating) }
+                    /- h = {producer: producer, thickness: thickness_arr, coating: coating_arr, protective_lamina: protective_lamina_arr }.to_json
+
+                    - if product.producer == producer
+                      .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                        input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer" checked="checked"
+                        label.icon for="cro-option-#{producer}"
+                        label.text for="cro-option-#{producer}"
+                          = t("enumerize.fastener_option.producer.#{producer}")
+                        .clearfix
+                    - else
+                      .catalog-rr-radio-element.enable-catalog-element data-key="producer"
+                        input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                        label.icon for="cro-option-#{producer}"
+                        label.text for="cro-option-#{producer}"
+                          = t("enumerize.fastener_option.producer.#{producer}")
+                        .clearfix
+                  - else
+                    .catalog-rr-radio-element data-key="producer"
+                      input id="cro-option-#{producer}" type="radio" value=producer name="catalog-rr-producer"
+                      label.icon for="cro-option-#{producer}"
+                      label.text for="cro-option-#{producer}"
+                        = t("enumerize.fastener_option.producer.#{producer}")
+                      .clearfix
