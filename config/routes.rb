@@ -49,6 +49,12 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/kriplennya' => 'roof_railing#mounting', as: :fasteners
   get 'pokrivlja-ogorozhi/kriplennja-germetyka-dlja-pokrivli/kriplennya/:title' => 'roof_railing#fastener', as: :fastener
 
+  # roofing membrane
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky' => 'roof_railing#roofing_membrane', as: :roofing_membrane
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/parobaryer' => 'roof_railing#vapour_barrier', as: :vapour_barrier
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/hidrobaryer' => 'roof_railing#hydro_barrier', as: :hydro_barrier
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/membrana' => 'roof_railing#membrane', as: :membrane
+
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window

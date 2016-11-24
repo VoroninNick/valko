@@ -101,6 +101,24 @@ class RoofRailingController < ApplicationController
     @product = Sealant.find_by_slug(params[:title])
   end
 
+  # roofing_membrane
+  def roofing_membrane
+    @page = RoofRailPage.find_by_page_name('roofing_membrane')
+  end
+
+  def vapour_barrier
+    @page = RoofRailPage.find_by_page_name('')
+  end
+
+  def hydro_barrier
+    @page = RoofRailPage.find_by_page_name('')
+  end
+
+  def membrane
+    @page = RoofRailPage.find_by_page_name('')
+  end
+
+
   def get_rr_options
     # received_key = params[:key]
     # producer = received_key.partition('-').first
