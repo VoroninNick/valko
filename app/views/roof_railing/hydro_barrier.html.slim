@@ -1,0 +1,88 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    = link_to 'Покрівля огорожі', roof_rail_path
+  li
+    = link_to 'Покрівельні плівки', roofing_membrane_path
+  li
+    span Паробарєр
+
+  .hide-catalog-header data-catalog-session-variable="mounting-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
+.roof-rail-catalog-list-page
+  .roof-rail-catalog-list-header.catalog-page-header
+    .catalog-page-header-inner
+      .row
+        .columns
+          = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }
+
+          .wcl-body
+            .columns
+              .title
+                = @page.title
+            .clearfix
+
+            = raw @page.header_description
+            .clearfix
+
+  .roof-rail-catalog-list-body#roof-rail-container
+    .wclb-header
+      .row
+        .columns
+          .title
+            = inline_svg "Valko-icon-pokrivlya.svg"
+            |Паробарєр
+
+  /.row
+      .columns.sandbox
+        - if @items.any?
+          - @items.each do |item|
+            .medium-3.columns.end.mix.decking
+              - item = item.fastener_options.first
+              - if item.present?
+                .one-windowsill
+                  .ow-image
+                    a href=fastener_path(item.slug)
+                      /a data-href=item.inspect
+                      /.image style="background: url('#{image}')no-repeat center center;"
+
+                      - variant = item.fastener_color_options
+                      - if variant && variant.any?
+                        .image style="background: url('#{variant.first.image.url(:thumb)}')no-repeat center center;"
+
+                    .show-large-image.lightGallery
+                      - if variant && variant.first && variant.first.image.exists?
+                        a href=variant.first.image.url(:large)
+                          = inline_svg "Valko-icon-search.svg"
+
+                  .ow-body
+                    .ow-body-information
+                      .small-6.columns
+                        .title = item.title
+                      .small-6.columns
+                        .price data-product-price=item.counted_price
+                          = item.counted_price
+                          sup &nbsp;грн.
+                        p
+                          |від
+                      .columns
+                      /.brand-title = gag.brand.title
+                      .clearfix
+
+                    .ow-body-order-form
+                      a href=choicest_item_path(item.slug) Переглянути
+  .row
+    .columns
+      .rr-catalog-description
+        .columns
+          .title-h2
+            = @page.try(:subtitle)
+        .clearfix
+
+        = raw @page.footer_description
+        .clearfix

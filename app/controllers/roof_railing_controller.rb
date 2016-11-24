@@ -107,15 +107,16 @@ class RoofRailingController < ApplicationController
   end
 
   def vapour_barrier
-    @page = RoofRailPage.find_by_page_name('')
+    @page = RoofRailPage.find_by_page_name('vapour_barrier')
+    # @items = Fastener.all
   end
 
   def hydro_barrier
-    @page = RoofRailPage.find_by_page_name('')
+    @page = RoofRailPage.find_by_page_name('hydro_barrier')
   end
 
   def membrane
-    @page = RoofRailPage.find_by_page_name('')
+    @page = RoofRailPage.find_by_page_name('membrane')
   end
 
 
