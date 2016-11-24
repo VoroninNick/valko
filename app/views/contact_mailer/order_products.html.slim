@@ -49,6 +49,23 @@ ol
       li
         p #{product.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{product.producer}")}, #{t("enumerize.thickness.#{product.thickness}")}, #{t("enumerize.coating.#{product.coating}")}, #{t("enumerize.protective_lamina.#{product.protective_lamina}")})   #{product.width} X #{item.long} (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
 
+    /ChoicestItem
+    - elsif item.class_name == 'ChoicestItem'
+      - product = item.choicest_item_detail
+      li
+        p #{product.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{product.producer}")}, #{t("enumerize.thickness.#{product.thickness}")}, #{t("enumerize.coating.#{product.coating}")}, #{t("enumerize.protective_lamina.#{product.protective_lamina}")})   (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
+
+    /Sealant
+    - elsif item.class_name == 'Sealant'
+      - product = item.sealant
+      li
+        p #{product.title} (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
+
+    /Fastener
+    - elsif item.class_name == 'Fastener'
+      - product = item.fastener_option
+      li
+        p #{product.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{product.appointment}")}, #{t("enumerize.thickness.#{product.producer}")})   (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
 
 h4 Контактна інформація
 p

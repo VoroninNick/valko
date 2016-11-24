@@ -36,6 +36,9 @@ class Sealant < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries, allow_destroy: true
   attr_accessible :photo_galleries_attributes
 
+
+  has_many :line_items
+
   # informations
   # has_and_belongs_to_many :informations, join_table: :choicest_items_information
   # attr_accessible :informations, :information_ids

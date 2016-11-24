@@ -60,15 +60,16 @@ class RoofRailingController < ApplicationController
     @page = RoofRailPage.find_by_page_name('lystovyj-metal')
     @items = MetalSheet.all
   end
+
   def sheet_metal
     @product = MetalSheetDetail.find_by_slug(params[:title])
   end
-
 
   def choicest_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy')
     # @catalog_header_session = session['choicest-items-header-status']
   end
+
   def choicest_roof_items
     @page = RoofRailPage.find_by_page_name('pokrivelni-dobirni-elementy-do-dachu')
     @items = ChoicestItem.appointment_item "to_roof"

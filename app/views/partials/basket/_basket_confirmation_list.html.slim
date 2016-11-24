@@ -94,6 +94,56 @@ h5 Перелік Товарів:
               sup грн.
 
 
+      - elsif item.class_name == 'ChoicestItem'
+        / ChoicestItem
+        - product = item.choicest_item_detail
+        - variant = product.color_options.find_by_title(item.color)
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{variant.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=choicest_item_path(product.slug) #{product.title} (#{t("enumerize.title.#{item.color}")})
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
+
+      - elsif item.class_name == 'Sealant'
+        / Sealant
+        - product = item.sealant
+        /- variant = product.color_options.find_by_title(item.color)
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{product.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=sealant_path(product.slug) #{product.title}
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
+
+      - elsif item.class_name == 'Fastener'
+        / Fastener
+        - product = item.fastener_option
+        - variant = product.fastener_color_options.find_by_title(item.color)
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{variant.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=fastener_path(product.slug) #{product.title}
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
 
   .bc-basket-list-footer
     .bc-bl-total-price

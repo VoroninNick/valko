@@ -1,16 +1,16 @@
 
-.basket-list-one data-gag-edge='0' data-item-price=item.price.round()
+.basket-list-one data-gag-edge='0' data-item-price=product.counted_price
   .row
     .small-1.medium-1.columns
       .basket-delete-item-wrap
         a.delete-item data-href=line_items_path data-line-item-id=item.id
           = inline_svg "ic_delete_black_24px.svg"
     .hide-for-small-only.medium-2.columns
-      .image style="background: url('#{variant.image.url(:thumb)}')no-repeat center center;"
+      .image style="background: url('#{product.image.url(:thumb)}')no-repeat center center;"
     .small-6.medium-6.columns
-      a href=fastener_path(product.slug)
-        .title #{product.title} (#{t("enumerize.title.#{item.color}")})
-      .brand-title #{t("enumerize.fastener_option.appointment.#{product.appointment}")}, #{t("enumerize.fastener_option.producer.#{product.producer}")}
+      a href=sealant_path(product.slug)
+        .title #{product.title}
+      /.brand-title #{t("enumerize.fastener_option.appointment.#{product.appointment}")}, #{t("enumerize.fastener_option.producer.#{product.producer}")}
       /p
         span Ширина:
         /= product.width

@@ -205,6 +205,12 @@
             - variant = product.color_options.find_by_title(item.color)
             = render partial: "partials/basket/templeates/metal_sheet", locals: {item: item, product: product, variant: variant}
 
+          - elsif item.class_name == 'Sealant'
+            /Sealant
+            - product = item.sealant
+            /- variant = product.fastener_color_options.find_by_title(item.color)
+            = render partial: "partials/basket/templeates/sealant", locals: {item: item, product: product}
+
           - elsif item.class_name == 'Fastener'
             /Fastener
             - product = item.fastener_option
