@@ -106,6 +106,11 @@ class LineItem < ActiveRecord::Base
       o = self.fastener_option.fastener_color_options.find_by_title(self.color).price || 0
       return o
 
+    # Membrane
+    elsif self.class_name == 'Membrane'
+      o = self.membrane.price || 0
+      return o
+
     end
 
 
@@ -153,6 +158,9 @@ class LineItem < ActiveRecord::Base
       current_price * quantity
 
     elsif self.class_name == 'Fastener'
+      current_price * quantity
+
+    elsif self.class_name == 'Membrane'
       current_price * quantity
 
     end
