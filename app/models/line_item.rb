@@ -36,6 +36,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :choicest_item_detail
   belongs_to :sealant
   belongs_to :fastener_option
+  belongs_to :membrane
 
 
   attr_accessible *attribute_names

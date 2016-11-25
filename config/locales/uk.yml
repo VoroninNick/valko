@@ -140,6 +140,12 @@ uk:
         info_global: Info Global
         goneba: Goneba
 
+    membrane:
+      appointment:
+        vapour_barrier: Паробарєр
+        hydro_barrier: Гідробарєр
+        membrane: Мембрана
+
     mosquito_item_option:
       title:
         white: білий

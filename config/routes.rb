@@ -52,8 +52,13 @@ Rails.application.routes.draw do
   # roofing membrane
   get 'pokrivlja-ogorozhi/pokrivelni-plivky' => 'roof_railing#roofing_membrane', as: :roofing_membrane
   get 'pokrivlja-ogorozhi/pokrivelni-plivky/parobaryer' => 'roof_railing#vapour_barrier', as: :vapour_barrier
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/parobaryer/:title' => 'roof_railing#vapour_barrier_item', as: :vapour_barrier_item
+
   get 'pokrivlja-ogorozhi/pokrivelni-plivky/hidrobaryer' => 'roof_railing#hydro_barrier', as: :hydro_barrier
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/hidrobaryer/:title' => 'roof_railing#hydro_barrier_item', as: :hydro_barrier_item
+
   get 'pokrivlja-ogorozhi/pokrivelni-plivky/membrana' => 'roof_railing#membrane', as: :membrane
+  get 'pokrivlja-ogorozhi/pokrivelni-plivky/membrana/:title' => 'roof_railing#membrane_item', as: :membrane_item
 
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid

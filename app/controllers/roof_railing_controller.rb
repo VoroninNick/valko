@@ -108,17 +108,27 @@ class RoofRailingController < ApplicationController
 
   def vapour_barrier
     @page = RoofRailPage.find_by_page_name('vapour_barrier')
-    # @items = Fastener.all
+    @items = Membrane.by_appointment("vapour_barrier")
+  end
+  def vapour_barrier_item
+    @product = Membrane.find_by_slug(params[:title])
   end
 
   def hydro_barrier
     @page = RoofRailPage.find_by_page_name('hydro_barrier')
+    @items = Membrane.by_appointment("hydro_barrier")
+  end
+  def hydro_barrier_item
+    @product = Membrane.find_by_slug(params[:title])
   end
 
   def membrane
     @page = RoofRailPage.find_by_page_name('membrane')
+    @items = Membrane.by_appointment("membrane")
   end
-
+  def membrane_item
+    @product = Membrane.find_by_slug(params[:title])
+  end
 
   def get_rr_options
     # received_key = params[:key]

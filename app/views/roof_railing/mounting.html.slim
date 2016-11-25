@@ -43,7 +43,7 @@ ul.breadcrumbs
         - if @items.any?
           - @items.each do |item|
             .medium-3.columns.end.mix.decking
-              - item = item.fastener_options.first
+              /- item = item.fastener_options.first
               - if item.present?
                 .one-windowsill
                   .ow-image
@@ -75,7 +75,7 @@ ul.breadcrumbs
                       .clearfix
 
                     .ow-body-order-form
-                      a href=choicest_item_path(item.slug) Переглянути
+                      a href=fastener_path(item.slug) Переглянути
   .row
     .columns
       .rr-catalog-description
