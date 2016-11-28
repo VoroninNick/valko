@@ -4,7 +4,12 @@ ul.breadcrumbs
   li
     span Підвіконня
 
-  .hide-catalog-header
+  .hide-catalog-header data-catalog-session-variable="windowsill-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+  /.hide-catalog-header
     .title
       |Згорнути
     .hch-arrow.valko-arrow.va-top
@@ -15,7 +20,7 @@ ul.breadcrumbs
     .columns
       = session['catalog-header-status']
 
-  .windowsill-catalog-list-header
+  .windowsill-catalog-list-header.catalog-page-header
     .row
       .columns
         .image style="background: url('#{asset_path("1v.jpg")}')no-repeat center center;"

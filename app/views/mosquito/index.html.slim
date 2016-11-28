@@ -4,9 +4,14 @@ ul.breadcrumbs
   li
     span Москітні сітки
 
+  .hide-catalog-header data-catalog-session-variable="mosquito-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
 
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
+  .roof-rail-catalog-list-header.catalog-page-header
     .row
       .columns
         - if @catalog_page.catalog_banners && @catalog_page.catalog_banners.any?

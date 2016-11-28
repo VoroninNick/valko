@@ -7,8 +7,14 @@ ul.breadcrumbs
     span
       = @catalog_sub_page.try(:title)
 
+  .hide-catalog-header data-catalog-session-variable="mosquito-sub-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
+  .roof-rail-catalog-list-header.catalog-page-header
     .row
       .columns
         - if @catalog_sub_page && @catalog_sub_page.catalog_banners && @catalog_sub_page.catalog_banners.any?
