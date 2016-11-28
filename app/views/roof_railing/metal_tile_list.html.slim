@@ -6,8 +6,15 @@ ul.breadcrumbs
   li
     span Металочерепиця
 
+  .hide-catalog-header data-catalog-session-variable="metal-tile-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
+
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
+  .roof-rail-catalog-list-header.catalog-page-header
     .row
       .columns
         = render partial: "partials/catalog/banner", locals: { type: 'metal_tile',banner: @page }

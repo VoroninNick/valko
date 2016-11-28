@@ -7,8 +7,14 @@ ul.breadcrumbs
     span
       |Вікна та двері
 
+  .hide-catalog-header data-catalog-session-variable="window-and-door-header-status"
+    .title
+      |Згорнути
+    .hch-arrow.valko-arrow.va-top
+      div
+
 .roof-rail-catalog-list-page
-  .roof-rail-catalog-list-header
+  .roof-rail-catalog-list-header.catalog-page-header
     .row
       .columns
         - if @page.catalog_banners && @page.catalog_banners.any?
