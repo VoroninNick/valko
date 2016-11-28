@@ -67,6 +67,12 @@ ol
       li
         p #{product.title} (#{t("enumerize.title.#{item.color}")}, #{t("enumerize.producer.#{product.appointment}")}, #{t("enumerize.thickness.#{product.producer}")})   (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
 
+    /Membrane
+    - elsif item.class_name == 'Membrane'
+      - product = item.membrane
+      li
+        p #{product.title} (#{item.quantity} шт.)   вартістю #{item.total_price(item.long).round()} грн.
+
 h4 Контактна інформація
 p
   a href="tel:+#{@data[:phone_number].gsub(/[+( )-]/, '')}" =@data[:phone_number]

@@ -145,6 +145,29 @@ h5 Перелік Товарів:
               sup грн.
 
 
+      - elsif item.class_name == 'Membrane'
+        / Membrane
+        - product = item.membrane
+        - link = ""
+        - if product.appointment == "vapour_barrier"
+          - link = vapour_barrier_item_path(product.slug)
+        - elsif product.appointment == "hydro_barrier"
+          - link = hydro_barrier_item_path(product.slug)
+        - elsif product.appointment == "membrane"
+          - link = membrane_item_path(product.slug)
+
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{product.image.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=link #{product.title}
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
   .bc-basket-list-footer
     .bc-bl-total-price
       p

@@ -1,0 +1,34 @@
+- link = ""
+- if product.appointment == "vapour_barrier"
+  - link = vapour_barrier_item_path(product.slug)
+- elsif product.appointment == "hydro_barrier"
+  - link = hydro_barrier_item_path(product.slug)
+- elsif product.appointment == "membrane"
+  - link = membrane_item_path(product.slug)
+
+.basket-list-one data-gag-edge='0' data-item-price=product.counted_price
+  .row
+    .small-1.medium-1.columns
+      .basket-delete-item-wrap
+        a.delete-item data-href=line_items_path data-line-item-id=item.id
+          = inline_svg "ic_delete_black_24px.svg"
+    .hide-for-small-only.medium-2.columns
+      .image style="background: url('#{product.image.url(:thumb)}')no-repeat center center;"
+    .small-6.medium-6.columns
+      a href=link
+        .title #{product.title}
+    .small-2.medium-1.columns
+      .input.basket-count-product
+        input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
+
+    .small-3.medium-2.columns
+      .one-total-price
+        b
+          = item.total_price(item.long).round()
+        sup &nbsp;грн.
+      .one-price
+        b
+          = item.price
+        sup
+          |&nbsp;грн./м
+          sup 2

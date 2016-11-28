@@ -217,6 +217,12 @@
             - variant = product.fastener_color_options.find_by_title(item.color)
             = render partial: "partials/basket/templeates/fastener", locals: {item: item, product: product, variant: variant}
 
+          - elsif item.class_name == 'Membrane'
+            /Membrane
+            - product = item.membrane
+            /- variant = product.fastener_color_options.find_by_title(item.color)
+            = render partial: "partials/basket/templeates/membrane", locals: {item: item, product: product}
+
       .clearfix
 
 .basket-footer
