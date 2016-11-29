@@ -227,9 +227,11 @@ $(document).ready ->
       type: "POST"
       data: postData
       beforeSend: ->
-#        console.log('перед відсиланням')
+#        console.log('перед відсиланням каша')
+        $this.closest('form').addClass('sending')
       success: ->
         form.reset()
+        $this.closest('form').removeClass('sending')
 #        console.log('успішно')
         $this.closest('form').find('.animate-input').each ->
 #          if !$(@).hasClass('is-locked-for-clear')

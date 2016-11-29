@@ -23,6 +23,145 @@ body
         -moz-box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
         box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.35)
 
+
+
+@-webkit-keyframes uil-default-anim
+  0%
+    opacity: 1
+
+  100%
+    opacity: 0
+
+
+@keyframes uil-default-anim
+  0%
+    opacity: 1
+
+  100%
+    opacity: 0
+
+
+.uil-default-css
+  position: relative
+  background: none
+  width: 200px
+  height: 200px
+
+  transform: scale(0.22)
+  > div
+    border-radius: 0px
+    width: 10px
+    height: 40px
+    background: black
+    position: absolute
+    top: 80px
+    left: 95px
+    &:nth-of-type(1)
+      -webkit-transform: rotate(0deg) translate(0),-60px
+      transform: rotate(0deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: -0.5s
+      animation-delay: -0.5s
+
+    &:nth-of-type(2)
+      -webkit-transform: rotate(36deg) translate(0),-60px
+      transform: rotate(36deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: -0.4s
+      animation-delay: -0.4s
+
+    &:nth-of-type(3)
+      -webkit-transform: rotate(72deg) translate(0),-60px
+      transform: rotate(72deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: -0.3s
+      animation-delay: -0.3s
+
+    &:nth-of-type(4)
+      -webkit-transform: rotate(108deg) translate(0),-60px
+      transform: rotate(108deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: -0.2s
+      animation-delay: -0.2s
+
+    &:nth-of-type(5)
+      -webkit-transform: rotate(144deg) translate(0),-60px
+      transform: rotate(144deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: -0.09999999999999998s
+      animation-delay: -0.09999999999999998s
+
+    &:nth-of-type(6)
+      -webkit-transform: rotate(180deg) translate(0),-60px
+      transform: rotate(180deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: 0s
+      animation-delay: 0s
+
+    &:nth-of-type(7)
+      -webkit-transform: rotate(216deg) translate(0),-60px
+      transform: rotate(216deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: 0.09999999999999998s
+      animation-delay: 0.09999999999999998s
+
+    &:nth-of-type(8)
+      -webkit-transform: rotate(252deg) translate(0),-60px
+      transform: rotate(252deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: 0.19999999999999996s
+      animation-delay: 0.19999999999999996s
+
+    &:nth-of-type(9)
+      -webkit-transform: rotate(288deg) translate(0),-60px
+      transform: rotate(288deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: 0.30000000000000004s
+      animation-delay: 0.30000000000000004s
+
+    &:nth-of-type(10)
+      -webkit-transform: rotate(324deg) translate(0),-60px
+      transform: rotate(324deg) translate(0,-60px)
+
+      -webkit-animation: uil-default-anim 1s linear infinite
+      animation: uil-default-anim 1s linear infinite
+      -webkit-animation-delay: 0.4s
+      animation-delay: 0.4s
+
+#CallOrder
+  form
+    button
+      .uil-default-css
+        display: none
+    &.sending
+      button
+        .uil-default-css
+          width: 10px
+          height: 10px
+          display: inline-block
+          top: -10px
+          transform: scale(0.1)
+          > div
+            background: #1e88e5
+
 .mobile-menu-panel
   background: #263238
   width: 490px
