@@ -122,7 +122,7 @@ class Information < ActiveRecord::Base
   scope :with_public, -> { where(:published => true).order('position desc')}
   scope :with_main, -> {with_public.where(:main => true)}
 
-  # searchable do
-  #   text :title, :short_description, :description
-  # end
+  searchable do
+    text :title, :short_description, :description
+  end
 end

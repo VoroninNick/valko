@@ -246,9 +246,9 @@ class Windowsill < ActiveRecord::Base
   paginates_per 12
 
 
-  # searchable do
-  #   text :title, :description
-  # end
+  searchable do
+    text :title, :description
+  end
 
 
   filterrific(
