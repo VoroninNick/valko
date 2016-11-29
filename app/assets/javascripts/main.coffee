@@ -479,9 +479,13 @@ $(document).ready ->
         dataType: 'html'
         type: "POST"
         data: DataToSend
-        before: ->
+        beforeSend: ->
+#          adding status sending
+          $this.closest('.cart-confirmation').addClass('sending')
         success: (msg) ->
           console.log "products ordered"
+#          remove status sending
+          $this.closest('.cart-confirmation').removeClass('sending')
           $.ajax
             url: $this.attr('data-action')
             dataType: "json"

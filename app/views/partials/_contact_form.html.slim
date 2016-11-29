@@ -34,6 +34,9 @@
               textarea name="message" rows="6"
 
         .button-wrap.material-component.ripple.right
-          button.right type="submit" Надіслати
+          button.right type="submit"
+            |Надіслати
+            = render partial: "partials/loader"
+
         .material-component.ripple.right
           a.close-reveal-modal aria-label="Close" Закрити

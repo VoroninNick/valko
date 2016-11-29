@@ -59,6 +59,10 @@
   .row
     .columns
       .material-component.ripple.button-box-shadow.red-button.right.cart-button
-        a.finish-step data-href=order_product_path data-action=cart_path(@cart.id) Замовити
+        a.finish-step data-href=order_product_path data-action=cart_path(@cart.id)
+          |Замовити
+          = render partial: "partials/loader"
+
+
       .material-component.ripple.button-box-shadow.blue-text.right.cart-button
         a data-step="cart-delivery" До доставки

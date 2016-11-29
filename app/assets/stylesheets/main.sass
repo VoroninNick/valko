@@ -162,6 +162,41 @@ body
           > div
             background: #1e88e5
 
+#ContactForm
+  form
+    button
+      .uil-default-css
+        display: none
+    &.sending
+      button
+        .uil-default-css
+          width: 10px
+          height: 10px
+          display: inline-block
+          top: -10px
+          transform: scale(0.1)
+          > div
+            background: #1e88e5
+
+.cart-confirmation
+  .basket-footer
+    .cart-button
+      a
+        .uil-default-css
+          width: 10px
+          height: 10px
+          display: none
+          transform: scale(0.1)
+          top: -10px
+          > div
+            background: #fff
+  &.sending
+    .basket-footer
+      .cart-button
+        a
+          .uil-default-css
+            display: inline-block
+
 .mobile-menu-panel
   background: #263238
   width: 490px
