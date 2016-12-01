@@ -20,7 +20,7 @@ class FastenerOption < ActiveRecord::Base
   before_save :initialize_title
   before_save { save_slug(title, slug) }
 
-  enumerize :producer, in: [:'info_global', :'goneba']
+  enumerize :producer, in: [:'info_global', :'goneba', :'roofast']
   enumerize :appointment, in: [:'to_metal', :'to_wood']
 
   has_many :fastener_color_options, as: :col_option
