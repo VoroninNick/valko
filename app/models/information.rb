@@ -45,6 +45,10 @@ class Information < ActiveRecord::Base
   has_and_belongs_to_many :choicest_items, join_table: :choicest_items_information
   attr_accessible :choicest_items, :choicest_item_ids
 
+  # fastener
+  has_and_belongs_to_many :fasteners, join_table: :fasteners_information
+  attr_accessible :fasteners, :fastener_ids
+
 
   has_one :seo, as: :seo_poly
   attr_accessible :seo
@@ -103,6 +107,9 @@ class Information < ActiveRecord::Base
         end
         field :choicest_items do
           label 'Добірні елементи:'
+        end
+        field :fasteners do
+          label 'Кріплення:'
         end
       end
 

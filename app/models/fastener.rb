@@ -35,7 +35,7 @@ class Fastener < ActiveRecord::Base
   # attr_accessible :informations, :information_ids
 
   # informations
-  has_and_belongs_to_many :informations, join_table: :choicest_items_information
+  has_and_belongs_to_many :informations, join_table: :fasteners_information
   attr_accessible :informations, :information_ids
 
   rails_admin do
