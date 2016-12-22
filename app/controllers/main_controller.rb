@@ -83,7 +83,7 @@ class MainController < ApplicationController
   end
 
   def promotions
-    @promotions = Promotion.all
+    @promotions = Promotion.published
 
     set_seo('aktsii')
   end

@@ -96,7 +96,7 @@ class Promotion < ActiveRecord::Base
     end
   end
   scope :with_date, -> { where("date_of > ?", Date.today).order('created_at desc')}
-  # scope :published, where(published: 't').order(position: :desc)
+  scope :published, -> { where(published: 't').order(position: :desc) }
 
   searchable do
     text :title, :short_description, :description
