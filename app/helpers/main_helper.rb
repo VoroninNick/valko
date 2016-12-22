@@ -1,7 +1,7 @@
 module MainHelper
 
   def promotions
-    @promotions = Promotion.all
+    @promotions = Promotion.published
   end
   def static_data
     return data = StaticDatum.first
