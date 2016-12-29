@@ -130,6 +130,30 @@ class RoofRailingController < ApplicationController
     @product = Membrane.find_by_slug(params[:title])
   end
 
+  def skylights
+    @page = RoofRailPage.find_by_page_name('skylights')
+    @products = SkylightProducer.all
+
+    set_meta_tags site: '',
+                  title: @page.seo.try(:seo_title),
+                  description: @page.seo.try(:seo_description),
+                  keywords: @page.seo.try(:keywords)
+  end
+  def skylight
+    @page = SkylightProducer.find_by_slug(params[:producer])
+
+    @items = @page.skylight_models
+
+    set_meta_tags site: '',
+                  title: @page.seo.try(:seo_title),
+                  description: @page.seo.try(:seo_description),
+                  keywords: @page.seo.try(:keywords)
+  end
+  def skylight_item
+
+  end
+
+
   def get_rr_options
     # received_key = params[:key]
     # producer = received_key.partition('-').first

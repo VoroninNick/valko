@@ -60,6 +60,10 @@ Rails.application.routes.draw do
   get 'pokrivlja-ogorozhi/pokrivelni-plivky/membrana' => 'roof_railing#membrane', as: :membrane
   get 'pokrivlja-ogorozhi/pokrivelni-plivky/membrana/:title' => 'roof_railing#membrane_item', as: :membrane_item
 
+  # roof windows
+  get 'pokrivlja-ogorozhi/mansardni-vikna-daxovi' => 'roof_railing#skylights', as: :skylights
+  get 'pokrivlja-ogorozhi/mansardni-vikna-daxovi/:producer' => 'roof_railing#skylight', as: :skylight
+  get 'pokrivlja-ogorozhi/mansardni-vikna-daxovi/:producer/:title' => 'roof_railing#skylight_item', as: :skylight_item
 
   get 'moskitna-sitka' => 'mosquito#index', as: :mosquito_grid
   get 'moskitna-sitka/window' => 'mosquito#window', as: :mosquito_grid_window
