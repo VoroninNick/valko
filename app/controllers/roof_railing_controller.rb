@@ -150,7 +150,8 @@ class RoofRailingController < ApplicationController
                   keywords: @page.seo.try(:keywords)
   end
   def skylight_item
-
+    @producer = SkylightProducer.find_by_slug(params[:producer])
+    @product = @producer.skylight_models.find_by_slug(params[:title])
   end
 
 
