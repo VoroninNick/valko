@@ -30,20 +30,20 @@ ul.breadcrumbs
           = product.short_description
 
         .roof-rail-calculator-wrap
-          .row.roof-rail-calculator
+          .row.roof-rail-calculator.skylights-calculator
             .medium-5.columns
               input type="hidden" name="type" value="Membrane"
               input type="hidden" name="price" value=product.price
 
               .input.count-roof-rail.fixed-count-products
-                input#count-roof-rail type="number" value="1" name="quantity" min="1"
-                label for="count-roof-rail" Кількість
+                input#count-skylight type="number" value="1" name="quantity" min="1"
+                label for="count-skylight" Кількість
 
               - if product.skylights.any?
                 .input.count-roof-rail.skylight-product-variants
                   select name="product_variant"
                     - product.skylights.each do |pv|
-                      option
+                      option value=pv.price
                         = pv.size
                   label for="count-roof-rail"
                     |Розмір Ш х В, мм

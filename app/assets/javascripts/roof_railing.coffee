@@ -26,6 +26,18 @@ deckingCalculator = () ->
 
   $total_price.text(Math.round(total_price))
 
+skilightsCalculator = () ->
+  $wrap = $(@).closest('.skylights-calculator')
+  $total_price = $wrap.find('.rrp-price')
+
+  count = parseInt($wrap.find('input#count-skylight').val())
+  price = parseInt($wrap.find('select option:selected').val())
+  total_price = count*price
+
+  console.log 'this:', $(@).val()
+  console.log 'total price:', total_price
+
+  $total_price.text(Math.round(total_price))
 
 $(document).ready ->
 
@@ -188,6 +200,12 @@ $(document).ready ->
 #    $.getJSON action_link, (data) ->
 
 
+
+#===================================================================
+#  roof rail calculator
+#===================================================================
+  $(".skylights-calculator input, .skylights-calculator select").change ->
+    skilightsCalculator.call(this)
 
 #===================================================================
 #  roof rail calculator
