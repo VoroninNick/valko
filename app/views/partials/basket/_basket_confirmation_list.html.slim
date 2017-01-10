@@ -168,6 +168,24 @@ h5 Перелік Товарів:
               = item.total_price(item.long).round()
               sup грн.
 
+      - elsif item.class_name == 'Skylight'
+        / Skylight
+        - product = item.skylight
+        - link = skylight_item_path(product.skylight_model.skylight_producer.slug, product.skylight_model.slug)
+
+        .row.bc-bl-one
+          .small-2.columns
+            .image style="background: url('#{product.skylight_model.avatar.url(:thumb)}')no-repeat center center;"
+          .small-7.columns.no-pad-left
+            a href=link #{product.skylight_model.skylight_producer.name} #{product.skylight_model.name} (#{product.size})
+            p
+              span #{item.quantity} шт.
+          .small-3.columns
+            p
+              = item.total_price(item.long).round()
+              sup грн.
+
+
   .bc-basket-list-footer
     .bc-bl-total-price
       p
