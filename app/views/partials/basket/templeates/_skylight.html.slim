@@ -13,10 +13,10 @@
       .image style="background: url('#{product.skylight_model.avatar.url(:thumb)}')no-repeat center center;"
     .small-6.medium-6.columns
       a href=link
-        .title #{product.skylight_model.name}
+        .title #{product.skylight_model.skylight_producer.name} #{product.skylight_model.name} (#{product.size})
     .small-2.medium-1.columns
       .input.basket-count-product
-        /input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
+        input#count-product data-total-price=@cart.total_price min="1" data-old-value=item.quantity type="number" value=item.quantity data-href=line_items_path data-line-item-id=item.id data-type="" data-product-id=""
 
     .small-3.medium-2.columns
       .one-total-price
