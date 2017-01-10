@@ -23,6 +23,9 @@
 # fastener
 # t.belongs_to :fastener_option
 
+# skylight
+# t.belongs_to :skylight
+
 
 class LineItem < ActiveRecord::Base
   belongs_to :windowsill
@@ -37,6 +40,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :sealant
   belongs_to :fastener_option
   belongs_to :membrane
+  belongs_to :skylight
 
 
   attr_accessible *attribute_names

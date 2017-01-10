@@ -6,6 +6,7 @@ class Skylight < ActiveRecord::Base
   attr_accessible *attribute_names
 
   belongs_to :skylight_model
+  has_many :line_items
 
   rails_admin do
     visible false

@@ -215,6 +215,22 @@ class LineItemsController < ApplicationController
         @line_item = @cart.line_items.build(membrane_id: params[:id], quantity: quantity, class_name: type)
       end
 
+    # Skylight
+    elsif type == 'Skylight'
+      item = Skylight.find(params[:id])
+
+      existed_item = @cart.line_items.where(skylight_id: params[:id], class_name: type)
+
+      if existed_item.count > 0
+        @line_item = existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(quantity)
+      else
+        @line_item = @cart.line_items.build(skylight_id: params[:id], quantity: quantity, class_name: type)
+      end
+
     end
 
 
