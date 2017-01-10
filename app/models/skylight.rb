@@ -19,4 +19,8 @@ class Skylight < ActiveRecord::Base
       end
     end
   end
+
+  def counted_price
+    price.round()
+  end
 end

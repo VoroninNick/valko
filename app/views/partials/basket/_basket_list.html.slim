@@ -223,6 +223,11 @@
             /- variant = product.fastener_color_options.find_by_title(item.color)
             = render partial: "partials/basket/templeates/membrane", locals: {item: item, product: product}
 
+          - elsif item.class_name == 'Skylight'
+            /Skylight
+            - product = item.skylight
+            = render partial: "partials/basket/templeates/skylight", locals: {item: item, product: product}
+
       .clearfix
 
 .basket-footer

@@ -115,6 +115,11 @@ class LineItem < ActiveRecord::Base
       o = self.membrane.price || 0
       return o
 
+    # Skylight
+    elsif self.class_name == 'Skylight'
+      o = self.skylight.price || 0
+      return o
+
     end
 
 
@@ -165,6 +170,9 @@ class LineItem < ActiveRecord::Base
       current_price * quantity
 
     elsif self.class_name == 'Membrane'
+      current_price * quantity
+
+    elsif self.class_name == 'Skylight'
       current_price * quantity
 
     end
