@@ -3,7 +3,8 @@
 /- link = skylight_item_path(product.skylight_model.slug, product.slug)
 
 .basket-list-one data-gag-edge='0' data-item-price=product.counted_price
-  .row
+  = product.inspect
+  /.row
     .small-1.medium-1.columns
       .basket-delete-item-wrap
         a.delete-item data-href=line_items_path data-line-item-id=item.id
