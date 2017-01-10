@@ -1,6 +1,6 @@
 - link = ""
 
-/- link = skylight_item_path(product.skylight_model.slug, product.slug)
+- link = skylight_item_path(product.skylight_model.skylight_producer.slug, product.skylight_model.slug)
 
 .basket-list-one data-gag-edge='0' data-item-price=product.counted_price
   /= product.inspect
@@ -27,5 +27,5 @@
         b
           = item.price
         sup
-          |&nbsp;грн./м
-          sup 2
+          |&nbsp;грн./шт
+          /sup 2
