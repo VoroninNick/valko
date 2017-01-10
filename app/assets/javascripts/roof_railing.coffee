@@ -33,9 +33,13 @@ skilightsCalculator = () ->
   count = parseInt($wrap.find('input#count-skylight').val())
   price = parseInt($wrap.find('select option:selected').val())
   total_price = count*price
+  product = $wrap.find('select option:selected').data('product')
+  action = $wrap.closest('form').attr('action', "/line_items?id=#{product}")
 
   console.log 'this:', $(@).val()
   console.log 'total price:', total_price
+  console.log 'product:', product
+  console.log 'action:', action
 
   $total_price.text(Math.round(total_price))
 

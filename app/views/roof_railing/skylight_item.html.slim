@@ -43,7 +43,7 @@ ul.breadcrumbs
                 .input.count-roof-rail.skylight-product-variants
                   select name="product_variant"
                     - product.skylights.each do |pv|
-                      option value=pv.price
+                      option value=pv.price data-product=pv.id
                         = pv.size
                   label for="count-roof-rail"
                     |Розмір Ш х В, мм
