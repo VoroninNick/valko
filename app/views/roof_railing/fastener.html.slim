@@ -16,7 +16,7 @@ ul.breadcrumbs
     span
       = product.title
 
-.catalog-one-item-page data-action=get_fastener_option_path(product.class, product.slug) data_version="fastener"
+.catalog-one-item-page.item-page-fastener data-action=get_fastener_option_path(product.class, product.slug) data_version="fastener"
   .row
     form.ajax-popup-form action=line_items_path(id: product.id)
       .medium-4.columns.coi-photo
