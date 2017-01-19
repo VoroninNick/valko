@@ -215,6 +215,9 @@ class MainController < ApplicationController
   def dev2
 
   end
+  def dev3
+    
+  end
 
 #   mailer methods
   def offers_and_comments

@@ -99,6 +99,7 @@ Rails.application.routes.draw do
 
   get 'dev' => 'main#dev'
   get 'dev2' => 'main#dev2'
+  get 'dev3' => 'main#dev3'
 
   post 'get_rr_options/:key' =>'roof_railing#get_rr_options', as: :get_rr_option
   post 'get_metal_tile_options/:key' =>'roof_railing#get_metal_tile_options', as: :get_mt_option

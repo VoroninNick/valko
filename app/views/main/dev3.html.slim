@@ -1,0 +1,9 @@
+ul
+  - ChoicestItem.all.each do |ci|
+    li
+      |id: #{ci.id} ... #{ci.title}
+      - if ci.choicest_item_details && ci.choicest_item_details.any?
+        ul
+          - ci.choicest_item_details.each do |item|
+            li
+              |id: #{item.id} ... #{item.title} ... parent_id: #{item.choicest_item.id} ...  #{item.slug}

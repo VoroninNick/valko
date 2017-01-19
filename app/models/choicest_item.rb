@@ -57,10 +57,10 @@ class ChoicestItem < ActiveRecord::Base
         html_attributes rows: 10, cols: 100
         label 'Короткий опис:'
       end
-      field :drawing, :paperclip do
-        label 'Креслення:'
-        help 'розмір зображення 970 x 180'
-      end
+      # field :drawing, :paperclip do
+      #   label 'Креслення:'
+      #   help 'розмір зображення 970 x 180'
+      # end
       field :description, :ck_editor do
         label 'Повний опис:'
       end

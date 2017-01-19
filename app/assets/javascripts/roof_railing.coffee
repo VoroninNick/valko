@@ -114,14 +114,14 @@ $(document).ready ->
         console.log('success')
 
         $.each data, (i, value) ->
-          console.log 'key :', i
+          console.log '========================= key :', i
 
           if i == 'colors'
             console.log 'value :', value
 
             $color_elemnet = $('.catalog-rr-one-color')
             $color_elemnet.removeClass('enable-catalog-element')
-            console.log 'color :'
+            console.log '>>>>>>>>>>>>>>>>>>>>>>>>>>>>> color :'
             $.each value, (i, item)->
               console.log 'i :', item.title, 'item :', item
 
@@ -190,11 +190,12 @@ $(document).ready ->
 
                 $.each value, (i, item)->
 
-                  console.log 'value:', item
+                  console.log '----------------------------------------- value:', item
 
                   $step_item.find("[value='#{item}']").closest('.catalog-rr-radio-element').addClass("enable-catalog-element")
 
                   if $step_item.find("[value='#{item}']").closest('.catalog-rr-block-option').find('input:radio:checked').length > 0
+                    console.log 'test checked'
                   else
                     $step_item.find("[value='#{item}']").prop('checked', true)
 
