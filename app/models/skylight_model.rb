@@ -11,6 +11,8 @@
 # t.text :footer_description
 
 class SkylightModel < ActiveRecord::Base
+  extend HasGallery
+
   attr_accessible *attribute_names
 
   attr_accessible :avatar
@@ -48,6 +50,8 @@ class SkylightModel < ActiveRecord::Base
 
     end
     edit do
+      extend HasGallery
+
       field :skylight_producer do
         label 'Виробники:'
       end
@@ -68,6 +72,9 @@ class SkylightModel < ActiveRecord::Base
       field :skylights do
         label 'Продукти:'
       end
+
+      rails_admin_gallery_fields
+
       field :seo do
         label 'SEO'
       end
