@@ -64,6 +64,17 @@ $ ->
 
 $(document).ready ->
 #===================================================================
+#  for mobile version tabs
+#===================================================================
+  $('.mobile-tabs-version .tab-title').click ->
+    console.log "test"
+    $el = $(@).closest('.tabs')
+    if $el.hasClass('expanded')
+      $el.removeClass('expanded')
+    else
+      $el.addClass('expanded')
+
+#===================================================================
 #  promotion banner
 #===================================================================
   $("ul#promotion-banner").bxSlider
