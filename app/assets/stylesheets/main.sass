@@ -15,7 +15,11 @@ body
   background: #eceff1
   &.opened-mobile-menu
     @media screen and ( max-width: 950px)
+      //overflow: hidden
+      height: 100%
       overflow: hidden
+      width: 100%
+      position: fixed
       .mobile-menu-panel, .mobile-menu-background-cover
         display: block
       .mobile-main-menu
@@ -1718,6 +1722,8 @@ ul.voronin-block-wrap
         line-height: 21.6px
         text-transform: uppercase
         display: inline-block
+        @media screen and ( max-width: 400px)
+          font-size: rem-calc(14)
         a
           color: inherit
           font:
