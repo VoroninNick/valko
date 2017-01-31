@@ -154,6 +154,9 @@
   .basket-header
     margin-top: 20px
     margin-bottom: 30px
+    .title
+      @media #{$small-only}
+        padding-bottom: 25px
   .title
     +default_font_style(#607d8b, 24, 500, 28.8)
     text-transform: uppercase
@@ -318,6 +321,32 @@
         &:after
           bottom: 0
 
+      @media #{$small-only}
+        .title
+          font-size: rem-calc(15)
+          line-height: rem-calc(18)
+        .brand-title
+          margin-bottom: 0
+          line-height: rem-calc(18)
+        p
+          font-size: rem-calc(14)
+          line-height: rem-calc(18)
+          span
+            width: auto
+
+        .one-total-price
+          font-size: rem-calc(20)
+          line-height: rem-calc(24)
+          margin-top: 13px
+          b
+          sup
+
+        .one-price
+          font-size: rem-calc(15)
+          line-height: rem-calc(18)
+          top: inherit
+
+
   .basket-body
     hr
       margin-top: 0
@@ -381,6 +410,13 @@
             +default_font_style(#607d8b, 12, 400, 14)
           &:last-child
             border: none
+        @media #{$small-only}
+          .bc-bl-one
+            a
+              font-size: rem-calc(16)
+              line-height: rem-calc(18)
+            p
+              font-size: rem-calc(18)
 
       .bc-basket-list-footer
         margin-top: 25px

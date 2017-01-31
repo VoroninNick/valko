@@ -25,6 +25,7 @@
       h5 Контактні дані:
   .columns
     form#basket-contacts-info.ajax-popup-form.default-animation-form.default-form-with-icons data-abide="" action="" method="POST"
+
       .row
         .medium-6.columns
           .input.animate-input
@@ -35,6 +36,17 @@
               span ,&nbsp;введено не вірно
             input name="first_name" type="text" required=""
 
+        .medium-6.columns
+          .input.animate-input
+            .input-ico
+              =inline_svg "Valko-icon-username-surname.svg"
+            label
+              |Прізвище
+              span ,&nbsp;введено не вірно
+            input name="last_name" type="text" required=""
+
+      .row
+        .medium-6.columns
           .input.animate-input
             .input-ico
               =inline_svg "ic_phone_24px.svg"
@@ -43,6 +55,17 @@
               span ,&nbsp;введено не вірно
             input name="phone" type="tel" required="" pattern="(((\+[\d]{2})|[\d]{1,2})?0[0-9]{9})"
 
+        .medium-6.columns
+          .input.animate-input
+            .input-ico
+              =inline_svg "ic_mail_24px.svg"
+            label
+              |Електронна скринька
+              span ,&nbsp;введена не вірно
+            input name="email" type="email" required=""
+
+      .row
+        .medium-6.columns
           .input.animate-input.animated-select.is-completed
             .input-ico
               =inline_svg "Valko-icon-delivery.svg"
@@ -55,25 +78,12 @@
               option Інше
 
         .medium-6.columns
-          .input.animate-input
-            .input-ico
-              =inline_svg "Valko-icon-username-surname.svg"
-            label
-              |Прізвище
-              span ,&nbsp;введено не вірно
-            input name="last_name" type="text" required=""
-          .input.animate-input
-            .input-ico
-              =inline_svg "ic_mail_24px.svg"
-            label
-              |Електронна скринька
-              span ,&nbsp;введена не вірно
-            input name="email" type="email" required=""
           .input.animate-input.animate-textarea
             .input-ico
               =inline_svg "ic_insert_comment_24px.svg"
             label Додаткові примітки
             textarea name="message" rows="1"
+
     .row
       .medium-6.columns
         p.notes * Місто та номер відділення вкажіть, будь ласка, в полі «Додаткові примітки».
