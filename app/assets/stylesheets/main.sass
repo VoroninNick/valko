@@ -14,12 +14,18 @@ a
 body
   background: #eceff1
   &.opened-mobile-menu
+    main
+      .main-body
+        display: none
+    footer
+      display: none
     @media screen and ( max-width: 950px)
       //overflow: hidden
       height: 100%
-      overflow: hidden
+      //overflow: hidden
+      overflow-x: hidden
       width: 100%
-      position: fixed
+      //position: fixed
       .mobile-menu-panel, .mobile-menu-background-cover
         display: block
       .mobile-main-menu
@@ -236,7 +242,8 @@ body
   background: #263238
   width: 490px
   height: 100%
-  position: fixed
+  position: absolute
+  top: 60px
   z-index: 2
   display: none
   ul
