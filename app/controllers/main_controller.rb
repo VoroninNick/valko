@@ -23,24 +23,40 @@ class MainController < ApplicationController
     @windowsill_new = Windowsill.with_public
 
     response_nbu = HTTParty.get('http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', timeout: 10) rescue nil
+
+    case response_nbu.code
+      when 200
+        if response_nbu
+          @data_nbu = JSON.parse(response_nbu.body)
+          @usd_nbu = @data_nbu.select {|key| key["r030"] == 840 }
+          @eur_nbu = @data_nbu.select {|key| key["r030"] == 978 }
+        else
+          []
+        end
+      when 404
+        puts "O noes not found!"
+      when 500...600
+        puts "ZOMG ERROR #{response.code}"
+    end
     # response_nbu = nil
     response_private = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5', timeout: 10) rescue nil
     # response_private = nil
 
-    if response_nbu
-      @data_nbu = JSON.parse(response_nbu.body)
-      @usd_nbu = @data_nbu.select {|key| key["r030"] == 840 }
-      @eur_nbu = @data_nbu.select {|key| key["r030"] == 978 }
-    else
-      []
+    case response_private.code
+      when 200
+        if response_private
+          @data_private = JSON.parse(response_private.body)
+          @usd_private = @data_private.select {|key| key["ccy"] == "USD" }
+          @eur_private = @data_private.select {|key| key["ccy"] == "EUR" }
+        else
+          []
+        end
+      when 404
+        puts "O noes not found!"
+      when 500...600
+        puts "ZOMG ERROR #{response.code}"
     end
-    if response_private
-      @data_private = JSON.parse(response_private.body)
-      @usd_private = @data_private.select {|key| key["ccy"] == "USD" }
-      @eur_private = @data_private.select {|key| key["ccy"] == "EUR" }
-    else
-      []
-    end
+
 
     set_seo('holovna')
   end
