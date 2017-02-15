@@ -23,7 +23,7 @@ class ColorOption < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 
-  enumerize :title, in: [:'g6005', :'g6020', :'g3005', :'g8017', :'g9003', :'g1003', :'g8004', :'g1015', :'g9006', :'g5005', :'g3011', :'g3009', :'ghorikh', :'gzolotyy-dub', :'m6005', :'m3005', :'m8017', :'m8019', :'m8004', :'m7024', :'m6020', :'m3009', :'mtsynk', :'malyutsynk']
+  enumerize :title, in: [:'g6005', :'g6020', :'g3005', :'g8017', :'g9003', :'g1003', :'g8004', :'g1015', :'g9006', :'g5005', :'g3011', :'g3009', :'ghorikh', :'gzolotyy-dub', :'gtemnyy-dub', :'m6005', :'m3005', :'m8017', :'m8019', :'m8004', :'m7024', :'m6020', :'m3009', :'mtsynk', :'malyutsynk']
 
   rails_admin do
     visible false
