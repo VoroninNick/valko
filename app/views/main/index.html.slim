@@ -37,7 +37,7 @@
               - if promo_pager.date_of.present?
                 .promotion-banner-dates #{promo_pager.start_date.strftime("%d.%m.%y")} &#8212; #{promo_pager.date_of.strftime("%d.%m.%y")}
 
-- else
+- elsif promotions.first
   - promotion = promotions.first
   .row
     .columns
