@@ -82,6 +82,12 @@ ul.breadcrumbs
               .large-3.medium-6.columns class=("end" if @one_promotion.mosquito_items.last == item)
                 = render "partials/one_item_mg_card", item: item
 
+          /roof rail item
+          - if @one_promotion.rr_descriptions.any?
+            - @one_promotion.rr_descriptions.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.rr_descriptions.last == item)
+                = render "partials/one_item_card", item: item
+
 
   .row
     .columns

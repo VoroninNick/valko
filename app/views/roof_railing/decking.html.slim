@@ -10,6 +10,12 @@ ul.breadcrumbs
   .row
     form.ajax-popup-form action=line_items_path(id: @decking.id)
       .medium-4.columns.coi-photo
+        - if @decking.rr_description && @decking.rr_description.promo_labels && @decking.rr_description.promo_labels.any?
+          .ow-status
+            - @decking.rr_description.promo_labels.each do |item|
+              .ows-one
+                = image_tag item.icon.url(:large)
+
         - if @decking.rr_details && @decking.rr_details.first.image.exists?
           #roof-rail-gallery
             a href=@decking.rr_details.first.image.url(:large)

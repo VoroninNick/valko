@@ -16,6 +16,7 @@ class PromoLabel < ActiveRecord::Base
 
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_promo_labels
   has_and_belongs_to_many :mosquito_items
+  has_and_belongs_to_many :rr_descriptions
 
   before_save { save_slug(title, slug) }
 

@@ -1,5 +1,22 @@
+- if item.class.name == "RoofRailItem"
+  - item
+  - parent = item.rr_description
+- if item.class.name == "RrDescription"
+  - parent = item
+  - item = item.roof_rail_item
+
+/= item.inspect
+/hr
+/= parent.inspect
+
 - if item
   .one-windowsill
+    - if parent.promo_labels && parent.promo_labels.any?
+      .ow-status
+        - parent.promo_labels.each do |ilb|
+          .ows-one
+            = image_tag ilb.icon.url(:large)
+
     .ow-image
       a href=one_decking_path(item.slug)
         /.image style="background: url('#{image}')no-repeat center center;"

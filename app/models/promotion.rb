@@ -43,9 +43,10 @@ class Promotion < ActiveRecord::Base
 
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_promotions
   attr_accessible :windowsill_ids
-
   has_and_belongs_to_many :mosquito_items
   attr_accessible :mosquito_item_ids
+  has_and_belongs_to_many :rr_descriptions
+  attr_accessible :rr_description_ids
 
   has_one :seo, as: :seo_poly
   attr_accessible :seo
@@ -100,6 +101,13 @@ class Promotion < ActiveRecord::Base
         active false
         field :mosquito_items do
           label 'Москітні сітки:'
+        end
+      end
+      group :roof_rails_froup do
+        label 'Профнастил'
+        active false
+        field :rr_descriptions do
+          label 'Профнастил:'
         end
       end
 
