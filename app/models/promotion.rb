@@ -44,6 +44,8 @@ class Promotion < ActiveRecord::Base
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_promotions
   attr_accessible :windowsill_ids
 
+  has_and_belongs_to_many :mosquito_items
+  attr_accessible :mosquito_item_ids
 
   has_one :seo, as: :seo_poly
   attr_accessible :seo
@@ -86,9 +88,21 @@ class Promotion < ActiveRecord::Base
       field :position do
         label 'Позиція:'
       end
-      field :windowsills do
-        label 'Підвіконня:'
+      group :windowsill_group do
+        label 'Підвіконня'
+        active false
+        field :windowsills do
+          label 'Підвіконня:'
+        end
       end
+      group :mosquito_grid_group do
+        label 'Москітні сітки'
+        active false
+        field :mosquito_items do
+          label 'Москітні сітки:'
+        end
+      end
+
 
       field :seo do
         label 'SEO'

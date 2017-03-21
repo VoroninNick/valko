@@ -41,8 +41,13 @@ class MosquitoItem < ActiveRecord::Base
   accepts_nested_attributes_for :seo, allow_destroy: true
   attr_accessible :seo_attributes
 
+  has_and_belongs_to_many :promo_labels
+  attr_accessible :promo_label_ids
+
   has_and_belongs_to_many :informations, join_table: :information_mosquito_items
   attr_accessible :informations, :information_ids
+
+  has_and_belongs_to_many :promotions
 
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
@@ -57,6 +62,12 @@ class MosquitoItem < ActiveRecord::Base
     label_plural 'Москітні сітки'
 
     edit do
+      field :status do
+        label 'Статус (Нове!):'
+      end
+      field :promo_labels do
+        label 'Іконки акцій:'
+      end
       extend HasGallery
       # field :published do
       #   label 'Чи публікувати?:'

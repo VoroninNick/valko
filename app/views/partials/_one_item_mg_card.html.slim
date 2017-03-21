@@ -1,4 +1,9 @@
 .one-windowsill
+  - if item.promo_labels && item.promo_labels.any?
+    .ow-status
+      - item.promo_labels.each do |ilb|
+        .ows-one
+          = image_tag ilb.icon.url(:large)
   .ow-image
     - if item.mosquito_grid_type == 'window'
       - link_href = one_mosquito_window_path(item.slug)

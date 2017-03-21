@@ -26,6 +26,12 @@ ul.breadcrumbs
   .row
     form.ajax-popup-form action=line_items_path(id: @product.id)
       .medium-4.columns.coi-photo
+        - if @product.promo_labels && @product.promo_labels.any?
+          .ow-status
+            - @product.promo_labels.each do |item|
+              .ows-one
+                = image_tag item.icon.url(:large)
+
         - if @product.mosquito_item_options && @product.mosquito_item_options.first.image.exists?
           #roof-rail-gallery
             a href=@product.mosquito_item_options.first.image.url(:large)

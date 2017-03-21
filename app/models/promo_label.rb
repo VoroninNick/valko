@@ -15,6 +15,7 @@ class PromoLabel < ActiveRecord::Base
   validates_attachment_content_type :icon, content_type: /\Aimage\/.*\Z/
 
   has_and_belongs_to_many :windowsills, join_table: :table_windowsills_promo_labels
+  has_and_belongs_to_many :mosquito_items
 
   before_save { save_slug(title, slug) }
 
