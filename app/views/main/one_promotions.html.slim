@@ -88,6 +88,47 @@ ul.breadcrumbs
               .large-3.medium-6.columns class=("end" if @one_promotion.rr_descriptions.last == item)
                 = render "partials/one_item_card", item: item
 
+          /metal_tiles
+          - if @one_promotion.metal_tiles.any?
+            - @one_promotion.metal_tiles.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.metal_tiles.last == item)
+                = render "partials/cards/metal_tile", item: item
+
+          /metal_sheets
+          - if @one_promotion.metal_sheets.any?
+            - @one_promotion.metal_sheets.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.metal_sheets.last == item)
+                = render "partials/cards/metal_sheet", item: item
+
+          /choicest_item
+          - if @one_promotion.choicest_items.any?
+            - @one_promotion.choicest_items.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.choicest_items.last == item)
+                = render "partials/cards/choicest_item", item: item
+
+          /fastener
+          - if @one_promotion.fasteners.any?
+            - @one_promotion.fasteners.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.fasteners.last == item)
+                = render "partials/cards/fastener", item: item
+
+          /membrane
+          - if @one_promotion.membranes.any?
+            - @one_promotion.membranes.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.membranes.last == item)
+                = render "partials/cards/membrane", item: item
+
+          /skylight_models
+          - if @one_promotion.skylight_models.any?
+            - @one_promotion.skylight_models.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.skylight_models.last == item)
+                = render "partials/cards/skylight_model", item: item
+
+          /skylight_models
+          - if @one_promotion.sealants.any?
+            - @one_promotion.sealants.each do |item|
+              .large-3.medium-6.columns class=("end" if @one_promotion.sealants.last == item)
+                = render "partials/cards/sealant", item: item
 
   .row
     .columns

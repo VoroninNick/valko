@@ -48,6 +48,13 @@ ul.breadcrumbs
             .medium-3.columns.end.mix.decking
               - if item.present?
                 .one-windowsill
+                  - if item.promo_labels && item.promo_labels.any?
+                    .ow-status
+                      - item.promo_labels.each do |ilb|
+                        .ows-one
+                          = image_tag ilb.icon.url(:large)
+
+
                   .ow-image
                     a href=skylight_item_path(@page.slug, item.slug)
                       - if item.avatar.exists?

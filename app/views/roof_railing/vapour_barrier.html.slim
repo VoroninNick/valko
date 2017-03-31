@@ -46,6 +46,12 @@ ul.breadcrumbs
               /- item = item.fastener_options.first
               - if item.present?
                 .one-windowsill
+                  - if item.promo_labels && item.promo_labels.any?
+                    .ow-status
+                      - item.promo_labels.each do |ilb|
+                        .ows-one
+                          = image_tag ilb.icon.url(:large)
+
                   .ow-image
                     a href=vapour_barrier_item_path(item.slug)
                       /a data-href=item.inspect

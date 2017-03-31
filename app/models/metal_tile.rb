@@ -34,6 +34,10 @@ class MetalTile < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries, allow_destroy: true
   attr_accessible :photo_galleries_attributes
 
+  has_and_belongs_to_many :promo_labels
+  attr_accessible :promo_label_ids
+  has_and_belongs_to_many :promotions
+
   # has_and_belongs_to_many :informations, join_table: :decking_informations
   # attr_accessible :informations, :information_ids
 
@@ -49,6 +53,12 @@ class MetalTile < ActiveRecord::Base
     end
 
     edit do
+      field :status do
+        label 'Статус (Нове!):'
+      end
+      field :promo_labels do
+        label 'Іконки акцій:'
+      end
       field :title do
         label 'Назва:'
       end

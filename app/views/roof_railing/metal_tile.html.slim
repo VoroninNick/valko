@@ -18,6 +18,12 @@ ul.breadcrumbs
   .row
     form.ajax-popup-form action=line_items_path(id: product.id)
       .medium-4.columns.coi-photo
+        - if parent.promo_labels && parent.promo_labels.any?
+          .ow-status
+            - parent.promo_labels.each do |item|
+              .ows-one
+                = image_tag item.icon.url(:large)
+
         - if variant && variant.first.image.exists?
           #roof-rail-gallery
             a href=variant.first.image.url(:large)

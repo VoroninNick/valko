@@ -29,6 +29,10 @@ class ChoicestItem < ActiveRecord::Base
   # has_and_belongs_to_many :informations, join_table: :decking_informations
   # attr_accessible :informations, :information_ids
 
+  has_and_belongs_to_many :promo_labels
+  attr_accessible :promo_label_ids
+  has_and_belongs_to_many :promotions
+
   # informations
   has_and_belongs_to_many :informations, join_table: :choicest_items_information
   attr_accessible :informations, :information_ids
@@ -45,6 +49,12 @@ class ChoicestItem < ActiveRecord::Base
     end
 
     edit do
+      field :status do
+        label 'Статус (Нове!):'
+      end
+      field :promo_labels do
+        label 'Іконки акцій:'
+      end
 
       field :appointment do
         label 'Призначення:'

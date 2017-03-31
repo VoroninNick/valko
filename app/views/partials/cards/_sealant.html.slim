@@ -1,0 +1,32 @@
+.one-windowsill
+  - if item.promo_labels && item.promo_labels.any?
+    .ow-status
+      - item.promo_labels.each do |ilb|
+        .ows-one
+          = image_tag ilb.icon.url(:large)
+
+  .ow-image
+    a href=sealant_path(item.slug)
+      .image style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
+
+    .show-large-image.lightGallery
+      - if item.image.exists?
+        a href=item.image.url(:large)
+          = inline_svg "Valko-icon-search.svg"
+
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = item.title
+      .small-6.columns
+        .price data-product-price=item.counted_price
+          = item.counted_price
+          sup &nbsp;грн.
+        p
+          |від
+      .columns
+      /.brand-title = gag.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      a href=sealant_path(item.slug) Переглянути

@@ -1,0 +1,38 @@
+/- parent = item
+/- item = item.fastener_options.first
+/= item.inspect
+
+.one-windowsill
+  - if item.promo_labels && item.promo_labels.any?
+    .ow-status
+      - item.promo_labels.each do |ilb|
+        .ows-one
+          = image_tag ilb.icon.url(:large)
+
+
+  .ow-image
+    a href=skylight_item_path(item.skylight_producer.slug, item.slug)
+      - if item.avatar.exists?
+        .image style="background: url('#{item.avatar.url(:thumb)}')no-repeat center center;"
+
+    .show-large-image.lightGallery
+      - if item.avatar.exists?
+        a href=item.avatar.url(:large)
+          = inline_svg "Valko-icon-search.svg"
+
+  .ow-body
+    .ow-body-information
+      .small-6.columns
+        .title = item.name
+      .small-6.columns
+        .price data-product-price=item.counted_price
+          = item.counted_price
+          sup &nbsp;грн.
+        p
+          |від
+      .columns
+      /.brand-title = gag.brand.title
+      .clearfix
+
+    .ow-body-order-form
+      a href=skylight_item_path(item.skylight_producer.slug, item.slug) Переглянути

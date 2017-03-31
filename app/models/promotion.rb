@@ -47,6 +47,21 @@ class Promotion < ActiveRecord::Base
   attr_accessible :mosquito_item_ids
   has_and_belongs_to_many :rr_descriptions
   attr_accessible :rr_description_ids
+  has_and_belongs_to_many :metal_tiles
+  attr_accessible :metal_tile_ids
+  has_and_belongs_to_many :metal_sheets
+  attr_accessible :metal_sheet_ids
+  has_and_belongs_to_many :choicest_items
+  attr_accessible :choicest_item_ids
+  has_and_belongs_to_many :fasteners
+  attr_accessible :fastener_ids
+  has_and_belongs_to_many :membranes
+  attr_accessible :membrane_ids
+  has_and_belongs_to_many :skylight_models
+  attr_accessible :skylight_model_ids
+  has_and_belongs_to_many :sealants
+  attr_accessible :sealant_ids
+
 
   has_one :seo, as: :seo_poly
   attr_accessible :seo
@@ -103,11 +118,60 @@ class Promotion < ActiveRecord::Base
           label 'Москітні сітки:'
         end
       end
-      group :roof_rails_froup do
+      group :roof_rails_group do
         label 'Профнастил'
         active false
         field :rr_descriptions do
           label 'Профнастил:'
+        end
+      end
+      group :metal_tile_group do
+        label 'Металочерепиця'
+        active false
+        field :metal_tiles do
+          label 'Металочерепиця:'
+        end
+      end
+      group :metal_sheet_group do
+        label 'Листовий метал'
+        active false
+        field :metal_sheets do
+          label 'Листовий метал:'
+        end
+      end
+      group :choicest_item_group do
+        label 'Добірні елементи'
+        active false
+        field :choicest_items do
+          label 'Добірні елементи:'
+        end
+      end
+      group :fastener_group do
+        label 'Кріплення'
+        active false
+        field :fasteners do
+          label 'Кріплення:'
+        end
+      end
+      group :membrane_group do
+        label 'Покрівельні плівки'
+        active false
+        field :membranes do
+          label 'Покрівельні плівки:'
+        end
+      end
+      group :skylight_model_group do
+        label 'Дахове вікно'
+        active false
+        field :skylight_models do
+          label 'Дахове вікно:'
+        end
+      end
+      group :sealant_group do
+        label 'Герметики'
+        active false
+        field :sealants do
+          label 'Герметики:'
         end
       end
 

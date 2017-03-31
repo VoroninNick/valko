@@ -46,6 +46,12 @@ ul.breadcrumbs
               - item = item.choicest_item_details.first
               - if item.present?
                 .one-windowsill
+                  - if item.choicest_item.promo_labels && item.choicest_item.promo_labels.any?
+                    .ow-status
+                      - item.choicest_item.promo_labels.each do |ilb|
+                        .ows-one
+                          = image_tag ilb.icon.url(:large)
+
                   .ow-image
                     a href=choicest_item_path(item.slug)
                       /a data-href=item.inspect

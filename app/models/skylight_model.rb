@@ -37,6 +37,10 @@ class SkylightModel < ActiveRecord::Base
   accepts_nested_attributes_for :skylights, allow_destroy: true
   attr_accessible :skylights_attributes
 
+  has_and_belongs_to_many :promo_labels
+  attr_accessible :promo_label_ids
+  has_and_belongs_to_many :promotions
+
   before_save { save_slug(name, slug) }
 
 
@@ -50,6 +54,13 @@ class SkylightModel < ActiveRecord::Base
 
     end
     edit do
+      field :status do
+        label 'Статус (Нове!):'
+      end
+      field :promo_labels do
+        label 'Іконки акцій:'
+      end
+
       extend HasGallery
 
       field :skylight_producer do

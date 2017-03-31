@@ -44,6 +44,13 @@ ul.breadcrumbs
             .medium-3.columns.end.mix.decking
               - item = item.metal_sheet_details.first
               .one-windowsill
+                - if item.metal_sheet.promo_labels && item.metal_sheet.promo_labels.any?
+                  .ow-status
+                    - item.metal_sheet.promo_labels.each do |ilb|
+                      .ows-one
+                        = image_tag ilb.icon.url(:large)
+
+
                 .ow-image
                   a href=sheet_metal_item_path(item.slug)
                     /.image style="background: url('#{image}')no-repeat center center;"

@@ -46,6 +46,12 @@ ul.breadcrumbs
               - item = item.fastener_options.first
               - if item.present?
                 .one-windowsill
+                  - if item.fastener.promo_labels && item.fastener.promo_labels.any?
+                    .ow-status
+                      - item.fastener.promo_labels.each do |ilb|
+                        .ows-one
+                          = image_tag ilb.icon.url(:large)
+
                   .ow-image
                     a href=fastener_path(item.slug)
                       /a data-href=item.inspect

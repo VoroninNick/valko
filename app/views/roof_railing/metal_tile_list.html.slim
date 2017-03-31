@@ -44,6 +44,12 @@ ul.breadcrumbs
               - item = item.metal_tile_details.first
               - if item.present?
                 .one-windowsill
+                  - if item.metal_tile.promo_labels && item.metal_tile.promo_labels.any?
+                    .ow-status
+                      - item.metal_tile.promo_labels.each do |ilb|
+                        .ows-one
+                          = image_tag ilb.icon.url(:large)
+
                   .ow-image
                     a href=metal_tile_item_path(item.slug)
                       /a data-href=item.inspect
