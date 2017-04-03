@@ -330,18 +330,22 @@ header
       padding-left: 26px
       li
         float: left
+        height: 25px
         a
-          color: #eceff1
+          //color: #eceff1
+          color: #fff
           font:
             size: rem-calc(12)
             weight: 400
           padding-left: 6px
           padding-right: 6px
           line-height: 25px
-          +transition(opacity, 100ms, cubic-bezier(0.250, 0.250, 0.750, 0.750))
-          &:hover
-            color: #fff
-            opacity: 1
+          opacity: 1
+          //+transition(opacity, 100ms, cubic-bezier(0.250, 0.250, 0.750, 0.750))
+        &:hover
+          border-bottom: 1px solid #fff
+          //color: #fff
+          //opacity: 1
 
 
       &:before
