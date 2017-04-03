@@ -679,6 +679,35 @@ main
           &.current
             background: #1c282e
 
+          &.version-1
+            &:hover
+              a, span
+                color: #f50057
+              svg
+                path
+                  fill: #f50057
+          &.version-2
+            &:hover
+              border: 1px solid #f50057
+              a, span
+                color: #f50057
+              svg
+                path
+                  fill: #f50057
+          &.version-3
+            a, span
+              color: #f50057
+            svg
+              path
+                fill: #f50057
+            &:hover
+              background: #f50057
+              a, span
+                color: #fff
+              svg
+                path
+                  fill: #fff
+
     .mobile-main-menu
       height: inherit
       display: none
@@ -1763,6 +1792,11 @@ ul.voronin-block-wrap
             weight: inherit
         .valko-arrow
           margin-right: 8px
+        &:hover
+          a
+            color: #f50057
+          .valko-arrow
+            background: #f50057
 
       ul
         margin: 0
@@ -1780,6 +1814,8 @@ ul.voronin-block-wrap
             font:
               size: rem-calc(12)
               weight: 400
+            &:hover
+              color: #f50057
             span
               padding-left: 5px
               color: #eceff1
@@ -1801,6 +1837,8 @@ ul.voronin-block-wrap
         filter: grayscale(0)
 
     &.sub-catalog-in-developing
+      .valko-arrow
+        background: #263238!important
       &:hover
         .image
           filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='saturate' values='0'/></filter></svg>#grayscale")
