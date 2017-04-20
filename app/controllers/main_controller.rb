@@ -23,7 +23,7 @@ class MainController < ApplicationController
     @windowsill_new = Windowsill.with_public
 
     response_nbu = HTTParty.get('http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', timeout: 10) rescue nil
-
+    if response_nbu
     case response_nbu.code
       when 200
         if response_nbu
@@ -38,10 +38,11 @@ class MainController < ApplicationController
       when 500...600
         puts "ZOMG ERROR #{response.code}"
     end
+    end
     # response_nbu = nil
     response_private = HTTParty.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5', timeout: 10) rescue nil
     # response_private = nil
-
+    if response_private
     case response_private.code
       when 200
         if response_private
@@ -55,6 +56,7 @@ class MainController < ApplicationController
         puts "O noes not found!"
       when 500...600
         puts "ZOMG ERROR #{response.code}"
+    end
     end
 
 
