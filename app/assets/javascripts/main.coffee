@@ -661,7 +661,7 @@ $(document).ready ->
   $(".windowsill-cf-radio input[type='radio']").change ->
     $this = $(@)
     $wrap = $this.closest('.control-filters')
-    $('.control-filter').removeClass('expanded')
+#    $('.control-filter').removeClass('expanded')
     $(".control-filter input[type='checkbox']").attr('checked', false)
 
     if $this.val() == 'internal'
