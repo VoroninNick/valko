@@ -1,14 +1,14 @@
 .main-menu-wrap
   nav#main-menu
     ul
-      li.material-component.ripple
+      li.material-component.ripple.version-2
         -if !current_page?(root_url)
           a href=root_path title="На головну"
             = inline_svg "Valko-icon-home.svg"
         - else
           a
             = inline_svg "Valko-icon-home.svg"
-      li.material-component.ripple class=cp(windowsill_path)
+      li.material-component.ripple.version-2 class=cp(windowsill_path)
         a href=windowsill_path title="Каталог підвіконня"
           = inline_svg "Valko-icon-pidvikonnya.svg"
           span
@@ -16,7 +16,7 @@
             br
             |відливи
 
-      li.material-component.ripple.version-1
+      li.material-component.ripple.version-2
         a
           = inline_svg "Valko-icon-rolety.svg"
           span
@@ -24,7 +24,7 @@
             br
             |жалюзі
 
-      li.material-component.ripple.version-1 class=cp(mosquito_grid_path)
+      li.material-component.ripple.version-2 class=cp(mosquito_grid_path)
         a href=mosquito_grid_path
           = inline_svg "Valko-icon-moskitny-sitku.svg"
           span
@@ -40,7 +40,7 @@
             br
             |огорожі
 
-      li.material-component.ripple.version-3 class=cp(window_and_door_path)
+      li.material-component.ripple.version-2 class=cp(window_and_door_path)
         a href=window_and_door_path
           = inline_svg "ic_border_all_24px.svg"
           span
