@@ -1944,12 +1944,14 @@ ul.voronin-block-wrap
     padding: 0
     +grid-column(4)
     padding-left: 0
+    padding-right: 0
     @media screen and ( max-width: 840px)
       width: 50%
     @media screen and ( max-width: 700px)
       width: 60%
     //@media #{$small-only}
       display: none
+
     a, .ppp-one
       display: block
       height: 135px
@@ -2021,8 +2023,15 @@ ul.voronin-block-wrap
       .title, p, .promotion-banner-dates, .valko-arrow
         display: none !important
 
-
-
+    a
+      padding-right: 0.9375rem
+      &:hover
+        border: 1px solid #f50057
+        border-left: 6px solid #f50057
+        .valko-arrow
+          background: #f50057
+        .title
+          color: #f50057
 
 ul#promotion-banner
   height: 405px
