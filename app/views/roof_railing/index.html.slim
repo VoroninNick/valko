@@ -4,13 +4,126 @@ ul.breadcrumbs
   li
     span Покрівля огорожі
 
-  .hide-catalog-header data-catalog-session-variable="roof-rails-header-status"
+  /.hide-catalog-header data-catalog-session-variable="roof-rails-header-status"
     .title
       |Згорнути
     .hch-arrow.valko-arrow.va-top
       div
 
 .roof-rail-catalog-list-page
+
+  .page-block
+    .page-block-title
+      .row
+        .columns
+          span Ми пропонуємо:
+
+    .row
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=roof_rail_decking_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Профнастил
+
+            .columns
+              p Різноманіття форм, кольорів, текстури.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=metal_tile_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr1.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Металочерепиця
+            .columns
+              p Кольорові рішення для Ваших потреб.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=sheet_metal_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr3.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Листовий метал
+
+            .columns
+              p Класичний металевий лист для широкого застосування.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=choicest_items_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr4.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Добірні елементи
+
+            .columns
+              p Великий вибір добірних елементів для покрівлі.
+      /==================
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=mounting_and_sealants_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("germetik.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title кріплення і герметики
+
+            .columns
+              p Забезпечать створення надійних і стійких конструкцій.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=roofing_membrane_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr6.jpg")}')no-repeat center center;"
+
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Покрівельні плівки
+
+            .columns
+              p Всі види підпокрівельних плівок.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item
+        a href=skylights_path
+          .sc-oi-avatar
+            .image.grayscale style="background: url('#{asset_path("rr7.jpg")}')no-repeat center center;"
+          .sc-oi-body
+            .sc-oi-title
+              .valko-arrow.va-right
+                div
+              .title Дахове вікно
+
+            .columns
+              p Оптимальний вибір для мансардних приміщень.
+
+      .medium-6.columns.pb-sub-block.sub-catalog-one-item.sub-catalog-in-developing
+
+        .sc-oi-avatar
+          .image.grayscale style="background: url('#{asset_path("rr8.jpg")}')no-repeat center center;"
+        .sc-oi-body
+          .sc-oi-title
+            .valko-arrow.va-right
+              div
+            .title сходи на горище
+
+          .columns
+            p Для комфортного сходження вверх.
+
+
   .roof-rail-catalog-list-header.catalog-page-header
     .catalog-page-header-inner
       .row
@@ -27,118 +140,6 @@ ul.breadcrumbs
             .clearfix
             = raw @roof_rail.header_description
             .clearfix
-
-
-  .page-block
-    .page-block-title
-      .row
-        .columns
-          span Ми пропонуємо:
-
-    .row
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=roof_rail_decking_path
-            .image.grayscale style="background: url('#{asset_path("rr2.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=roof_rail_decking_path
-              div
-            a href=roof_rail_decking_path Профнастил
-
-          .columns
-            p Різноманіття форм, кольорів, текстури.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=metal_tile_path
-            .image.grayscale style="background: url('#{asset_path("rr1.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=metal_tile_path
-              div
-            a href=metal_tile_path Металочерепиця
-          .columns
-            p Кольорові рішення для Ваших потреб.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=sheet_metal_path
-            .image.grayscale style="background: url('#{asset_path("rr3.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=sheet_metal_path
-              div
-            a href=sheet_metal_path Листовий метал
-
-          .columns
-            p Класичний металевий лист для широкого застосування.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=choicest_items_path
-            .image.grayscale style="background: url('#{asset_path("rr4.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=choicest_items_path
-              div
-            a href=choicest_items_path Добірні елементи
-
-          .columns
-            p Великий вибір добірних елементів для покрівлі.
-      /==================
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=mounting_and_sealants_path
-            .image.grayscale style="background: url('#{asset_path("germetik.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=mounting_and_sealants_path
-              div
-            a href=mounting_and_sealants_path кріплення і герметики
-
-          .columns
-            p Забезпечать створення надійних і стійких конструкцій.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=roofing_membrane_path
-            .image.grayscale style="background: url('#{asset_path("rr6.jpg")}')no-repeat center center;"
-
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right  href=roofing_membrane_path
-              div
-            a  href=roofing_membrane_path Покрівельні плівки
-
-          .columns
-            p Всі види підпокрівельних плівок.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item
-        .sc-oi-avatar
-          a href=skylights_path
-            .image.grayscale style="background: url('#{asset_path("rr7.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right href=skylights_path
-              div
-            a href=skylights_path Дахове вікно
-
-          .columns
-            p Оптимальний вибір для мансардних приміщень.
-
-      .medium-6.columns.pb-sub-block.sub-catalog-one-item.sub-catalog-in-developing
-        .sc-oi-avatar
-          a
-            .image.grayscale style="background: url('#{asset_path("rr8.jpg")}')no-repeat center center;"
-        .sc-oi-body
-          .sc-oi-title
-            a.valko-arrow.va-right
-              div
-            a сходи на горище
-
-          .columns
-            p Для комфортного сходження вверх.
 
   .row
     .columns
