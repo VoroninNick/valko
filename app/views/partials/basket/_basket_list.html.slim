@@ -247,4 +247,7 @@
       .material-component.ripple.button-box-shadow.red-button.right.cart-button
         a.first-step data-step="cart-delivery" Доставка
       .material-component.ripple.button-box-shadow.blue-text.right
-        a href=URI(request.referer).path Повернутись
+        - if request.referer
+          a href=URI(request.referer).path Повернутись
+        - else
+          a href=root_path Повернутись

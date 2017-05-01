@@ -45,10 +45,16 @@ html lang="en"
 
     .cart-link class=("cart-not-empty" if current_cart && current_cart.total_quantity >0)
       - if current_page?(basket_path)
-        a href=URI(request.referer).path class=cp(basket_path)
-          = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
-          = inline_svg "Valko-icon-korzuna.svg"
-          = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+        - if request.referer
+          a href=URI(request.referer).path class=cp(basket_path)
+            = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+            = inline_svg "Valko-icon-korzuna.svg"
+            = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+        - else
+          a href=root_path class=cp(basket_path)
+            = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+            = inline_svg "Valko-icon-korzuna.svg"
+            = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
 
       - else
         a href=basket_path class=cp(basket_path)
@@ -68,10 +74,16 @@ html lang="en"
 
         .cart-link.cart-link-m  class=("cart-not-empty" if current_cart && current_cart.total_quantity >0)
           - if current_page?(basket_path)
-            a href=URI(request.referer).path class=cp(basket_path)
-              = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
-              = inline_svg "Valko-icon-korzuna.svg"
-              = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+            - if request.referer
+              a href=URI(request.referer).path class=cp(basket_path)
+                = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+                = inline_svg "Valko-icon-korzuna.svg"
+                = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
+            - else
+              a href=root_path class=cp(basket_path)
+                = image_tag "Valko-basket-button-passive.png", class: 'cart-link-background'
+                = inline_svg "Valko-icon-korzuna.svg"
+                = inline_svg "ic_close_black_24px.svg", class: 'close-cart'
 
           - else
             a href=basket_path class=cp(basket_path)
