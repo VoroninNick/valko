@@ -24,25 +24,25 @@ footer.push-footer
             ul.socials.right
               - if static_data && static_data.google.present?
                 li
-                  a href=static_data.google
+                  a href=static_data.google rel="noindex"
                     = inline_svg"Valko-icon-social-google+.svg"
               - if static_data && static_data.youtube.present?
                 li
-                  a href=static_data.youtube
+                  a href=static_data.youtube rel="noindex"
                     = inline_svg"Valko-icon-social-youtube.svg"
               - if static_data && static_data.facebook.present?
                 li
-                  a href=static_data.facebook
+                  a href=static_data.facebook rel="noindex"
                     = inline_svg"Valko-icon-social-facebook.svg"
 
           ul.site-map-nav.right
             li
               a href=sitemap_path title="Карта сайту" Карта сайту
-            li
+            /li
               a href=terms_of_use_path title="Правила користування" Правила користування
 
     .medium-5.columns
-      p.copyright © 2009-2015 ТзОВ «ВАЛЬКО»
+      p.copyright © 2003-#{Date.today.year} ТзОВ «ВАЛЬКО»
       ul.voronin-block-wrap
         li.vbw-image
           a href="http://voroninstudio.eu/" rel="nofollow"
@@ -58,4 +58,4 @@ footer.push-footer
             a href="http://voroninstudio.eu/" rel="nofollow"
               |в студії  М. Вороніна
             br
-            |&nbsp;в 2016 році.
+            |&nbsp;в 2015 році.

@@ -7,11 +7,11 @@
     .medium-8.medium-centered.columns
       .row
         .medium-6.columns
-          a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"
+          a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=#{request.original_url}" rel="noindex"
             = inline_svg "Valko-icon-social-facebook.svg"
             |Facebook
         .medium-6.columns
-          a href="https://plus.google.com/share?url=#{request.original_url}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+          a href="https://plus.google.com/share?url=#{request.original_url}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" rel="noindex"
             = inline_svg "Valko-icon-social-google+.svg"
             |Google +
   .row.modal-form
