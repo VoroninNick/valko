@@ -1,0 +1,18 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span 404
+
+.error-page.page-not-found
+  .row.text-center
+    .columns
+      .error-page-body
+        .title 404
+        p
+          |Нажаль, даної сторінки не існує.
+        p
+          |Можливо, вона була видалена, або Ви ввели невірну адресу.
+
+        .material-component.ripple.default-material-button.button-box-shadow
+          a href=root_path На головну
