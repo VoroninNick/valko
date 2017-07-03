@@ -744,3 +744,10 @@ $(window).scroll ->
   else
     if $('.cart-link').hasClass('fixed-cart')
       $('.cart-link').removeClass('fixed-cart')
+
+# fixed header
+  if $(document).scrollTop() >= 112
+    $('.main-menu-wrap').addClass('main-menu-fixed')
+  else
+    if $('.main-menu-wrap').hasClass('main-menu-fixed')
+      $('.main-menu-wrap').removeClass('main-menu-fixed')
