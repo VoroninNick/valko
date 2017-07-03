@@ -23,4 +23,8 @@ module ApplicationHelper
   def current_cart
     set_cart
   end
+
+  def main_banner
+    MainBanner.first
+  end
 end

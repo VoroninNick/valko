@@ -1,0 +1,16 @@
+.row
+  .columns
+    .main-banner-wrap
+      - if main_banner.main_banner_images && main_banner.main_banner_images.any?
+        ul.main-banner
+          - main_banner.main_banner_images.each do |slide|
+            li
+              .image style="background: url('#{slide.image.url(:large)}')no-repeat center center;"
+
+      .main-banner-description
+        .row
+          .columns
+            .title
+              = main_banner.title
+        .row
+          = raw main_banner.description

@@ -1,5 +1,6 @@
-
-- if promotions.any? && promotions.count > 1
+- if main_banner
+  = render :partial => "partials/main_banner"
+/- if promotions.any? && promotions.count > 1
   .row
     .columns
       .promotion-banner-wrapper
@@ -37,7 +38,7 @@
               - if promo_pager.date_of.present?
                 .promotion-banner-dates #{promo_pager.start_date.strftime("%d.%m.%y")} &#8212; #{promo_pager.date_of.strftime("%d.%m.%y")}
 
-- elsif promotions.first
+/- elsif promotions.first
   - promotion = promotions.first
   .row
     .columns
@@ -77,6 +78,7 @@
 
             - if promotion.date_of.present?
               .promotion-banner-dates #{promotion.start_date.strftime("%d.%m.%y")} &#8212; #{promotion.date_of.strftime("%d.%m.%y")}
+
 
 .page-block
   .page-block-title

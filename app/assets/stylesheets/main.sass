@@ -715,6 +715,19 @@ main
               svg
                 path
                   fill: #fff
+          &.version-4
+            a, span
+              //color: #f50057
+            svg
+              path
+                //fill: #f50057
+            &:hover
+              background: #f50057
+              a, span
+                color: #fff
+              svg
+                path
+                  fill: #fff
 
     .mobile-main-menu
       height: inherit
@@ -745,6 +758,22 @@ main
     min-height: 523px
     @media (min-height: 1081px)
       min-height: 711px
+
+
+    .main-banner-wrap
+      margin-top: 30px
+      .bx-wrapper
+        height: 405px
+        .bx-viewport
+          height: 100%!important
+      ul.main-banner
+        height: 100%
+        margin-left: 0
+        li
+          height: 100%
+          .image
+            height: 100%
+
   .page-block
     margin-bottom: 60px
     .page-block-title

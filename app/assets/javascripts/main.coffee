@@ -64,6 +64,15 @@ $ ->
 
 $(document).ready ->
 #===================================================================
+#  main banner bxslider
+#===================================================================
+  $("ul.main-banner").bxSlider
+    auto: false
+    pause: 5000
+    controls: false
+    infiniteLoop: false
+
+#===================================================================
 #  for mobile version tabs
 #===================================================================
   $('.mobile-tabs-version .tab-title').click ->
