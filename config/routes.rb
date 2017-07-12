@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'informaciia' => 'main#publications', as: :information
   get 'informaciia/:title' => 'main#publication', as: :one_publication
 
+  get 'testimonials' => 'testimonial#list', as: :testimonials
+  get 'testimonial/:title' => 'testimonial#item', as: :testimonial
+
   get 'aktcii' => 'main#promotions', as: :promotions
   get 'aktcii/:title' => 'main#one_promotions', as: :one_promotions
 

@@ -266,3 +266,31 @@
       .medium-1.columns.pb-publications-more.hide-for-small
         = link_to information_path do
           .div
+
+- if @testimonials.any?
+  .page-block.testimonials-block
+    .page-block-title
+      .row
+        .columns
+          span Відгуки:
+          =link_to '>> Переглянути всі', testimonials_path
+
+    .row
+      .columns
+        .testimonials
+          - @testimonials.each do |testimonial|
+            .testimonial
+              .testimonial-inner
+                .t-avatar-inner
+                  .t-avatar
+                    .image style="background: url('#{testimonial.avatar.url(:thumb)}')no-repeat center center;"
+                  .t-title
+                    .title
+                      = testimonial.name
+                .t-description-inner
+                  q
+                    = testimonial.description
+                  p
+                    span
+                      |Дата відгуку:
+                    = l(testimonial.date_post, format: "%d %B %Y")

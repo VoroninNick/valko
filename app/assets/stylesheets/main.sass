@@ -870,6 +870,11 @@ main
           .owl-dot
             margin: 0
 
+
+    &.testimonials-block
+
+
+
     &.publications-block
       .pb-sub-publications-block
         &:first-of-type
@@ -1103,6 +1108,77 @@ main
               color: #1e87e4
               text-align: left
               border-right: 1px solid #ebeef0
+
+
+.testimonials
+  .testimonial
+    margin-bottom: 25px
+    +grid-column(6)
+    @media #{$medium-only}
+      +grid-column(12)
+
+    .testimonial-inner
+      background: #eceff1
+      position: relative
+      min-height: 160px
+      .t-avatar-inner
+        background: #42a5f5
+        width: 137px
+        position: absolute
+        left: 0
+        top: 0
+        bottom: 0
+        .t-avatar
+          width: 89px
+          height: 89px
+          margin-top: 20px
+          margin-bottom: 10px
+          margin-left: auto
+          margin-right: auto
+          +border-radius(50%)
+          overflow: hidden
+          +box-shadow(1px 1px 2px 0px rgba(0,0,0,0.2))
+          .image
+            height: 100%
+
+        .t-title
+          width: 80%
+          margin: 0 auto
+          .title
+            +default_font_style(#fff, 12, 500, 14.4)
+            text-transform: uppercase
+            text-align: center
+
+      .t-description-inner
+        padding-left: 157px
+        padding-right: 20px
+        padding-top: 24px
+        padding-bottom: 24px
+        q
+          +default_font_style(#607d8b, 14, 300, 26)
+          font-style: italic
+          margin-bottom: 15px
+          display: inline-block
+          position: relative
+          &:before
+            display: none
+          &:after
+            content: '»'
+            +default_font_style(#263238, 75.25, 500, 75.25)
+            position: absolute
+            right: 0
+            bottom: -25px
+            opacity: .2
+        p
+          margin-bottom: 0
+          +default_font_style(#607d8b, 12, 500, 14.4)
+          text-transform: lowercase
+          span
+            color: #263238
+            font-weight: 400
+            text-transform: initial
+            &:after
+              content: " "
 
 //@media only screen and (min-width: 90.063em)
   .row-wide

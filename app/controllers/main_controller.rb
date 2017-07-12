@@ -20,6 +20,8 @@ class MainController < ApplicationController
   def index
     # return render inline: session.keys.inspect
     @publications = Information.with_main.limit(5)
+    @testimonials = Testimonial.published.post_on_index.limit(4)
+
     @windowsill_new = Windowsill.with_public
 
     response_nbu = HTTParty.get('http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json', timeout: 10) rescue nil
