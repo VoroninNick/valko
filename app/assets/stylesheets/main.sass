@@ -1428,12 +1428,16 @@ main
         +transition(all, 0.3s, cubic-bezier(0, 0, 0.42, 0.99))
 
     &:hover
-      border: 1px solid #f50057
-      .valko-arrow
+      .pb-publication-body
         background: #f50057
+      .valko-arrow
+        background: #fff
+        div
+          &:before, &:after
+            background: #f50057
       .title
         color: #fff
-        +transition(all, 0.4s, ease)
+        //+transition(all, 0.2s)
       .image
         filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale")
         -webkit-filter: grayscale(0)
@@ -1451,6 +1455,7 @@ main
         +transition(all, 0.3s, cubic-bezier(0, 0, 0.42, 0.99))
       &:hover
         color: #fff !important
+        background: #f50057!important
         +transition(all, 0.4s, ease)
 
     &:last-child
