@@ -10,12 +10,17 @@ class Testimonial < ActiveRecord::Base
   #   "#{I18n.t("activerecord.attributes.course.group") if self.group} #{"/" if self.group && self.individual}  #{I18n.t("activerecord.attributes.course.individual") if self.individual}"
   # end
 
-
+  scope :published, ->() {
+    where(published: true).sort_by_date_published
+  }
   scope :post_on_index, ->() {
     where(on_index_page: true).sort_by_date_published
   }
-  scope :published, ->() {
-    where(published: true).sort_by_date_published
+  scope :main_testimonial, ->() {
+    where(main: true)
+  }
+  scope :list_testimonial, ->() {
+    published.where.not(main: true).sort_by_date_published
   }
   scope :sort_by_date_published, ->() {
     order(date_post: 'asc')

@@ -35,4 +35,24 @@ RailsAdmin.config do |config|
     # history_show
 
   end
+  config.model Testimonial do
+    label 'Відгук'
+    label_plural 'Відгуки'
+
+    edit do
+      field :published
+      # field :position
+      field :main
+      field :on_index_page
+      field :avatar, :paperclip do
+        help 'розмір зображення 320x320'
+      end
+      field :description do
+        html_attributes rows: 10, cols: 100
+      end
+      field :name
+      field :date_post
+    end
+  end
+
 end

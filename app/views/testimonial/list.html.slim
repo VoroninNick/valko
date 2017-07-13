@@ -1,0 +1,18 @@
+ul.breadcrumbs
+  li
+    = link_to 'Головна', root_path
+  li
+    span Відгуки
+
+.testimonials-page
+  .testimonials
+    - if @main_testimonial
+      .row
+        .columns
+          = render partial: "partials/cards/testimonials/card", locals: { item: @main_testimonial }
+
+    - if @testimonials.any?
+      .row
+        .columns
+          - @testimonials.each do |testimonial|
+            = render partial: "partials/cards/testimonials/card", locals: { item: testimonial }

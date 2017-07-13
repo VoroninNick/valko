@@ -1180,6 +1180,27 @@ main
             &:after
               content: " "
 
+    &.main-testimonial
+      +grid-column(12)
+      .testimonial-inner
+        background: #42a5f5
+        .t-avatar-inner
+          background: rgba(0, 0, 0, .2)
+        .t-description-inner
+          q, p
+            color: #fff
+          q
+            font-size: rem-calc(18)
+        @media #{$large-only}
+          min-height: 190px
+          .t-avatar-inner
+            width: 218px
+            .t-avatar
+              width: 111px
+              height: 111px
+          .t-description-inner
+            padding-left: 238px
+
 //@media only screen and (min-width: 90.063em)
   .row-wide
     width: 1441px

@@ -192,7 +192,7 @@
                     - if @eur_private
                       b #{@eur_private[0]["buy"].to_f.round(2)}/#{@eur_private[0]["sale"].to_f.round(2)}
                     - else
-                        b відсутній
+                      b відсутній
                     p
                       |Курс євро
                       br
@@ -279,18 +279,4 @@
       .columns
         .testimonials
           - @testimonials.each do |testimonial|
-            .testimonial
-              .testimonial-inner
-                .t-avatar-inner
-                  .t-avatar
-                    .image style="background: url('#{testimonial.avatar.url(:thumb)}')no-repeat center center;"
-                  .t-title
-                    .title
-                      = testimonial.name
-                .t-description-inner
-                  q
-                    = testimonial.description
-                  p
-                    span
-                      |Дата відгуку:
-                    = l(testimonial.date_post, format: "%d %B %Y")
+            = render partial: "partials/cards/testimonials/card", locals: { item: testimonial }

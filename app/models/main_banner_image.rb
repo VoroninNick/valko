@@ -27,4 +27,9 @@ class MainBannerImage < ActiveRecord::Base
     end
   end
 
+
+  scope :sort_by_position, ->(){
+    order(position: 'asc')
+  }
+
 end

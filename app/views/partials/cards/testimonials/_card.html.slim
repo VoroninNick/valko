@@ -1,0 +1,15 @@
+.testimonial class=("main-testimonial" if controller_name == "testimonial" && item.main )
+  .testimonial-inner
+    .t-avatar-inner
+      .t-avatar
+        .image style="background: url('#{item.avatar.url(:thumb)}')no-repeat center center;"
+      .t-title
+        .title
+          = item.name
+    .t-description-inner
+      q
+        = item.description
+      p
+        span
+          |Дата відгуку:
+        = l(item.date_post, format: "%d %B %Y")
